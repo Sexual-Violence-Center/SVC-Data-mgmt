@@ -300,6 +300,32 @@ class Form extends Component {
                         <option value="other">Other</option>
                         <option value="unknown/pass">Unknown/Pass</option>
                     </select>
+                    <label>
+                        If Other, please specify
+                        <input type="text" />
+                    </label>
+                    <h3>Immigrant Status</h3>
+                    <select>
+                        <option value="africa">Africa</option>
+                        <option value="asia">Asia</option>
+                        <option value="europe">Europe</option>
+                        <option value="mex/cen/south america">Mex/Cen/South America</option>
+                        <option value="middle east">Middle East</option>
+                        <option value="other">Other</option>
+                        <option value="no">No</option>
+                        <option value="unknown/pass">Unknown/Pass</option>
+                    </select>
+                    <label>
+                        If Other, please specify
+                        <input type="text" />
+                    </label>
+                    <h3>Other</h3>
+                    <input type="checkbox" id="homeless" value="homeless"/><label for="homeless">Currently Homeless</label>
+                    <br/>
+                    <input type="checkbox" id="limited_english" value="limited_english"/><label for="limited_english">Limited English Proficiency</label>
+                    <br/>
+                    <input type="checkbox" id="veteran" value="veteran"/><label for="veteran">U.S. Veteran</label>
+                    <br/>
                 </div>
             </div>
         )
