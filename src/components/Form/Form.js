@@ -188,12 +188,25 @@ class Form extends Component {
                 </div>
                 <div className="referrals">
                     <h2>Referrals</h2>
+                    <p>(please fill in name of organization)</p>
+                    <label>SVC Services:</label>
+                    <input type="text"/>
+                    <br/>
+                    <label>Other advocacy agency:</label>
+                    <input type="text"/>
+                    <br/>
+                    <label>Other services, support and resources(specify):</label>
+                    <input type="text"/>
+                    <br/>
                 </div>
                 <div className="support">
                     <h2>Did They Feel Supported?</h2>
+                    <p><strong>MANDATORY</strong> Did you feel that you were supported on this call?</p>
+                    <input type="radio" id="feelSupported" name="feelSupported" value="true" /><label for="feelSupported">yes</label>
+                    <input type="radio" id="feelSupported" name="feelSupported" value="false" /><label for="feelSupported">no</label>
                 </div>
                 <div className="demographics">
-                    <h2>Demographics</h2>
+                    <h2>Victim/Survivor Demographics</h2>
                 </div>
             </div>
         )
