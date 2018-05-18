@@ -8,28 +8,32 @@ class Form extends Component {
                     <h2>Contact Info</h2>
                     <label>
                         Advocate/Counselor Name:
-                        <input type="text" />
+                        <input type="text" name="advocate_name"/>
                     </label>
                     <label>
                         Date:
-                        <input type="date" />
+                        <input type="date" name="date_entered"/>
                     </label>
                     <label>
                         Start Time:
-                        <input type="time" />
+                        <input type="time" name="start_time"/>
                     </label>
                     <label>
                         End Time:
-                        <input type="time" />
+                        <input type="time" name="end_time"/>
                     </label>
                     <br />
                     <label>
+                        Contact Date:
+                        <input type="date" name="contact_date"/>
+                    </label>
+                    <label>
                         Location(where services are being provided):
-                        <input type="text" />
+                        <input type="text" name="service_location"/>
                     </label>
                     <label>
                         County:
-                        <select name="county">
+                        <select name="service_county">
                             <option value="Hennepin">Hennepin</option>
                             <option value="Scott">Scott</option>
                             <option value="Carver">Carver</option>
@@ -38,11 +42,11 @@ class Form extends Component {
                     </label>
                     <label>
                         Client Number:
-                        <input type="number" />
+                        <input type="number" name="in_person_client_number"/>
                     </label>
                     <label>
                         Zip Code:
-                        <input type="number" />
+                        <input type="number" name="victim_zipcode"/>
                     </label>
                     <br />
                     <label>
@@ -56,37 +60,37 @@ class Form extends Component {
                     </label>
                     <label>
                         How did they hear about SVC?:
-                        <input type="text" />
+                        <input type="text" name="victim_referral_source"/>
                     </label>
                     <br />
                     <div>
                         <label>
                             Have they contacted SVC before?:
                         </label>
-                        <input type="radio" id="haveContactedBefore" name="haveContactedBefore" value="victim_prior_contact" /><label for="haveContactedBefore">yes</label>
-                        <input type="radio" id="haveContactedBefore" name="haveContactedBefore" value="victim_prior_contact" /><label for="haveContactedBefore">no</label>
+                        <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label for="victim_prior_contact">yes</label>
+                        <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label for="victim_prior_contact">no</label>
                     </div>
                     <label>
                         If yes, was it before Oct 1, 2017?:
-                        <input type="radio" id="BeforeOct" name="BeforeOct" value="victim_contact_prior_oct" /><label for="BeforeOct">yes</label>
-                        <input type="radio" id="BeforeOct" name="BeforeOct" value="victim_contact_prior_oct" /><label for="BeforeOct">no</label>
+                        <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label for="victim_contact_prior_oct">yes</label>
+                        <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label for="victim_contact_prior_oct">no</label>
                     </label>
                 </div>
                 <div className="phoneServices">
                     <h2>Telephone Services</h2>
                     <div className="telephoneChoices">
                         <p>(check all that apply)</p>
-                        <input type="checkbox" id="crisisCounseling" name="crisisCounseling" value="crisis_counseling" /><label for="crisisCounseling">Crisis Counseling</label>
+                        <input type="checkbox" id="crisis_counseling" name="crisis_counseling" value="crisis_counseling" /><label for="crisis_counseling">Crisis Counseling</label>
                         <br />
-                        <input type="checkbox" id="infoReferral" name="infoReferral" value="information_referral" /><label for="infoReferral">Info and/or referral(including appointments/intakes for service</label>
+                        <input type="checkbox" id="information_referral" name="information_referral" value="information_referral" /><label for="information_referral">Info and/or referral(including appointments/intakes for service</label>
                         <br />
-                        <input type="checkbox" id="criminalJusticeInfo" name="criminalJusticeInfo" value="information_criminal_justice" /><label for="criminalJusticeInfo">Information about the criminal justice process</label>
+                        <input type="checkbox" id="information_criminal_justice" name="information_criminal_justice" value="information_criminal_justice" /><label for="information_criminal_justice">Information about the criminal justice process</label>
                         <br />
-                        <input type="checkbox" id="otherEmergency" name="otherEmergency" value="other_emergency_justice" /><label for="otherEmergency">Other emergency justice-related assistance</label>
+                        <input type="checkbox" id="other_emergency_justice" name="other_emergency_justice" value="other_emergency_justice" /><label for="other_emergency_justice">Other emergency justice-related assistance</label>
                         <br />
-                        <input type="checkbox" id="emergencyFinancial" name="emergencyFinancial" value="emergency_financial" /><label for="emergencyFinancial">Emergency Financial Assistance</label>
+                        <input type="checkbox" id="emergency_financial" name="emergency_financial" value="emergency_financial" /><label for="emergency_financial">Emergency Financial Assistance</label>
                         <br />
-                        <input type="checkbox" id="reparationsClaims" name="reparationsClaims" value="reparations_claims" /><label for="reparationsClaims">Reparations Claims Assistance</label>
+                        <input type="checkbox" id="reparations_claims" name="reparations_claims" value="reparations_claims" /><label for="reparations_claims">Reparations Claims Assistance</label>
                     </div>
                 </div>
                 <div className="in-personServicesContainer">
@@ -96,54 +100,54 @@ class Form extends Component {
                             <label>1. Crisis Counseling</label>
                             <br />
                             <br />
-                            <input type="checkbox" id="oneToOne" name="oneToOne" value="crisis_counseling_individual" /><label for="oneToOne">One-to-One Counseling</label>
-                            <input type="checkbox" id="supportGroup" name="supportGroup" value="crisis_counseling_group" /><label for="supportGroup">Support Group</label>
+                            <input type="checkbox" id="crisis_counseling_individual" name="crisis_counseling_individual" value="crisis_counseling_individual" /><label for="crisis_counseling_individual">One-to-One Counseling</label>
+                            <input type="checkbox" id="crisis_counseling_group" name="crisis_counseling_group" value="crisis_counseling_group" /><label for="crisis_counseling_group">Support Group</label>
                         </div>
                         <br />
                         <div className="justiceProcess">
                             <label>2. Legal Advocacy: Criminal Justice Process</label>
                             <br />
                             <br />
-                            <input type="checkbox" id="lawEnforcementInterview" name="lawEnforcementInterview" value="legal_law_enforcement_interview" /><label for="lawEnforcementInterview">Law Enforcement Interview</label>
-                            <input type="checkbox" id="prosecutionAdvocacy" name="prosecutionAdvocacy" value="legal_prosecution_related" /><label for="prosecutionAdvocacy">Prosecution-related Advocacy</label>
-                            <input type="checkbox" id="courtAdvocacy" name="courtAdvocacy" value="legal_court_advocacy" /><label for="courtAdvocacy">Court Advocacy(criminal case)</label>
+                            <input type="checkbox" id="legal_law_enforcement_interview" name="legal_law_enforcement_interview" value="legal_law_enforcement_interview" /><label for="legal_law_enforcement_interview">Law Enforcement Interview</label>
+                            <input type="checkbox" id="legal_prosecution_related" name="legal_prosecution_related" value="legal_prosecution_related" /><label for="legal_prosecution_related">Prosecution-related Advocacy</label>
+                            <input type="checkbox" id="legal_court_advocacy" name="legal_court_advocacy" value="legal_court_advocacy" /><label for="legal_court_advocacy">Court Advocacy(criminal case)</label>
                         </div>
                         <br />
                         <div className="civilLegalProcess">
                             <label>3. Legal Advocacy: Civil Legal Process</label>
                             <br />
                             <br />
-                            <input type="checkbox" id="obtainOorH" name="obtainOorH" value="legal_ofp_hro" /><label for="obtainOorH">Assistance Obtaining OFP or HRO</label>
-                            <input type="checkbox" id="immigrantSupport" name="immigrantSupport" value="legal_immigration" /><label for="immigrantSupport">Immigration-related support(U Visa, etc.)</label>
-                            <input type="checkbox" id="intervention" name="intervention" value="legal_intervention" /><label for="intervention">Intervention with landlord, academic institution, or creditor</label>
+                            <input type="checkbox" id="legal_ofp_hro" name="legal_ofp_hro" value="legal_ofp_hro" /><label for="legal_ofp_hro">Assistance Obtaining OFP or HRO</label>
+                            <input type="checkbox" id="legal_immigration" name="legal_immigration" value="legal_immigration" /><label for="legal_immigration">Immigration-related support(U Visa, etc.)</label>
+                            <input type="checkbox" id="legal_intervention" name="legal_intervention" value="legal_intervention" /><label for="legal_intervention">Intervention with landlord, academic institution, or creditor</label>
                         </div>
                         <br />
                         <div className="medicalAdvocacy">
                             <label>4. Medical Advocacy</label>
                             <br />
                             <br />
-                            <input type="checkbox" id="forensicExam" name="forensicExam" value="medical_exam_support" /><label for="forensicExam">Forensic Exam Support</label>
+                            <input type="checkbox" id="medical_exam_support" name="medical_exam_support" value="medical_exam_support" /><label for="medical_exam_support">Forensic Exam Support</label>
                             <br/>
                             <label>
                                 Was transportation provided?:
-                                <input type="radio" id="ProvidedForensic" name="ProvidedForensic" value="transportation_medical_exam_support" /><label for="ProvidedForensic">yes</label>
-                                <input type="radio" id="ProvidedForensic" name="ProvidedForensic" value="transportation_medical_exam_support" /><label for="ProvidedForensic">no</label>
+                                <input type="radio" id="transportation_medical_exam_support" name="transportation_medical_exam_support" value="transportation_medical_exam_support" /><label for="transportation_medical_exam_support">yes</label>
+                                <input type="radio" id="transportation_medical_exam_support" name="transportation_medical_exam_support" value="transportation_medical_exam_support" /><label for="transportation_medical_exam_support">no</label>
                             </label>
                             <br/>
-                            <input type="checkbox" id="medicalAppointment" name="medicalAppointment" value="accompaniment_to_medical_appointment" /><label for="medicalAppointment">Accompaniment to Medical Appointment</label>
+                            <input type="checkbox" id="accompaniment_to_medical_appointment" name="accompaniment_to_medical_appointment" value="accompaniment_to_medical_appointment" /><label for="accompaniment_to_medical_appointment">Accompaniment to Medical Appointment</label>
                             <br/>
                             <label>
                                 Was transportation provided?:
-                                <input type="radio" id="ProvidedMedical" name="ProvidedMedical" value="transportation_medical_appointment_medical" /><label for="ProvidedMedical">yes</label>
-                                <input type="radio" id="ProvidedMedical" name="ProvidedMedical" value="transportation_medical_appointment_medical" /><label for="ProvidedMedical">no</label>
+                                <input type="radio" id="transportation_medical_appointment_medical" name="transportation_medical_appointment_medical" value="transportation_medical_appointment_medical" /><label for="transportation_medical_appointment_medical">yes</label>
+                                <input type="radio" id="transportation_medical_appointment_medical" name="transportation_medical_appointment_medical" value="transportation_medical_appointment_medical" /><label for="transportation_medical_appointment_medical">no</label>
                             </label>
                             <br/>
-                            <input type="checkbox" id="dentalAppointment" name="dentalAppointment" value="medical_appointment_dental" /><label for="dentalAppointment">Accompaniment to Dental Appointment</label>
+                            <input type="checkbox" id="medical_appointment_dental" name="medical_appointment_dental" value="medical_appointment_dental" /><label for="medical_appointment_dental">Accompaniment to Dental Appointment</label>
                             <br/>
                             <label>
                                 Was transportation provided?:
-                                <input type="radio" id="ProvidedDental" name="ProvidedDental" value="transportation_medical_appointment_dental" /><label for="ProvidedDental">yes</label>
-                                <input type="radio" id="ProvidedDental" name="ProvidedDental" value="transportation_medical_appointment_dental" /><label for="ProvidedDental">no</label>
+                                <input type="radio" id="transportation_medical_appointment_dental" name="transportation_medical_appointment_dental" value="transportation_medical_appointment_dental" /><label for="transportation_medical_appointment_dental">yes</label>
+                                <input type="radio" id="transportation_medical_appointment_dental" name="transportation_medical_appointment_dental" value="transportation_medical_appointment_dental" /><label for="transportation_medical_appointment_dental">no</label>
                             </label>
                             <br/>
                         </div>
@@ -151,21 +155,21 @@ class Form extends Component {
                         <div className="advocacyServices">
                             <label>5. Other In-Person Advocacy Services</label>
                                 <p>(check any that apply)</p>
-                            <input type="checkbox" id="infoReferral" name="infoReferral" value="info_and_referral"/><label for="infoReferral">Information and referral</label>
+                            <input type="checkbox" id="information_referral" name="information_referral" value="information_referral"/><label for="information_referral">Information and referral</label>
                             <br/>
-                            <input type="checkbox" id="safeHomeRegister" name="safeHomeRegister" value="safe_at_home_registration" /><label for="safeHomeRegister">Safe at Home registration</label>
+                            <input type="checkbox" id="safe_at_home" name="safe_at_home" value="safe_at_home" /><label for="safe_at_home">Safe at Home registration</label>
                             <br/>
-                            <input type="checkbox" id="emergencyFinancial" name="emergencyFinancial" value="emergency_financial_assistance" /><label for="emergencyFinancial">Emergency financial assistance</label>
+                            <input type="checkbox" id="emergency_financial" name="emergency_financial" value="emergency_financial" /><label for="emergency_financial">Emergency financial assistance</label>
                             <br/>
-                            <input type="checkbox" id="reparationsClaims" name="reparationsClaims" value="reparations_claims_assistance" /><label for="reparationsClaims">Reparations Claims Assistance</label>
+                            <input type="checkbox" id="reparations_claims" name="reparations_claims" value="reparations_claims" /><label for="reparations_claims">Reparations Claims Assistance</label>
                         </div>
                         <br/>
                         <div className="usedSinceOctContainer">
                             <label>6. Has the victim/survivor used this type of in-person service since October 1, 2017?</label>
                             <br />
                             <br />
-                            <input type="radio" id="usedSinceOct" name="usedSinceOct" value="true" /><label for="usedSinceOct">yes</label>
-                            <input type="radio" id="usedSinceOct" name="usedSinceOct" value="false" /><label for="usedSinceOct">no</label>
+                            <input type="radio" id="in_person_services_received_prior_oct" name="in_person_services_received_prior_oct" value="in_person_services_received_prior_oct" /><label for="in_person_services_received_prior_oct">yes</label>
+                            <input type="radio" id="in_person_services_received_prior_oct" name="in_person_services_received_prior_oct" value="in_person_services_received_prior_oct" /><label for="in_person_services_received_prior_oct">no</label>
                         </div>
                         <br/>
                     </div>
@@ -176,76 +180,84 @@ class Form extends Component {
                             <label>Were there any unmet needs for this individual?</label>
                             <br/>
                             <br/>
-                            <input type="checkbox" id="unmetFinancial" name="unmetFinancial" value="unmet_financial"/><label for="unmetFinancial">Financial</label>
+                            <input type="checkbox" id="unmet_need_financial" name="unmet_need_financial" value="unmet_need_financial"/><label for="unmet_need_financial">Financial</label>
                             <br/>
-                            <input type="checkbox" id="unmetShelter" name="unmetShelter" value="unmet_shelter_or_housing" /><label for="unmetShelter">Shelter/Housing</label>
+                            <input type="checkbox" id="unmet_need_shelter_housing" name="unmet_need_shelter_housing" value="unmet_need_shelter_housing" /><label for="unmet_need_shelter_housing">Shelter/Housing</label>
                             <br/>
-                            <input type="checkbox" id="otherUnmet" name="otherUnmet" value="other_unmet" /><label for="otherUnmet">Other</label>
+                            <input type="checkbox" id="unmet_need_other" name="unmet_need_other" value="unmet_need_other" /><label for="unmet_need_other">Other</label>
                             <br/>
-                            <label for="ifOtherUnmet">If shelter was unavailable, where did the v/s stay?</label>
-                            <input type="text" id="ifOtherUnmet" name="ifOtherUnmet" />
+                            <label for="unmet_other_descr">
+                                specify other:
+                            <input type="text" id="unmet_other_descr" name="unmet_other_descr"/>
+                            </label>
+                            <br/>
+                            <label for="unmet_need_staying_where">If shelter was unavailable, where did the v/s stay?</label>
+                            <input type="text" id="unmet_need_staying_where" name="unmet_need_staying_where" />
                         </div>
                 </div>
                 <div className="referrals">
                     <h2>Referrals</h2>
                     <p>(please fill in name of organization)</p>
-                    <label>SVC Services:</label>
-                    <input type="text"/>
+                    <label for="referral_svc">SVC Services:</label>
+                    <input type="text" id="referral_svc"/>
                     <br/>
-                    <label>Other advocacy agency:</label>
-                    <input type="text"/>
+                    <label for="referral_agency">Other advocacy agency:</label>
+                    <input type="text" id="referral_agency"/>
                     <br/>
-                    <label>Other services, support and resources(specify):</label>
-                    <input type="text"/>
+                    <label for="referral_other">Other services, support and resources(specify):</label>
+                    <input type="text" id="referral_other"/>
                     <br/>
                 </div>
                 <div className="support">
                     <h2>Did They Feel Supported?</h2>
                     <p><strong>MANDATORY</strong> Did you feel that you were supported on this call?</p>
-                    <input type="radio" id="feelSupported" name="feelSupported" value="true" /><label for="feelSupported">yes</label>
-                    <input type="radio" id="feelSupported" name="feelSupported" value="false" /><label for="feelSupported">no</label>
+                    <select id="supported_on_call">
+                        <option value="supported_on_call">yes</option>
+                        <option value="supported_on_call">no</option>
+                        <option value="supported_on_call">unknown/hung up</option>
+                    </select>
                 </div>
                 <div className="demographics">
                     <h2>Victim/Survivor Demographics</h2>
                     <h3>Type of Sexual Violence</h3>
-                    <input type="checkbox" id="AdultSexualAssault" value="violence_adult_sexual"/><label for="AdultSexualAssault">Adult Sexual Assault</label>
+                    <input type="checkbox" id="violence_adult_sexual" value="violence_adult_sexual"/><label for="violence_adult_sexual">Adult Sexual Assault</label>
                     <br/>
-                    <input type="checkbox" id="abusedAsChildFamily" value="violence_adult_when_child_by_family"/><label for="abusedAsChildFamily">Adult abused as child - family</label>
+                    <input type="checkbox" id="violence_adult_when_child_by_family" value="violence_adult_when_child_by_family"/><label for="violence_adult_when_child_by_family">Adult abused as child - family</label>
                     <br/>
-                    <input type="checkbox" id="abusedAsChildOther" value="violence_adult_when_child_by_other"/><label for="abusedAsChildOther">Adult abused as child - other</label>
+                    <input type="checkbox" id="violence_adult_when_child_by_other" value="violence_adult_when_child_by_other"/><label for="violence_adult_when_child_by_other">Adult abused as child - other</label>
                     <br/>
-                    <input type="checkbox" id="bullying" value="violence_bullying"/><label for="bullying">Bullying (verbal/cyber/physical)</label>
+                    <input type="checkbox" id="violence_bullying" value="violence_bullying"/><label for="violence_bullying">Bullying (verbal/cyber/physical)</label>
                     <br/>
-                    <input type="checkbox" id="childPornography" value="violence_child_pornography"/><label for="childPornography">Child Pornography</label>
+                    <input type="checkbox" id="violence_child_pornography" value="violence_child_pornography"/><label for="violence_child_pornography">Child Pornography</label>
                     <br/>
-                    <input type="checkbox" id="domesticViolence" value="violence_domestic"/><label for="domesticViolence">Domestic Violence</label>
+                    <input type="checkbox" id="violence_domestic" value="violence_domestic"/><label for="violence_domestic">Domestic Violence</label>
                     <br/>
-                    <input type="checkbox" id="elderAbuse" value="violence_elder"/><label for="elderAbuse">Elder Abuse</label>
+                    <input type="checkbox" id="violence_elder" value="violence_elder"/><label for="violence_elder">Elder Abuse</label>
                     <br/>
-                    <input type="checkbox" id="exposing" value="violence_exposing"/><label for="exposing">Exposing</label>
+                    <input type="checkbox" id="violence_exposing" value="violence_exposing"/><label for="violence_exposing">Exposing</label>
                     <br/>
-                    <input type="checkbox" id="internetRelated" value="violence_internet"/><label for="internetRelated">Internet Related</label>
+                    <input type="checkbox" id="violence_internet" value="violence_internet"/><label for="violence_internet">Internet Related</label>
                     <br/>
-                    <input type="checkbox" id="minorFamily" value="violence_minor_by_family"/><label for="minorFamily">Minor/CSA - family</label>
+                    <input type="checkbox" id="violence_minor_by_family" value="violence_minor_by_family"/><label for="violence_minor_by_family">Minor/CSA - family</label>
                     <br/>
-                    <input type="checkbox" id="minorOther" value="violence_minor_by_other"/><label for="minorOther">Minor/CSA - other</label>
+                    <input type="checkbox" id="violence_minor_by_other" value="violence_minor_by_other"/><label for="violence_minor_by_other">Minor/CSA - other</label>
                     <br/>
-                    <input type="checkbox" id="obscenePhoneCall" value="violence_phone"/><label for="obscenePhoneCall">Obscene Phone Call</label>
+                    <input type="checkbox" id="violence_phone" value="violence_phone"/><label for="violence_phone">Obscene Phone Call</label>
                     <br/>
-                    <input type="checkbox" id="exploitationTrafficking" value="violence_exploitation_trafficking"/><label for="exploitationTrafficking">Sexual exploitation/trafficking/prostitution</label>
+                    <input type="checkbox" id="violence_exploitation_trafficking" value="violence_exploitation_trafficking"/><label for="violence_exploitation_trafficking">Sexual exploitation/trafficking/prostitution</label>
                     <br/>
-                    <input type="checkbox" id="sexualHarrasment" value="violence_harassment"/><label for="sexualHarassment">Sexual Harassment</label>
+                    <input type="checkbox" id="violence_harassment" value="violence_harassment"/><label for="violence_harassment">Sexual Harassment</label>
                     <br/>
-                    <input type="checkbox" id="stalking" value="violence_stalking"/><label for="stalking">Stalking</label>
+                    <input type="checkbox" id="violence_stalking" value="violence_stalking"/><label for="violence_stalking">Stalking</label>
                     <br/>
-                    <input type="checkbox" id="teenDating" value="violence_teen_dating"/><label for="teenDating">Teen Dating</label>
+                    <input type="checkbox" id="violence_teen_dating" value="violence_teen_dating"/><label for="violence_teen_dating">Teen Dating</label>
                     <br/>
-                    <input type="checkbox" id="violenceOther" value="violence_other"/><label for="violenceOther">Other</label>
+                    <input type="checkbox" id="violence_other" value="violence_other"/><label for="violence_other">Other</label>
                     <br/>
                     <label>specify:</label>
                     <input type="text" />
                     <br/>
-                    <input type="checkbox" id="violenceUnknown" value="violence_unknown"/><label for="violenceUnknown">Unknown/pass/doesn't know</label>
+                    <input type="checkbox" id="violence_unknown" value="violence_unknown"/><label for="violence_unknown">Unknown/pass/doesn't know</label>
                     <br/>
                     <h3>Was a police report filed?</h3>
                     <select name="policeReport">
@@ -255,19 +267,19 @@ class Form extends Component {
                     </select>
                     <h2>Demographics Survey</h2>
                     <label for="victim_age">Age:</label>
-                    <input type="number"/>
+                    <input type="number" id="victim_age"/>
                     <label for="victim_gender">Gender:</label>
-                    <input type="text"/>
-                    <label for="transgender">Transgender:</label>
-                    <select name="transgender">
+                    <input type="text" id="victim_gender"/>
+                    <label for="victim_transgender">Transgender:</label>
+                    <select id="victim_transgender">
                         <option value="victim_transgender">yes</option>
                         <option value="victim_transgender">no</option>
                         <option value="victim_transgender">unknown/pass</option>
                     </select>
-                    <label for="sexualOrientation">Sexual Orientation</label>
-                    <input type="text" id="sexualOrientation"/>
-                    <label for="genderPronouns">Gender Pronouns</label>
-                    <input type="text" id="genderPronouns"/>
+                    <label for="victim_sexual_orientation">Sexual Orientation</label>
+                    <input type="text" id="victim_sexual_orientation"/>
+                    <label for="victim_gender_pronouns">Gender Pronouns</label>
+                    <input type="text" id="victim_gender_pronouns"/>
                     <h3>Disability Status</h3>
                     <input type="checkbox" id="disability_blind" value="disability_blind"/><label for="disability_blind">Blind/Visually Impaired</label>
                     <br/>
