@@ -13,7 +13,7 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-// import Home from './components/Home/Home';
+import Home from './components/Home/Home';
 // import AdminTools from './components/AdminTools/AdminTools';
 // import PinkForm from './components/PinkForm/PinkForm';
 // import YellowForm from './components/YellowForm/YellowForm';
@@ -40,10 +40,10 @@ const App = () => (
           path="/register"
           component={RegisterPage}
         />
-        {/* <Route
+        <Route
           path="/home"
           component={Home}
-        /> */}
+        />
         {/* <Route
           path="/adminTools"
           component={AdminTools}
