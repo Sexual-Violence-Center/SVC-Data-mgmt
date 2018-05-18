@@ -44,6 +44,33 @@ class Form extends Component {
                         Zip Code:
                         <input type="number"/>
                     </label>
+                    <br/>
+                    <label>
+                        Type of Victim/Survivor:
+                        <select name="county">
+                            <option value="Adult Primary Victim">Adult Primary Victim</option>
+                            <option value="Youth Primary Victim">Youth Primary Victim</option>
+                            <option value="Adult Secondary Victim">Adult Secondary Victim</option>
+                            <option value="Youth Secondary Victim">Youth Secondary Victim</option>
+                        </select>
+                    </label>
+                    <label>
+                        How did they hear about SVC?:
+                        <input type="text"/>
+                    </label>
+                    <br/>
+                    <div>
+                        <label>
+                            Have they contacted SVC before?:
+                        </label>
+                        <input type="radio" id="yesContacted" name="haveContactedBefore" value="yes"/><label for="yesContacted">yes</label>
+                        <input type="radio" id="noContacted" name="haveContactedBefore" value="no"/><label for="noContacted">no</label>
+                    </div>
+                    <label>
+                        If yes, was it before Oct 1, 2017?:
+                        <input type="radio" id="yesContacted" name="contactedBeforeOct" value="yes"/><label for="yesContacted">yes</label>
+                        <input type="radio" id="noContacted" name="contactedBeforeOct" value="no"/><label for="noContacted">no</label>
+                    </label>
                 </div>
                 <div className="phoneServices">
                     <h2>Telephone Services</h2>
