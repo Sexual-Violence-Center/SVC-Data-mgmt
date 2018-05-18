@@ -248,10 +248,57 @@ class Form extends Component {
                     <input type="checkbox" id="violenceUnknown" value="violence_unknown"/><label for="violenceUnknown">Unknown/pass/doesn't know</label>
                     <br/>
                     <h3>Was a police report filed?</h3>
-                    <select name="police_report_filed">
-                            <option></option>
-                            <option></option>
-                            <option></option>
+                    <select name="policeReport">
+                            <option value="police_report_filed">yes</option>
+                            <option value="police_report_filed">no</option>
+                            <option value="police_report_filed">unknown</option>
+                    </select>
+                    <h2>Demographics Survey</h2>
+                    <label for="victim_age">Age:</label>
+                    <input type="number"/>
+                    <label for="victim_gender">Gender:</label>
+                    <input type="text"/>
+                    <label for="transgender">Transgender:</label>
+                    <select name="transgender">
+                        <option value="victim_transgender">yes</option>
+                        <option value="victim_transgender">no</option>
+                        <option value="victim_transgender">unknown/pass</option>
+                    </select>
+                    <label for="sexualOrientation">Sexual Orientation</label>
+                    <input type="text" id="sexualOrientation"/>
+                    <label for="genderPronouns">Gender Pronouns</label>
+                    <input type="text" id="genderPronouns"/>
+                    <h3>Disability Status</h3>
+                    <input type="checkbox" id="disability_blind" value="disability_blind"/><label for="disability_blind">Blind/Visually Impaired</label>
+                    <br/>
+                    <input type="checkbox" id="disability_physical" value="disability_physical"/><label for="disability_physical">Physical Disabilities</label>
+                    <br/>
+                    <input type="checkbox" id="disability_mental" value="disability_mental"/><label for="disability_mental">Mental Illness</label>
+                    <br/>
+                    <input type="checkbox" id="disability_deaf" value="disability_deaf"/><label for="disability_deaf">Deaf/Hard of Hearing</label>
+                    <br/>
+                    <input type="checkbox" id="disability_developmental" value="disability_developmental"/><label for="disability_developmental">Intellectual or Developmental Disabilities</label>
+                    <br/>
+                    <input type="checkbox" id="disability_none" value="disability_none"/><label for="disability_none">None</label>
+                    <br/>
+                    <input type="checkbox" id="disability_other" value="disability_other"/><label for="disability_other">Other</label>
+                    <br/>
+                    <label for="disability_other_specify">specify</label>
+                    <input type="text" id="disability_other_specify"/>
+                    <br/>
+                    <input type="checkbox" id="disability_unknown" value="disability_unknown"/><label for="disability_unknown">Unknown</label>
+                    <br/>
+                    <h3>Ethnic Background</h3>
+                    <select>
+                        <option value="asian">Asian</option>
+                        <option value="african american/black">African American/Black</option>
+                        <option value="chican@/latin@">Chican@/Latin@</option>
+                        <option value="multi-racial">Multi-racial</option>
+                        <option value="native american">Native American</option>
+                        <option value="native hawaiian/pacific islander">Native Hawaiian/Pacific Islander</option>
+                        <option value="white non-latino/caucasian">White Non-Latino/Caucasian</option>
+                        <option value="other">Other</option>
+                        <option value="unknown/pass">Unknown/Pass</option>
                     </select>
                 </div>
             </div>
