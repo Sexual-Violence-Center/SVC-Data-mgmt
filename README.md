@@ -13,6 +13,11 @@ Before you get started, make sure you have the following software installed on y
 
 ## Create database and table
 
+## Database
+* db name = svc-data
+* db tables = person
+            victim
+
 Create a new database called `prime_app` and create a `person` table:
 
 ```SQL
@@ -83,3 +88,6 @@ This is the build Heroku will run, but during development, you will likely not n
 1. Create the necessary tables
 1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
 1. In the deploy section, select manual deploy
+
+
+
