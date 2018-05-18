@@ -168,8 +168,12 @@ class Form extends Component {
                             <input type="radio" id="usedSinceOct" name="usedSinceOct" value="false" /><label for="usedSinceOct">no</label>
                         </div>
                         <br/>
-                        <div className="unmetNeedsContainer">
-                            <label>7. Were there any unmet needs for this individual?</label>
+                    </div>
+                </div>
+                <div className="unmetNeeds">
+                    <h2>Unmet Needs</h2>
+                    <div className="unmetNeedsContainer">
+                            <label>Were there any unmet needs for this individual?</label>
                             <br/>
                             <br/>
                             <input type="checkbox" id="unmetFinancial" name="unmetFinancial" value="unmet_financial"/><label for="unmetFinancial">Financial</label>
@@ -181,10 +185,6 @@ class Form extends Component {
                             <label for="ifOtherUnmet">If shelter was unavailable, where did the v/s stay?</label>
                             <input type="text" id="ifOtherUnmet" name="ifOtherUnmet" />
                         </div>
-                    </div>
-                </div>
-                <div className="unmetNeeds">
-                    <h2>Unmet Needs</h2>
                 </div>
                 <div className="referrals">
                     <h2>Referrals</h2>
