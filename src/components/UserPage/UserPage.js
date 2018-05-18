@@ -6,6 +6,8 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
+import Form from '../Form/Form';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -51,6 +53,7 @@ class UserPage extends Component {
       <div>
         <Nav />
         { content }
+        <Form />
       </div>
     );
   }
