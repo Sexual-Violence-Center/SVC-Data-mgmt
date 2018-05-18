@@ -6,10 +6,10 @@ import axios from 'axios';
 function* postNewVictim(action) {
     try {
        let createNewVictim = yield call(axios.post, '/api/victim', action.payload)
-       
+       yield console.log('new victim response', createNewVictim);
        yield put ({
            type: 'DISPLAY_VICTIM_ID_NUMBER',
-           payload: createNewVictim.data
+           payload: createNewVictim.data.id
        })
     } catch (error) {
         console.log('error in POST new victim', error)
