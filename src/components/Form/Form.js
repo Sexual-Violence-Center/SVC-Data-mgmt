@@ -74,6 +74,20 @@ class Form extends Component {
                 </div>
                 <div className="phoneServices">
                     <h2>Telephone Services</h2>
+                    <div className="telephoneChoices">
+                        <p>(check all that apply)</p>
+                        <input type="checkbox" id="crisisCounseling" name="crisisCounseling" value="Crisis Counseling"/><label for="crisisCounseling">Crisis Counseling</label>
+                        <br/>
+                        <input type="checkbox" id="infoReferral" name="infoReferral" value="Info or Referral"/><label for="infoReferral">Info and/or referral(including appointments/intakes for service</label>
+                        <br/>
+                        <input type="checkbox" id="criminalJusticeInfo" name="criminalJusticeInfo" value="Criminal Justice Info"/><label for="criminalJusticeInfo">Information about the criminal justice process</label>
+                        <br/>
+                        <input type="checkbox" id="otherEmergency" name="otherEmergency" value="Other Emergency Assistance"/><label for="otherEmergency">Other emergency justice-related assistance</label>
+                        <br/>
+                        <input type="checkbox" id="emergencyFinancial" name="emergencyFinancial" value="Emergency Financial Assistance"/><label for="emergencyFinancial">Emergency Financial Assistance</label>
+                        <br/>
+                        <input type="checkbox" id="reparationsClaims" name="reparationsClaims" value="Reparations Claims Assistance"/><label for="reparationsClaims">Reparations Claims Assistance</label>
+                    </div>
                 </div>
                 <div className="in-personServices">
                     <h2>In-Person Services</h2>
