@@ -9,7 +9,7 @@ function* postNewVictim(action) {
        
        yield put ({
            type: 'DISPLAY_VICTIM_ID_NUMBER',
-           payload: createNewVictim.data.id
+           payload: createNewVictim.data
        })
     } catch (error) {
         console.log('error in POST new victim', error)
