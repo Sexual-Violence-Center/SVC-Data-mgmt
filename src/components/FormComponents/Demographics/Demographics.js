@@ -14,6 +14,7 @@ class Demographics extends Component {
             <TypeOfViolence />
             <Survey />
             <DisabilityStatus />
+            <EthnicBackground />
             <ImmigrantStatus />
             <DemographicOther />
         </div>
