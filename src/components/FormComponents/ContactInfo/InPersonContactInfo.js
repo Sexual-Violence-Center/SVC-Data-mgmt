@@ -66,13 +66,13 @@ class ContactInfo extends Component{
                 <label>
                     Have they contacted SVC before?:
                 </label>
-                <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label for="victim_prior_contact">yes</label>
-                <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label for="victim_prior_contact">no</label>
+                <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label htmlFor="victim_prior_contact">yes</label>
+                <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label htmlFor="victim_prior_contact">no</label>
             </div>
             <label>
                 If yes, was it before Oct 1, 2017?:
-                <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label for="victim_contact_prior_oct">yes</label>
-                <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label for="victim_contact_prior_oct">no</label>
+                <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label htmlFor="victim_contact_prior_oct">yes</label>
+                <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label htmlFor="victim_contact_prior_oct">no</label>
             </label>
         </div>
         )
