@@ -11,20 +11,20 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class Home extends Component {
+class UserPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('/home');
     }
   }
 
   logout = () => {
     this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
+    this.props.history.push('/login');
   }
 
   render() {
@@ -57,5 +57,5 @@ class Home extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(UserPage);
 
