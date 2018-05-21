@@ -27,9 +27,10 @@ router.post('/register', (req, res, next) => {
 });
 
 //Handles DELETE request of existing user
+//Only a logged-in admin can delete a user (in db person table, user_type is boolean; true = admin; false = user)
 router.delete('/:id', (req, res) => {
   console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
-  if(req.isAuthenticated()) {
+  if(req.isAuthenticated() && req.user.user_type === true) {
     let queryText = 'DELETE FROM "person" WHERE id = $1;';
     pool.query(queryText, [req.params.id])
     .then((result) => {
