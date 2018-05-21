@@ -1,82 +1,131 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+    state
+});
 
 class ContactInfo extends Component{
+    constructor(){
+        super();
+        this.state = {
+            advocate_name: '',
+            date_entered: '',
+            start_time: '',
+            end_time: '',
+            contact_date: '',
+            service_location: '',
+            service_county: '',
+            in_person_client_number: '',
+            victim_zipcode: '',
+            victim_type: '',
+            victim_referral_source: '',
+            victim_prior_contact: '',
+            victim_contact_prior_oct: ''
+        }
+    }
+    handleChangeFor = (event) => {
+        console.log(event.target.name, event.target.value);
+        this.setState({
+            ...this.state,
+            [event.target.name]: event.target.value
+        // }, (event) => {
+        //     console.log(this.state);
+        });  
+        this.props.dispatch({
+            type: 'ENTRY_FORM_DATA', 
+            payload: {...this.state, [event.target.name]: event.target.value }
+        })
+    }
+
     render(){
         return(
             <div className="contactInfo">
             <h2>Contact Info</h2>
+            <form>
             <label>
                 Advocate/Counselor Name:
-                <input type="text" name="advocate_name"/>
+                <input type="text" name="advocate_name" value={this.state.advocate_name} onChange={this.handleChangeFor}/>
             </label>
             <label>
                 Date:
-                <input type="date" name="date_entered"/>
+                <input type="date" name="date_entered" value={this.state.date_entered} onChange={this.handleChangeFor}/>
             </label>
             <label>
                 Start Time:
-                <input type="time" name="start_time"/>
+                <input type="time" name="start_time" value={this.state.start_time} onChange={this.handleChangeFor}/>
             </label>
             <label>
                 End Time:
-                <input type="time" name="end_time"/>
+                <input type="time" name="end_time" value={this.state.end_time} onChange={this.handleChangeFor}/>
             </label>
             <br />
             <label>
                 Contact Date:
-                <input type="date" name="contact_date"/>
+                <input type="date" name="contact_date" value={this.state.contact_date} onChange={this.handleChangeFor}/>
             </label>
             <label>
                 Location(where services are being provided):
-                <input type="text" name="service_location"/>
+                <input type="text" name="service_location" value={this.state.service_location} onChange={this.handleChangeFor}/>
             </label>
+            </form>
             <label>
                 County:
-                <select name="service_county">
+                <select name="service_county" value={this.state.service_county} onChange={this.handleChangeFor}>
+                    <option>Select One</option>
                     <option value="Hennepin">Hennepin</option>
                     <option value="Scott">Scott</option>
                     <option value="Carver">Carver</option>
                     <option value="Other">Other</option>
                 </select>
             </label>
+            <form>
             <label>
                 Client Number:
-                <input type="number" name="in_person_client_number"/>
+                <input type="text" name="in_person_client_number" value={this.state.in_person_client_number} onChange={this.handleChangeFor}/>
             </label>
             <label>
                 Zip Code:
-                <input type="number" name="victim_zipcode"/>
+                <input type="number" name="victim_zipcode" value={this.state.victim_zipcode} onChange={this.handleChangeFor}/>
             </label>
+            </form>
             <br />
             <label>
                 Type of Victim/Survivor:
-                <select name="victim_type">
+                <select name="victim_type" value={this.state.victim_type} onChange={this.handleChangeFor}>
+                    <option>Select One</option>
                     <option value="adult primary victim">Adult Primary Victim</option>
                     <option value="youth primary victim">Youth Primary Victim</option>
                     <option value="adult secondary victim">Adult Secondary Victim</option>
                     <option value="youth secondary victim">Youth Secondary Victim</option>
                 </select>
             </label>
+            <form>
             <label>
                 How did they hear about SVC?:
-                <input type="text" name="victim_referral_source"/>
+                <input type="text" name="victim_referral_source" value={this.state.victim_referral_source} onChange={this.handleChangeFor}/>
             </label>
+            </form>
             <br />
             <div>
                 <label>
                     Have they contacted SVC before?:
                 </label>
-                <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label htmlFor="victim_prior_contact">yes</label>
-                <input type="radio" id="victim_prior_contact" name="victim_prior_contact" value="victim_prior_contact" /><label htmlFor="victim_prior_contact">no</label>
+                <form value={this.state.victim_prior_contact} onClick={this.handleChangeFor}>
+                <input type="radio" id="victim_prior_contact_yes" name="victim_prior_contact" value={true}/><label htmlFor="victim_prior_contact_yes">yes</label>
+                <input type="radio" id="victim_prior_contact_no" name="victim_prior_contact" value={false} /><label htmlFor="victim_prior_contact_no">no</label>
+                </form>
             </div>
             <label>
                 If yes, was it before Oct 1, 2017?:
-                <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label htmlFor="victim_contact_prior_oct">yes</label>
-                <input type="radio" id="victim_contact_prior_oct" name="victim_contact_prior_oct" value="victim_contact_prior_oct" /><label htmlFor="victim_contact_prior_oct">no</label>
             </label>
+            <form value={this.state.victim_contact_prior_oct} onChange={this.handleChangeFor}>
+                <input type="radio" id="victim_contact_prior_oct_yes" name="victim_contact_prior_oct" value={true}/><label htmlFor="victim_contact_prior_oct_yes">yes</label>
+                <input type="radio" id="victim_contact_prior_oct_no" name="victim_contact_prior_oct" value={false}/><label htmlFor="victim_contact_prior_oct_no">no</label>
+            </form>
         </div>
         )
     }
 }
 
-export default ContactInfo;
+export default connect(mapStateToProps)(ContactInfo);

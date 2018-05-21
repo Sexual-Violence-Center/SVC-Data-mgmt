@@ -1,6 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+    state
+});
 
 class InPersonServices extends Component {
+    constructor(){
+        super();
+        this.state = {
+            crisis_counseling_individual: false,
+        }
+    }
+
+    handleChangeFor = event => {
+        this.setState({
+            ...this.state,
+            [event.target.name]: event.target.value
+        })
+        this.props.dispatch({
+            type: 'ENTRY_FORM_DATA', 
+            payload: {...this.state, [event.target.name]: event.target.value }
+        })
+    }
     render(){
         return (
             <div className="in-personServicesContainer">
@@ -10,7 +32,7 @@ class InPersonServices extends Component {
                     <label>1. Crisis Counseling</label>
                     <br />
                     <br />
-                    <input type="checkbox" id="crisis_counseling_individual" name="crisis_counseling_individual" value="crisis_counseling_individual" /><label htmlFor="crisis_counseling_individual">One-to-One Counseling</label>
+                    <input type="checkbox" id="crisis_counseling_individual" name="crisis_counseling_individual" value={!this.state.crisis_counseling_individual} onChange={this.handleChangeFor}/><label htmlFor="crisis_counseling_individual">One-to-One Counseling</label>
                     <input type="checkbox" id="crisis_counseling_group" name="crisis_counseling_group" value="crisis_counseling_group" /><label htmlFor="crisis_counseling_group">Support Group</label>
                 </div>
                 <br />
@@ -88,4 +110,4 @@ class InPersonServices extends Component {
     }
 }
 
-export default InPersonServices;
+export default connect(mapStateToProps)(InPersonServices);
