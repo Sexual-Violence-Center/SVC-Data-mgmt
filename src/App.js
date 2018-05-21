@@ -28,10 +28,10 @@ const App = () => (
           path="/register"
           component={RegisterPage}
         />
-        <Route
+        {/* <Route
           path="/user"
           component={UserPage}
-        />
+        /> */}
         <Route
           path="/info"
           component={InfoPage}
