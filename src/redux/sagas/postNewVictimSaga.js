@@ -5,7 +5,7 @@ import axios from 'axios';
 // return new ID number which will be written on the paper form
 function* postNewVictim(action) {
     try {
-        console.log('postNewVictim clicked submit');
+        yield console.log('postNewVictim clicked submit');
     //    let createNewVictim = yield call(axios.post, '/api/victim', action.payload)
     //    yield console.log('new victim response', createNewVictim);
     //    yield put ({
