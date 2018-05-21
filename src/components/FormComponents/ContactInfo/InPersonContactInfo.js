@@ -25,16 +25,16 @@ class ContactInfo extends Component{
         }
     }
     handleChangeFor = (event) => {
-        console.log(event.target.name, event.target.value);
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
         this.setState({
-            ...this.state,
-            [event.target.name]: event.target.value
-        // }, (event) => {
-        //     console.log(this.state);
-        });  
+          [name]: value
+        }); 
         this.props.dispatch({
             type: 'ENTRY_FORM_DATA', 
-            payload: {...this.state, [event.target.name]: event.target.value }
+            payload: {...this.state, [name]: value }
         })
     }
 
@@ -94,10 +94,10 @@ class ContactInfo extends Component{
                 Type of Victim/Survivor:
                 <select name="victim_type" value={this.state.victim_type} onChange={this.handleChangeFor}>
                     <option>Select One</option>
-                    <option value="adult primary victim">Adult Primary Victim</option>
-                    <option value="youth primary victim">Youth Primary Victim</option>
-                    <option value="adult secondary victim">Adult Secondary Victim</option>
-                    <option value="youth secondary victim">Youth Secondary Victim</option>
+                    <option value="adult primary">Adult Primary Victim</option>
+                    <option value="youth primary">Youth Primary Victim</option>
+                    <option value="adult secondary">Adult Secondary Victim</option>
+                    <option value="youth secondary">Youth Secondary Victim</option>
                 </select>
             </label>
             <form>

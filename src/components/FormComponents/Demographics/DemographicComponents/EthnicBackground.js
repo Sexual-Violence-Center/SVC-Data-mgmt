@@ -8,9 +8,9 @@ class EthnicBackground extends Component {
                 <select>
                     <option value="asian">Asian</option>
                     <option value="african american/black">African American/Black</option>
-                    <option value="chican@/latin@">Chican@/Latin@</option>
+                    <option value="hispanic/latino">hispanic/latino</option>
                     <option value="multi-racial">Multi-racial</option>
-                    <option value="native american">Native American</option>
+                    <option value="amerIndAlaskaNative">Native American</option>
                     <option value="native hawaiian/pacific islander">Native Hawaiian/Pacific Islander</option>
                     <option value="white non-latino/caucasian">White Non-Latino/Caucasian</option>
                     <option value="other">Other</option>
