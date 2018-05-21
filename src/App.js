@@ -13,10 +13,10 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-// import Home from './components/Home/Home';
+import Home from './components/Home/Home';
 // import AdminTools from './components/AdminTools/AdminTools';
 // import PinkForm from './components/PinkForm/PinkForm';
-// import YellowForm from './components/YellowForm/YellowForm';
+import YellowForm from './components/YellowForm/YellowForm';
 // import FederalReport from './components/FederalReport/FederalReport';
 // import CountyReport from './components/CountyReport/CountyReport';
 // import CustomReport from './components/CustomReport/CustomReport';
@@ -40,39 +40,39 @@ const App = () => (
           path="/register"
           component={RegisterPage}
         />
-        {/* <Route
+        <Route
           path="/home"
           component={Home}
-        /> */}
+        />
         {/* <Route
           path="/adminTools"
           component={AdminTools}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/PinkForm"
           component={PinkForm}
-        />
+        /> */}
         <Route
           path="/YellowForm"
           component={YellowForm}
         />
-        <Route
+        {/* <Route
           path="/FederalReport"
           component={FederalReport}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/CountyReport"
           component={CountyReport}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/CustomReport"
           component={CustomReport}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/UserLandingPage"
           component={UserLandingPage}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/AdminLandingPage"
           component={AdminLandingPage}
         /> */}
