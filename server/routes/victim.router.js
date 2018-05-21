@@ -38,7 +38,7 @@ router.put('/:id', (req, res)=>{
 })
 
 //Delete route for a victim form
-// Only an admin can delete a form (in db person table, user_type is boolean; true = admin; false = user)
+// Only a logged-in admin can delete a form (in db person table, user_type is boolean; true = admin; false = user)
 router.delete('/:id', (req, res) => {
     // console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
     if(req.isAuthenticated() && req.user.user_type === true) {
