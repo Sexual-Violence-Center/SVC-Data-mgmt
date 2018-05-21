@@ -5,11 +5,11 @@ class DemographicOther extends Component {
         return (
             <div>
                 <h3>Other</h3>
-                <input type="checkbox" id="homeless" value="homeless" /><label for="homeless">Currently Homeless</label>
+                <input type="checkbox" id="homeless" value="homeless" /><label htmlFor="homeless">Currently Homeless</label>
                 <br />
-                <input type="checkbox" id="limited_english" value="limited_english" /><label for="limited_english">Limited English Proficiency</label>
+                <input type="checkbox" id="limited_english" value="limited_english" /><label htmlFor="limited_english">Limited English Proficiency</label>
                 <br />
-                <input type="checkbox" id="veteran" value="veteran" /><label for="veteran">U.S. Veteran</label>
+                <input type="checkbox" id="veteran" value="veteran" /><label htmlFor="veteran">U.S. Veteran</label>
                 <br />
             </div>
         )
