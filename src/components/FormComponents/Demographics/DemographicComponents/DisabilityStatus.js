@@ -5,6 +5,7 @@ class DisabilityStatus extends Component {
         return (
             <div>
                 <h3>Disability Status</h3>
+
                 <input type="checkbox" id="disability_blind" value="disability_blind" /><label htmlFor="disability_blind">Blind/Visually Impaired</label>
                 <br />
                 <input type="checkbox" id="disability_physical" value="disability_physical" /><label htmlFor="disability_physical">Physical Disabilities</label>
@@ -23,6 +24,7 @@ class DisabilityStatus extends Component {
                 <input type="text" id="disability_other_specify" />
                 <br />
                 <input type="checkbox" id="disability_unknown" value="disability_unknown" /><label htmlFor="disability_unknown">Unknown</label>
+
                 <br />
             </div>
         )

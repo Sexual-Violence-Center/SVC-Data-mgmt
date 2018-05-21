@@ -5,6 +5,7 @@ class Survey extends Component {
         return (
             <div>
                 <h2>Demographics Survey</h2>
+
                 <label htmlFor="victim_age">Age:</label>
                 <input type="number" id="victim_age" />
                 <label htmlFor="victim_gender">Gender:</label>
@@ -15,6 +16,7 @@ class Survey extends Component {
                     <option value="victim_transgender">no</option>
                     <option value="victim_transgender">unknown/pass</option>
                 </select>
+
                 <label htmlFor="victim_sexual_orientation">Sexual Orientation</label>
                 <input type="text" id="victim_sexual_orientation" />
                 <label htmlFor="victim_gender_pronouns">Gender Pronouns</label>

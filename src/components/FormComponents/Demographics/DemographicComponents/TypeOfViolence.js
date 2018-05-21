@@ -5,6 +5,7 @@ class TypeOfViolence extends Component {
         return(
             <div>
             <h3>Type of Sexual Violence</h3>
+
             <input type="checkbox" id="violence_adult_sexual" value="violence_adult_sexual"/><label htmlFor="violence_adult_sexual">Adult Sexual Assault</label>
             <br/>
             <input type="checkbox" id="violence_adult_when_child_by_family" value="violence_adult_when_child_by_family"/><label htmlFor="violence_adult_when_child_by_family">Adult abused as child - family</label>
@@ -38,6 +39,8 @@ class TypeOfViolence extends Component {
             <input type="checkbox" id="violence_teen_dating" value="violence_teen_dating"/><label htmlFor="violence_teen_dating">Teen Dating</label>
             <br/>
             <input type="checkbox" id="violence_other" value="violence_other"/><label htmlFor="violence_other">Other</label>
+
+      
             <br/>
             <label>specify:</label>
             <input type="text" />
