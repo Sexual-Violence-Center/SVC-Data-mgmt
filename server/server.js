@@ -11,7 +11,9 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const victimRouter = require('./routes/victim.router');
-const reportRouter= require('./routes/report.router');
+const FedReportRouter= require('./routes/report.federal.router');
+const CountyReportRouter = require('./routes/report.county.router');
+const CustomReportRouter = require('./routes/report.custom.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,7 +29,9 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/victim', victimRouter);
-app.use('/api/report', reportRouter);
+app.use('/api/fed-report', FedReportRouter);
+app.use('/api/county-report', CountyReportRouter);
+app.use('/api/custom-report', CustomReportRouter);
 
 // Serve static files
 app.use(express.static('build'));
