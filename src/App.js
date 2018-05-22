@@ -15,7 +15,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home from './components/Home/Home';
 // import AdminTools from './components/AdminTools/AdminTools';
-// import PinkForm from './components/PinkForm/PinkForm';
+import PinkForm from './components/PinkForm/PinkForm';
 import YellowForm from './components/YellowForm/YellowForm';
 import FederalReport from './components/FederalReport/FederalReport';
 import CountyReport from './components/CountyReport/CountyReport';
@@ -48,10 +48,10 @@ const App = () => (
           path="/adminTools"
           component={AdminTools}
         /> */}
-        {/* <Route
+        <Route
           path="/PinkForm"
           component={PinkForm}
-        /> */}
+        />
         <Route
           path="/YellowForm"
           component={YellowForm}
