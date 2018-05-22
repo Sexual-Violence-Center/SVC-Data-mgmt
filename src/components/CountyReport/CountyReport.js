@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Calendar from 'react-calendar'
+// import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
-import Nav from '../../components/Nav/Nav';
+// import Nav from '../../components/Nav/Nav';
 
 
 const mapStateToProps = state => ({

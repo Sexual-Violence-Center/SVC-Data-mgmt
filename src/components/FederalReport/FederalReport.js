@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
-import Nav from '../../components/Nav/Nav';
+// import Nav from '../../components/Nav/Nav';
 
 
 const mapStateToProps = state => ({
@@ -23,39 +23,50 @@ class FederalReport extends Component{
                 <button>go</button>  
                 <button>Print</button>
             <div className="dropdown">
-            <section classname="total">
+            <section className="total">
                 <h4>Individuals who received services during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Types of Individuals</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Total:</td>
                         <td>{this.state}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="new">
+            <section className="new">
                 <h4>NEW individuals who received services during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Types of Individuals</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>New Individuals</td>
                         <td>#####{this.state}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="race">
+            <section className="race">
                 <h4>Demographics: Race/Ethnicity</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Race/Ethnicity</th>
                         <th>Primary</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>American Indian of Alaskan Native</td>
                         <td>#####{this.count}</td>
@@ -92,15 +103,19 @@ class FederalReport extends Component{
                         <td>Not Reported</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="gender">
+            <section className="gender">
                 <h4>Demographics: Gender Identity</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Gender Identity</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Male</td>
                         <td>#####{this.count}</td>
@@ -125,15 +140,19 @@ class FederalReport extends Component{
                         <td>Total:</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="Age">
+            <section className="Age">
                 <h4>Demographics: Age</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Age Range</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>0-12</td>
                         <td>#####{this.count}</td>
@@ -162,28 +181,36 @@ class FederalReport extends Component{
                         <td>Total:</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="victimization">
+            <section className="victimization">
                 <h4>Types of Victimization: total number during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Victimization Types</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Total:</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="total">
+            <section className="total">
                 <h4>Types of Victimization: Special classification of individuals</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Types of Individuals</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Adult Sexual Assault</td>
                         <td>#####{this.count}</td>
@@ -268,29 +295,37 @@ class FederalReport extends Component{
                         <td>Other</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
             <h1> Direct Services</h1>
-            <section classname="assisted">
+            <section className="assisted">
                 <h4>Individuals assisted with a victim compensation application during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Types of Individuals</th>
                         <th>Number</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Individuals Assisted</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="totalServices">
+            <section className="totalServices">
                 <h4>Total services provided during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Services</th>
                         <th>Total</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Information/Referral</td>
                         <td>#####{this.count}</td>
@@ -307,15 +342,19 @@ class FederalReport extends Component{
                         <td>Criminal/Civil Justice System</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="informationReferral">
+            <section className="informationReferral">
                 <h4>(A) Information & Referral</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Service Details</th>
                         <th>Total</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>(A1) Information about the criminal justice proces</td>
                         <td>#####{this.count}</td>
@@ -332,15 +371,19 @@ class FederalReport extends Component{
                         <td>(A4) Referral to other services, supports, resources</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="">
+            <section className="">
                 <h4>(B) Personal Advocacy/Accompaniment</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Service Details</th>
                         <th>Total</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>(B1) Victim Advocacy/Accompaniment to Emergency Medical Care</td>
                         <td>#####{this.count}</td>
@@ -365,15 +408,19 @@ class FederalReport extends Component{
                         <td>(B9) Transportation Assistance</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
-            <section classname="emotionalSupport">
+            <section className="emotionalSupport">
                 <h4>(C) Emotional Support of Safety Services: Total services provided during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Service Details</th>
                         <th>Total</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>(C1) Crisis Intervention</td>
                         <td>#####{this.count}</td>
@@ -394,16 +441,19 @@ class FederalReport extends Component{
                         <td>(C7) Emergency Financial Assistance</td>
                         <td>#####{this.count}</td>
                     </tr>
-                    
+                    </tbody>
                 </table>
             </section>
-            <section classname="total">
+            <section className="total">
                 <h4>(E) Criminal/Civil Justice System Assistance: Total services provided during the reporting period</h4>
                 <table className="federalTable">
+                <thead>
                     <tr>
                         <th>Service Details</th>
                         <th>Total</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>(E4) Civil Legal Assistance in Obtaining Protection or Restraining Order</td>
                         <td>#####{this.count}</td>
@@ -428,6 +478,7 @@ class FederalReport extends Component{
                         <td>Criminal Advocacy/Accompaniment</td>
                         <td>#####{this.count}</td>
                     </tr>
+                    </tbody>
                 </table>
             </section>
             </div>

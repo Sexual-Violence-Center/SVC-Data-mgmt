@@ -1,8 +1,7 @@
 import React from 'react';
 import Nav from '../../components/Nav/Nav';
 import {
-  BrowserRouter as Router,
-  Route
+  BrowserRouter as Router
 } from 'react-router-dom';
 
 const Header = ({ title }) => (
