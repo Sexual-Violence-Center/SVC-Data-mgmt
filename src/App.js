@@ -23,7 +23,7 @@ import FederalReport from './components/FederalReport/FederalReport';
 // import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
 
-// import UserEntryPage from './components/AdminTools'
+import UserEntryPage from './components/AdminTools/UserEntryPage';
 
 
 import './styles/main.css';
@@ -77,6 +77,10 @@ const App = () => (
         <Route
           path="/AdminLandingPage"
           component={AdminLandingPage}
+        />
+        <Route
+          path="/UserEntryPage"
+          component={UserEntryPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
