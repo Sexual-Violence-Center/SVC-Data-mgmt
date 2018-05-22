@@ -15,9 +15,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home from './components/Home/Home';
 // import AdminTools from './components/AdminTools/AdminTools';
-// import PinkForm from './components/PinkForm/PinkForm';
+import PinkForm from './components/PinkForm/PinkForm';
 import YellowForm from './components/YellowForm/YellowForm';
-// import FederalReport from './components/FederalReport/FederalReport';
+import FederalReport from './components/FederalReport/FederalReport';
 // import CountyReport from './components/CountyReport/CountyReport';
 // import CustomReport from './components/CustomReport/CustomReport';
 // import UserLandingPage from './components/UserLandingPage/UserLandingPage';
@@ -48,18 +48,18 @@ const App = () => (
           path="/adminTools"
           component={AdminTools}
         /> */}
-        {/* <Route
+        <Route
           path="/PinkForm"
           component={PinkForm}
-        /> */}
+        />
         <Route
           path="/YellowForm"
           component={YellowForm}
         />
-        {/* <Route
+        <Route
           path="/FederalReport"
           component={FederalReport}
-        /> */}
+        />
         {/* <Route
           path="/CountyReport"
           component={CountyReport}

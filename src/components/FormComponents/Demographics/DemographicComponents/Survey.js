@@ -9,7 +9,7 @@ class Survey extends Component {
     constructor(){
         super();
         this.state = {
-            victim_age: '',
+            victim_age: undefined,
             victim_gender: '',
             victim_transgender: '',
             victim_gender_pronouns: '',
@@ -19,7 +19,9 @@ class Survey extends Component {
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;
         const name = target.name;
     
         this.setState({

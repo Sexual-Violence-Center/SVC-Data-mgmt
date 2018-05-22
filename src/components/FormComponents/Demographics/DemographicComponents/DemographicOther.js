@@ -9,15 +9,17 @@ class DemographicOther extends Component {
     constructor(){
         super();
         this.state = {
-            homeless: '',
-            limited_english: '',
-            veteran: '',
+            homeless: undefined,
+            limited_english: undefined,
+            veteran: undefined,
         }
     }
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;
         const name = target.name;
     
         this.setState({
