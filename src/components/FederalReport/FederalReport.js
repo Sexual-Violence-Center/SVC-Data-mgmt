@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar'
+// import Calendar from 'rc-calendar'
+import Nav from '../../components/Nav/Nav';
+
 
 const mapStateToProps = state => ({
     user: state.user,
+    state
   });
+// date = () => {
+//     this.startDate()
+//     console.log('date, date')
+// }
 
 class FederalReport extends Component{
     render () {
         return (
             <div className="federalReport">
             <h2> Select a date range for the Federal Report:</h2>
-            <h3>Start Date:<Calendar /></h3>  <h3>End Date:<Calendar /></h3> <button>go</button>  <button>Print</button>
+            <h3>Start Date:<Calendar /></h3><h3> End Date:<Calendar /></h3> 
+                <button>go</button>  
+                <button>Print</button>
             <div className="dropdown">
             <section classname="total">
                 <h4>Individuals who received services during the reporting period</h4>
@@ -22,7 +32,7 @@ class FederalReport extends Component{
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td>#####{this.count}</td>
+                        <td>{this.state}</td>
                     </tr>
                 </table>
             </section>
@@ -35,7 +45,7 @@ class FederalReport extends Component{
                     </tr>
                     <tr>
                         <td>New Individuals</td>
-                        <td>#####{this.count}</td>
+                        <td>#####{this.state}</td>
                     </tr>
                 </table>
             </section>
