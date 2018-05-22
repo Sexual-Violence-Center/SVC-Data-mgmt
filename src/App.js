@@ -18,7 +18,7 @@ import Home from './components/Home/Home';
 // import PinkForm from './components/PinkForm/PinkForm';
 import YellowForm from './components/YellowForm/YellowForm';
 import FederalReport from './components/FederalReport/FederalReport';
-// import CountyReport from './components/CountyReport/CountyReport';
+import CountyReport from './components/CountyReport/CountyReport';
 // import CustomReport from './components/CustomReport/CustomReport';
 // import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 // import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
@@ -60,10 +60,10 @@ const App = () => (
           path="/FederalReport"
           component={FederalReport}
         />
-        {/* <Route
+        <Route
           path="/CountyReport"
           component={CountyReport}
-        /> */}
+        />
         {/* <Route
           path="/CustomReport"
           component={CustomReport}
