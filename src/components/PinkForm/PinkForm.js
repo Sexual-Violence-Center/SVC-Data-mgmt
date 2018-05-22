@@ -12,12 +12,17 @@ const mapStateToProps = state => ({
 })
 
 class PinkForm extends Component {
-
+    constructor(){
+        super()
+        this.state = {
+            contact_type: 'telephone'
+        }
+    }
     handleSubmit = () => {
         console.log(this.props.state.EntryFormReducer);
         this.props.dispatch({
             type: 'ADD_NEW_VICTIM',
-            payload: this.props.state.EntryFormReducer
+            payload: {...this.state, ...this.props.state.EntryFormReducer}
         })
     }
 
