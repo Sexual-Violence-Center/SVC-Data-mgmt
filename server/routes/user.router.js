@@ -7,43 +7,29 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
-// GET request for list of users in the person table. List displays //username and user_type on the UserEnterPage (along with a delete button)
-router.get('/', (req, res) => {
-  console.log('in authenticated user GET server route for UserEntryPage');
-  if(req.isAuthenticated() && req.user.user_type === true) {
-    let queryText = 'SELECT username, user_type FROM person;';
-    pool.query(queryText)
-    .then((result) => {
-      console.log('user.router result.rows', result.rows);
-        res.send(result.rows);
-    }).catch((error) => {
-      console.log('error in user.get, server side', error);
-      res.sendStatus(500);
-    })
-  } else {
-    res.sendStatus(403);
-  }
+router.get('/', rejectUnauthenticated, (req, res) => {
+  // Send back user object from database
+  res.send(req.user);
 });
 
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-//This route is used/called as-is from the admin tool User Entry Page to add a new user (username, password, user_type) to the person table
-//We need only to update the query to include user_type when we are ready to test/implement
+//TODO  make so only an admin can register a user
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+
   const queryText = 'INSERT INTO person (username, password) VALUES ($1, $2) RETURNING id';
   pool.query(queryText, [username, password])
     .then(() => { res.sendStatus(201); })
     .catch((err) => { next(err); });
-
 });
 
 //Handles DELETE request of existing user
 //Only a logged-in admin can delete a user (in db person table, user_type is boolean; true = admin; false = user)
 router.delete('/:id', (req, res) => {
-  // console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
+  console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
   if(req.isAuthenticated() && req.user.user_type === true) {
     let queryText = 'DELETE FROM "person" WHERE id = $1;';
     pool.query(queryText, [req.params.id])
