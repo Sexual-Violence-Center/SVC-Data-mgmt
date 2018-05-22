@@ -1,34 +1,66 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+    state
+});
 
 class DisabilityStatus extends Component {
+    constructor(){
+        super()
+        this.state = {
+            disability_blind: '',
+            disability_physical: '',
+            disability_mental: '',
+            disability_deaf: '',
+            disability_developmental: '',
+            disability_none: '',
+            disability_other: '',
+            disability_other_specify: '',
+            disability_unknown: '',  
+        }
+    }
+
+    handleChangeFor = event => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+        this.props.dispatch({
+            type: 'ENTRY_FORM_DATA', 
+            payload: {...this.state, [name]: value }
+        })
+    }
+
     render() {
         return (
             <div>
                 <h3>Disability Status</h3>
-
-                <input type="checkbox" id="disability_blind" value="disability_blind" /><label htmlFor="disability_blind">Blind/Visually Impaired</label>
+                <input type="checkbox" name="disability_blind" value={this.state.disability_blind} onChange={this.handleChangeFor}/><label htmlFor="disability_blind">Blind/Visually Impaired</label>
                 <br />
-                <input type="checkbox" id="disability_physical" value="disability_physical" /><label htmlFor="disability_physical">Physical Disabilities</label>
+                <input type="checkbox" name="disability_physical" value={this.state.disability_physical} onChange={this.handleChangeFor}/><label htmlFor="disability_physical">Physical Disabilities</label>
                 <br />
-                <input type="checkbox" id="disability_mental" value="disability_mental" /><label htmlFor="disability_mental">Mental Illness</label>
+                <input type="checkbox" name="disability_mental" value={this.state.disability_mental} onChange={this.handleChangeFor}/><label htmlFor="disability_mental">Mental Illness</label>
                 <br />
-                <input type="checkbox" id="disability_deaf" value="disability_deaf" /><label htmlFor="disability_deaf">Deaf/Hard of Hearing</label>
+                <input type="checkbox" name="disability_deaf" value={this.state.disability_deaf} onChange={this.handleChangeFor}/><label htmlFor="disability_deaf">Deaf/Hard of Hearing</label>
                 <br />
-                <input type="checkbox" id="disability_developmental" value="disability_developmental" /><label htmlFor="disability_developmental">Intellectual or Developmental Disabilities</label>
+                <input type="checkbox" name="disability_developmental" value={this.state.disability_developmental} onChange={this.handleChangeFor}/><label htmlFor="disability_developmental">Intellectual or Developmental Disabilities</label>
                 <br />
-                <input type="checkbox" id="disability_none" value="disability_none" /><label htmlFor="disability_none">None</label>
+                <input type="checkbox" name="disability_none" value={this.state.disability_none} onChange={this.handleChangeFor}/><label htmlFor="disability_none">None</label>
                 <br />
-                <input type="checkbox" id="disability_other" value="disability_other" /><label htmlFor="disability_other">Other</label>
+                <input type="checkbox" name="disability_other" value={this.state.disability_other} onChange={this.handleChangeFor}/><label htmlFor="disability_other">Other</label>
                 <br />
                 <label htmlFor="disability_other_specify">specify</label>
-                <input type="text" id="disability_other_specify" />
+                <input type="text" name="disability_other_specify"  value={this.state.disability_other_specify} onChange={this.handleChangeFor}/>
                 <br />
-                <input type="checkbox" id="disability_unknown" value="disability_unknown" /><label htmlFor="disability_unknown">Unknown</label>
-
+                <input type="checkbox" name="disability_unknown" value={this.state.disability_unknown} onChange={this.handleChangeFor}/><label htmlFor="disability_unknown">Unknown</label>
                 <br />
             </div>
         )
     }
 }
 
-export default DisabilityStatus;
+export default connect(mapStateToProps)(DisabilityStatus);

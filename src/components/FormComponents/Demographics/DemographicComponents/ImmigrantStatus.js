@@ -1,11 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+    state
+});
 
 class ImmigrantStatus extends Component {
+    constructor(){
+        super();
+        this.state = {
+            victim_immigrant: '',
+            victim_immigrant_other_specify: '',
+        }
+    }
+
+    handleChangeFor = event => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+        this.props.dispatch({
+            type: 'ENTRY_FORM_DATA', 
+            payload: {...this.state, [name]: value }
+        })
+    }
+
     render() {
         return (
             <div>
                 <h3>Immigrant Status</h3>
-                <select>
+                <select name="victim_immigrant" value={this.state.victim_immigrant} onChange={this.handleChangeFor}>
+                    <option>Select One</option>
                     <option value="africa">Africa</option>
                     <option value="asia">Asia</option>
                     <option value="europe">Europe</option>
@@ -17,11 +45,11 @@ class ImmigrantStatus extends Component {
                 </select>
                 <label>
                     If Other, please specify
-                <input type="text" />
+                <input type="text" name="victim_immigrant_other_specify" value={this.state.victim_immigrant_other_specify} onChange={this.handleChangeFor}/>
                 </label>
             </div>
         )
     }
 }
 
-export default ImmigrantStatus;
+export default connect(mapStateToProps)(ImmigrantStatus);
