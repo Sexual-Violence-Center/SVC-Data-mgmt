@@ -12,8 +12,8 @@ CREATE TABLE victim (
 	advocate_name VARCHAR (255),
 	contact_date DATE,
 	
-	start_time TIME,
-	end_time TIME,
+	start_time TIMETZ,
+	end_time TIMETZ,
 	
 	service_location VARCHAR (255),
 	service_county VARCHAR (255),
@@ -98,7 +98,7 @@ CREATE TABLE victim (
 	victim_multiple_types_violence BOOLEAN, -- CHANGED FROM victim_multiple
 	
 --  Police Report
- 	police_report_filed BOOLEAN,
+ 	police_report_filed VARCHAR (255),
 
 --  Demographic Survery
 	victim_age INTEGER,
