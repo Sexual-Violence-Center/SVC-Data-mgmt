@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class Support extends Component {
+
+
+    handleChangeFor = event => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+        this.props.dispatch({
+            type: 'ENTRY_FORM_DATA', 
+            payload: {...this.state, [name]: value }
+        })
+    }
     render(){
         return(
             <div className="support">

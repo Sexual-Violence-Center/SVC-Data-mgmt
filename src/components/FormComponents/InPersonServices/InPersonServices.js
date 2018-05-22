@@ -9,24 +9,33 @@ class InPersonServices extends Component {
     constructor(){
         super();
         this.state = {
-            crisis_counseling_individual: '',
-            crisis_counseling_group: '',
-            legal_law_enforcement_interview: '',
-            legal_prosecution_related: '',
-            legal_court_advocacy: '',
-            legal_ofp_hro: '',
-            legal_immigration: '',
-            legal_intervention: '',
-            medical_exam_support: '',
-            transportation_medical_exam_support: '',
-            medical_accompaniment_medical: '',
-
+            crisis_counseling_individual: undefined, 
+            crisis_counseling_group: undefined, 
+            legal_law_enforcement_interview: undefined, 
+            legal_prosecution_related: undefined, 
+            legal_court_advocacy: undefined, 
+            legal_ofp_hro: undefined, 
+            legal_immigration: undefined, 
+            legal_intervention: undefined, 
+            medical_exam_support: undefined, 
+            transportation_medical_exam_support: undefined,
+            medical_accompaniment_medical: undefined, 
+            transportation_medical_accompaniment_medical: undefined,
+            medical_accompaniment_dental: undefined, 
+            transportation_medical_accompaniment_dental: undefined,
+            information_referral: undefined, 
+            safe_at_home: undefined, 
+            emergency_financial: undefined, 
+            reparations_claims: undefined, 
+            in_person_services_received_prior_oct: undefined,   
         }
     }
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;
         const name = target.name;
     
         this.setState({
@@ -107,13 +116,13 @@ class InPersonServices extends Component {
                 <div className="advocacyServices">
                     <label>5. Other In-Person Advocacy Services</label>
                         <p>(check any that apply)</p>
-                    <input type="checkbox" id="information_referral" name="information_referral" value={this.state.information_referral} onChange={this.handleChangeFor}/><label htmlFor="information_referral">Information and referral</label>
+                    <input type="checkbox" name="information_referral" value={this.state.information_referral} onChange={this.handleChangeFor}/><label htmlFor="information_referral">Information and referral</label>
                     <br/>
-                    <input type="checkbox" id="safe_at_home" name="safe_at_home" value={this.state.safe_at_home} onChange={this.handleChangeFor}/><label htmlFor="safe_at_home">Safe at Home registration</label>
+                    <input type="checkbox" name="safe_at_home" value={this.state.safe_at_home} onChange={this.handleChangeFor}/><label htmlFor="safe_at_home">Safe at Home registration</label>
                     <br/>
-                    <input type="checkbox" id="emergency_financial" name="emergency_financial" value={this.state.emergency_financial} onChange={this.handleChangeFor}/><label htmlFor="emergency_financial">Emergency financial assistance</label>
+                    <input type="checkbox" name="emergency_financial" value={this.state.emergency_financial} onChange={this.handleChangeFor}/><label htmlFor="emergency_financial">Emergency financial assistance</label>
                     <br/>
-                    <input type="checkbox" id="reparations_claims" name="reparations_claims" value={this.state.reparations_claims} onChange={this.handleChangeFor}/><label htmlFor="reparations_claims">Reparations Claims Assistance</label>
+                    <input type="checkbox" name="reparations_claims" value={this.state.reparations_claims} onChange={this.handleChangeFor}/><label htmlFor="reparations_claims">Reparations Claims Assistance</label>
                 </div>
                 <br/>
                 <div className="usedSinceOctContainer">
@@ -121,8 +130,8 @@ class InPersonServices extends Component {
                     <br />
                     <br />
                     <form value={this.state.in_person_services_received_prior_oct} onChange={this.handleChangeFor}>
-                        <input type="radio" id="in_person_services_received_prior_oct" name="in_person_services_received_prior_oct" value={true} /><label htmlFor="in_person_services_received_prior_oct">yes</label>
-                        <input type="radio" id="in_person_services_received_prior_oct" name="in_person_services_received_prior_oct" value={false} /><label htmlFor="in_person_services_received_prior_oct">no</label>
+                        <input type="radio" name="in_person_services_received_prior_oct" value={!this.state.in_person_services_received_prior_oct} /><label htmlFor="in_person_services_received_prior_oct">yes</label>
+                        <input type="radio" name="in_person_services_received_prior_oct" value={this.state.in_person_services_received_prior_oct} /><label htmlFor="in_person_services_received_prior_oct">no</label>
                     </form>
                 </div>
                 <br/>
