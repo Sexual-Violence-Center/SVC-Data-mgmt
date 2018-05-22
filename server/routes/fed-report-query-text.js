@@ -4,7 +4,7 @@ const pool = require("../modules/pool");
 let fedQueryText =
 `SELECT 
 	(select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as total_victims,
-    (select COUNT( * ) FROM "victim"  WHERE "victim_prior_contact" = FALSE OR 	
+    (select COUNT(*) FROM "victim"  WHERE "victim_prior_contact" = FALSE OR 	
         "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
         ("victim_contact_prior_oct" = FALSE OR 	"victim_contact_prior_oct" IS NULL)) AND 
         "contact_date" BETWEEN $1 AND $2) as "new_victim",
@@ -28,7 +28,8 @@ let fedQueryText =
         AND "contact_date" BETWEEN $1 AND $2) as "multiple_races",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'not_reported' 
         AND "contact_date" BETWEEN $1 AND $2) as "not_reported",
-	(select COUNT("victim_ethnicity") FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_ethnicity",
+    (select COUNT("victim_ethnicity") FROM "victim" WHERE "contact_date" 
+        BETWEEN $1 AND $2) as "total_ethnicity",
 	
 
     (select count(*) FROM "victim" WHERE "victim_gender" = 'male' 
@@ -127,10 +128,10 @@ let fedQueryText =
     (select COUNT(*) FROM "victim" WHERE "limited_english" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "limited_english",
     (select COUNT(*) FROM "victim" WHERE ("emergency_financial" = TRUE OR "reparations_claims" = TRUE)
-        AND "contact_date" BETWEEN $1 AND $2) as "assisted_with_victim_compensation"
+        AND "contact_date" BETWEEN $1 AND $2) as "assisted_with_victim_compensation",
     
         
-    (select COUNT(*) FROM "victim" WHERE ("legal_court_advocacy" = TRUE  OR 
+    (select COUNT(*) FROM "victim" WHERE ("legal_court_advocacy" = TRUE OR 
         "information_criminal_justice" = TRUE OR "legal_law_enforcement_interview" = TRUE OR 
         "legal_prosecution_related" = TRUE) AND "contact_date" BETWEEN $1 AND $2) 
         as "info_criminal_justice_process",

@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
       let queryText = fedQueryText
       pool.query(queryText, [req.query.startDate, req.query.endDate])
       .then((result) => {
-        console.log('GET fed reports success', result);
+        // console.log('GET fed reports success', result.rows);
         res.send(result.rows)
       }).catch((error) => {
         console.log('error in GET fed reports', error);
