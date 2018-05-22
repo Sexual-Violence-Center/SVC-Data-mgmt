@@ -12,7 +12,10 @@ class AdminLandingPage extends Component {
         <div>
           <h2>Welcome!</h2>
           <p>
-            From here you can view the Federal or County reports by clicking the buttons on the left hand side of your screen. You also have access to the Data Entry View. The "Search/Update" button allows you to enter a confirmation number for a form that has already been entered so you can view the information that is in that specific form.
+            Access to the administrator views is provided by clicking items under REPORTS and ACTIONS on the navigation bar to the left. <br/>Clicking Federal or County displays the selected report. <br/> Clicking Custom allows an admin to select various reporting criteria for reviewing.
+            <br/> Clicking Data Entry provides an admin with the basic user view, where data can be entered for the "pink and yellow forms".
+            <br/> Clicking Search Reports allows an admin to bring up a specific record (by typing the record's confirmation number) for reviewing, editing, or deleting.
+            <br/> Clicking Users allows an admin to add or delete a user (username, password, user type) from the application.
           </p>
         </div>
       </div>

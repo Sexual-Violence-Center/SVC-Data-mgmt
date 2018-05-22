@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
 
 class UserEntryPage extends Component {
 
+
   render(){
     return (
       <div>
