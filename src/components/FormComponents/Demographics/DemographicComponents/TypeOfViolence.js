@@ -1,55 +1,98 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+    state
+});
 
 class TypeOfViolence extends Component {
+    constructor(){
+        super();
+        this.state = {
+            violence_adult_sexual: '',
+            violence_adult_when_child_by_family: '',
+            violence_adult_when_child_by_other: '',
+            violence_bullying: '',
+            violence_child_pornography: '',
+            violence_domestic: '',
+            violence_elder: '',
+            violence_exposing: '',
+            violence_internet: '',
+            violence_minor_by_family: '',
+            violence_minor_by_other: '',
+            violence_phone: '',
+            violence_exploitation_trafficking: '', 
+            violence_harassment: '',
+            violence_stalking: '',
+            violence_teen_dating: '',
+            violence_other: '',
+            violence_other_specify: '', 
+            violence_unknown: ''
+        }
+    }
+
+    handleChangeFor = event => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+        this.props.dispatch({
+            type: 'ENTRY_FORM_DATA', 
+            payload: {...this.state, [name]: value }
+        })
+    }
+
     render(){
         return(
             <div>
             <h3>Type of Sexual Violence</h3>
-
-            <input type="checkbox" id="violence_adult_sexual" value="violence_adult_sexual"/><label htmlFor="violence_adult_sexual">Adult Sexual Assault</label>
+            <input type="checkbox" name="violence_adult_sexual" value={this.state.violence_adult_sexual} onChange={this.handleChangeFor}/><label htmlFor="violence_adult_sexual">Adult Sexual Assault</label>
             <br/>
-            <input type="checkbox" id="violence_adult_when_child_by_family" value="violence_adult_when_child_by_family"/><label htmlFor="violence_adult_when_child_by_family">Adult abused as child - family</label>
+            <input type="checkbox" name="violence_adult_when_child_by_family" value={this.state.violence_adult_when_child_by_family} onChange={this.handleChangeFor}/><label htmlFor="violence_adult_when_child_by_family">Adult abused as child - family</label>
             <br/>
-            <input type="checkbox" id="violence_adult_when_child_by_other" value="violence_adult_when_child_by_other"/><label htmlFor="violence_adult_when_child_by_other">Adult abused as child - other</label>
+            <input type="checkbox" name="violence_adult_when_child_by_other" value={this.state.violence_adult_when_child_by_other} onChange={this.handleChangeFor}/><label htmlFor="violence_adult_when_child_by_other">Adult abused as child - other</label>
             <br/>
-            <input type="checkbox" id="violence_bullying" value="violence_bullying"/><label htmlFor="violence_bullying">Bullying (verbal/cyber/physical)</label>
+            <input type="checkbox" name="violence_bullying" value={this.state.violence_bullying} onChange={this.handleChangeFor}/><label htmlFor="violence_bullying">Bullying (verbal/cyber/physical)</label>
             <br/>
-            <input type="checkbox" id="violence_child_pornography" value="violence_child_pornography"/><label htmlFor="violence_child_pornography">Child Pornography</label>
+            <input type="checkbox" name="violence_child_pornography" value={this.state.violence_child_pornography} onChange={this.handleChangeFor}/><label htmlFor="violence_child_pornography">Child Pornography</label>
             <br/>
-            <input type="checkbox" id="violence_domestic" value="violence_domestic"/><label htmlFor="violence_domestic">Domestic Violence</label>
+            <input type="checkbox" name="violence_domestic" value={this.state.violence_domestic} onChange={this.handleChangeFor}/><label htmlFor="violence_domestic">Domestic Violence</label>
             <br/>
-            <input type="checkbox" id="violence_elder" value="violence_elder"/><label htmlFor="violence_elder">Elder Abuse</label>
+            <input type="checkbox" name="violence_elder" value={this.state.violence_elder} onChange={this.handleChangeFor}/><label htmlFor="violence_elder">Elder Abuse</label>
             <br/>
-            <input type="checkbox" id="violence_exposing" value="violence_exposing"/><label htmlFor="violence_exposing">Exposing</label>
+            <input type="checkbox" name="violence_exposing" value={this.state.violence_exposing} onChange={this.handleChangeFor}/><label htmlFor="violence_exposing">Exposing</label>
             <br/>
-            <input type="checkbox" id="violence_internet" value="violence_internet"/><label htmlFor="violence_internet">Internet Related</label>
+            <input type="checkbox" name="violence_internet" value={this.state.violence_internet} onChange={this.handleChangeFor}/><label htmlFor="violence_internet">Internet Related</label>
             <br/>
-            <input type="checkbox" id="violence_minor_by_family" value="violence_minor_by_family"/><label htmlFor="violence_minor_by_family">Minor/CSA - family</label>
+            <input type="checkbox" name="violence_minor_by_family" value={this.state.violence_minor_by_family} onChange={this.handleChangeFor}/><label htmlFor="violence_minor_by_family">Minor/CSA - family</label>
             <br/>
-            <input type="checkbox" id="violence_minor_by_other" value="violence_minor_by_other"/><label htmlFor="violence_minor_by_other">Minor/CSA - other</label>
+            <input type="checkbox" name="violence_minor_by_other" value={this.state.violence_minor_by_other} onChange={this.handleChangeFor}/><label htmlFor="violence_minor_by_other">Minor/CSA - other</label>
             <br/>
-            <input type="checkbox" id="violence_phone" value="violence_phone"/><label htmlFor="violence_phone">Obscene Phone Call</label>
+            <input type="checkbox" name="violence_phone" value={this.state.violence_phone} onChange={this.handleChangeFor}/><label htmlFor="violence_phone">Obscene Phone Call</label>
             <br/>
-            <input type="checkbox" id="violence_exploitation_trafficking" value="violence_exploitation_trafficking"/><label htmlFor="violence_exploitation_trafficking">Sexual exploitation/trafficking/prostitution</label>
+            <input type="checkbox" name="violence_exploitation_trafficking" value={this.state.violence_exploitation_trafficking} onChange={this.handleChangeFor}/><label htmlFor="violence_exploitation_trafficking">Sexual exploitation/trafficking/prostitution</label>
             <br/>
-            <input type="checkbox" id="violence_harassment" value="violence_harassment"/><label htmlFor="violence_harassment">Sexual Harassment</label>
+            <input type="checkbox" name="violence_harassment" value={this.state.violence_harassment} onChange={this.handleChangeFor}/><label htmlFor="violence_harassment">Sexual Harassment</label>
             <br/>
-            <input type="checkbox" id="violence_stalking" value="violence_stalking"/><label htmlFor="violence_stalking">Stalking</label>
+            <input type="checkbox" name="violence_stalking" value={this.state.violence_stalking} onChange={this.handleChangeFor}/><label htmlFor="violence_stalking">Stalking</label>
             <br/>
-            <input type="checkbox" id="violence_teen_dating" value="violence_teen_dating"/><label htmlFor="violence_teen_dating">Teen Dating</label>
+            <input type="checkbox" name="violence_teen_dating" value={this.state.violence_teen_dating} onChange={this.handleChangeFor}/><label htmlFor="violence_teen_dating">Teen Dating</label>
             <br/>
-            <input type="checkbox" id="violence_other" value="violence_other"/><label htmlFor="violence_other">Other</label>
-
-      
+            <input type="checkbox" name="violence_other" value={this.state.violence_other} onChange={this.handleChangeFor}/><label htmlFor="violence_other">Other</label>
             <br/>
             <label>specify:</label>
-            <input type="text" />
+            <form>
+            <input type="text" name="violence_other_specify" value={this.state.violence_other_specify} onChange={this.handleChangeFor}/>
+            </form>
             <br/>
-            <input type="checkbox" id="violence_unknown" value="violence_unknown"/><label htmlFor="violence_unknown">Unknown/pass/doesn't know</label>
+            <input type="checkbox" name="violence_unknown" value={this.state.violence_unknown} onChange={this.handleChangeFor}/><label htmlFor="violence_unknown">Unknown/pass/doesn't know</label>
             <br/>
             </div>
         )
     }
 }
 
-export default TypeOfViolence;
+export default connect(mapStateToProps)(TypeOfViolence);

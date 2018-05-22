@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Survey from './DemographicComponents/Survey';
 import TypeOfViolence from './DemographicComponents/TypeOfViolence';
+import PoliceReport from './DemographicComponents/PoliceReport';
+import Survey from './DemographicComponents/Survey';
 import DisabilityStatus from './DemographicComponents/DisabilityStatus';
 import EthnicBackground from './DemographicComponents/EthnicBackground';
 import ImmigrantStatus from './DemographicComponents/ImmigrantStatus';
@@ -12,6 +13,7 @@ class Demographics extends Component {
             <div className="demographics">
             <h2>Victim/Survivor Demographics</h2>
             <TypeOfViolence />
+            <PoliceReport />
             <Survey />
             <DisabilityStatus />
             <EthnicBackground />
