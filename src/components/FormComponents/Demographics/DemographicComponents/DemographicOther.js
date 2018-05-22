@@ -33,11 +33,11 @@ class DemographicOther extends Component {
         return (
             <div>
                 <h3>Other</h3>
-                <input type="checkbox" id="homeless" value={this.state.homeless} onChange={this.handleChangeFor}/><label htmlFor="homeless">Currently Homeless</label>
+                <input type="checkbox" name="homeless" value={this.state.homeless} onChange={this.handleChangeFor}/><label htmlFor="homeless">Currently Homeless</label>
                 <br />
-                <input type="checkbox" id="limited_english" value={this.state.limited_english} onChange={this.handleChangeFor}/><label htmlFor="limited_english">Limited English Proficiency</label>
+                <input type="checkbox" name="limited_english" value={this.state.limited_english} onChange={this.handleChangeFor}/><label htmlFor="limited_english">Limited English Proficiency</label>
                 <br />
-                <input type="checkbox" id="veteran" value={this.state.veteran} onChange={this.handleChangeFor}/><label htmlFor="veteran">U.S. Veteran</label>
+                <input type="checkbox" name="veteran" value={this.state.veteran} onChange={this.handleChangeFor}/><label htmlFor="veteran">U.S. Veteran</label>
                 <br />
             </div>
         )

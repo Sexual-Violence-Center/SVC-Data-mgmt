@@ -13,8 +13,10 @@ const mapStateToProps = state => ({
 class YellowForm extends Component {
 
     handleSubmit = () => {
+        console.log(this.props.state.EntryFormReducer);
         this.props.dispatch({
-            type: 'ADD_NEW_VICTIM'
+            type: 'ADD_NEW_VICTIM',
+            payload: this.props.state.EntryFormReducer
         })
     }
 

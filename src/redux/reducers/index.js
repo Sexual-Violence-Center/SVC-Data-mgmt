@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import user from './userReducer';
 import login from './loginReducer';
 import newVictimEntry from './postNewVictimReducer';
-import entryFormReducer from './EntryFormReducer';
+import EntryFormReducer from './EntryFormReducer';
 
 const store = combineReducers({
   user,
   login,
   newVictimEntry,
-  entryFormReducer
+  EntryFormReducer
 });
 
 export default store;
