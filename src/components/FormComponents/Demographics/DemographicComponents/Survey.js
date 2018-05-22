@@ -35,6 +35,7 @@ class Survey extends Component {
         return (
             <div>
                 <h2>Demographics Survey</h2>
+
                 <label htmlFor="victim_age">Age:</label>
                 <input type="number" name="victim_age" value={this.state.victim_age} onChange={this.handleChangeFor}/>
                 <label htmlFor="victim_gender">Gender:</label>

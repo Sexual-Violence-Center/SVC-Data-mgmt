@@ -50,6 +50,7 @@ class UnmetNeeds extends Component {
                     <input type="text" id="unmet_other_descr" name="unmet_other_descr" value={this.state.unmet_other_descr} onChange={this.handleChangeFor}/>
                     </label>
                     <br />
+
                     <label htmlFor="unmet_need_staying_where">If shelter was unavailable, where did the v/s stay?</label>
                     <input type="text" id="unmet_need_staying_where" name="unmet_need_staying_where" value={this.state.unmet_need_staying_where} onChange={this.handleChangeFor}/>
                 </div>
