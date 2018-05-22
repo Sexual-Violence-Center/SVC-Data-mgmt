@@ -15,21 +15,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-//TODO  make so only an admin can register a user
+//This route is used/called as-is from the admin tool User Entry Page to add a new user (username, password, user_type) to the person table
+//We need only to update the query to include user_type when we are ready to test/implement
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-
   const queryText = 'INSERT INTO person (username, password) VALUES ($1, $2) RETURNING id';
   pool.query(queryText, [username, password])
     .then(() => { res.sendStatus(201); })
     .catch((err) => { next(err); });
+
 });
 
 //Handles DELETE request of existing user
 //Only a logged-in admin can delete a user (in db person table, user_type is boolean; true = admin; false = user)
 router.delete('/:id', (req, res) => {
-  console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
+  // console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
   if(req.isAuthenticated() && req.user.user_type === true) {
     let queryText = 'DELETE FROM "person" WHERE id = $1;';
     pool.query(queryText, [req.params.id])
