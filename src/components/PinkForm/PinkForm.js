@@ -24,7 +24,7 @@ class PinkForm extends Component {
     render() {
         return (
             <div>
-                <h1>SVC In-Person Counseling Form for Primary AND Secondary Victims</h1>
+                <h1>SVC Telephone Contact Form for Primary AND Secondary Victims</h1>
                 <TelephoneContactInfo />
                 <PhoneServices />
                 <Support />
