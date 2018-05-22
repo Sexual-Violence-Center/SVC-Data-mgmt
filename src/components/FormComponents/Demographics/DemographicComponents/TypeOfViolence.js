@@ -9,31 +9,33 @@ class TypeOfViolence extends Component {
     constructor(){
         super();
         this.state = {
-            violence_adult_sexual: '',
-            violence_adult_when_child_by_family: '',
-            violence_adult_when_child_by_other: '',
-            violence_bullying: '',
-            violence_child_pornography: '',
-            violence_domestic: '',
-            violence_elder: '',
-            violence_exposing: '',
-            violence_internet: '',
-            violence_minor_by_family: '',
-            violence_minor_by_other: '',
-            violence_phone: '',
-            violence_exploitation_trafficking: '', 
-            violence_harassment: '',
-            violence_stalking: '',
-            violence_teen_dating: '',
-            violence_other: '',
+            violence_adult_sexual: undefined,
+            violence_adult_when_child_by_family: undefined,
+            violence_adult_when_child_by_other: undefined,
+            violence_bullying: undefined,
+            violence_child_pornography: undefined,
+            violence_domestic: undefined,
+            violence_elder: undefined,
+            violence_exposing: undefined,
+            violence_internet: undefined,
+            violence_minor_by_family: undefined,
+            violence_minor_by_other: undefined,
+            violence_phone: undefined,
+            violence_exploitation_trafficking: undefined, 
+            violence_harassment: undefined,
+            violence_stalking: undefined,
+            violence_teen_dating: undefined,
+            violence_other: undefined,
             violence_other_specify: '', 
-            violence_unknown: ''
+            violence_unknown: undefined,
         }
     }
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;
         const name = target.name;
     
         this.setState({

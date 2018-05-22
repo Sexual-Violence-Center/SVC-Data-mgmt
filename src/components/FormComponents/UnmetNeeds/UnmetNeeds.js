@@ -9,17 +9,19 @@ class UnmetNeeds extends Component {
     constructor(){
         super();
         this.state = {
-            unmet_need_financial: '',
-            unmet_need_shelter_housing: '',
-            unmet_need_other: '',
+            unmet_need_financial: undefined,
+            unmet_need_shelter_housing: undefined,
+            unmet_need_other: undefined,
             unmet_need_staying_where: '',
-            unmet_other_descr: ''
+            unmet_other_descr: '',
         }
     }
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;
         const name = target.name;
     
         this.setState({
@@ -45,6 +47,7 @@ class UnmetNeeds extends Component {
                     <br />
                     <input type="checkbox" id="unmet_need_other" name="unmet_need_other" value={this.state.unmet_need_other} onChange={this.handleChangeFor}/><label htmlFor="unmet_need_other">Other</label>
                     <br />
+                    <form>
                     <label htmlFor="unmet_other_descr">
                         specify other:
                     <input type="text" id="unmet_other_descr" name="unmet_other_descr" value={this.state.unmet_other_descr} onChange={this.handleChangeFor}/>
@@ -53,6 +56,7 @@ class UnmetNeeds extends Component {
 
                     <label htmlFor="unmet_need_staying_where">If shelter was unavailable, where did the v/s stay?</label>
                     <input type="text" id="unmet_need_staying_where" name="unmet_need_staying_where" value={this.state.unmet_need_staying_where} onChange={this.handleChangeFor}/>
+                    </form>
                 </div>
             </div>
         )

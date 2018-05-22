@@ -9,23 +9,24 @@ class DisabilityStatus extends Component {
     constructor(){
         super()
         this.state = {
-            disability_blind: '',
-            disability_physical: '',
-            disability_mental: '',
-            disability_deaf: '',
-            disability_developmental: '',
-            disability_none: '',
-            disability_other: '',
+            disability_blind: undefined,
+            disability_physical: undefined,
+            disability_mental: undefined,
+            disability_deaf: undefined,
+            disability_developmental: undefined,
+            disability_none: undefined,
+            disability_other: undefined,
             disability_other_specify: '',
-            disability_unknown: '',  
+            disability_unknown: undefined,  
         }
     }
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;        
         const name = target.name;
-    
         this.setState({
           [name]: value
         });

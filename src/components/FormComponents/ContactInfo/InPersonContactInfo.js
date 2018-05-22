@@ -10,23 +10,25 @@ class ContactInfo extends Component{
         super();
         this.state = {
             advocate_name: '',
-            date_entered: '',
-            start_time: '',
-            end_time: '',
-            contact_date: '',
+            date_entered: undefined,
+            start_time: undefined,
+            end_time: undefined,
+            contact_date: undefined,
             service_location: '',
             service_county: '',
-            in_person_client_number: '',
-            victim_zipcode: '',
+            in_person_client_number: undefined,
+            victim_zipcode: undefined,
             victim_type: '',
             victim_referral_source: '',
-            victim_prior_contact: '',
-            victim_contact_prior_oct: ''
+            victim_prior_contact: undefined,
+            victim_contact_prior_oct: undefined,
         }
     }
     handleChangeFor = (event) => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === ('checkbox') ? target.checked :
+                      target.type === ('radio') ? target.checked  : 
+                      target.value;
         const name = target.name;
     
         this.setState({
