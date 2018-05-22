@@ -12,6 +12,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+// GET request for list of users in the person table. List displays //username and user_type on the UserEnterPage (along with a delete button)
+router.get('/users', (req, res) => {
+  console.log('in authenticated user GET server route for UserEntryPage');
+  if(req.isAuthenticated() && req.user.user_type === true) {
+    let queryText = 'SELECT username, user_type FROM person;';
+    pool.query(queryText)
+    .then((result) => {
+      console.log('user.router result.rows', result.rows);
+        res.send(result.rows);
+    }).catch((error) => {
+      console.log('error in user.get, server side', error);
+      res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
