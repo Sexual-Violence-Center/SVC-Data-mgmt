@@ -2,6 +2,7 @@ import { all } from 'redux-saga/effects';
 import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import postNewVictimSaga from './postNewVictimSaga';
+import getUsersSaga from './getUsersSaga';
 
 
 export default function* rootSaga() {
@@ -9,6 +10,7 @@ export default function* rootSaga() {
     userSaga(),
     loginSaga(),
     postNewVictimSaga(),
+    getUsersSaga(),
     // watchIncrementAsync()
   ]);
 }

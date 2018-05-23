@@ -16,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/users', (req, res) => {
   console.log('in authenticated user GET server route for UserEntryPage');
   if(req.isAuthenticated() && req.user.user_type === true) {
-    let queryText = 'SELECT username, user_type FROM person;';
+    let queryText = 'SELECT id, username, user_type FROM person;';
     pool.query(queryText)
     .then((result) => {
       console.log('user.router result.rows', result.rows);
