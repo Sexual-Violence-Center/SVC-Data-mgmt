@@ -25,7 +25,7 @@ class CustomContactType extends Component {
         
      }
 
-     contactTypeCustom = (event) => {
+     SubmitContactTypeCustom = (event) => {
          console.log('clicked submit contactTypeCustom Report');
          event.preventDefault();
         // TODO: this.props.dispatch({ sage and reducer to be added})
@@ -38,7 +38,7 @@ class CustomContactType extends Component {
                 <h4> Custom Contact Type Report: </h4>
                 <form value={this.state.contactType} 
                     onClick={this.handleChangeFor}
-                    onSubmit={this.contactTypeCustom}
+                    onSubmit={this.SubmitContactTypeCustom}
                     >
                 <input type="radio" 
                         id="phone_contact" 
