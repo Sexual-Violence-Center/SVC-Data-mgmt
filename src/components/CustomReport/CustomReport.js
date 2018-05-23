@@ -5,6 +5,7 @@ import ReportingNav from '../Nav/ReportingNav/ReportingNav';
 import CustomAge from './CustomReportComponents/AgeCustomReport';
 import CustomContactType from './CustomReportComponents/ContactTypeComponent';
 import CustomDisability from './CustomReportComponents/DisabilityCustomReport';
+import CustomGender from './CustomReportComponents/GenderCustomReport'
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -62,6 +63,7 @@ class customReportSelectionPage extends Component{
                     < CustomAge />
                     < CustomContactType />
                     < CustomDisability />
+                    < CustomGender />
                 </div>
             </div>
 

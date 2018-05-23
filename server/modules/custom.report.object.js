@@ -35,8 +35,10 @@ let customReportObject = {
         "contact_date" BETWEEN $1 AND $2 ) `,
     victim_gender_non_binary: `  "victim_gender" = 'Non-binary'  
         AND "contact_date" BETWEEN $1 AND $2 ) `,
-    victim_gender_unknown: ` ("victim_gender" IS NULL OR 
-        "victim_gender" = ‘other') AND "contact_date" BETWEEN $1 AND $2 ) `,
+    victim_gender_other: `  "victim_gender" = 'other'  
+        AND "contact_date" BETWEEN $1 AND $2 ) `,
+    victim_gender_not_reported: `"victim_gender" IS NULL 
+    AND "contact_date" BETWEEN $1 AND $2 ) `,
     total_gender_count: ` "contact_date" 
         BETWEEN $1 AND $2)`,
 
