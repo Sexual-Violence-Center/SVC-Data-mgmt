@@ -8,9 +8,6 @@ const Header = ({ title }) => (
   <div className="instructions">
     <div>
       <h1 className="lead">{ title }</h1>
-      <Router>
-      <Nav />
-      </Router>
     </div>
   </div>
 );
