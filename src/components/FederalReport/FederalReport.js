@@ -3,18 +3,34 @@ import { connect } from 'react-redux';
 import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
 // import Nav from '../../components/Nav/Nav';
-
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+// import getPersonReducer from '../../redux/reducers/getPersonReducer';
+ 
 
 const mapStateToProps = state => ({
     user: state.user,
-    state
+    person: state.getPersonReducer,
+    state,
   });
-// date = () => {
-//     this.startDate()
-//     console.log('date, date')
-// }
+ 
 
 class FederalReport extends Component{
+    // constructor (props){
+    //     super(props);
+
+    //     this.state={
+            
+    //     }
+    // } 
+
+
+    componentDidMount () {
+        
+        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+        this.props.dispatch({ type:'GET_PERSON_DATA', payload: {startDate: '1900-01-01', endDate: '2020-01-01'}});
+        console.log(this.props.state.getPersonReducer)
+    }
+
     render () {
         return (
             <div className="federalReport">
@@ -35,13 +51,13 @@ class FederalReport extends Component{
                     <tbody>
                     <tr>
                         <td>Total:</td>
-                        <td>{this.state}</td>
+                        <td>{this.props.state.getPersonReducer.total_victims}..</td>
                     </tr>
                     </tbody>
                 </table>
             </section>
             <section className="new">
-                <h4>NEW individuals who received services during the reporting period</h4>
+                <h4>New individuals who received services during the reporting period</h4>
                 <table className="federalTable">
                 <thead>
                     <tr>
@@ -52,7 +68,7 @@ class FederalReport extends Component{
                     <tbody>
                     <tr>
                         <td>New Individuals</td>
-                        <td>#####{this.state}</td>
+                        {/* <td>{this.props.person}</td> */}
                     </tr>
                     </tbody>
                 </table>
