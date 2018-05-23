@@ -3,6 +3,7 @@ import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import postNewVictimSaga from './postNewVictimSaga';
 import getUsersSaga from './getUsersSaga';
+import deleteUserSaga from './deleteUserSaga';
 
 
 export default function* rootSaga() {
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     loginSaga(),
     postNewVictimSaga(),
     getUsersSaga(),
+    deleteUserSaga(),
     // watchIncrementAsync()
   ]);
 }
