@@ -11,6 +11,11 @@ const Nav = () => (
           </Link>
         </li>
         <li>
+          <Link to="/adminlandingpage">
+          Admin Home
+          </Link>
+        </li>
+        <li>
           <Link to="/custom_report">
           Custom Report
           </Link>

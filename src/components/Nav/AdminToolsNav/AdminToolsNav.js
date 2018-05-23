@@ -16,13 +16,13 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/reporting_page">
-          Reporting
+          <Link to="/user_entry_page">
+          User Entry
           </Link>
         </li>
         <li>
-          <Link to="/admin_tools">
-        Admin Tools
+          <Link to="/data_entry_page">
+          Data Entry
           </Link>
         </li>
       </ul>

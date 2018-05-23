@@ -11,7 +11,7 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/admintools">
+          <Link to="/admin_tools">
         Admin Tools
           </Link>
         </li>
