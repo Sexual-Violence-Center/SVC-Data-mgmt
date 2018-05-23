@@ -10,7 +10,7 @@ const Nav = () => (
             Home
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/admin_tools">
         Admin Tools
           </Link>
@@ -24,7 +24,7 @@ const Nav = () => (
           <Link to="/reporting_page">
           Reporting
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/userlandingpage">
           User Landing Page
