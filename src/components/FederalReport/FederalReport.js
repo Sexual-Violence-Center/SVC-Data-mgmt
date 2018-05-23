@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
-// import Nav from '../../components/Nav/Nav';
+import ReportingNav from '../Nav/ReportingNav/ReportingNav';
 
 
 const mapStateToProps = state => ({
@@ -18,6 +18,7 @@ class FederalReport extends Component{
     render () {
         return (
             <div className="federalReport">
+            <ReportingNav />
             <h2> Select a date range for the Federal Report:</h2>
             <h3>Start Date:<Calendar /></h3><h3> End Date:<Calendar /></h3> 
                 <button>go</button>  
