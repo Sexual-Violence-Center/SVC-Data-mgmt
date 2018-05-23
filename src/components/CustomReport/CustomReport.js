@@ -34,22 +34,17 @@ class customReportSelectionPage extends Component{
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-
-
+    // loop over all custom report topics to display on screen
         let individualTopic = customReportTopic.map(topic => {
-       
             return (
                 <option
                     key={topic}>
-                {topic}
-                 </option>  
+                    {topic}
+                </option>  
             )
         })
-
-        console.log('individualTopic', individualTopic);
-        
-            
-
+        // console.log('individualTopic', individualTopic);
+    
         return ( 
             <div >
                 < ReportingNav / >
