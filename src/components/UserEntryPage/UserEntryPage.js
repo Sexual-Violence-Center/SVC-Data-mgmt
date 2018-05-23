@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
 import UserEntryPageList from './UserEntryPageList';
@@ -28,7 +28,7 @@ class UserEntryPage extends Component {
         message: 'Choose a username and password!',
       });
     } else {
-      const request = new Request('api/user/register', {
+      const request = new Request('api/user/register/new', {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
@@ -83,7 +83,7 @@ class UserEntryPage extends Component {
         <AdminToolsNav />
         <h1>User Entry Page</h1>
         {this.renderAlert()}
-          <form onSubmit={this.registerUser}>
+          <form>
             <h1>Add a new user</h1>
             <div>
               <label htmlFor="username">
@@ -106,13 +106,32 @@ class UserEntryPage extends Component {
                   onChange={this.handleInputChangeFor('password')}
                 />
               </label>
-            </div>
+              </div>
+              </form>
+            <label>
+              User type:
+            </label>
+            <form
+             value={this.state.user_type}
+                  onChange={this.handleInputChangeFor('user_type')}>
+                <input
+                  type="radio"
+                  id="user_type_admin"
+                  name="user_type"
+                  value={true}/>
+                  <label htmlFor="user_type_admin">Admin</label>
+                  <input
+                  type="radio"
+                  id="user_type_standard"
+                  name="user_type"
+                  value={false}/>
+                  <label htmlFor="user_type_standard">Standard</label>
             <div>
-              <input
-                type="submit"
+              <button
                 name="submit"
-                value="Submit"
-              />
+                onClick={this.registerUser}
+              >
+              Submit</button>
             </div>
           </form>
         <div>
@@ -120,6 +139,7 @@ class UserEntryPage extends Component {
           <UserEntryPageList />
 
         </div>
+
       </div>
     );
   }
