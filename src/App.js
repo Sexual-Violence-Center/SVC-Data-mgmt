@@ -22,7 +22,7 @@ import FederalReport from './components/FederalReport/FederalReport';
 import CountyReport from './components/CountyReport/CountyReport';
 import CustomReport from './components/CustomReport/CustomReport';
 import ReportingPage from './components/ReportingPage/ReportingPage';
-// import UserLandingPage from './components/UserLandingPage/UserLandingPage';
+import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
 
 import UserEntryPage from './components/AdminTools/UserEntryPage';
@@ -80,10 +80,10 @@ const App = () => (
         path="/reporting_page"
         component={ReportingPage}
         />
-        {/* <Route
+        <Route
           path="/UserLandingPage"
           component={UserLandingPage}
-        /> */}
+        />
         <Route
           path="/AdminLandingPage"
           component={AdminLandingPage}
