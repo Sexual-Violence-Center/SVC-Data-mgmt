@@ -16,7 +16,7 @@ class UserEntryPageList extends Component {
   }
 
   render(){
-
+    //This is necessary, because boolean values do not render on the DOM
     let user_type;
       if(this.props.user.user_type === true) {
         user_type = <p>Admin</p>
