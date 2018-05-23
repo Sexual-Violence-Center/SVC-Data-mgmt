@@ -2,13 +2,16 @@ const queryText = `SELECT
 	(select count(*) FROM "victim" WHERE  "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_served,  
 	
  	(select COUNT( * ) FROM "victim" WHERE "victim_prior_contact" = FALSE 
-        OR "victim_prior_contact" is NULL OR("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR "victim_contact_prior_oct" IS NULL)) 
+	    OR "victim_prior_contact" is NULL OR("victim_prior_contact" = TRUE AND 
+	    "victim_contact_prior_oct" = TRUE)
         AND "service_county" = $1
         AND "contact_date" BETWEEN $2 AND $3) as "new_victim",
-     (SELECT COUNT(*) FROM "victim" WHERE "crisis_counseling_individual" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_individual_counseling,
-     (SELECT COUNT(*) FROM "victim" WHERE "crisis_counseling_group" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_group_counseling,
-     (SELECT COUNT(*) FROM "victim" WHERE "crisis_counseling_individual" = true OR "crisis_counseling_group" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_individual_counseling,
+     (SELECT COUNT(*) FROM "victim" WHERE "victim_prior_contact" = FALSE 
+	    OR "victim_prior_contact" is NULL OR("victim_prior_contact" = TRUE AND 
+	    "victim_contact_prior_oct" = TRUE)  AND "crisis_counseling_individual" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_individual_counseling,
+     (SELECT COUNT(*) FROM "victim" WHERE "victim_prior_contact" = FALSE 
+	    OR "victim_prior_contact" is NULL OR("victim_prior_contact" = TRUE AND 
+	    "victim_contact_prior_oct" = TRUE)  AND "crisis_counseling_group" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_group_counseling,
      
    
     (select count(*) from "victim" WHERE "service_county" = $1 AND "victim_age" BETWEEN 0 AND 18 AND "contact_date" BETWEEN $2 AND $3) as victim_age_zero_to_eightteen,
