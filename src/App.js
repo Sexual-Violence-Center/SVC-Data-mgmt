@@ -20,7 +20,7 @@ import PinkForm from './components/PinkForm/PinkForm';
 import YellowForm from './components/YellowForm/YellowForm';
 import FederalReport from './components/FederalReport/FederalReport';
 import CountyReport from './components/CountyReport/CountyReport';
-// import CustomReport from './components/CustomReport/CustomReport';
+import CustomReport from './components/CustomReport/CustomReport';
 import ReportingPage from './components/ReportingPage/ReportingPage';
 // import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
@@ -65,17 +65,17 @@ const App = () => (
         component={DataEntryPage}
         />
         <Route
-          path="/FederalReport"
+          path="/federal_report"
           component={FederalReport}
         />
         <Route
-          path="/CountyReport"
+          path="/county_report"
           component={CountyReport}
         />
-        {/* <Route
-          path="/CustomReport"
+        <Route
+          path="/custom_report"
           component={CustomReport}
-        /> */}
+        />
         <Route 
         path="/reporting_page"
         component={ReportingPage}

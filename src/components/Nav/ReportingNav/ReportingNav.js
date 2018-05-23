@@ -11,17 +11,17 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/customreport">
+          <Link to="/custom_report">
           Custom Report
           </Link>
         </li>
         <li>
-          <Link to="/federalreport">
+          <Link to="/federal_report">
           Federal Report
           </Link>
         </li>
         <li>
-          <Link to="/countyreport">
+          <Link to="/county_report">
           County Report
           </Link>
         </li>
