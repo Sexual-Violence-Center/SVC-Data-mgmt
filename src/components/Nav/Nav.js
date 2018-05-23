@@ -10,21 +10,6 @@ const Nav = () => (
             Home
           </Link>
         </li>
-        {/* <li>
-          <Link to="/admin_tools">
-        Admin Tools
-          </Link>
-        </li>
-        <li>
-          <Link to="/data_entry_page">
-          Data Entry
-          </Link>
-        </li>
-        <li>
-          <Link to="/reporting_page">
-          Reporting
-          </Link>
-        </li> */}
         <li>
           <Link to="/userlandingpage">
           User Landing Page

@@ -1,8 +1,8 @@
-let object = {
-    total_victims: ` "contact_date" BETWEEN '2017-10-01' AND ‘2018-05-20’ `,
-    new_victim: ` "victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND ("victim_contact_prior_oct" = FALSE OR 
-        "victim_contact_prior_oct" IS NULL)) AND "contact_date" BETWEEN '2017-10-01' AND ‘2018-05-20' `,
+let customReportObject = {
+    total_victims: ` select count(*)  FROM “victim" WHERE "contact_date" BETWEEN '2017-10-01' AND ‘2018-05-20’ `,
+    new_victim: ` select count(*)  FROM “victim" WHERE "victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE) AND 
+        "contact_date" BETWEEN '2017-10-01' AND ‘2018-05-20' `,
 
  //ETHNICITIES
     victim_ethnicity_asian: ` select count(*)  FROM “victim" WHERE "victim_ethnicity" = 'Asian' AND
@@ -68,8 +68,6 @@ let object = {
         "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
     violence_bullying: `(select COUNT(*) FROM "victim" WHERE "violence_bullying" = TRUE AND 
         "contact_date" BETWEEN '2017-10-01' AND ‘2018-05-20’)`,
-    violence_bullying: `(select COUNT(*) FROM "victim" WHERE "violence_bullying" = TRUE AND 
-        "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
     violence_child_pornography: `(select COUNT(*) FROM "victim" WHERE "violence_child_pornography" = TRUE 
         AND "contact_date" BETWEEN '2017-10-01' AND '2018-05-20') `,
     violence_minor_by_family: `(select COUNT(*) FROM "victim" WHERE "violence_minor_by_family" = TRUE 
@@ -143,8 +141,7 @@ let object = {
             "contact_date" BETWEEN '2017-10-01' AND ‘2018-05-20')`,
         info_victims_rights: `(select COUNT(*) FROM "victim" WHERE "contact_type" = 'in-person' AND 
             ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-            ("victim_prior_contact" = TRUE AND ("victim_contact_prior_oct" = FALSE OR 
-            "victim_contact_prior_oct" IS NULL))) AND 
+            ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND 
             "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
         referral_victim_support: `(select COUNT(*) FROM "victim" WHERE "referral_agency" IS NOT NULL AND
             "contact_date" BETWEEN '2017-10-01' AND '2018-05-20') `,
@@ -152,8 +149,11 @@ let object = {
             "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
 
 // COUNTS FOR - (B) Personal Advocacy/Accompaniment: Total services provided during the reporting period
-        emergency_med_care: `(select COUNT(*) FROM "victim" WHERE 
-            ("medical_accompaniment_medical" = TRUE OR "medical_accompaniment_dental" = TRUE ) AND 
+        emergency_med_care_medical: `(select COUNT(*) FROM "victim" WHERE 
+            "medical_accompaniment_medical" = TRUE AND 
+            "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
+        emergency_med_care_dental: `(select COUNT(*) FROM "victim" WHERE 
+            "medical_accompaniment_dental" = TRUE AND 
             "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
         forensic_exam: `(select COUNT(*) FROM "victim" WHERE "medical_exam_support" = TRUE AND 
             "contact_date" BETWEEN '2017-10-01' AND '2018-05-20') `,
@@ -221,9 +221,7 @@ let object = {
 		"transportation_medical_accompaniment_medical" = TRUE OR
         "transportation_medical_accompaniment_dental" =TRUE))
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR
-        "victim_contact_prior_oct" IS NULL))) 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) 
 	
     AND "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`,
     
@@ -235,9 +233,7 @@ let object = {
         "crisis_counseling_group" = TRUE OR	
         "emergency_financial" = TRUE)
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR
-        "victim_contact_prior_oct" IS NULL))) 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) 
 	AND "contact_date" BETWEEN 	'2017-10-01' AND '2018-05-20')`,
 
 //TOTAL E SERVICES UNIQUE
@@ -249,8 +245,8 @@ let object = {
         "legal_law_enforcement_interview" = TRUE OR
         "legal_court_advocacy" = TRUE)
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR
-        "victim_contact_prior_oct" IS NULL))) 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) 
 	AND "contact_date" BETWEEN '2017-10-01' AND '2018-05-20')`      
 }
+
+module.exports = customReportObject;
