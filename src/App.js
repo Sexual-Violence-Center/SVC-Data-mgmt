@@ -21,7 +21,9 @@ import FederalReport from './components/FederalReport/FederalReport';
 import CountyReport from './components/CountyReport/CountyReport';
 // import CustomReport from './components/CustomReport/CustomReport';
 // import UserLandingPage from './components/UserLandingPage/UserLandingPage';
-// import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
+import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
+
+import UserEntryPage from './components/AdminTools/UserEntryPage';
 
 
 import './styles/main.css';
@@ -72,10 +74,14 @@ const App = () => (
           path="/UserLandingPage"
           component={UserLandingPage}
         /> */}
-        {/* <Route
+        <Route
           path="/AdminLandingPage"
           component={AdminLandingPage}
-        /> */}
+        />
+        <Route
+          path="/UserEntryPage"
+          component={UserEntryPage}
+        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
