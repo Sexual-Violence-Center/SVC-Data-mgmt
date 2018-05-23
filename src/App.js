@@ -24,8 +24,8 @@ import CustomReport from './components/CustomReport/CustomReport';
 import ReportingPage from './components/ReportingPage/ReportingPage';
 import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
-
 import UserEntryPage from './components/UserEntryPage/UserEntryPage';
+import SearchUpdatePage from './components/SearchUpdatePage/SearchUpdatePage';
 
 
 import './styles/main.css';
@@ -91,6 +91,10 @@ const App = () => (
         <Route
           path="/user_entry_page"
           component={UserEntryPage}
+        />
+        <Route 
+          path="/search_and_update"
+          component={SearchUpdatePage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

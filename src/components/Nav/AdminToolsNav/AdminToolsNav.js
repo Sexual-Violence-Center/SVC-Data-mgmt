@@ -25,6 +25,11 @@ const Nav = () => (
           Data Entry
           </Link>
         </li>
+        <li>
+          <Link to="/search_and_update">
+          Search/Update
+          </Link>
+        </li>
       </ul>
     </div>
   </div>
