@@ -6,6 +6,7 @@ import Support from '../FormComponents/Support/Support';
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
+import DataEntryNav from '../Nav/DataEntryNav/DataEntryNav';
 
 const mapStateToProps = state => ({
     state
@@ -29,6 +30,7 @@ class PinkForm extends Component {
     render() {
         return (
             <div>
+                <DataEntryNav />
                 <h1>SVC Telephone Contact Form for Primary AND Secondary Victims</h1>
                 <TelephoneContactInfo />
                 <PhoneServices />

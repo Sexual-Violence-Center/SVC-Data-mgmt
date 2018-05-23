@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MenuItem from '@material-ui/core/MenuItem';
 
-import Nav from '../Nav/Nav';
+import ReportingNav from '../Nav/ReportingNav/ReportingNav';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -33,23 +34,36 @@ class customReportSelectionPage extends Component{
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-        // let individualTopic = customReportTopic.map
 
+
+        let individualTopic = customReportTopic.map(topic => {
+       
+            return (
+                <option
+                    key={topic}>
+                {topic}
+                 </option>  
+            )
+        })
+
+        console.log('individualTopic', individualTopic);
+        
+            
 
         return ( 
             <div >
+                < ReportingNav / >
                 <h2> Custom Report Page </h2>
-                <form action="/action_page.php">
-                    <select name="cars" multiple>
-                    {/* <option value={individualTopic}> {individualTopic} </option>
-                    {individualTopic} */}
+                <form>
+                    <select className="customReportTopics" multiple>
+                        {individualTopic}
                     </select>
                     <input type="submit" />
                 </form>
             </div>
 
-        )// end return
+        ) //end return
     } //end render
-} //end class customReportSelectionPage
+} //end class
 
 export default connect(mapStateToProps)(customReportSelectionPage);
