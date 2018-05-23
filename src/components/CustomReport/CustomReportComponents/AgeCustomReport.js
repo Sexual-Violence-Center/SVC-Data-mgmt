@@ -6,16 +6,16 @@ const mapStateToProps = state => ({
     state,
 });
 
-class customAge extends Component {
+class CustomAge extends Component {
     state = {
         startingAge: "",
         endingAge: "",
     }
 
     customAgeReport = (event) => {
-        console.log('clicked customAge Report');
+        console.log('clicked submit customAge Report');
         event.preventDefault();
-        // this.props.dispatch({ sage and reducer to be added})
+        // TODO: this.props.dispatch({ sage and reducer to be added})
         }
     
 
@@ -52,4 +52,4 @@ class customAge extends Component {
     } //end render
 }//end class
 
-export default connect(mapStateToProps)(customAge)
+export default connect(mapStateToProps)(CustomAge)

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ReportingNav from '../Nav/ReportingNav/ReportingNav';
-import CustomAge from './CustomReportComponents/AgeCustomReport'
+import CustomAge from './CustomReportComponents/AgeCustomReport';
+import CustomContactType from './CustomReportComponents/ContactTypeComponent'
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -58,6 +59,7 @@ class customReportSelectionPage extends Component{
 
                 <div className="customReportSpecificTopic">
                     < CustomAge />
+                    < CustomContactType />
                 </div>
             </div>
 
