@@ -40,7 +40,7 @@ class CustomGender extends Component {
                     onClick={this.handleChangeFor}
                     onSubmit={this.SubmitGenderCustom}
                     >
-                <input type="radio" 
+                <input type="checkbox" 
                         id = "victim_gender_male"
                         name = "gender"
                         value="victim_gender_male"/>
@@ -48,7 +48,7 @@ class CustomGender extends Component {
                         Male                    
                     </label>
 
-                <input type="radio" 
+                <input type="checkbox" 
                         id = "victim_gender_female"
                         name = "gender"
                         value="victim_gender_female"/>
@@ -56,7 +56,7 @@ class CustomGender extends Component {
                         Female
                     </label>
 
-                <input type="radio" 
+                <input type="checkbox" 
                         id = "victim_gender_non_binary"
                         name = "gender"
                         value="victim_gender_non_binary"/>
@@ -64,7 +64,7 @@ class CustomGender extends Component {
                         Non-Binary
                     </label>
 
-                <input type="radio" 
+                <input type="checkbox" 
                         id = "victim_gender_other"
                         name = "gender"
                         value = "victim_gender_other"/>
@@ -72,7 +72,7 @@ class CustomGender extends Component {
                         Other
                     </label>
 
-                <input type="radio" 
+                <input type="checkbox" 
                         id = "victim_gender_not_reported"
                         name="gender" 
                         value = "victim_gender_not_reported"/>
@@ -80,7 +80,7 @@ class CustomGender extends Component {
                         Not Reported
                     </label>
 
-                <input type="radio" 
+                <input type="checkbox" 
                         id = "total_gender_count"
                         name="gender" 
                         value="total_gender_count" />
