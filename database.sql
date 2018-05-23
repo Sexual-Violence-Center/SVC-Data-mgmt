@@ -97,7 +97,7 @@ CREATE TABLE victim (
 	violence_unknown BOOLEAN,
 	victim_multiple_types_violence BOOLEAN, -- CHANGED FROM victim_multiple
 	
---  Police Report
+--  sice Report
  	police_report_filed VARCHAR (255),
 
 --  Demographic Survery
