@@ -117,6 +117,7 @@ class UserEntryPage extends Component {
           <UserEntryPageList />
 
         </div>
+
       </div>
     );
   }
