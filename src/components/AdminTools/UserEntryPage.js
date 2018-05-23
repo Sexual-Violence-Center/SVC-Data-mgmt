@@ -80,7 +80,7 @@ class UserEntryPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-          <form onSubmit={this.registerUser}>
+          <form>
             <h1>Add a new user</h1>
             <div>
               <label htmlFor="username">
@@ -103,12 +103,13 @@ class UserEntryPage extends Component {
                   onChange={this.handleInputChangeFor('password')}
                 />
               </label>
-            </div>
-            </form>
+              </div>
+              </form>
             <label>
               User type:
             </label>
-             <form value={this.state.user_type}
+            <form
+             value={this.state.user_type}
                   onChange={this.handleInputChangeFor('user_type')}>
                 <input
                   type="radio"
@@ -122,14 +123,14 @@ class UserEntryPage extends Component {
                   name="user_type"
                   value={false}/>
                   <label htmlFor="user_type_standard">Standard</label>
-              </form>
             <div>
-              <input
-                type="submit"
+              <button
                 name="submit"
-                value="Submit"
-              />
+                onClick={this.registerUser}
+              >
+              Submit</button>
             </div>
+          </form>
         <div>
 
           <UserEntryPageList />
