@@ -11,7 +11,8 @@ function makeCustomQuery  (params, customReportObject) {
     const values =[defaultStartDate, defaultEndDate];
     //Beginning of queryText
     let queryText = `SELECT `;
-    console.log(customReportObject);
+    console.log('params ', params);
+
     //iterates over the params object and for each key 
     //checks if the key matches a key in the customReportObject
     Object.keys(params).forEach(keyParams=>{
@@ -38,7 +39,7 @@ function makeCustomQuery  (params, customReportObject) {
     //adds a colon
     queryText = queryText.slice(0, -2);
     queryText +=`;`
-
+    console.log(queryText);
     return {queryText: queryText, values: values}
 }
 
@@ -47,3 +48,5 @@ const test = {
 };
 
 console.log(makeCustomQuery(test, customReportObject));
+
+module.exports = makeCustomQuery;
