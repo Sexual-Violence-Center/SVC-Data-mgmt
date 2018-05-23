@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 
 class AdminLandingPage extends Component {
 
   render(){
     return (
       <div>
+        <AdminNav />
         <div>
           <h1>Instructions</h1>
         </div>
