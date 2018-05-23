@@ -11,28 +11,18 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/admintools">
-        Admin Tools
+          <Link to="/customreport">
+          Custom Report
           </Link>
         </li>
         <li>
-          <Link to="/data_entry_page">
-          Data Entry
+          <Link to="/federalreport">
+          Federal Report
           </Link>
         </li>
         <li>
-          <Link to="/reporting_page">
-          Reporting
-          </Link>
-        </li>
-        <li>
-          <Link to="/userlandingpage">
-          User Landing Page
-          </Link>
-        </li>
-        <li>
-          <Link to="/adminlandingpage">
-          Admin Landing Page
+          <Link to="/countyreport">
+          County Report
           </Link>
         </li>
       </ul>

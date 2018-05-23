@@ -15,11 +15,13 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home from './components/Home/Home';
 // import AdminTools from './components/AdminTools/AdminTools';
+import DataEntryPage from './components/DataEntryPage/DataEntryPage';
 import PinkForm from './components/PinkForm/PinkForm';
 import YellowForm from './components/YellowForm/YellowForm';
 import FederalReport from './components/FederalReport/FederalReport';
 import CountyReport from './components/CountyReport/CountyReport';
 // import CustomReport from './components/CustomReport/CustomReport';
+import ReportingPage from './components/ReportingPage/ReportingPage';
 // import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
 
@@ -51,12 +53,16 @@ const App = () => (
           component={AdminTools}
         /> */}
         <Route
-          path="/PinkForm"
+          path="/telephone"
           component={PinkForm}
         />
         <Route
-          path="/YellowForm"
+          path="/in-person"
           component={YellowForm}
+        />
+        <Route 
+        path="/data_entry_page"
+        component={DataEntryPage}
         />
         <Route
           path="/FederalReport"
@@ -70,6 +76,10 @@ const App = () => (
           path="/CustomReport"
           component={CustomReport}
         /> */}
+        <Route 
+        path="/reporting_page"
+        component={ReportingPage}
+        />
         {/* <Route
           path="/UserLandingPage"
           component={UserLandingPage}
