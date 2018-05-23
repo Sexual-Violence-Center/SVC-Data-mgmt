@@ -14,8 +14,10 @@ class UserEntryPageList extends Component {
       <div>
         <table>
           <thead>
-            <th><p>Users: looping over array from GET users</p></th>
-            <th><p>looping over array from GET users</p></th>
+            <tr>
+              <th><p>Users: looping over array from GET users</p></th>
+              <th><p>looping over array from GET users</p></th>
+            </tr>
           </thead>
           <tbody>
             <tr>

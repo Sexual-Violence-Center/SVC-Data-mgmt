@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserEntryPageList from './UserEntryPageList';
 
@@ -27,7 +27,7 @@ class UserEntryPage extends Component {
         message: 'Choose a username and password!',
       });
     } else {
-      const request = new Request('api/user/register', {
+      const request = new Request('api/user/register/new', {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
@@ -104,6 +104,25 @@ class UserEntryPage extends Component {
                 />
               </label>
             </div>
+            </form>
+            <label>
+              User type:
+            </label>
+             <form value={this.state.user_type}
+                  onChange={this.handleInputChangeFor('user_type')}>
+                <input
+                  type="radio"
+                  id="user_type_admin"
+                  name="user_type"
+                  value={true}/>
+                  <label htmlFor="user_type_admin">Admin</label>
+                  <input
+                  type="radio"
+                  id="user_type_standard"
+                  name="user_type"
+                  value={false}/>
+                  <label htmlFor="user_type_standard">Standard</label>
+              </form>
             <div>
               <input
                 type="submit"
@@ -111,7 +130,6 @@ class UserEntryPage extends Component {
                 value="Submit"
               />
             </div>
-          </form>
         <div>
 
           <UserEntryPageList />

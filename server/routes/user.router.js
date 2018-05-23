@@ -44,6 +44,21 @@ router.post('/register', (req, res, next) => {
     .catch((err) => { next(err); });
 });
 
+//Handles POST request for Admin to create a new user from the UserEntryPage
+//The standard register route about shoud be disabled when development reaches
+//the stage where we no longer need the flexibility of having the standard 
+//registration process
+router.post('/register/new', (req, res, next) => {
+  const username = req.body.username;
+  const password = encryptLib.encryptPassword(req.body.password);
+  const user_type = req.body.user_type;
+
+  const queryText = 'INSERT INTO person (username, password, user_type) VALUES ($1, $2, $3) RETURNING id;';
+  pool.query(queryText, [username, password, user_type])
+    .then(() => { res.sendStatus(201); })
+    .catch((err) => { next(err); });
+});
+
 //Handles DELETE request of existing user
 //Only a logged-in admin can delete a user (in db person table, user_type is boolean; true = admin; false = user)
 router.delete('/:id', (req, res) => {
