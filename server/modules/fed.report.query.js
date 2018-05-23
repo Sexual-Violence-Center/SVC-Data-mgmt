@@ -11,7 +11,7 @@ let fedQueryText =
 	(select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as total_victims,
     (select COUNT(*) FROM "victim"  WHERE "victim_prior_contact" = FALSE OR 	
         "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR 	"victim_contact_prior_oct" IS NULL)) AND 
+        "victim_contact_prior_oct" = TRUE) AND 
         "contact_date" BETWEEN $1 AND $2) as "new_victim", ` +
 	
 // COUNTS FOR  - Demographics
@@ -143,9 +143,8 @@ let fedQueryText =
         as "info_criminal_justice_process",
     (select COUNT(*) FROM "victim" WHERE "contact_type" = 'in-person' AND 
         ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND ("victim_contact_prior_oct" = FALSE OR 
-        "victim_contact_prior_oct" IS NULL))) AND "contact_date" BETWEEN $1 AND $2) 
-        as "info_victims_rights",
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND 
+        "contact_date" BETWEEN $1 AND $2) as "info_victims_rights",
     (select COUNT(*) FROM "victim" WHERE "referral_agency" IS NOT NULL AND 
         "contact_date" BETWEEN $1 AND $2) as "referral_victim_support",
     (select COUNT(*) FROM "victim" WHERE "referral_other" IS NOT NULL AND 
@@ -215,9 +214,7 @@ let fedQueryText =
 			"transportation_medical_accompaniment_medical" = TRUE OR
 			"transportation_medical_accompaniment_dental" =TRUE))
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-	    ("victim_prior_contact" = TRUE AND 
-	    ("victim_contact_prior_oct" = FALSE OR
-	    "victim_contact_prior_oct" IS NULL))) 
+	    ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
 	AND "contact_date" BETWEEN 	$1 AND $2), 
 
     (SELECT  COUNT(*) as "total_C_Emotional_support_safety_service" FROM "victim" WHERE 
@@ -227,9 +224,7 @@ let fedQueryText =
 	    "crisis_counseling_group" = TRUE OR	
 	    "emergency_financial" = TRUE)
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-	    ("victim_prior_contact" = TRUE AND 
-	    ("victim_contact_prior_oct" = FALSE OR
-	    "victim_contact_prior_oct" IS NULL))) 
+	    ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
 	AND "contact_date" BETWEEN 	$1 AND $2),	
 
     (SELECT  COUNT(*) as "total_E_criminal_civil_justice_system" FROM "victim" WHERE 
@@ -240,9 +235,7 @@ let fedQueryText =
         "legal_law_enforcement_interview" = TRUE OR
         "legal_court_advocacy" = TRUE)
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR
-        "victim_contact_prior_oct" IS NULL))) 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
 	AND "contact_date" BETWEEN 	$1 AND $2);	`
 ;
 
