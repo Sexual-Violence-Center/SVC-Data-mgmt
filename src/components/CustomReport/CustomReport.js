@@ -6,6 +6,7 @@ import CustomAge from './CustomReportComponents/AgeCustomReport';
 import CustomContactType from './CustomReportComponents/ContactTypeComponent';
 import CustomDisability from './CustomReportComponents/DisabilityCustomReport';
 import CustomGender from './CustomReportComponents/GenderCustomReport'
+import ImmigrantCountryCustom from './CustomReportComponents/ImmigrantCountryCustom'
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -22,8 +23,13 @@ class customReportSelectionPage extends Component{
     //     //load custom report options on page load
     // }
 
-    render(){
+    submitCustomReport = (event) => {
+        console.log('clicked submit Submit Custom Report');
+        event.preventDefault();
+        // TODO: this.props.dispatch({ sage and reducer to be added})
+    }
 
+    render(){
         const customReportTopic = [
             'Age', 'Contact Type', 'Disabilities', 
             'Gender Identity', 'Immigrant Country', 
@@ -47,12 +53,16 @@ class customReportSelectionPage extends Component{
             )
         })
         // console.log('individualTopic', individualTopic);
-    
-        return ( 
-            <div >
+
+        let content = null;
+
+        if (this.props.user.userName) {
+            content = (
+                <div>
                 < ReportingNav / >
                 <h2> Custom Report Page </h2>
-                <form>
+                {/* add calendar */}
+                <form onSubmit={this.submitCustomReport}>
                     <select className="customReportTopics" multiple>
                         {individualTopic}
                     </select>
@@ -64,10 +74,18 @@ class customReportSelectionPage extends Component{
                     < CustomContactType />
                     < CustomDisability />
                     < CustomGender />
+                    < ImmigrantCountryCustom />
                 </div>
-            </div>
+                </div>
+            )
+        }
+
+        return ( 
+
+            content
 
         ) //end return
+
     } //end render
 } //end class
 

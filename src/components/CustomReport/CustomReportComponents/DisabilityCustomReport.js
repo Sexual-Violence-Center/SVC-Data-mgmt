@@ -23,12 +23,6 @@ class DisabilityCustom extends Component {
             [name]: value
         });   
      }
-     
-    SubmitDisabilitiesCustom = (event) => {
-    console.log('clicked submit Submit DisabilitiesCustom Report');
-    event.preventDefault();
-    // TODO: this.props.dispatch({ sage and reducer to be added})
-    }
 
     render () {
         return(
@@ -88,7 +82,6 @@ class DisabilityCustom extends Component {
                         Unknown
                     </label>
                 <br />
-            <input type="submit" />
             </form>
             </div>
         )
