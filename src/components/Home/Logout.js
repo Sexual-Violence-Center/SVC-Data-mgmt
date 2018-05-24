@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { history, withRouter } from 'react-router-dom';
-
-// import Nav from '../../components/Nav/Nav';
-// import AdminNav from '../Nav/AdminNav/AdminNav';
-// import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
-
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { withRouter } from 'react-router-dom';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
 
