@@ -32,7 +32,7 @@ function makeCustomQuery  (params, customReportObject) {
                 queryText += countWhere;
                 queryText += customReportObject[keyCustomReport];
                         //adds the key as an alias to give a common column name to the return
-                if(array[index + 1] !== 'and'){
+                if(array[index + 1] !== 'and' && array[index + 1] != undefined){
                     queryText += `${contactDate} as ${keyParams}, `;
                 }
             }
@@ -47,7 +47,7 @@ function makeCustomQuery  (params, customReportObject) {
         } else if (keyParams == 'endDate'){
             values[1]= params[keyParams];
         } 
-
+        //adds the contact date query and alias at the end of it
         if(array[index+1]==undefined){
             queryText += `${contactDate} as ${alias}, `;
         }
@@ -61,12 +61,12 @@ function makeCustomQuery  (params, customReportObject) {
     return {queryText: queryText, values: values}
 }
 
-const test = {
-  victim_gender_male: true,
-  and: true,
-  WhiteNonLatinoCaucasian: true,
-};
+// const test = {
+//   victim_gender_male: true,
+//   and: true,
+//   WhiteNonLatinoCaucasian: true,
+// };
 
-console.log(makeCustomQuery(test, customReportObject))
+// console.log(makeCustomQuery(test, customReportObject))
 
 module.exports = makeCustomQuery;
