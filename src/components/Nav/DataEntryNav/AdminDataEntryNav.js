@@ -3,28 +3,23 @@ import { Link } from 'react-router-dom';
 import Logout from '../../Home/Logout';
 
 
-const Nav = () => (
+const AdminDataEntryNav = () => (
   <div className="navbar">
     <div>
       <ul>
         <li>
           <Link to="/adminlandingpage">
-          Home
+            Home
           </Link>
         </li>
         <li>
-          <Link to="/custom_report">
-          Custom Report
+          <Link to="/telephone">
+          Telephone
           </Link>
         </li>
         <li>
-          <Link to="/federal_report">
-          Federal Report
-          </Link>
-        </li>
-        <li>
-          <Link to="/county_report">
-          County Report
+          <Link to="/in-person">
+          In-Person
           </Link>
         </li>
         <li>
@@ -35,4 +30,4 @@ const Nav = () => (
   </div>
 );
 
-export default Nav;
+export default AdminDataEntryNav;

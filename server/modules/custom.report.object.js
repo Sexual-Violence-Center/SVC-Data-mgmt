@@ -119,7 +119,7 @@ let customReportObject = {
     supported_on_call_unknown: `"supported_on_call" = 'unknown/hung up'  `,
 
 //TRANSGENDERED
-    victim_gender_transgender: ` "victim_gender" = 'transgender' OR "victim_gender" = 'non-binary' `,
+    victim_gender_transgender: ` "victim_gender" = 'transgender' `,
 
 //TRANSPORTATION
     transportation_medical_exam_support: `"transportation_medical_exam_support" = TRUE  `,

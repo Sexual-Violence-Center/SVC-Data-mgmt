@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const postQueryText = require('../modules/makePostQuery');
+const makePutQuery = require('../modules/makePutQuery')
 
 
 //Post victim to db
@@ -24,17 +25,24 @@ router.post('/', (req, res) => {
 });
 
 //Put route for victim 
-// TODO change so only admin can change a form
+//expects id to also be part of the req.body 
+//http://localhost:5000/api/victim/9
 router.put('/:id', (req, res)=>{
-    //will want to change this so only the admin can update a form
-    if(req.isAuthenticated()){
+    
+    if (req.isAuthenticated() && req.user.user_type === true) {
+      //function takes in req.body(id is part of body)
+      //returns the query string and an array of the values
+      const queryText = makePutQuery(req.body)
+      pool.query(queryText.query, queryText.values)
+          .then((result)=>{
+              res.sendStatus(200);
+          })
+          .catch((error)=>{
+              res.sendStatus(500)
+          })
 
-
-
-        //pool.query goes here
-        res.sendStatus(200);
     } else {
-        res.sendStatus(403);
+      res.sendStatus(403);
     }
 })
 

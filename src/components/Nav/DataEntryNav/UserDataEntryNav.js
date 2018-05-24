@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from '../../Home/Logout';
 
-const Nav = () => (
+
+const UserDataEntryNav = () => (
   <div className="navbar">
     <div>
       <ul>
         <li>
-          <Link to="/home">
+          <Link to="/userlandingpage">
             Home
           </Link>
         </li>
@@ -20,9 +22,12 @@ const Nav = () => (
           In-Person
           </Link>
         </li>
+        <li>
+          <Logout />
+        </li>
       </ul>
     </div>
   </div>
 );
 
-export default Nav;
+export default UserDataEntryNav;
