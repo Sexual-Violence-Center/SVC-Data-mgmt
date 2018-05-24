@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
 import UserEntryPageList from './UserEntryPageList';
 
 const mapStateToProps = state => ({
-  state
-})
+  user: state.user,
+  state,
+});
 
 class UserEntryPage extends Component {
   constructor(props) {
@@ -20,9 +22,21 @@ class UserEntryPage extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+      this.props.dispatch({
+        type: 'GET_USERS_SAGA'    
+    });
+   }
+  
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('login');
+    }
+  }
+
   registerUser = (event) => {
     event.preventDefault();
-
     if (this.state.username === '' || this.state.password === '') {
       this.setState({
         message: 'Choose a username and password!',
@@ -78,7 +92,13 @@ class UserEntryPage extends Component {
   }
 
   render() {
+
+    const userEntryPageList = this.props.state.getUsersReducer.map((user) => {
+      return (<UserEntryPageList key={user.id} user={user}/>)
+
+    })
     return (
+
       <div>
         <AdminToolsNav />
         <h1>User Entry Page</h1>
@@ -135,8 +155,11 @@ class UserEntryPage extends Component {
             </div>
           </form>
         <div>
+          <h3>Users:</h3>
+        </div>
+        <div>
 
-          <UserEntryPageList />
+          { userEntryPageList }
 
         </div>
 

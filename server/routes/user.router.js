@@ -6,17 +6,17 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-// Handles Ajax request for user information if user is authenticated
+// Project file that handles Ajax request for user information confirming if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
   // Send back user object from database
   res.send(req.user);
 });
 
-// GET request for list of users in the person table. List displays //username and user_type on the UserEnterPage (along with a delete button)
+// GET request for list of users in the person table. List displays username and user_type on the UserEnterPage (along with a delete button)
 router.get('/users', (req, res) => {
   console.log('in authenticated user GET server route for UserEntryPage');
   if(req.isAuthenticated() && req.user.user_type === true) {
-    let queryText = 'SELECT username, user_type FROM person;';
+    let queryText = 'SELECT id, username, user_type FROM person;';
     pool.query(queryText)
     .then((result) => {
       console.log('user.router result.rows', result.rows);
@@ -33,7 +33,7 @@ router.get('/users', (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-//TODO  make so only an admin can register a user
+//TODO: this is the standard project file--we should comment this out or delete it before deployment
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
@@ -45,9 +45,8 @@ router.post('/register', (req, res, next) => {
 });
 
 //Handles POST request for Admin to create a new user from the UserEntryPage
-//The standard register route about shoud be disabled when development reaches
-//the stage where we no longer need the flexibility of having the standard 
-//registration process
+//TODO: the standard register route (above) shoud be disabled when development reaches
+//the stage where we no longer need the flexibility of having the standard registration process
 router.post('/register/new', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
@@ -59,7 +58,7 @@ router.post('/register/new', (req, res, next) => {
     .catch((err) => { next(err); });
 });
 
-//Handles DELETE request of existing user
+//Handles DELETE request of existing user on UserEntryPage
 //Only a logged-in admin can delete a user (in db person table, user_type is boolean; true = admin; false = user)
 router.delete('/:id', (req, res) => {
   console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
