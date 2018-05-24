@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import DataEntryNav from '../Nav/DataEntryNav/DataEntryNav';
+import AdminDataEntryNav from '../Nav/DataEntryNav/AdminDataEntryNav';
+// import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
 
 
 class DataEntryPage extends Component {
     render(){
         return(
             <div>
-                <DataEntryNav />
+                <AdminDataEntryNav />
                 <h1>Data Entry Page</h1>
             </div>
         )
