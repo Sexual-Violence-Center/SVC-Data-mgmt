@@ -6,18 +6,11 @@ const mapStateToProps = state => ({
     state,
 });
 
-class customAge extends Component {
+class CustomAge extends Component {
     state = {
         startingAge: "",
         endingAge: "",
     }
-
-    customAgeReport = (event) => {
-        console.log('clicked customAge Report');
-        event.preventDefault();
-        // this.props.dispatch({ sage and reducer to be added})
-        }
-    
 
     endingAgeChange = (event) => {
         event.preventDefault();
@@ -45,11 +38,10 @@ class customAge extends Component {
                 <input className="inputField" placeholder = "Ending Age"
                     type = "number" onChange = {this.endingAgeChange}
                 />
-                <input type="submit" />
             </form>
             </div>
         )
     } //end render
 }//end class
 
-export default connect(mapStateToProps)(customAge)
+export default connect(mapStateToProps)(CustomAge)
