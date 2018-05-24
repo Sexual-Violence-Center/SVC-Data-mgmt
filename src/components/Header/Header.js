@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Header = ({ title }) => (
   <div className="instructions">
     <div>
