@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BannerAndLogout from '../../Home/BannerAndLogout';
+import Logout from '../../Home/Logout';
 
 const Nav = () => (
   <div className="navbar">
@@ -22,7 +22,6 @@ const Nav = () => (
           </Link>
         </li>
       </ul>
-      {/* <BannerAndLogout /> */}
     </div>
   </div>
 );
