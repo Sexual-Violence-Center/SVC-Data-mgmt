@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import AdminNav from '../Nav/AdminNav/AdminNav';
-// import BannerAndLogout from '../Home/BannerAndLogout';
+import { connect } from 'react-redux';
+import AdminNav from "../Nav/AdminNav/AdminNav";
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+
+
 
 class AdminLandingPage extends Component {
 
@@ -13,7 +19,7 @@ class AdminLandingPage extends Component {
           <h1>Instructions</h1>
         </div>
         <div>
-          <h2>Welcome!</h2>
+          <h2>Welcome, {this.props.user.userName}!</h2>
           <p>
             Access to the administrator views is provided by clicking items under REPORTS and ACTIONS on the navigation bar to the left. <br/>Clicking Federal or County displays the selected report. <br/> Clicking Custom allows an admin to select various reporting criteria for reviewing.
             <br/> Clicking Data Entry provides an admin with the basic user view, where data can be entered for the "pink and yellow forms".
@@ -26,4 +32,4 @@ class AdminLandingPage extends Component {
   }
 }
 
-export default (AdminLandingPage);
+export default connect(mapStateToProps)(AdminLandingPage);
