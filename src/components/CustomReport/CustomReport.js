@@ -18,6 +18,7 @@ import PoliceReportCustom from './CustomReportComponents/PoliceReportCustom';
 import RaceEthnicityCustom from './CustomReportComponents/RaceEthnicityCustom';
 import SexualOrientationCustom from './CustomReportComponents/SexualOrientationCustom';
 import SpecialClassificationCustom from './CustomReportComponents/SpecialClassificationCustom';
+import SupportOnCallCustom from './CustomReportComponents/SupportedOnCallCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -120,6 +121,7 @@ class customReportSelectionPage extends Component{
                     < RaceEthnicityCustom />
                     < SexualOrientationCustom />
                     < SpecialClassificationCustom />
+                    < SupportOnCallCustom />
                 </div>
             </div>
         ) //end return
