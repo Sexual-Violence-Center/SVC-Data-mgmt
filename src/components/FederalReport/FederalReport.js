@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Calendar from 'react-calendar'
+// import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
-// import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 // import getPersonReducer from '../../redux/reducers/getPersonReducer';
  
@@ -17,6 +16,30 @@ const mapStateToProps = state => ({
  
 
 class FederalReport extends Component{ 
+    constructor(){
+        super();
+        this.state = {
+            startDate: '',
+            endDate: '',
+        }
+    }
+
+    handleChangeFor = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        }); 
+       
+    }
+    submit = () => {
+        this.props.dispatch({
+            type: 'GET_PERSON_DATA', 
+            payload: this.state
+        })
+    }
 
     componentDidMount () {
         
@@ -30,8 +53,13 @@ class FederalReport extends Component{
             <div className="federalReport">
             <ReportingNav />
             <h2> Select a date range for the Federal Report:</h2>
-            <h3>Start Date:<Calendar /></h3><h3> End Date:<Calendar /></h3> 
-                <button>go</button>  
+            
+            Start Date:
+                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
+                End Date:
+                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
+            
+                <button onClick={this.submit}>go</button>  
                 <button>Print</button>
             <div className="dropdown">
             <section className="total">
@@ -80,7 +108,7 @@ class FederalReport extends Component{
                     <tbody>
                     <tr>
                         <td>American Indian of Alaskan Native</td>
-                        <td>{this.props.state.getPersonReducer.amerIndAlaskaNative}</td>
+                        <td>{this.props.state.getPersonReducer.Native_American}</td>
                     </tr>
                     <tr>
                         <td>Asian</td>
@@ -104,7 +132,7 @@ class FederalReport extends Component{
                     </tr>
                     <tr>
                         <td>Other Race</td>
-                        <td>{this.props.state.getPersonReducer.other}</td>
+                        <td>{this.props.state.getPersonReducer.Other}</td>
                     </tr>
                     <tr>
                         <td>Multiple Races</td>

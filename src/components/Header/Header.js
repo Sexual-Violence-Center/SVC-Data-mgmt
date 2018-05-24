@@ -1,8 +1,8 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
-import {
-  BrowserRouter as Router
-} from 'react-router-dom';
+// import Nav from '../../components/Nav/Nav';
+// import {
+//   BrowserRouter as Router
+// } from 'react-router-dom';
 
 const Header = ({ title }) => (
   <div className="instructions">
