@@ -1,36 +1,42 @@
-const express = require("express");
-const pool = require("../modules/pool");
+// const express = require("express");
+// const pool = require("../modules/pool");
+
+/*This is the SQL code for all federal reporting. 
+There is one query which is exported to report.federal.router.js.
+Sections are separated in accordance with the headers on the federal report.
+*/
 
 let fedQueryText =
 `SELECT 
 	(select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as total_victims,
     (select COUNT(*) FROM "victim"  WHERE "victim_prior_contact" = FALSE OR 	
         "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR 	"victim_contact_prior_oct" IS NULL)) AND 
-        "contact_date" BETWEEN $1 AND $2) as "new_victim",
+        "victim_contact_prior_oct" = TRUE) AND 
+        "contact_date" BETWEEN $1 AND $2) as "new_victim", ` +
 	
-
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Asian' 
+// COUNTS FOR  - Demographics
+    `(select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Asian' 
         AND "contact_date" BETWEEN $1 AND $2) as "victim_ethnicity_asian",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'amerIndAlaskaNative' 
-        AND "contact_date" BETWEEN $1 AND $2) as "amerIndAlaskaNative",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'hispanicOrLatino' 
-        AND "contact_date" BETWEEN $1 AND $2) as "hispanicOrLatino",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'africanAmerican' 
-        AND "contact_date" BETWEEN $1 AND $2) as "africanAmerican",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'pacificIslanderHawaiian' 
-        AND "contact_date" BETWEEN $1 AND $2) as "pacificIslanderHawaiian",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'white' 
-        AND "contact_date" BETWEEN $1 AND $2) as "white",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'other' 
-        AND "contact_date" BETWEEN 	$1 AND $2) as "other",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'multiple_races' 
-        AND "contact_date" BETWEEN $1 AND $2) as "multiple_races",
-    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'not_reported' 
-        AND "contact_date" BETWEEN $1 AND $2) as "not_reported",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Native American' 
+        AND "contact_date" BETWEEN $1 AND $2) as "Native American",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Chican@/Latin@' 
+        AND "contact_date" BETWEEN $1 AND $2) as "Chican@/Latin@",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'African American/Black' 
+        AND "contact_date" BETWEEN $1 AND $2) as "African American/Black",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Native Hawaiian/Pacific Islander' 
+        AND "contact_date" BETWEEN $1 AND $2) as "Native Hawaiian/Pacific Islander",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'White non-Latino/Caucasian' 
+        AND "contact_date" BETWEEN $1 AND $2) as "White non-Latino/Caucasian",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Other' 
+        AND "contact_date" BETWEEN 	$1 AND $2) as "Other",
+    (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Multi-racial' 
+        AND "contact_date" BETWEEN $1 AND $2) as "Multi-racial",
+    (select COUNT(*) FROM "victim" WHERE ("victim_ethnicity" = 'unknown' OR "victim_ethnicity" IS NULL)  
+        AND "contact_date" BETWEEN $1 AND $2) as "ethnicity_unknown",
     (select COUNT("victim_ethnicity") FROM "victim" WHERE "contact_date" 
-        BETWEEN $1 AND $2) as "total_ethnicity",
+        BETWEEN $1 AND $2) as "total_ethnicity", ` +
 	
+<<<<<<< HEAD:server/routes/fed-report-query-text.js
 
        
         (select count(*) FROM "victim" WHERE "victim_gender" = 'Male'
@@ -45,9 +51,22 @@ let fedQueryText =
             AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_unknown,
         (select COUNT("victim_gender") FROM "victim" WHERE "contact_date"
             BETWEEN $1 AND $2) as "total_gender_count",
+=======
+// COUNTS FOR  - Gender
+    `(select count(*) FROM "victim" WHERE "victim_gender" = 'Male' 
+        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_male,
+    (select count(*) FROM "victim" WHERE "victim_gender" = 'Female' 
+        AND "contact_date" BETWEEN 	$1 AND $2 ) as victim_gender_female,
+    (select count(*) FROM "victim" WHERE  "victim_gender" = 'Non-binary' 
+        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_non_binary,
+    (select count(*) FROM "victim" WHERE ("victim_gender" IS NULL OR "victim_gender" = 'other')
+        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_unknown,
+    (select COUNT("victim_gender") FROM "victim" WHERE "contact_date" 
+        BETWEEN $1 AND $2) as "total_gender_count", ` +
+>>>>>>> master:server/modules/fed.report.query.js
     
-
-    (select count(*) from "victim" WHERE "victim_age" BETWEEN 0 AND 12 
+//COUNTS FOR  - Age
+    `(select count(*) from "victim" WHERE "victim_age" BETWEEN 0 AND 12 
         AND "contact_date" BETWEEN $1 AND $2) as victim_age_zero_to_twelve,
     (select count(*) from "victim" WHERE "victim_age" BETWEEN 13 AND 17 
         AND "contact_date" BETWEEN $1 AND $2) as victim_age_thirteen_to_seventeen,
@@ -59,10 +78,11 @@ let fedQueryText =
        AND "contact_date" BETWEEN $1 AND $2) as victim_age_sixty_and_older,
     (select count(*) from "victim" WHERE "victim_age" IS NULL 
        AND "contact_date" BETWEEN $1 AND $2) as victim_age_unknown,
-    (select COUNT("victim_age") FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_age_count",
+    (select COUNT("victim_age") FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) 
+        as "total_age_count", ` + 
    	
-
-    (select COUNT(*) FROM "victim" WHERE "violence_adult_sexual" = TRUE 
+//COUNTS FOR  -  Types of Victimization
+    `(select COUNT(*) FROM "victim" WHERE "violence_adult_sexual" = TRUE 
         AND "contact_date" BETWEEN 	$1 AND $2) as "violence_adult_sexual",
     (select COUNT(*) FROM "victim" WHERE "violence_adult_when_child_by_family" = TRUE 
         AND "contact_date" BETWEEN 	$1 AND $2) as "violence_adult_when_child_by_family",
@@ -110,10 +130,10 @@ let fedQueryText =
     (select COUNT(*) FROM "victim" WHERE ("violence_unknown" = TRUE) 
         AND "contact_date" BETWEEN $1 AND 	$2) as "violence_unknown",
     (select COUNT(*) FROM "victim" WHERE victim_multiple_types_violence = TRUE AND 
-        "contact_date" BETWEEN $1 AND $2) as "victim_multiple_types_violence",
+        "contact_date" BETWEEN $1 AND $2) as "victim_multiple_types_violence", ` +
 	
-
-    (select COUNT(*) FROM "victim" WHERE "disability_deaf" = TRUE 
+// COUNTS FOR  -  Types of Victimization: Special classification of individuals
+    `(select COUNT(*) FROM "victim" WHERE "disability_deaf" = TRUE 
         AND "contact_date" BETWEEN $1 AND $2) as "disability_deaf",
     (select COUNT(*) FROM "victim" WHERE "homeless" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "homeless",
@@ -121,8 +141,8 @@ let fedQueryText =
         "victim_immigrant" != 'No' AND "victim_immigrant" != 'Unknown') AND 
         "contact_date" BETWEEN $1 AND $2) as "victim_immigrant",
     (select COUNT(*) FROM "victim" WHERE ("victim_transgender" = 'yes' OR 
-        "victim_gender" = 'transgender' OR "victim_sexual_orientation" = 'homosexual')
-        AND "contact_date" BETWEEN $1 AND $2) as "lgbtq",
+        "victim_gender" = 'transgender' OR "victim_sexual_orientation" = 'Gay' 
+        OR "victim_sexual_orientation" = 'Lesbian') AND "contact_date" BETWEEN $1 AND $2) as "lgbtq",
     (select COUNT(*) FROM "victim" WHERE "veteran" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "veteran",
     (select COUNT(*) FROM "victim" WHERE ("disability_physical" = TRUE OR
@@ -131,25 +151,24 @@ let fedQueryText =
     (select COUNT(*) FROM "victim" WHERE "limited_english" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "limited_english",
     (select COUNT(*) FROM "victim" WHERE ("emergency_financial" = TRUE OR "reparations_claims" = TRUE)
-        AND "contact_date" BETWEEN $1 AND $2) as "assisted_with_victim_compensation",
+        AND "contact_date" BETWEEN $1 AND $2) as "assisted_with_victim_compensation", ` +
     
-        
-    (select COUNT(*) FROM "victim" WHERE ("legal_court_advocacy" = TRUE OR 
+// COUNTS FOR - (A) Information & Referral: Total services provided during the reporting period
+    `(select COUNT(*) FROM "victim" WHERE ("legal_court_advocacy" = TRUE OR 
         "information_criminal_justice" = TRUE OR "legal_law_enforcement_interview" = TRUE OR 
         "legal_prosecution_related" = TRUE) AND "contact_date" BETWEEN $1 AND $2) 
         as "info_criminal_justice_process",
     (select COUNT(*) FROM "victim" WHERE "contact_type" = 'in-person' AND 
         ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND ("victim_contact_prior_oct" = FALSE OR 
-        "victim_contact_prior_oct" IS NULL))) AND "contact_date" BETWEEN $1 AND $2) 
-        as "info_victims_rights",
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND 
+        "contact_date" BETWEEN $1 AND $2) as "info_victims_rights",
     (select COUNT(*) FROM "victim" WHERE "referral_agency" IS NOT NULL AND 
         "contact_date" BETWEEN $1 AND $2) as "referral_victim_support",
     (select COUNT(*) FROM "victim" WHERE "referral_other" IS NOT NULL AND 
-        "contact_date" BETWEEN $1 AND $2) as "referral_other_services",
+        "contact_date" BETWEEN $1 AND $2) as "referral_other_services", ` +
 
-	
-    (select COUNT(*) FROM "victim" WHERE ("medical_accompaniment_medical" = TRUE OR 
+// COUNTS FOR - (B) Personal Advocacy/Accompaniment: Total services provided during the reporting period
+    `(select COUNT(*) FROM "victim" WHERE ("medical_accompaniment_medical" = TRUE OR 
         "medical_accompaniment_dental" = TRUE) AND "contact_date" BETWEEN $1 AND $2) 
         as "emergency_med_care",
     (select COUNT(*) FROM "victim" WHERE "medical_exam_support" = TRUE AND 
@@ -163,10 +182,10 @@ let fedQueryText =
     (select COUNT(*) FROM "victim" WHERE ("transportation_medical_exam_support" = TRUE OR 
         "transportation_medical_accompaniment_medical" = TRUE OR 	
         "transportation_medical_accompaniment_dental" =TRUE) AND 
-        "contact_date" BETWEEN $1 AND $2) as "transportation",
+        "contact_date" BETWEEN $1 AND $2) as "transportation", ` + 
 
-
-	(select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "crisis_intervention",
+// COUNTS FOR  - (C) Emotional Support of Safety Services: Total services provided during the reporting period
+	`(select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "crisis_intervention",
     (select COUNT(*) FROM "victim" WHERE "contact_type" = 'phone' AND 
         "contact_date" BETWEEN $1 AND $2) as "hotline_intervention",
     (select COUNT(*) FROM "victim" WHERE "crisis_counseling_individual" = TRUE AND 
@@ -174,10 +193,10 @@ let fedQueryText =
     (select COUNT(*) FROM "victim" WHERE "crisis_counseling_group" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "crisis_counseling_group",
     (select COUNT(*) FROM "victim" WHERE "emergency_financial" = TRUE AND 
-        "contact_date" BETWEEN $1 AND $2) as "emergency_financial",
+        "contact_date" BETWEEN $1 AND $2) as "emergency_financial", ` +
 
-
-    (select COUNT(*) FROM "victim" WHERE "legal_ofp_hro" = 'TRUE' AND 
+// COUNTS FOR - (E) Criminal/Civil Justice System Assistance: Total services provided during the reporting period
+    `(select COUNT(*) FROM "victim" WHERE "legal_ofp_hro" = 'TRUE' AND 
         "contact_date" BETWEEN $1 AND $2) as "ofp_hro",
     (select COUNT(*) FROM "victim" WHERE "other_emergency_justice" = 'TRUE' AND 
         "contact_date" BETWEEN $1 AND $2) as "other_emergency_justice",
@@ -188,19 +207,18 @@ let fedQueryText =
     (select COUNT(*) FROM "victim" WHERE "legal_law_enforcement_interview" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "legal_law_enforcement_interview",
     (select COUNT(*) FROM "victim" WHERE "legal_court_advocacy" = TRUE AND 
-        "contact_date" BETWEEN $1 AND $2) as "legal_court_advocacy",
+        "contact_date" BETWEEN $1 AND $2) as "legal_court_advocacy", ` + 
 
-	
-
-	(SELECT  COUNT(*) as "total_A_information_referral" FROM "victim" WHERE 
+// COUNTS FOR - Individuals who received services during the reporting period
+    // (individual totals for sections A, B, C, and E)
+	`(SELECT  COUNT(*) as "total_A_information_referral" FROM "victim" WHERE 
 	("legal_court_advocacy" = TRUE  OR 	
 		"information_criminal_justice" = TRUE OR 
 		"legal_law_enforcement_interview" = TRUE OR 
 		"legal_prosecution_related" = TRUE OR 	
 		"referral_agency" IS NOT NULL OR 
 		"referral_other" IS NOT NULL)
-	AND "contact_date" BETWEEN 	$1 AND $2),	
-	
+	AND "contact_date" BETWEEN 	$1 AND $2),		
 		
 	(SELECT  COUNT(*) as "total_B_personal_advocacy_accompaniment" FROM "victim" WHERE 
 	(("medical_accompaniment_medical" = TRUE OR 
@@ -213,11 +231,8 @@ let fedQueryText =
 			"transportation_medical_accompaniment_medical" = TRUE OR
 			"transportation_medical_accompaniment_dental" =TRUE))
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-	    ("victim_prior_contact" = TRUE AND 
-	    ("victim_contact_prior_oct" = FALSE OR
-	    "victim_contact_prior_oct" IS NULL))) 
+	    ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
 	AND "contact_date" BETWEEN 	$1 AND $2), 
-
 
     (SELECT  COUNT(*) as "total_C_Emotional_support_safety_service" FROM "victim" WHERE 
 	("contact_type" = 'phone' OR
@@ -226,11 +241,8 @@ let fedQueryText =
 	    "crisis_counseling_group" = TRUE OR	
 	    "emergency_financial" = TRUE)
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-	    ("victim_prior_contact" = TRUE AND 
-	    ("victim_contact_prior_oct" = FALSE OR
-	    "victim_contact_prior_oct" IS NULL))) 
+	    ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
 	AND "contact_date" BETWEEN 	$1 AND $2),	
-
 
     (SELECT  COUNT(*) as "total_E_criminal_civil_justice_system" FROM "victim" WHERE 
 	("legal_ofp_hro" = 'TRUE' OR
@@ -240,9 +252,7 @@ let fedQueryText =
         "legal_law_enforcement_interview" = TRUE OR
         "legal_court_advocacy" = TRUE)
 	AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-        ("victim_prior_contact" = TRUE AND 
-        ("victim_contact_prior_oct" = FALSE OR
-        "victim_contact_prior_oct" IS NULL))) 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
 	AND "contact_date" BETWEEN 	$1 AND $2);	`
 ;
 

@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
-const fedQueryText = require('./fed-report-query-text');
+const fedQueryText = require('../modules/fed.report.query')
 
 // TODO make so only the admin can get the reports
 

@@ -6,6 +6,8 @@ import Calendar from 'react-calendar'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 // import getPersonReducer from '../../redux/reducers/getPersonReducer';
  
+import ReportingNav from '../Nav/ReportingNav/ReportingNav';
+
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -26,6 +28,7 @@ class FederalReport extends Component{
     render () {
         return (
             <div className="federalReport">
+            <ReportingNav />
             <h2> Select a date range for the Federal Report:</h2>
             <h3>Start Date:<Calendar /></h3><h3> End Date:<Calendar /></h3> 
                 <button>go</button>  
