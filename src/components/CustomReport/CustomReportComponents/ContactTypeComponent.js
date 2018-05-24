@@ -25,12 +25,6 @@ class CustomContactType extends Component {
         
      }
 
-     SubmitContactTypeCustom = (event) => {
-         console.log('clicked submit contactTypeCustom Report');
-         event.preventDefault();
-        // TODO: this.props.dispatch({ sage and reducer to be added})
-     }
-
     render () {
 
         return(
@@ -54,7 +48,6 @@ class CustomContactType extends Component {
                     <label htmlFor="in_person_contact">
                         Telephone
                     </label>
-                <input type="submit" />
                 </form>
             </div>
         )

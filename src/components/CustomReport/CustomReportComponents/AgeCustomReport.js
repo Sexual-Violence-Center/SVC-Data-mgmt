@@ -12,13 +12,6 @@ class CustomAge extends Component {
         endingAge: "",
     }
 
-    customAgeReport = (event) => {
-        console.log('clicked submit customAge Report');
-        event.preventDefault();
-        // TODO: this.props.dispatch({ sage and reducer to be added})
-        }
-    
-
     endingAgeChange = (event) => {
         event.preventDefault();
         this.setState({
@@ -45,7 +38,6 @@ class CustomAge extends Component {
                 <input className="inputField" placeholder = "Ending Age"
                     type = "number" onChange = {this.endingAgeChange}
                 />
-                <input type="submit" />
             </form>
             </div>
         )
