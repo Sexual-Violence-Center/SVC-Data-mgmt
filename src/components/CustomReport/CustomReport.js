@@ -11,6 +11,18 @@ import IndividualsServiced from './CustomReportComponents/IndServicedCustom';
 import CrisisCounseling from './CustomReportComponents/I-PCrisisCounselingCustom';
 import AdvocacyCivilCustom from './CustomReportComponents/I-PAdvocacyCivilCustom';
 import AdvocacyCriminalCustom from './CustomReportComponents/I-PAdvocacyCriminalCustom';
+import AdvocacyMedicalCustom from './CustomReportComponents/I-PMedicalAdvocacy';
+import AdvocacyOtherCustom from './CustomReportComponents/I-POtherAdvocacy';
+import PhoneServicesCustom from './CustomReportComponents/PhoneServicesCustom';
+import PoliceReportCustom from './CustomReportComponents/PoliceReportCustom';
+import RaceEthnicityCustom from './CustomReportComponents/RaceEthnicityCustom';
+import SexualOrientationCustom from './CustomReportComponents/SexualOrientationCustom';
+import SpecialClassificationCustom from './CustomReportComponents/SpecialClassificationCustom';
+import SupportOnCallCustom from './CustomReportComponents/SupportedOnCallCustom';
+import TransgenderedCustom from './CustomReportComponents/TransgenderedCustom';
+import TransortationCustom from './CustomReportComponents/TransportationCustom';
+import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
+import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -106,6 +118,18 @@ class customReportSelectionPage extends Component{
                     < CrisisCounseling/>
                     < AdvocacyCivilCustom/>
                     < AdvocacyCriminalCustom/>
+                    < AdvocacyMedicalCustom />
+                    < AdvocacyOtherCustom />
+                    < PhoneServicesCustom />
+                    < PoliceReportCustom />
+                    < RaceEthnicityCustom />
+                    < SexualOrientationCustom />
+                    < SpecialClassificationCustom />
+                    < SupportOnCallCustom />
+                    < TransgenderedCustom />
+                    < TransortationCustom />
+                    < VictimTypeCustom />
+                    < UnmetNeedsCustom />
                 </div>
             </div>
         ) //end return

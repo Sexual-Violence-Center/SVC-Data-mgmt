@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from '../../Home/Logout';
 
 const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
         <li>
-          <Link to="/home">
-            Home
-          </Link>
-        </li>
-        <li>
           <Link to="/adminlandingpage">
-          Admin Home
+          Home
           </Link>
         </li>
         <li>
@@ -24,6 +20,9 @@ const Nav = () => (
           <Link to="/admin_tools">
         Admin Tools
           </Link>
+        </li>
+        <li>
+          <Logout />
         </li>
       </ul>
     </div>

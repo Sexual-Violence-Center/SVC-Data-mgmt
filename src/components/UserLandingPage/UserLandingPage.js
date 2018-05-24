@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import DataEntryNav from '../Nav/DataEntryNav/DataEntryNav';
+// import { connect } from 'react-redux';
+import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
 
 class UserLandingPage extends Component {
 
   render(){
     return (
       <div>
-          <DataEntryNav />
+          <UserDataEntryNav />
         <div>
           <h1>Instructions</h1>
         </div>

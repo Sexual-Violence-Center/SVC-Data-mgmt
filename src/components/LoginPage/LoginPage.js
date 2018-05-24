@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 
@@ -24,9 +23,11 @@ class LoginPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user.userName) {
-      this.props.history.push('/home');
-    }
+    if (nextProps.user.userInfo === true) {
+      this.props.history.push('/adminlandingpage');
+    } else if (nextProps.user.userInfo === false ){
+      this.props.history.push('/userlandingpage');
+    } 
   }
 
   login = (event) => {
@@ -93,7 +94,6 @@ class LoginPage extends Component {
               name="submit"
               value="Log In"
             />
-            <Link to="/register">Register</Link>
           </div>
         </form>
       </div>
