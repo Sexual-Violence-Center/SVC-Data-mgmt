@@ -22,6 +22,7 @@ import SupportOnCallCustom from './CustomReportComponents/SupportedOnCallCustom'
 import TransgenderedCustom from './CustomReportComponents/TransgenderedCustom';
 import TransortationCustom from './CustomReportComponents/TransportationCustom';
 import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
+import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -128,6 +129,7 @@ class customReportSelectionPage extends Component{
                     < TransgenderedCustom />
                     < TransortationCustom />
                     < VictimTypeCustom />
+                    < UnmetNeedsCustom />
                 </div>
             </div>
         ) //end return
