@@ -18,11 +18,13 @@ let customReportObject = {
     disability_none: ` ("disability_none" = TRUE OR "disability_none" IS NULL)  `,
 
 //GENDER
+
     victim_gender_male: `  "victim_gender" = 'Male'  `,
     victim_gender_female: `  "victim_gender" = 'Female'  `,
     victim_gender_non_binary: `  "victim_gender" = 'Non-binary'  `,
     victim_gender_unknown: ` ("victim_gender" IS NULL OR  "victim_gender" = ‘other')  `,
     total_gender_count: ` "contact_date"  BETWEEN $1 AND $2)`,
+
 
 //IMMIGRANT COUNTRY
     immigrant_africa: `"victim_immigrant"='Africa'  `, 
