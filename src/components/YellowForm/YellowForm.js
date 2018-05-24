@@ -5,14 +5,15 @@ import InpersonServices from '../FormComponents/InPersonServices/InPersonService
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
-import DataEntryNav from '../Nav/DataEntryNav/DataEntryNav';
+import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
+import AdminDataEntryNav from '../Nav/DataEntryNav/AdminDataEntryNav';
 
 const mapStateToProps = state => ({
     state
 })
 
 class YellowForm extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             contact_type: 'in-person'
@@ -22,14 +23,22 @@ class YellowForm extends Component {
         console.log(this.props.state.EntryFormReducer);
         this.props.dispatch({
             type: 'ADD_NEW_VICTIM',
-            payload: {...this.state, ...this.props.state.EntryFormReducer}
+            payload: { ...this.state, ...this.props.state.EntryFormReducer }
         })
     }
 
     render() {
+        let DataEntryNav;
+        if (this.props.state.user.userName === true) {
+            DataEntryNav = <AdminDataEntryNav />
+        } else  {
+            DataEntryNav = <UserDataEntryNav />
+        }
+
         return (
+
             <div>
-                <DataEntryNav />
+                {DataEntryNav}
                 <h1>SVC In-Person Counseling Form for Primary AND Secondary Victims</h1>
                 <InPersonContactInfo />
                 <InpersonServices />

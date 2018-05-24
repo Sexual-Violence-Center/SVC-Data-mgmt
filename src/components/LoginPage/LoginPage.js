@@ -24,8 +24,11 @@ class LoginPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user.userName) {
-      this.props.history.push('/home');
+    if (nextProps.user.userName === true) {
+      this.props.history.push('/adminlandingpage');
+    } else if (nextProps.user.userName === false ){
+      this.props.history.push('/userlandingpage');
+    } else {
     }
   }
 

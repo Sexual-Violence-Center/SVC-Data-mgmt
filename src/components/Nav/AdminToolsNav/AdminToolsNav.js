@@ -5,14 +5,14 @@ const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
-        <li>
+        {/* <li>
           <Link to="/home">
             Home
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/adminlandingpage">
-          Admin Home
+          Home
           </Link>
         </li>
         <li>

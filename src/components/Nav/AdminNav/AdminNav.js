@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BannerAndLogout from '../../Home/BannerAndLogout';
 
 const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
         <li>
-          <Link to="/home">
-            Home
-          </Link>
-        </li>
-        <li>
           <Link to="/adminlandingpage">
-          Admin Home
+          Home
           </Link>
         </li>
         <li>
@@ -26,6 +22,7 @@ const Nav = () => (
           </Link>
         </li>
       </ul>
+      {/* <BannerAndLogout /> */}
     </div>
   </div>
 );

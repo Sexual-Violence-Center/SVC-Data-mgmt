@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import AdminNav from '../Nav/AdminNav/AdminNav';
+// import BannerAndLogout from '../Home/BannerAndLogout';
 
 class AdminLandingPage extends Component {
 

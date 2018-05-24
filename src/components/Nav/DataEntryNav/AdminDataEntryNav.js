@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Nav = () => (
+
+const AdminDataEntryNav = () => (
   <div className="navbar">
     <div>
       <ul>
         <li>
-          <Link to="/home">
+          <Link to="/adminlandingpage">
             Home
           </Link>
         </li>
@@ -25,4 +26,4 @@ const Nav = () => (
   </div>
 );
 
-export default Nav;
+export default AdminDataEntryNav;
