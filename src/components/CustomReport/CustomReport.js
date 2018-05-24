@@ -21,6 +21,7 @@ import SpecialClassificationCustom from './CustomReportComponents/SpecialClassif
 import SupportOnCallCustom from './CustomReportComponents/SupportedOnCallCustom';
 import TransgenderedCustom from './CustomReportComponents/TransgenderedCustom';
 import TransortationCustom from './CustomReportComponents/TransportationCustom';
+import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -126,6 +127,7 @@ class customReportSelectionPage extends Component{
                     < SupportOnCallCustom />
                     < TransgenderedCustom />
                     < TransortationCustom />
+                    < VictimTypeCustom />
                 </div>
             </div>
         ) //end return
