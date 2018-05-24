@@ -17,7 +17,6 @@ class ImmigrantCountryCustom extends Component {
     handleChangeFor = (event) => {
         const target = event.target;
         const value = target.type === ('checkbox') ? target.checked : target.value;
-        const name = target.name;
 
         this.setState({
             victim_immigrant: value
@@ -28,7 +27,7 @@ class ImmigrantCountryCustom extends Component {
         return (
 
         <div>
-            <h4> Custom Gender Report: </h4>
+            <h4> Custom Immigrant Country Report: </h4>
             <form value={this.state.victim_immigrant} onClick={this.handleChangeFor} >
             <input type="checkbox" 
                     id = "immigrant_africa"

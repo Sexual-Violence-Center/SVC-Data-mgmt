@@ -6,7 +6,9 @@ import CustomAge from './CustomReportComponents/AgeCustomReport';
 import CustomContactType from './CustomReportComponents/ContactTypeComponent';
 import CustomDisability from './CustomReportComponents/DisabilityCustomReport';
 import CustomGender from './CustomReportComponents/GenderCustomReport'
-import ImmigrantCountryCustom from './CustomReportComponents/ImmigrantCountryCustom'
+import ImmigrantCountryCustom from './CustomReportComponents/ImmigrantCountryCustom';
+import IndividualsServiced from './CustomReportComponents/IndServicedCustom';
+import CrisisCounseling from './CustomReportComponents/I-PCrisisCounselingCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -54,11 +56,34 @@ class customReportSelectionPage extends Component{
         })
         // console.log('individualTopic', individualTopic);
 
-        let content = null;
+        // let content = null;
 
-        if (this.props.user.userName) {
-            content = (
-                <div>
+        // if (this.props.user.userName) {
+        //     content = (
+        //         <div>
+        //         <h2> Custom Report Page </h2>
+        //         {/* add calendar */}
+        //         <form onSubmit={this.submitCustomReport}>
+        //             <select className="customReportTopics" multiple>
+        //                 {individualTopic}
+        //             </select>
+        //             <input type="submit" />
+        //         </form>
+
+        //         <div className="customReportSpecificTopic">
+        //             < CustomAge />
+        //             < CustomContactType />
+        //             < CustomDisability />
+        //             < CustomGender />
+        //             < ImmigrantCountryCustom />
+        //             < IndividualsServiced/>
+        //         </div>
+        //         </div>
+        //     )
+        // }
+
+        return ( 
+            <div>
                 < ReportingNav / >
                 <h2> Custom Report Page </h2>
                 {/* add calendar */}
@@ -75,15 +100,10 @@ class customReportSelectionPage extends Component{
                     < CustomDisability />
                     < CustomGender />
                     < ImmigrantCountryCustom />
+                    < IndividualsServiced/>
+                    < CrisisCounseling/>
                 </div>
-                </div>
-            )
-        }
-
-        return ( 
-
-            content
-
+            </div>
         ) //end return
 
     } //end render
