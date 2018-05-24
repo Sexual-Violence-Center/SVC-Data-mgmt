@@ -1,13 +1,8 @@
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { LOGIN_ACTIONS } from '../actions/loginActions';
 import { USER_ACTIONS } from '../actions/userActions';
 import { callLogin, callLogout } from '../requests/loginRequests';
-import axios from 'axios';
 
-const config = {
-  headers: { 'Content-Type': 'application/json' },
-  withCredentials: true
-}
 
 // worker Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
