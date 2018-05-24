@@ -14,7 +14,7 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 // import Home from './components/Home/Home';
-import BannerAndLogout from './components/Home/BannerAndLogout';
+// import Logout from './components/Home/Logout';
 import AdminTools from './components/AdminTools/AdminTools';
 import DataEntryPage from './components/DataEntryPage/DataEntryPage';
 import PinkForm from './components/PinkForm/PinkForm';
@@ -44,10 +44,6 @@ const App = () => (
         <Route
           path="/register"
           component={RegisterPage}
-        />
-        <Route
-          path="/home"
-          component={BannerAndLogout}
         />
         <Route
           path="/admin_tools"

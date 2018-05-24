@@ -21,6 +21,9 @@ const Nav = () => (
         Admin Tools
           </Link>
         </li>
+        <li>
+          <Logout />
+        </li>
       </ul>
     </div>
   </div>

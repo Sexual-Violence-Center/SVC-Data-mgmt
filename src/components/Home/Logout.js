@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { history, withRouter } from 'react-router-dom';
 
 // import Nav from '../../components/Nav/Nav';
-import AdminNav from '../Nav/AdminNav/AdminNav';
-import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
+// import AdminNav from '../Nav/AdminNav/AdminNav';
+// import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
@@ -15,19 +16,15 @@ const mapStateToProps = state => ({
 
 class Logout extends Component {
 
-  // componentDidMount() {
-  //   this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-  // }
 
-  // componentDidUpdate() {
-  //   if (!this.props.state.user.isLoading && this.props.state.user.userName === null) {
-  //     this.props.dispatch({type:'/login'});
-  //   } 
-  // }
-
+  componentDidUpdate() {
+    if (!this.props.state.user.isLoading && this.props.state.user.userName === null) {
+      this.props.history.push('/login');
+    }
+  }
   logout = () => {
     this.props.dispatch(triggerLogout());
-    this.props.dispatch({type:'/login'});
+    this.props.history.push('/login');
   }
 
   render() {
@@ -39,5 +36,7 @@ class Logout extends Component {
   }
 }
 
+let routerLogout = withRouter(Logout);
+
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Logout);
+export default connect(mapStateToProps)(routerLogout);

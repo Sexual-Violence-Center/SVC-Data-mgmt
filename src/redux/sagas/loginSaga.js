@@ -1,7 +1,13 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, call } from 'redux-saga/effects';
 import { LOGIN_ACTIONS } from '../actions/loginActions';
 import { USER_ACTIONS } from '../actions/userActions';
 import { callLogin, callLogout } from '../requests/loginRequests';
+import axios from 'axios';
+
+const config = {
+  headers: { 'Content-Type': 'application/json' },
+  withCredentials: true
+}
 
 // worker Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
@@ -40,6 +46,9 @@ function* logoutUser(action) {
     yield put({
       type: USER_ACTIONS.UNSET_USER,
     });
+    yield put({
+      type:'/login'
+    })
   } catch (error) {
     console.log('LOGOUT FAILED -- CHECK YOUR SERVER', error);
   }

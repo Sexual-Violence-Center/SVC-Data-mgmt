@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from '../../Home/Logout';
+
 
 const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
-        {/* <li>
-          <Link to="/home">
-            Home
-          </Link>
-        </li> */}
         <li>
           <Link to="/adminlandingpage">
           Home
@@ -29,6 +26,9 @@ const Nav = () => (
           <Link to="/county_report">
           County Report
           </Link>
+        </li>
+        <li>
+          <Logout />
         </li>
       </ul>
     </div>

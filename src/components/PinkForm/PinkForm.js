@@ -30,11 +30,11 @@ class PinkForm extends Component {
 
     render() {
         let DataEntryNav;
-        if(this.props.state.user.userName === true ){
+        if(this.props.state.user.userInfo === true ){
             DataEntryNav = <AdminDataEntryNav />
-        } else {
+        } else if (this.props.state.user.userInfo === false ){
             DataEntryNav = <UserDataEntryNav/>
-        }
+        } 
         return (
             <div>
                 {DataEntryNav}
