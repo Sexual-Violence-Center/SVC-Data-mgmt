@@ -24,6 +24,7 @@ import TransortationCustom from './CustomReportComponents/TransportationCustom';
 import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
 import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
 import TypesOfVictimizationCustom from './CustomReportComponents/TypesOfVictimizationCustom';
+import ZipCodeCustom from './CustomReportComponents/ZipCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -132,6 +133,7 @@ class customReportSelectionPage extends Component{
                     < VictimTypeCustom />
                     < UnmetNeedsCustom />
                     < TypesOfVictimizationCustom />
+                    < ZipCodeCustom />
                 </div>
             </div>
         ) //end return
