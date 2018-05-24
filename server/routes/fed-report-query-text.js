@@ -32,16 +32,19 @@ let fedQueryText =
         BETWEEN $1 AND $2) as "total_ethnicity",
 	
 
-    (select count(*) FROM "victim" WHERE "victim_gender" = 'male' 
-        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_male,
-    (select count(*) FROM "victim" WHERE "victim_gender" = 'female' 
-        AND "contact_date" BETWEEN 	$1 AND $2 ) as victim_gender_female,
-    (select count(*) FROM "victim" WHERE  "victim_gender" = 'transgender' 
-        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_transgender,
-    (select count(*) FROM "victim" WHERE "victim_gender" IS NULL 
-        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_unknown,
-    (select COUNT("victim_gender") FROM "victim" WHERE "contact_date" 
-        BETWEEN $1 AND $2) as "total_gender_count",
+       
+        (select count(*) FROM "victim" WHERE "victim_gender" = 'Male'
+            AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_male,
+        (select count(*) FROM "victim" WHERE "victim_gender" = 'Female'
+            AND "contact_date" BETWEEN     $1 AND $2 ) as victim_gender_female,
+        (select count(*) FROM "victim" WHERE  "victim_gender" = 'Non-binary'
+            AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_non_binary,
+        (select count(*) FROM "victim" WHERE "victim_gender" = 'other'
+            AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_other,
+        (select count(*) FROM "victim" WHERE "victim_gender" IS NULL
+            AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_unknown,
+        (select COUNT("victim_gender") FROM "victim" WHERE "contact_date"
+            BETWEEN $1 AND $2) as "total_gender_count",
     
 
     (select count(*) from "victim" WHERE "victim_age" BETWEEN 0 AND 12 
