@@ -21,12 +21,12 @@ const makePutQuery = toUpdate=>{
 
 }
 
-const test = {
-    victim_ethnicity: 'white',
-    id: 9,
-    victim_age: 57   
-}
+// const test = {
+//     victim_ethnicity: 'white',
+//     id: 9,
+//     victim_age: 57   
+// }
 
-console.log(makePutQuery(test));
+// console.log(makePutQuery(test));
 
 module.exports = makePutQuery;
