@@ -11,13 +11,23 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/userlandingpage">
-          User Landing Page
+          <Link to="/adminlandingpage">
+          Admin Home
           </Link>
         </li>
         <li>
-          <Link to="/adminlandingpage">
-          Admin Landing Page
+          <Link to="/user_entry_page">
+          User Entry
+          </Link>
+        </li>
+        <li>
+          <Link to="/data_entry_page">
+          Data Entry
+          </Link>
+        </li>
+        <li>
+          <Link to="/search_and_update">
+          Search/Update
           </Link>
         </li>
       </ul>

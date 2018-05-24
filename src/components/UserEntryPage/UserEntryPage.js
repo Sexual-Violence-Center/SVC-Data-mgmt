@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
 
@@ -55,19 +56,25 @@ class UserEntryPage extends Component {
         axios.post ('/api/user/register/new', body, config)
         .then((response) => {
           if (response.status === 201) {
-            alert("user successfully added");
+            alert("You successfully added the new user!");
             this.props.dispatch({
-              type: 'GET_USERS_SAGA'    
+              type: 'GET_USERS_SAGA'   
           });
+          this.setState({
+            username: '',
+            password: '',
+            user_type: false,
+            message: '',
+          })
           } else {
             this.setState({
-              message: 'Ooops! That didn\'t work. The username might already be taken. Try again!',
+              message: 'Ooops! That username might be in use already. Please try again!',
             });
           }
         })
         .catch(() => {
           this.setState({
-            message: 'Ooops! Something went wrong! Please wait a few minutes for the host server on Heroku to reset itself.',
+            message: 'Whoops! Something went wrong... It may be you are not logged in with an Admin account or that the server on Heroku is being restarted. If you are sure about your account, please wait a few minutes for Heroku and try again.',
           });
         });
       }
@@ -104,7 +111,9 @@ class UserEntryPage extends Component {
       //TODO: update this if statement to be true when the logged-in user is user_type === true
       if(this.props.user) {
         content = (
-        <div>
+      <div>
+        <AdminToolsNav />
+        <h1>User Entry Page</h1>
         {this.renderAlert()}
           <form>
             <h1>Hello, {this.props.user.userName}. Add a new user:</h1>
@@ -165,6 +174,7 @@ class UserEntryPage extends Component {
           { userEntryPageList }
 
         </div>
+
       </div>
     );
   }
