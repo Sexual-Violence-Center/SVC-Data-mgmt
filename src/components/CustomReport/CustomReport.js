@@ -10,6 +10,7 @@ import ImmigrantCountryCustom from './CustomReportComponents/ImmigrantCountryCus
 import IndividualsServiced from './CustomReportComponents/IndServicedCustom';
 import CrisisCounseling from './CustomReportComponents/I-PCrisisCounselingCustom';
 import AdvocacyCivilCustom from './CustomReportComponents/I-PAdvocacyCivilCustom';
+import AdvocacyCriminalCustom from './CustomReportComponents/I-PAdvocacyCriminalCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -104,6 +105,7 @@ class customReportSelectionPage extends Component{
                     < IndividualsServiced/>
                     < CrisisCounseling/>
                     < AdvocacyCivilCustom/>
+                    < AdvocacyCriminalCustom/>
                 </div>
             </div>
         ) //end return
