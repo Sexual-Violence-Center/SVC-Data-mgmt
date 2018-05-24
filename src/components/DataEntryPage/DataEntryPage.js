@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AdminDataEntryNav from '../Nav/DataEntryNav/AdminDataEntryNav';
-// import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
 
 
 class DataEntryPage extends Component {
