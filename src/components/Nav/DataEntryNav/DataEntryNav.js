@@ -11,13 +11,13 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/userlandingpage">
-          User Landing Page
+          <Link to="/telephone">
+          Telephone
           </Link>
         </li>
         <li>
-          <Link to="/adminlandingpage">
-          Admin Landing Page
+          <Link to="/in-person">
+          In-Person
           </Link>
         </li>
       </ul>

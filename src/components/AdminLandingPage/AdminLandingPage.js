@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AdminNav from "../Nav/AdminNav/AdminNav";
 
 const mapStateToProps = state => ({
   user: state.user,
 });
+
+
+
 
 class AdminLandingPage extends Component {
 
   render(){
     return (
       <div>
+        <AdminNav />
         <div>
           <h1>Instructions</h1>
         </div>

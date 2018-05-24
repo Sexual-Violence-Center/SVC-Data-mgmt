@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
 import UserEntryPageList from './UserEntryPageList';
 
 const mapStateToProps = state => ({
@@ -99,6 +100,8 @@ class UserEntryPage extends Component {
     return (
 
       <div>
+        <AdminToolsNav />
+        <h1>User Entry Page</h1>
         {this.renderAlert()}
           <form>
             <h1>Add a new user</h1>
@@ -159,6 +162,7 @@ class UserEntryPage extends Component {
           { userEntryPageList }
 
         </div>
+
       </div>
     );
   }

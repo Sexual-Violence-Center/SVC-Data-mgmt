@@ -5,6 +5,7 @@ import InpersonServices from '../FormComponents/InPersonServices/InPersonService
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
+import DataEntryNav from '../Nav/DataEntryNav/DataEntryNav';
 
 const mapStateToProps = state => ({
     state
@@ -28,6 +29,7 @@ class YellowForm extends Component {
     render() {
         return (
             <div>
+                <DataEntryNav />
                 <h1>SVC In-Person Counseling Form for Primary AND Secondary Victims</h1>
                 <InPersonContactInfo />
                 <InpersonServices />
