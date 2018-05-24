@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import UserEntryPageList from './UserEntryPageList';
+import axios from 'axios';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -31,31 +32,33 @@ class UserEntryPage extends Component {
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('login');
-    }
+    };
   }
 
   registerUser = (event) => {
     event.preventDefault();
+    console.log("clicked add new user submit button");
     if (this.state.username === '' || this.state.password === '') {
       this.setState({
         message: 'Choose a username and password!',
       });
     } else {
-      const request = new Request('api/user/register/new', {
-        method: 'POST',
+      const config = {
         headers: new Headers({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify({
+        withCredentials: true,
+       }
+       const body = {
           username: this.state.username,
           password: this.state.password,
           user_type: this.state.user_type,
-        }),
-      });
-
-      // making the request to the server to post
-      fetch(request)
+        }
+        axios.post ('/api/user/register/new', body, config)
         .then((response) => {
           if (response.status === 201) {
             alert("user successfully added");
+            this.props.dispatch({
+              type: 'GET_USERS_SAGA'    
+          });
           } else {
             this.setState({
               message: 'Ooops! That didn\'t work. The username might already be taken. Try again!',
@@ -67,13 +70,13 @@ class UserEntryPage extends Component {
             message: 'Ooops! Something went wrong! Please wait a few minutes for the host server on Heroku to reset itself.',
           });
         });
+      }
     }
-  }
 
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       [propertyName]: event.target.value,
-    });
+    })
   }
 
   renderAlert() {
@@ -94,14 +97,17 @@ class UserEntryPage extends Component {
 
     const userEntryPageList = this.props.state.getUsersReducer.map((user) => {
       return (<UserEntryPageList key={user.id} user={user}/>)
-
     })
-    return (
 
-      <div>
+      let content = null;
+
+      //TODO: update this if statement to be true when the logged-in user is user_type === true
+      if(this.props.user) {
+        content = (
+        <div>
         {this.renderAlert()}
           <form>
-            <h1>Add a new user</h1>
+            <h1>Hello, {this.props.user.userName}. Add a new user:</h1>
             <div>
               <label htmlFor="username">
                 Username:
@@ -152,7 +158,7 @@ class UserEntryPage extends Component {
             </div>
           </form>
         <div>
-          <h3>Users:</h3>
+          <h3>Current users:</h3>
         </div>
         <div>
 
@@ -162,6 +168,14 @@ class UserEntryPage extends Component {
       </div>
     );
   }
+  
+    return (
+      <div>
+        { content }
+      </div>
+    );
+  }
 }
+
 
 export default connect(mapStateToProps)(UserEntryPage);
