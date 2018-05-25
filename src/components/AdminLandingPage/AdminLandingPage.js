@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/Header/Header';
+// import Header from '../../components/Header/Header';
 import AdminNav from "../Nav/AdminNav/AdminNav";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,7 +16,7 @@ class AdminLandingPage extends Component {
     return (
       <div>
         <div>
-          <Header title="SVC" />
+          {/* <Header title="SVC" /> */}
           <AdminNav />
         </div>
         <div>

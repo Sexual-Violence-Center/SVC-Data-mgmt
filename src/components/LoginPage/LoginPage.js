@@ -64,7 +64,6 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <Header title="SVC" />
         { this.renderAlert() }
         <form onSubmit={this.login}>
           <h1>Login</h1>

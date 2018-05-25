@@ -70,19 +70,19 @@ class ReportingNav extends Component {
                   <Paper>
                     <MenuList role="menu">
                       <MenuItem onClick={this.handleClose}>
-                        <Link to="/custom_report" style={{color: "black"}}>
+                        <Link to="/custom_report" style={{color: "black", textDecoration: 'none'}}>
                           Custom Report
                         </Link>
                       </MenuItem>
                       <Divider />
                       <MenuItem onClick={this.handleClose}>
-                        <Link to="/federal_report" style={{color: "black"}}>
+                        <Link to="/federal_report" style={{color: "black", textDecoration: 'none'}}>
                           Federal Report
                         </Link>
                       </MenuItem>
                       <Divider />
                       <MenuItem onClick={this.handleClose}>
-                        <Link to="/county_report" style={{color: "black"}}>
+                        <Link to="/county_report" style={{color: "black", textDecoration: 'none'}}>
                           County Report
                         </Link>
                       </MenuItem>

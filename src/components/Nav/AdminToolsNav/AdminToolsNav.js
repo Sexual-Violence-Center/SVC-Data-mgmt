@@ -16,9 +16,9 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  paper: {
-    marginRight: theme.spacing.unit * 2,
-  },
+  // paper: {
+  //   marginRight: theme.spacing.unit * 2,
+  // },
   popperClose: {
     pointerEvents: 'none',
   },
@@ -76,13 +76,13 @@ class AdminToolsNav extends Component {
                       </MenuItem>
                       <Divider />
                       <MenuItem onClick={this.handleClose}>
-                        <Link to="/data_entry_page" style={{color: "black"}}>
+                        <Link to="/data_entry_page" style={{color: "black", textDecoration: 'none'}}>
                           Data Entry
                         </Link>
                       </MenuItem>
                       <Divider />
                       <MenuItem onClick={this.handleClose}>
-                        <Link to="/search_and_update" style={{color: "black"}}>
+                        <Link to="/search_and_update" style={{color: "black", textDecoration: 'none'}}>
                           Search/Update
                         </Link>
                       </MenuItem>

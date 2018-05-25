@@ -7,7 +7,7 @@ import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
 import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
-import AdminDataEntryNav from '../Nav/DataEntryNav/AdminDataEntryNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 
 const mapStateToProps = state => ({
     state
@@ -31,7 +31,7 @@ class PinkForm extends Component {
     render() {
         let DataEntryNav;
         if(this.props.state.user.userInfo === true ){
-            DataEntryNav = <AdminDataEntryNav />
+            DataEntryNav = <AdminNav />
         } else if (this.props.state.user.userInfo === false ){
             DataEntryNav = <UserDataEntryNav/>
         } 

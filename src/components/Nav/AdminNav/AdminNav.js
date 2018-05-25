@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Logout from '../../Logout/Logout';
 import AdminToolsNav from '../AdminToolsNav/AdminToolsNav';
 import ReportingNav from '../ReportingNav/ReportingNav';
+import Header from '../../Header/Header';
 
 const styles = theme => ({
   root: {
@@ -38,20 +39,21 @@ class AdminNav extends Component {
   render() {
     const { classes } = this.props;
     return (
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Toolbar>
-              <Button>
-                <Link to="/adminlandingpage" style={{color: "white", textDecoration: 'none'}}>
-                  Home
-                </Link>
-              </Button>
-              <ReportingNav />
-              <AdminToolsNav style={{float: "right"}}/>
-              <Logout className={classes.logoutButton}/>
-            </Toolbar>
-          </AppBar>
-        </div>
+      <div className={classes.root}>
+        {/* <Header title="SVC" /> */}
+        <AppBar position="static">
+          <Toolbar >
+            <Button>
+              <Link to="/adminlandingpage" style={{ color: "white", textDecoration: 'none' }}>
+                Home
+              </Link>
+            </Button>
+            <ReportingNav />
+            <AdminToolsNav />
+            <Logout />
+          </Toolbar>
+        </AppBar>
+      </div>
     )
   }
 };
