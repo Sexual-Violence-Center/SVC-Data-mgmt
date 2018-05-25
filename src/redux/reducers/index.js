@@ -6,6 +6,7 @@ import EntryFormReducer from './EntryFormReducer';
 import getFederalReducer from './getFederalReducer';
 import getUsersReducer from './getUsersReducer';
 import getCountyReducer from './getCountyReducer';
+import updateFormReducer from './updateFormReducer';
 
 
 const store = combineReducers({
@@ -16,6 +17,7 @@ const store = combineReducers({
   getFederalReducer,
   getUsersReducer,
   getCountyReducer,
+  updateFormReducer,
 });
 
 export default store;
