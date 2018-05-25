@@ -6,11 +6,18 @@ import { Manager, Target, Popper } from 'react-popper';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
+import { List, ListItem, Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
-const drawerWidth = 100;
+import DataEntryPage from '../../DataEntryPage/DataEntryPage';
+import AdminToolsNav from '../AdminToolsNav/AdminToolsNav';
+import ReportingNav from '../ReportingNav/ReportingNav';
+
+const drawerWidth = 200;
 
 const styles = theme => ({
   root: {
@@ -20,6 +27,11 @@ const styles = theme => ({
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -51,19 +63,63 @@ class AdminDataEntryNav extends Component {
             paper: classes.drawerPaper,
           }}
         >
-          <div className={classes.toolbar} />
+          <div />
           <List>
-            <Link to="/telephone">
-              Telephone
-            </Link>
+            <Typography variant="title">
+              Reporting
+            </Typography>
+            <ListItem button>
+              <Link to="/custom_report" style={{ color: "black", textDecoration: 'none' }}>
+                Custom Report
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to="/federal_report" style={{ color: "black", textDecoration: 'none' }}>
+                Federal Report
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to="/county_report" style={{ color: "black", textDecoration: 'none' }}>
+                County Report
+              </Link>
+            </ListItem>
           </List>
           <Divider />
           <List>
-            <Link to="/in-person">
-              In-Person
+            <Typography variant="title">
+              Admin Entry Tools
+            </Typography>
+            <ListItem button>
+              <Link to="/user_entry_page" style={{ color: "black", textDecoration: 'none' }}>
+                User Entry
             </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to="/search_and_update" style={{ color: "black", textDecoration: 'none' }}>
+                Search/Update
+            </Link>
+            </ListItem>
+          </List>
+          <List>
+            <Divider />
+            <br />
+            <Typography variant="title">
+              Data Entry
+                  </Typography>
+            <ListItem button>
+              <Link to="/telephone" style={{ color: 'black', textDecoration: "none" }}>
+                Telephone
+                    </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to="/in-person" style={{ color: 'black', textDecoration: "none" }}>
+                In-Person
+                    </Link>
+            </ListItem>
           </List>
         </Drawer>
+        <main>
+        </main>
       </div>
     )
   }

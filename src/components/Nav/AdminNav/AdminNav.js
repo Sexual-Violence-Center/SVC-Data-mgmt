@@ -36,6 +36,7 @@ const styles = theme => ({
 
 
 class AdminNav extends Component {
+
   render() {
     const { classes } = this.props;
     return (
@@ -48,8 +49,6 @@ class AdminNav extends Component {
                 Home
               </Link>
             </Button>
-            <ReportingNav />
-            <AdminToolsNav />
             <Logout />
           </Toolbar>
         </AppBar>
