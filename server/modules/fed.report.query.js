@@ -9,9 +9,9 @@ Sections are separated in accordance with the headers on the federal report.
 let fedQueryText =
 `SELECT 
 	(select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as total_victims,
-    (select COUNT(*) FROM "victim"  WHERE "victim_prior_contact" = FALSE OR 	
+    (select COUNT(*) FROM "victim"  WHERE ("victim_prior_contact" = FALSE OR 	
         "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
-        "victim_contact_prior_oct" = TRUE) AND 
+        "victim_contact_prior_oct" = TRUE)) AND 
         "contact_date" BETWEEN $1 AND $2) as "new_victim", ` +
 	
 // COUNTS FOR  - Demographics
