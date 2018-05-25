@@ -9,17 +9,19 @@ const queryText = require("../modules/county.report.query");
 router.get("/", (req, res) => {
     //only an admin can get the report
     if (req.isAuthenticated() && req.user.user_type === true) {
+      console.log('in GET county reports', req.query.startDate, req.query.endDate);
+
       // pool.query goes here
       //example query
       ///api/county-report/?county=Hennepin&startDate=1999-01-01&endDate=2020-01-01
       //expects querys for county startDate and endDate
-      pool
-        .query(queryText, [
+      pool.query(queryText, [
           req.query.county,
           req.query.startDate,
           req.query.endDate
         ])
-        .then(result => {
+        .then((result) => {
+          console.log('in get county', result.rows)
           //result is an array with length one
           res.send(result.rows[0]);
         })

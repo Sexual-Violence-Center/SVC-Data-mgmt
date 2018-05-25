@@ -1,6 +1,3 @@
-// Commenting out empty pages!! please comment in when 
-// in use.  
-
 
 import React from 'react';
 import {
