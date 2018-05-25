@@ -7,11 +7,8 @@ class DataEntryPage extends Component {
         return (
           <div>
               <AdminNav />
-              <AdminDataEntryNav />
-            <div>
-              <h1>Instructions</h1>
-            </div>
-            <div>
+              <div style={{float: "right"}}>
+            <h1>Instructions</h1>
               <h2>Welcome!</h2>
               <p>
                 SVC input forms are color coded to represent the type of service that was provided. Pink forms are for telephone services, and <br/>

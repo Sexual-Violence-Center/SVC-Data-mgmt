@@ -20,24 +20,15 @@ import ReportingNav from '../ReportingNav/ReportingNav';
 const drawerWidth = 200;
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    height: 50,
-    zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: 1,
   },
   drawerPaper: {
-    position: 'relative',
+    position: 'fixed',
     width: drawerWidth,
   },
   content: {
@@ -63,7 +54,6 @@ class AdminDataEntryNav extends Component {
             paper: classes.drawerPaper,
           }}
         >
-          <div />
           <List>
             <Typography variant="title">
               Reporting
@@ -118,7 +108,8 @@ class AdminDataEntryNav extends Component {
             </ListItem>
           </List>
         </Drawer>
-        <main>
+        <main className={classes.content}>
+        <div className={classes.toolbar}/ >
         </main>
       </div>
     )
