@@ -8,49 +8,21 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import Chip from '@material-ui/core/Chip';
 
-import contactType from '../ObjectLists/ContactType.Object'
+import contactType from '../ObjectLists/ContactType.Object';
+import renderInput from '../StandardFunctionsForChips/renderInputFunction';
+import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
+// import renderSuggestionPropTypes from '../StandardFunctionsForChips/renderSuggestion'
+import styles from '../StandardFunctionsForChips/chipStyles'
 
-function renderInput(inputProps) {
-  const { InputProps, classes, ref, ...other } = inputProps;
 
-  return (
-    <TextField
-      InputProps={{
-        inputRef: ref,
-        classes: {
-          root: classes.inputRoot,
-        },
-        ...InputProps,
-      }}
-      {...other}
-    />
-  );
-}
-
-function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
-  const isHighlighted = highlightedIndex === index;
-  const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
-
-  return (
-    <MenuItem
-      {...itemProps}
-      key={suggestion.label}
-      selected={isHighlighted}
-      component="div"
-      style={{
-        fontWeight: isSelected ? 500 : 400,
-      }}
-    >
-      {suggestion.label}
-    </MenuItem>
-  );
-}
 renderSuggestion.propTypes = {
-  highlightedIndex: PropTypes.number,
-  index: PropTypes.number,
-  itemProps: PropTypes.object,
-  selectedItem: PropTypes.string,
-  suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
+    highlightedIndex: PropTypes.number,
+    index: PropTypes.number,
+    itemProps: PropTypes.object,
+    selectedItem: PropTypes.string,
+    suggestion: PropTypes.shape({
+        label: PropTypes.string
+    }).isRequired,
 };
 
 function getSuggestions(inputValue) {
@@ -111,6 +83,9 @@ class ContactTypeCustom extends React.Component {
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
+    console.log('inputValue', inputValue);
+    console.log('selectedItem', selectedItem);
+    
 
     return (
         
@@ -168,29 +143,29 @@ ContactTypeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    height: 250,
-  },
-  container: {
-    flexGrow: 1,
-    position: 'relative',
-  },
-  paper: {
-    position: 'absolute',
-    zIndex: 1,
-    marginTop: theme.spacing.unit,
-    left: 0,
-    right: 0,
-  },
-  chip: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
-  },
-  inputRoot: {
-    flexWrap: 'wrap',
-  },
-});
+// const styles = theme => ({
+//   root: {
+//     flexGrow: 1,
+//     height: 250,
+//   },
+//   container: {
+//     flexGrow: 1,
+//     position: 'relative',
+//   },
+//   paper: {
+//     position: 'absolute',
+//     zIndex: 1,
+//     marginTop: theme.spacing.unit,
+//     left: 0,
+//     right: 0,
+//   },
+//   chip: {
+//     margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+//   },
+//   inputRoot: {
+//     flexWrap: 'wrap',
+//   },
+// });
 
 ContactTypeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
