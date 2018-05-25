@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
 
 class UserLandingPage extends Component {

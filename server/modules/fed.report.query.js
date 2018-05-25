@@ -18,35 +18,37 @@ let fedQueryText =
     `(select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Asian' 
         AND "contact_date" BETWEEN $1 AND $2) as "victim_ethnicity_asian",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Native American' 
-        AND "contact_date" BETWEEN $1 AND $2) as "Native American",
+        AND "contact_date" BETWEEN $1 AND $2) as "Native_American",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Chican@/Latin@' 
-        AND "contact_date" BETWEEN $1 AND $2) as "Chican@/Latin@",
+        AND "contact_date" BETWEEN $1 AND $2) as "hispanicOrLatino",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'African American/Black' 
-        AND "contact_date" BETWEEN $1 AND $2) as "African American/Black",
+        AND "contact_date" BETWEEN $1 AND $2) as "africanAmerican",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Native Hawaiian/Pacific Islander' 
-        AND "contact_date" BETWEEN $1 AND $2) as "Native Hawaiian/Pacific Islander",
+        AND "contact_date" BETWEEN $1 AND $2) as "pacificIslanderHawaiian",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'White non-Latino/Caucasian' 
-        AND "contact_date" BETWEEN $1 AND $2) as "White non-Latino/Caucasian",
+        AND "contact_date" BETWEEN $1 AND $2) as "white",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Other' 
         AND "contact_date" BETWEEN 	$1 AND $2) as "Other",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Multi-racial' 
-        AND "contact_date" BETWEEN $1 AND $2) as "Multi-racial",
+        AND "contact_date" BETWEEN $1 AND $2) as "multiple_races",
     (select COUNT(*) FROM "victim" WHERE ("victim_ethnicity" = 'unknown' OR "victim_ethnicity" IS NULL)  
-        AND "contact_date" BETWEEN $1 AND $2) as "ethnicity_unknown",
+        AND "contact_date" BETWEEN $1 AND $2) as "not_reported",
     (select COUNT("victim_ethnicity") FROM "victim" WHERE "contact_date" 
         BETWEEN $1 AND $2) as "total_ethnicity", ` +
 	
 // COUNTS FOR  - Gender
-    `(select count(*) FROM "victim" WHERE "victim_gender" = 'Male' 
-        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_male,
-    (select count(*) FROM "victim" WHERE "victim_gender" = 'Female' 
-        AND "contact_date" BETWEEN 	$1 AND $2 ) as victim_gender_female,
-    (select count(*) FROM "victim" WHERE  "victim_gender" = 'Non-binary' 
-        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_non_binary,
-    (select count(*) FROM "victim" WHERE ("victim_gender" IS NULL OR "victim_gender" = 'other')
-        AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_unknown,
-    (select COUNT("victim_gender") FROM "victim" WHERE "contact_date" 
-        BETWEEN $1 AND $2) as "total_gender_count", ` +
+`(select count(*) FROM "victim" WHERE "victim_gender" = 'Male'
+AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_male,
+(select count(*) FROM "victim" WHERE "victim_gender" = 'Female'
+AND "contact_date" BETWEEN     $1 AND $2 ) as victim_gender_female,
+(select count(*) FROM "victim" WHERE  "victim_gender" = 'Non-binary'
+AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_non_binary,
+(select count(*) FROM "victim" WHERE "victim_gender" = 'other'
+AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_other,
+(select count(*) FROM "victim" WHERE "victim_gender" IS NULL
+AND "contact_date" BETWEEN $1 AND $2 ) as victim_gender_unknown,
+(select COUNT("victim_gender") FROM "victim" WHERE "contact_date"
+BETWEEN $1 AND $2) as "total_gender_count",` +
     
 //COUNTS FOR  - Age
     `(select count(*) from "victim" WHERE "victim_age" BETWEEN 0 AND 12 
