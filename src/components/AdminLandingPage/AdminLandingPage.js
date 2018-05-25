@@ -19,7 +19,7 @@ class AdminLandingPage extends Component {
           <h1>Instructions</h1>
         </div>
         <div>
-          <h2>Welcome, {this.props.user.userName}!</h2>
+          <h2>Welcome</h2>
           <p>
             Access to the administrator views is provided by clicking items under REPORTS and ACTIONS on the navigation bar to the left. <br/>Clicking Federal or County displays the selected report. <br/> Clicking Custom allows an admin to select various reporting criteria for reviewing.
             <br/> Clicking Data Entry provides an admin with the basic user view, where data can be entered for the "pink and yellow forms".
