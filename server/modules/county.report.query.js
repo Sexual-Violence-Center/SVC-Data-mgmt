@@ -76,6 +76,7 @@ const queryText = `SELECT
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55345 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55345",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55346 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55346",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55347 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55347",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55356 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55356",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55357 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55357",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55359 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55359",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55361 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55361",
