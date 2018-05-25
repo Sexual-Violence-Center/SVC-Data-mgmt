@@ -27,7 +27,7 @@ const styles = theme => ({
     height: 100,
     zIndex: 1,
     overflow: 'visible',
-    position: 'relative',
+    position: 'fixed',
     display: 'flex',
   },
   heading: {
@@ -38,7 +38,7 @@ const styles = theme => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   drawerPaper: {
-    position: 'relative',
+    position: 'fixed',
     width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
@@ -64,7 +64,7 @@ class AdminNav extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="absolute" className={classes.appBar}>
+        <AppBar position="fixed" className={classes.appBar}>
           <Toolbar >
             <Button>
               <Link to="/adminlandingpage" style={{ color: "white", textDecoration: 'none' }}>
