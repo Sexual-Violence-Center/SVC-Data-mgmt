@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { triggerLogout } from '../../redux/actions/loginActions';
+import {Button} from '@material-ui/core';
 
 
 const mapStateToProps = state => ({
@@ -24,7 +25,7 @@ class Logout extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.logout}>Logout</button>
+        <Button variant="raised" onClick={this.logout}>Logout</Button>
       </div>
     );
   }

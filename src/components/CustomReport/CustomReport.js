@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ReportingNav from '../Nav/ReportingNav/ReportingNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 import CustomAge from './CustomReportComponents/AgeCustomReport';
 import CustomContactType from './CustomReportComponents/ContactTypeComponent';
 import CustomDisability from './CustomReportComponents/DisabilityCustomReport';
@@ -98,7 +98,7 @@ class customReportSelectionPage extends Component{
 
         return ( 
             <div>
-                < ReportingNav / >
+                <AdminNav / >
                 <h2> Custom Report Page </h2>
                 {/* add calendar */}
                 <form onSubmit={this.submitCustomReport}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
 
@@ -112,7 +112,7 @@ class UserEntryPage extends Component {
       if(this.props.user) {
         content = (
       <div>
-        <AdminToolsNav />
+        <AdminNav />
         <h1>User Entry Page</h1>
         {this.renderAlert()}
           <form>

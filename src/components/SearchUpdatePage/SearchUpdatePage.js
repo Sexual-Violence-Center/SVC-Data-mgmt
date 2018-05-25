@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 
 class SearchUpdatePage extends Component {
     render(){
         return(
             <div>
-                <AdminToolsNav />
+                <AdminNav />
                 <h1>Search and Update</h1>
             </div>
         )

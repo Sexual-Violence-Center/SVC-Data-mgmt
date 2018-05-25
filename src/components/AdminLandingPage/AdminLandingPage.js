@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../../components/Header/Header';
 import AdminNav from "../Nav/AdminNav/AdminNav";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-
-
-
 class AdminLandingPage extends Component {
-
+  
   render(){
+
     return (
       <div>
-        <AdminNav />
+        <div>
+          <Header title="SVC" />
+          <AdminNav />
+        </div>
         <div>
           <h1>Instructions</h1>
         </div>

@@ -8,7 +8,6 @@ import {
 
 import 'typeface-roboto';
 
-import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import AdminTools from './components/AdminTools/AdminTools';
@@ -29,7 +28,6 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="SVC" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/login" />

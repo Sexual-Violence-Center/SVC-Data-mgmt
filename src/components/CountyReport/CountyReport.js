@@ -4,7 +4,7 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
-import ReportingNav from '../Nav/ReportingNav/ReportingNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 
 
 const mapStateToProps = state => ({
@@ -35,7 +35,7 @@ class CountyReport extends Component{
     render () {
         return (
             <div className="federalReport">
-            <ReportingNav />
+            <AdminNav />
             <h2>County Report:</h2>
             <h3>Start Date:<Calendar /></h3><h3> End Date:<Calendar /></h3> 
                 <button>go</button>  
