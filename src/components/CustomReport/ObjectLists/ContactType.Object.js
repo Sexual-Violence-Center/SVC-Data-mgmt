@@ -1,6 +1,6 @@
 
 const contactTypeObject = [
-  { label: 'In-Person' },
+  { label: 'In-Person', value: "in_person_contact" },
   { label: 'Telephone' }
 ]
 

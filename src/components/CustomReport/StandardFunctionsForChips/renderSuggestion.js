@@ -9,7 +9,7 @@ function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, sele
     return (
         <MenuItem
         {...itemProps}
-        key={suggestion.label}
+        key={suggestion.value}
         selected={isHighlighted}
         component="div"
         style={{

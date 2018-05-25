@@ -11,9 +11,22 @@ import Chip from '@material-ui/core/Chip';
 import contactType from '../ObjectLists/ContactType.Object';
 import renderInput from '../StandardFunctionsForChips/renderInputFunction';
 import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
-// import renderSuggestionPropTypes from '../StandardFunctionsForChips/renderSuggestion'
 import styles from '../StandardFunctionsForChips/chipStyles'
 
+
+function getSuggestions(inputValue) {
+  let count = 0;
+
+  return contactType.filter(suggestion => {
+    const keep =
+      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
+      count < 5;
+    if (keep) {
+      count += 1;
+    }
+    return keep;
+  });
+}
 
 renderSuggestion.propTypes = {
     highlightedIndex: PropTypes.number,
@@ -24,22 +37,6 @@ renderSuggestion.propTypes = {
         label: PropTypes.string
     }).isRequired,
 };
-
-function getSuggestions(inputValue) {
-  let count = 0;
-
-  return contactType.filter(suggestion => {
-    const keep =
-      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
-      count < 5;
-
-    if (keep) {
-      count += 1;
-    }
-
-    return keep;
-  });
-}
 
 class ContactTypeCustom extends React.Component {
   state = {
@@ -62,7 +59,6 @@ class ContactTypeCustom extends React.Component {
 
   handleChange = item => {
     let { selectedItem } = this.state;
-
     if (selectedItem.indexOf(item) === -1) {
       selectedItem = [...selectedItem, item];
     }
@@ -76,20 +72,18 @@ class ContactTypeCustom extends React.Component {
   handleDelete = item => () => {
     const selectedItem = [...this.state.selectedItem];
     selectedItem.splice(selectedItem.indexOf(item), 1);
-
     this.setState({ selectedItem });
   };
 
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    console.log('inputValue', inputValue);
     console.log('selectedItem', selectedItem);
+    console.log('value', selectedItem);
     
-
     return (
-        
       <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+      
         {({
           getInputProps,
           getItemProps,
@@ -106,11 +100,13 @@ class ContactTypeCustom extends React.Component {
               InputProps: getInputProps({
                 startAdornment: selectedItem.map(item => (
                   <Chip
+                    title = {item.value}
                     key={item}
                     tabIndex={-1}
-                    label={item}
+                    label={item.label}
                     className={classes.chip}
                     onDelete={this.handleDelete(item)}
+                    value={item.value}
                   />
                 )),
                 onChange: this.handleInputChange,
@@ -125,7 +121,7 @@ class ContactTypeCustom extends React.Component {
                   renderSuggestion({
                     suggestion,
                     index,
-                    itemProps: getItemProps({ item: suggestion.label }),
+                    itemProps: getItemProps({ item: suggestion }),
                     highlightedIndex,
                     selectedItem: selectedItem2,
                   }),
@@ -138,34 +134,6 @@ class ContactTypeCustom extends React.Component {
     );
   }
 }
-
-ContactTypeCustom.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-// const styles = theme => ({
-//   root: {
-//     flexGrow: 1,
-//     height: 250,
-//   },
-//   container: {
-//     flexGrow: 1,
-//     position: 'relative',
-//   },
-//   paper: {
-//     position: 'absolute',
-//     zIndex: 1,
-//     marginTop: theme.spacing.unit,
-//     left: 0,
-//     right: 0,
-//   },
-//   chip: {
-//     margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
-//   },
-//   inputRoot: {
-//     flexWrap: 'wrap',
-//   },
-// });
 
 ContactTypeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
