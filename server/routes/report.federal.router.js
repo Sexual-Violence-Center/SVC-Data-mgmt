@@ -8,7 +8,7 @@ const fedQueryText = require('../modules/fed.report.query')
 
 //Get for Federal Report
 router.get("/", (req, res) => {
-  if (req.isAuthenticated()  && req.user.user_type === true) {
+  if (req.isAuthenticated()  && req.user.user_type === true) { 
     console.log('in GET federal reports', req.query.startDate, req.query.endDate);
     
     // pool.query goes here
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
         // console.log('GET fed reports success', result.rows);
         res.send(result.rows)
       }).catch((error) => {
-        console.log('error in GET fed reports', error);
+        // console.log('error in GET fed reports', error);
         res.sendStatus(500);
       })
   } else {

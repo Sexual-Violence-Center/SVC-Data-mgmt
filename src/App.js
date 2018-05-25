@@ -1,6 +1,3 @@
-// Commenting out empty pages!! please comment in when 
-// in use.  
-
 
 import React from 'react';
 import {
@@ -13,7 +10,8 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
+// import Logout from './components/Home/Logout';
 import AdminTools from './components/AdminTools/AdminTools';
 import DataEntryPage from './components/DataEntryPage/DataEntryPage';
 import PinkForm from './components/PinkForm/PinkForm';
@@ -43,10 +41,6 @@ const App = () => (
         <Route
           path="/register"
           component={RegisterPage}
-        />
-        <Route
-          path="/home"
-          component={Home}
         />
         <Route
           path="/admin_tools"
@@ -81,11 +75,11 @@ const App = () => (
         component={ReportingPage}
         />
         <Route
-          path="/UserLandingPage"
+          path="/userlandingpage"
           component={UserLandingPage}
         />
         <Route
-          path="/AdminLandingPage"
+          path="/adminlandingpage"
           component={AdminLandingPage}
         />
         <Route

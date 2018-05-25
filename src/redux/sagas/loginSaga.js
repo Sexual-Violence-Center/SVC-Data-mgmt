@@ -3,6 +3,7 @@ import { LOGIN_ACTIONS } from '../actions/loginActions';
 import { USER_ACTIONS } from '../actions/userActions';
 import { callLogin, callLogout } from '../requests/loginRequests';
 
+
 // worker Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
   try {
@@ -40,6 +41,9 @@ function* logoutUser(action) {
     yield put({
       type: USER_ACTIONS.UNSET_USER,
     });
+    yield put({
+      type:'/login'
+    })
   } catch (error) {
     console.log('LOGOUT FAILED -- CHECK YOUR SERVER', error);
   }
