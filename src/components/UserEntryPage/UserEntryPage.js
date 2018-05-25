@@ -116,7 +116,7 @@ class UserEntryPage extends Component {
         <h1>User Entry Page</h1>
         {this.renderAlert()}
           <form>
-            <h1>Hello, {this.props.user.userName}. Add a new user:</h1>
+            <h2>Add a new user:</h2>
             <div>
               <label htmlFor="username">
                 Username:
@@ -143,7 +143,7 @@ class UserEntryPage extends Component {
             <label>
               User type:
             </label>
-            <form
+           <form
              value={this.state.user_type}
                   onChange={this.handleInputChangeFor('user_type')}>
                 <input
@@ -174,7 +174,6 @@ class UserEntryPage extends Component {
           { userEntryPageList }
 
         </div>
-
       </div>
     );
   }
