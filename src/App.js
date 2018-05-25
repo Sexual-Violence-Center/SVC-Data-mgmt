@@ -1,7 +1,3 @@
-// Commenting out empty pages!! please comment in when 
-// in use.  
-
-
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -10,11 +6,11 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import 'typeface-roboto';
+
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-// import Home from './components/Home/Home';
-// import Logout from './components/Home/Logout';
 import AdminTools from './components/AdminTools/AdminTools';
 import DataEntryPage from './components/DataEntryPage/DataEntryPage';
 import PinkForm from './components/PinkForm/PinkForm';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logout from '../../Home/Logout';
+import Logout from '../../Logout/Logout';
 
 
 const UserDataEntryNav = () => (
