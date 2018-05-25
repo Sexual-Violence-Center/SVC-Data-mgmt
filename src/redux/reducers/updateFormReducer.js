@@ -9,4 +9,4 @@ const updateFormReducer = (state = {}, action) => {
   }
 };
 
-export default newVictimEntry;
+export default updateFormReducer;
