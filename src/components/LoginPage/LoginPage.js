@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import Header from '../Header/Header';
 
 
 const mapStateToProps = state => ({
@@ -63,6 +64,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+        <Header title="SVC" />
         { this.renderAlert() }
         <form onSubmit={this.login}>
           <h1>Login</h1>

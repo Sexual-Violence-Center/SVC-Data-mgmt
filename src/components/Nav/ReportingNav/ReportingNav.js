@@ -9,6 +9,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -73,11 +74,13 @@ class ReportingNav extends Component {
                           Custom Report
                         </Link>
                       </MenuItem>
+                      <Divider />
                       <MenuItem onClick={this.handleClose}>
                         <Link to="/federal_report" style={{color: "black"}}>
                           Federal Report
                         </Link>
                       </MenuItem>
+                      <Divider />
                       <MenuItem onClick={this.handleClose}>
                         <Link to="/county_report" style={{color: "black"}}>
                           County Report

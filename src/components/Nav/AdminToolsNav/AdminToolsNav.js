@@ -9,6 +9,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -73,11 +74,13 @@ class AdminToolsNav extends Component {
                           User Entry
                         </Link>
                       </MenuItem>
+                      <Divider />
                       <MenuItem onClick={this.handleClose}>
                         <Link to="/data_entry_page" style={{color: "black"}}>
                           Data Entry
                         </Link>
                       </MenuItem>
+                      <Divider />
                       <MenuItem onClick={this.handleClose}>
                         <Link to="/search_and_update" style={{color: "black"}}>
                           Search/Update
