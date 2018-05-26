@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
-import PropTypes from 'prop-types';
 
 function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
     const isHighlighted = highlightedIndex === index;

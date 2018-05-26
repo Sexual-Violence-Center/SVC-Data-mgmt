@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Downshift from 'downshift';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import MenuItem from '@material-ui/core/MenuItem';
 import Chip from '@material-ui/core/Chip';
 
 import DisabilityObject from '../ObjectLists/Disability.Object';
@@ -38,7 +36,7 @@ renderSuggestion.propTypes = {
     }).isRequired,
 };
 
-class ContactTypeCustom extends React.Component {
+class DisabilityTypeCustom extends React.Component {
   state = {
     inputValue: '',
     selectedItem: [],
@@ -78,7 +76,7 @@ class ContactTypeCustom extends React.Component {
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    console.log('selectedItem', selectedItem);
+    // console.log('selectedItem', selectedItem);
     console.log('value', selectedItem);
     
     return (
@@ -134,10 +132,10 @@ class ContactTypeCustom extends React.Component {
   }
 }
 
-ContactTypeCustom.propTypes = {
+DisabilityTypeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContactTypeCustom);
+export default withStyles(styles)(DisabilityTypeCustom);
 
     
