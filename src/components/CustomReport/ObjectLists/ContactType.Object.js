@@ -4,4 +4,4 @@ const contactTypeObject = [
   { label: 'Telephone', value: "phone_contact"  }
 ]
 
-  export default contactTypeObject;
+export default contactTypeObject;
