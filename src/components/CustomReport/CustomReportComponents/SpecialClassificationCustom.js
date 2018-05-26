@@ -1,103 +1,141 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import keycode from 'keycode';
+import Downshift from 'downshift';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Chip from '@material-ui/core/Chip';
 
-const mapStateToProps = state => ({
-    user: state.user,
-    state,
-});
+import SpecialClassificationObject from '../ObjectLists/SpecialClassificationCustom.Object';
+import renderInput from '../StandardFunctionsForChips/renderInputFunction';
+import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
+import styles from '../StandardFunctionsForChips/chipStyles'
 
-class SpecialClassificationCustom extends Component {
-    constructor() {
-        super();
-        this.state = {
-            special_classification: '',
-        }
+
+function getSuggestions(inputValue) {
+  let count = 0;
+
+  return SpecialClassificationObject.filter(suggestion => {
+    const keep =
+      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
+      count < 5;
+    if (keep) {
+      count += 1;
+    }
+    return keep;
+  });
+}
+
+renderSuggestion.propTypes = {
+    highlightedIndex: PropTypes.number,
+    index: PropTypes.number,
+    itemProps: PropTypes.object,
+    selectedItem: PropTypes.string,
+    suggestion: PropTypes.shape({
+        label: PropTypes.string
+    }).isRequired,
+};
+
+class SpecialClassificationCustom extends React.Component {
+  state = {
+    inputValue: '',
+    selectedItem: [],
+  };
+
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
+    }
+  };
+
+  handleInputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  };
+
+  handleChange = item => {
+    let { selectedItem } = this.state;
+    if (selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
     }
 
-    handleChangeFor = (event) => {
-        const target = event.target;
-        const value = target.type === ('checkbox') ? target.checked : target.value;
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    });
+  };
 
-        this.setState({
-            special_classification: value
-        });
-    }
+  handleDelete = item => () => {
+    const selectedItem = [...this.state.selectedItem];
+    selectedItem.splice(selectedItem.indexOf(item), 1);
+    this.setState({ selectedItem });
+  };
 
-    render (){
-        return (
-
-            <div>
-                <h4> Custom Special Classification of Victims Report: </h4>
-                <form value={this.state.special_classification} onClick={this.handleChangeFor} >
-                        <input type="checkbox" 
-                            id = "disability_deaf"
-                            value = "disability_deaf"
-                        />
-                        < label htmlFor = "disability_deaf" >
-                            Deaf/Heard of Hearing
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "homeless"
-                            value = "homeless"
-                        />
-                        < label htmlFor = "homeless" >
-                            Homeless
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "victim_immigrant"
-                            value = "victim_immigrant"
-                        />
-                        < label htmlFor = "victim_immigrant" >
-                            Immigrants/Refugees/Asylum Seekers
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "lgbtq"
-                            value = "lgbtq"
-                        />
-                        < label htmlFor = "lgbtq" >
-                            LGBTQ
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "veteran"
-                            value = "veteran"
-                        />
-                        < label htmlFor = "veteran" >
-                            Veterans
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "limited_english"
-                            value = "limited_english"
-                        />
-                        < label htmlFor = "limited_english" >
-                            Victims with Limited English Proficiency
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "victims_with_disabilities"
-                            value = "victims_with_disabilities"
-                        />
-                        < label htmlFor = "victims_with_disabilities" >
-                            Victims with Disabilities
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "victim_multiple_types_violence"
-                            value = "victim_multiple_types_violence"
-                        />
-                        < label htmlFor = "victim_multiple_types_violence" >
-                            Victims with 2 or More Types of Victimization
-                        </label>
-
-                </form>
-            </div>
-        )
+  render() {
+    const { classes } = this.props;
+    const { inputValue, selectedItem } = this.state;
+    // console.log('selectedItem', selectedItem);
+    console.log('value', selectedItem);
     
-    }//end render
-}// end class
+    return (
+      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+      
+        {({
+          getInputProps,
+          getItemProps,
+          isOpen,
+          inputValue: inputValue2,
+          selectedItem: selectedItem2,
+          highlightedIndex,
+        }) => (
+          <div className={classes.container}>
+          {/* <h4> Custom Contact Type Report </h4> */}
+            {renderInput({
+              fullWidth: true,
+              classes,
+              InputProps: getInputProps({
+                startAdornment: selectedItem.map(item => (
+                  <Chip
+                    key={item.value}
+                    tabIndex={-1}
+                    label={item.label}
+                    className={classes.chip}
+                    onDelete={this.handleDelete(item)}
+                    value={item.value}
+                  />
+                )),
+                onChange: this.handleInputChange,
+                onKeyDown: this.handleKeyDown,
+                placeholder: 'Select Special Classification of Victims Types',
+                id: 'integration-downshift-multiple',
+              }),
+            })}
+            {isOpen ? (
+              <Paper className={classes.paper} square>
+                {getSuggestions(inputValue2).map((suggestion, index) =>
+                  renderSuggestion({
+                    suggestion,
+                    index,
+                    itemProps: getItemProps({ item: suggestion }),
+                    highlightedIndex,
+                    selectedItem: selectedItem2,
+                  }),
+                )}
+              </Paper>
+            ) : null}
+          </div>
+        )}
+      </Downshift>
+    );
+  }
+}
 
-export default connect(mapStateToProps)(SpecialClassificationCustom)
+SpecialClassificationCustom.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(SpecialClassificationCustom);
+
+    
