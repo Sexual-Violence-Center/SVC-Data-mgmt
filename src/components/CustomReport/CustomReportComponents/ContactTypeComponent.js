@@ -100,8 +100,7 @@ class ContactTypeCustom extends React.Component {
               InputProps: getInputProps({
                 startAdornment: selectedItem.map(item => (
                   <Chip
-                    title = {item.value}
-                    key={item}
+                    key={item.value}
                     tabIndex={-1}
                     label={item.label}
                     className={classes.chip}
