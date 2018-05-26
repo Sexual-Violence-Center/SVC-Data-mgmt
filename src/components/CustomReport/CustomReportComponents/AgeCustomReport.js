@@ -30,8 +30,8 @@ class CustomAge extends Component {
 
         return(
             <div>
-            <h4> Custom Age Report: </h4>
             <form onSubmit={this.customAgeReport}>
+                Custom Age Report: 
                 <input className="inputField" placeholder = "Starting Age"
                     type = "number" onChange = {this.startingAgeChange}
                 />
