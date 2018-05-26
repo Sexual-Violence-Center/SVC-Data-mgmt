@@ -108,7 +108,7 @@ class TransportationCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Transportation Types',
+                placeholder: 'Transportation Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

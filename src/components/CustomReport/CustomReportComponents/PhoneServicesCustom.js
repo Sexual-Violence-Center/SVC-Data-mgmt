@@ -108,7 +108,7 @@ class PhoneServicesCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Phone Services Types',
+                placeholder: 'Phone Services Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

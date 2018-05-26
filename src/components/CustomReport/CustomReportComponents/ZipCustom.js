@@ -124,7 +124,6 @@ class ZipCodeCustom extends React.Component {
           highlightedIndex,
         }) => (
           <div className={classes.container}>
-          <h4> Custom Zip Code Report </h4>
             {renderInput({
               fullWidth: true,
               classes,
@@ -140,7 +139,7 @@ class ZipCodeCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select multiple zip codes',
+                placeholder: 'Zip Codes - Hennepin County',
                 id: 'integration-downshift-multiple',
               }),
             })}

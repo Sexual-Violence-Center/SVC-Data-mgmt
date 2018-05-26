@@ -108,7 +108,7 @@ class CivilAdvocacyCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select In-Person Advocacy (Civil) Types',
+                placeholder: 'In-Person Advocacy (Civil) Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

@@ -108,7 +108,7 @@ class CriminalAdvocacyCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select In-Person Advocacy (Criminal) Types',
+                placeholder: 'In-Person Advocacy (Criminal) Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

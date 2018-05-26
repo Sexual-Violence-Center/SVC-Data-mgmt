@@ -108,7 +108,7 @@ class MedicalAdvocacyCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Medical Advocacy Types',
+                placeholder: 'Medical Advocacy Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

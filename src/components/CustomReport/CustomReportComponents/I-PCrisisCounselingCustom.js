@@ -108,7 +108,7 @@ class CrisisCounselingCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Crisis Counseling Types',
+                placeholder: 'Crisis Counseling Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

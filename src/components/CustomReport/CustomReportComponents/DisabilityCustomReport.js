@@ -108,7 +108,7 @@ class DisabilityTypeCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Disability Types',
+                placeholder: 'Disability Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

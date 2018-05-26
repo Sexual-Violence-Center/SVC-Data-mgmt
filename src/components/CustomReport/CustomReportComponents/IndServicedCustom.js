@@ -108,7 +108,7 @@ class IndividualsServicedCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Individuals Serviced Types',
+                placeholder: 'Individuals Serviced Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

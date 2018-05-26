@@ -108,7 +108,7 @@ class SupportedOnCallCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Supported on Call Types',
+                placeholder: 'Supported on Call Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

@@ -108,7 +108,7 @@ class PoliceReportCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Police Report Filed Types',
+                placeholder: 'Police Report Filed Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

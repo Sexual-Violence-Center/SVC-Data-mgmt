@@ -108,7 +108,7 @@ class RaceEthnicityCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Race/Ethnicity Types',
+                placeholder: 'Race/Ethnicity Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

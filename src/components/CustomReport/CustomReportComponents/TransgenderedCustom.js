@@ -108,7 +108,7 @@ class TransgenderedCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Transgendered Victims',
+                placeholder: 'Transgendered Victims',
                 id: 'integration-downshift-multiple',
               }),
             })}

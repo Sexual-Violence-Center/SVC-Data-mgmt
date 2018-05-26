@@ -108,7 +108,7 @@ class SexualOrientationCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Sexual Orientation Types',
+                placeholder: 'Sexual Orientation Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

@@ -108,7 +108,7 @@ class GenderCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Gender Types',
+                placeholder: 'Gender Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

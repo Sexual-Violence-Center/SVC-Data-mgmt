@@ -108,7 +108,7 @@ class OtherAdvocacyCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Other Advocacy Types',
+                placeholder: 'Other Advocacy Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

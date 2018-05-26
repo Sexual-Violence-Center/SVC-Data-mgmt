@@ -108,7 +108,7 @@ class ImmigrantCountryCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Immigrant Country Types',
+                placeholder: 'Immigrant Country Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

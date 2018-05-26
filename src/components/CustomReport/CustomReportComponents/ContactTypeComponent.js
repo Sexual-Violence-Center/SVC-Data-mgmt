@@ -108,7 +108,7 @@ class ContactTypeCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Contact Types',
+                placeholder: 'Contact Types',
                 id: 'integration-downshift-multiple',
               }),
             })}

@@ -108,7 +108,7 @@ class VictimTypeCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Types of Victims (Primary/Secondary)',
+                placeholder: 'Types of Victims (Primary/Secondary)',
                 id: 'integration-downshift-multiple',
               }),
             })}

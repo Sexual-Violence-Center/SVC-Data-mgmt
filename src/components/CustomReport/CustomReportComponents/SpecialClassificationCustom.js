@@ -108,7 +108,7 @@ class SpecialClassificationCustom extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select Special Classification of Victims Types',
+                placeholder: 'Special Classification of Victims Types',
                 id: 'integration-downshift-multiple',
               }),
             })}
