@@ -14,10 +14,10 @@ import { List, ListItem } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
 import Logout from '../../Logout/Logout';
-import AdminToolsNav from '../AdminToolsNav/AdminToolsNav';
-import ReportingNav from '../ReportingNav/ReportingNav';
 import Header from '../../Header/Header';
-import AdminDataEntryNav from '../../Nav/DataEntryNav/AdminDataEntryNav';
+import ReportingNav from './AdminNavComponents/ReportingNav';
+import AdminToolsNav from './AdminNavComponents/AdminToolsNav';
+import AdminDataEntryNav from './AdminNavComponents/AdminDataEntryNav';
 
 const drawerWidth = 190;
 
@@ -87,63 +87,9 @@ class AdminNav extends Component {
           }}
         >
         <div className={classes.toolbar} />
-          <List>
-            <br />
-            <br/>
-            <br />
-            <Typography variant="title" className="navTitle">
-              Reporting
-            </Typography>
-            <ListItem button>
-              <Link to="/custom_report" className="navButton">
-                Custom Report
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/federal_report" className="navButton">
-                Federal Report
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/county_report" className="navButton">
-                County Report
-              </Link>
-            </ListItem>
-          </List>
-          <Divider />
-          <br />
-          <List>
-            <Typography variant="title" className="navTitle">
-              Admin Entry Tools
-            </Typography>
-            <ListItem button>
-              <Link to="/user_entry_page" className="navButton">
-                User Entry
-            </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/search_and_update" className="navButton">
-                Search/Update
-            </Link>
-            </ListItem>
-          </List>
-          <List>
-            <Divider />
-            <br />
-            <Typography variant="title" className="navTitle">
-              Data Entry
-                  </Typography>
-            <ListItem button>
-              <Link to="/telephone" className="navButton">
-                Telephone
-                    </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/in-person" className="navButton">
-                In-Person
-                    </Link>
-            </ListItem>
-          </List>
+          <ReportingNav />
+          <AdminToolsNav />
+          <AdminDataEntryNav />
         </Drawer>
       </div>
     )

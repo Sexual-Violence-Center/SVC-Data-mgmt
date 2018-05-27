@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AdminNav from '../Nav/AdminNav/AdminNav';
-import AdminDataEntryNav from '../Nav/DataEntryNav/AdminDataEntryNav';
 
 class DataEntryPage extends Component {
     render(){
