@@ -5,7 +5,7 @@ import InpersonServices from '../FormComponents/InPersonServices/InPersonService
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
-import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
+import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 
 const mapStateToProps = state => ({
@@ -32,7 +32,7 @@ class YellowForm extends Component {
         if(this.props.state.user.userInfo === true ){
             DataEntryNav = <AdminNav />
         } else if (this.props.state.user.userInfo === false ){
-            DataEntryNav = <UserDataEntryNav/>
+            DataEntryNav = <UserNav/>
         } 
         return (
             <div style={{float: "right"}}>

@@ -17,7 +17,7 @@ class ReportingNav extends Component {
           <br />
           <Typography variant="title" className="navTitle">
             Reporting
-            </Typography>
+          </Typography>
           <ListItem button>
             <Link to="/custom_report" className="navButton">
               Custom Report

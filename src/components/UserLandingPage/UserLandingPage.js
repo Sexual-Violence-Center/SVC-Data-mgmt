@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
+import UserNav from '../Nav/UserNav/UserNav';
 
 class UserLandingPage extends Component {
 
   render(){
     return (
       <div>
-          <UserDataEntryNav />
-        <div>
+          <UserNav />
+        <div style={{float: "right"}}>
           <h1>Instructions</h1>
-        </div>
-        <div>
           <h2>Welcome!</h2>
           <p>
             SVC input forms are color coded to represent the type of service that was provided. Pink forms are for telephone services, and <br/>
