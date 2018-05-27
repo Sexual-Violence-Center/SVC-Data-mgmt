@@ -22,7 +22,7 @@ import SupportOnCallCustom from './CustomReportComponents/SupportedOnCallCustom'
 import TransgenderedCustom from './CustomReportComponents/TransgenderedCustom';
 import TransortationCustom from './CustomReportComponents/TransportationCustom';
 import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
-import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
+import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
     state,
 });
 
-class customReportSelectionPage extends Component{
+class customReportSelectionPage extends Component {
     state = {
         //tbd if needed
     }
@@ -45,27 +45,27 @@ class customReportSelectionPage extends Component{
         // TODO: this.props.dispatch({ sage and reducer to be added})
     }
 
-    render(){
+    render() {
         const customReportTopic = [
-            'Age', 'Contact Type', 'Disabilities', 
-            'Gender Identity', 'Immigrant Country', 
-            'Individuals Serviced', 'In-Person Crisis Counseling', 
-            'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)', 
-            'In-Person Medical Advocacy', 'Other In-Person Advocacy', 
-            'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity', 
-            'Referrals', 'Sexual Orientation', 
-            'Special Classification of Victims', 'Supported on Call', 
-            'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)', 
+            'Age', 'Contact Type', 'Disabilities',
+            'Gender Identity', 'Immigrant Country',
+            'Individuals Serviced', 'In-Person Crisis Counseling',
+            'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)',
+            'In-Person Medical Advocacy', 'Other In-Person Advocacy',
+            'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity',
+            'Referrals', 'Sexual Orientation',
+            'Special Classification of Victims', 'Supported on Call',
+            'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)',
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-    // loop over all custom report topics to display on screen
+        // loop over all custom report topics to display on screen
         let individualTopic = customReportTopic.map(topic => {
             return (
                 <option
                     key={topic}>
                     {topic}
-                </option>  
+                </option>
             )
         })
         // console.log('individualTopic', individualTopic);
@@ -96,40 +96,42 @@ class customReportSelectionPage extends Component{
         //     )
         // }
 
-        return ( 
+        return (
             <div>
-                <AdminNav / >
+                <AdminNav />
+                <div style={{ float: "right" }}>
                 <h2> Custom Report Page </h2>
-                {/* add calendar */}
-                <form onSubmit={this.submitCustomReport}>
-                    <select className="customReportTopics" multiple>
-                        {individualTopic}
-                    </select>
-                    <input type="submit" />
-                </form>
+                    {/* add calendar */}
+                    <form onSubmit={this.submitCustomReport}>
+                        <select className="customReportTopics" multiple>
+                            {individualTopic}
+                        </select>
+                        <input type="submit" />
+                    </form>
 
-                <div className="customReportSpecificTopic">
-                    < CustomAge />
-                    < CustomContactType />
-                    < CustomDisability />
-                    < CustomGender />
-                    < ImmigrantCountryCustom />
-                    < IndividualsServiced/>
-                    < CrisisCounseling/>
-                    < AdvocacyCivilCustom/>
-                    < AdvocacyCriminalCustom/>
-                    < AdvocacyMedicalCustom />
-                    < AdvocacyOtherCustom />
-                    < PhoneServicesCustom />
-                    < PoliceReportCustom />
-                    < RaceEthnicityCustom />
-                    < SexualOrientationCustom />
-                    < SpecialClassificationCustom />
-                    < SupportOnCallCustom />
-                    < TransgenderedCustom />
-                    < TransortationCustom />
-                    < VictimTypeCustom />
-                    < UnmetNeedsCustom />
+                    <div className="customReportSpecificTopic">
+                        < CustomAge />
+                        < CustomContactType />
+                        < CustomDisability />
+                        < CustomGender />
+                        < ImmigrantCountryCustom />
+                        < IndividualsServiced />
+                        < CrisisCounseling />
+                        < AdvocacyCivilCustom />
+                        < AdvocacyCriminalCustom />
+                        < AdvocacyMedicalCustom />
+                        < AdvocacyOtherCustom />
+                        < PhoneServicesCustom />
+                        < PoliceReportCustom />
+                        < RaceEthnicityCustom />
+                        < SexualOrientationCustom />
+                        < SpecialClassificationCustom />
+                        < SupportOnCallCustom />
+                        < TransgenderedCustom />
+                        < TransortationCustom />
+                        < VictimTypeCustom />
+                        < UnmetNeedsCustom />
+                    </div>
                 </div>
             </div>
         ) //end return

@@ -34,12 +34,10 @@ class YellowForm extends Component {
         } else if (this.props.state.user.userInfo === false ){
             DataEntryNav = <UserDataEntryNav/>
         } 
-
         return (
-
-            <div>
+            <div style={{float: "right"}}>
                 {DataEntryNav}
-                <h1>SVC In-Person Counseling Form for Primary AND Secondary Victims</h1>
+                <h1>In-Person Contact Form for Primary AND Secondary Victims</h1>
                 <InPersonContactInfo />
                 <InpersonServices />
                 <UnmetNeeds />

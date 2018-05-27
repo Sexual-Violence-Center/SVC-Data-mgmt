@@ -12,17 +12,6 @@ const mapStateToProps = state => ({
     state
 });
 
-// class CountyReport extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <ReportingNav />
-//                 <h2>County Reports</h2>
-//             </div>
-            
-//         )
-//     }
-// }
 class CountyReport extends Component{ 
 
     componentDidMount () {
@@ -36,6 +25,7 @@ class CountyReport extends Component{
         return (
             <div className="federalReport">
             <AdminNav />
+            <div style={{float: "right"}}>
             <h2>County Report:</h2>
             <h3>Start Date:<Calendar /></h3><h3> End Date:<Calendar /></h3> 
                 <button>go</button>  
@@ -382,7 +372,7 @@ class CountyReport extends Component{
                 </table>
             </section>
             
-            
+            </div>
             </div>
            
             </div>

@@ -6,7 +6,9 @@ class SearchUpdatePage extends Component {
         return(
             <div>
                 <AdminNav />
+                <div style={{float: "right"}}>
                 <h1>Search and Update</h1>
+                </div>
             </div>
         )
     }

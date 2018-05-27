@@ -36,9 +36,9 @@ class PinkForm extends Component {
             DataEntryNav = <UserDataEntryNav/>
         } 
         return (
-            <div>
+            <div style={{float: "right"}}>
                 {DataEntryNav}
-                <h1>SVC Telephone Contact Form for Primary AND Secondary Victims</h1>
+                <h1>Telephone Contact Form for Primary AND Secondary Victims</h1>
                 <TelephoneContactInfo />
                 <PhoneServices />
                 <Support />

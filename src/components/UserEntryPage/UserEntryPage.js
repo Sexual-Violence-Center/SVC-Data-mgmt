@@ -180,7 +180,7 @@ class UserEntryPage extends Component {
   }
   
     return (
-      <div>
+      <div style={{float: "right"}}>
         { content }
       </div>
     );
