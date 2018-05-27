@@ -40,6 +40,10 @@ class CountyReport extends Component{
             payload: this.state
         })
     }
+    print = () => {
+        console.log('print button clicked');
+        window.print();
+    }
 
     componentDidMount () {
         
@@ -66,11 +70,11 @@ class CountyReport extends Component{
                 <option value="Other">Other</option>
                 </select>
                 <button onClick={this.submit}>go</button>  
-                <button>Print</button>
+                <button onClick={this.print}>Print</button>
             <div className="dropdown">
             <section className="total">
                 <h4>Hennepin County residents who received services during the reporting period</h4>
-                <table className="federalTable">
+                <table className="countyTable">
                 <thead>
                     <tr>
                         <th>Types of Individuals</th>
@@ -113,7 +117,7 @@ class CountyReport extends Component{
                     </tr>
                     <tr>
                         <td>Location of Service</td>
-                        <td><input type="text" name="location" value={this.state.service_location} onChange={this.handleChangeFor}/></td>
+                        <td><input type="text" name="service_location" value={this.state.service_location} onChange={this.handleChangeFor}/></td>
                     </tr>
                     </tbody>
                 </table>
@@ -149,7 +153,7 @@ class CountyReport extends Component{
             </section>
             <section className="gender">
                 <h4>Hennepin County Zip Code Totals</h4>
-                <table className="federalTable">
+                <table className="countyTable">
                 <thead>
                     <tr>
                         <th>Zip Code</th>
@@ -470,7 +474,7 @@ class CountyReport extends Component{
             </section>
             <section className="Age">
                 <h4>Demographics: Age</h4>
-                <table className="federalTable">
+                <table className="countyTable">
                 <thead>
                     <tr>
                         <th>Age Range</th>
@@ -499,7 +503,7 @@ class CountyReport extends Component{
             </section>
             <section className="gender">
                 <h4>Demographics: Gender Identity</h4>
-                <table className="federalTable">
+                <table className="countyTable">
                 <thead>
                     <tr>
                         <th>Gender Identity</th>
@@ -528,7 +532,7 @@ class CountyReport extends Component{
             </section>
             <section className="race">
                 <h4>Demographics: Race/Ethnicity</h4>
-                <table className="federalTable">
+                <table className="countyTable">
                 <thead>
                     <tr>
                         <th>Race/Ethnicity</th>
@@ -582,7 +586,7 @@ class CountyReport extends Component{
             
             <section className="victimization">
                 <h4>Types of Victimization</h4>
-                <table className="federalTable">
+                <table className="countyTable">
                 <thead>
                     <tr>
                         <th>Victimization Types</th>

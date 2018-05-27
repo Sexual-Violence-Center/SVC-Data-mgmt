@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import AdminToolsNav from '../Nav/AdminToolsNav/AdminToolsNav';
+import UpdateForm from './UpdateForm';
 
 
 const mapStateToProps = state => ({
@@ -26,6 +27,13 @@ class SearchUpdatePage extends Component {
             payload: this.state.userInput
         })
     }
+    // if there is data in the reducer it means the user searched for something
+    //shows form if true
+    renderForm = ()=>{
+        if (this.props.state.updateFormReducer.id){
+            return <UpdateForm />
+        }
+    }
 
 
 
@@ -40,6 +48,7 @@ class SearchUpdatePage extends Component {
               </label>
             </form>
             <button onClick={this.handleSubmit}>Submit</button>
+            {this.renderForm()}
           </div>;
     }
 }

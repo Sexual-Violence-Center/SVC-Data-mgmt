@@ -22,22 +22,9 @@ class FederalReport extends Component{
             endDate: '',
         }
     }
-
-    handleChangeFor = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        }); 
-       
-    }
-    submit = () => {
-        this.props.dispatch({
-            type: 'GET_PERSON_DATA', 
-            payload: this.state
-        })
+    print = () => {
+        console.log('print button clicked');
+        window.print();
     }
 
     componentDidMount () {
@@ -59,7 +46,7 @@ class FederalReport extends Component{
                 <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
             
                 <button onClick={this.submit}>go</button>  
-                <button>Print</button>
+                <button onClick={this.print}>Print</button>
             <div className="dropdown">
             <section className="total">
                 <h4>Individuals who received services during the reporting period</h4>

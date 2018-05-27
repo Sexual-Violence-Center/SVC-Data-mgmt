@@ -70,7 +70,7 @@ router.get('/:id', (req, res)=>{
         let queryText = 'SELECT * FROM "victim" WHERE id = $1;';
         pool.query(queryText, [req.params.id])
             .then((result)=>{
-                res.send(result.rows);
+                res.send(result.rows[0]);
             })
             .catch((error)=>{
                 console.log('error in get form server ', error);

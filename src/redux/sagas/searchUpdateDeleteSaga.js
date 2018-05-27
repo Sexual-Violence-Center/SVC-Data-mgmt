@@ -1,4 +1,4 @@
-import { call, takeEvery } from "redux-saga/effects";
+import { call, takeEvery, put } from "redux-saga/effects";
 import axios from "axios";
 
 // enter a new victim contact form into the database and
@@ -8,6 +8,10 @@ function* searchForm(action) {
   try {
     const form = yield call(axios.get, `/api/victim/${action.payload}`, config);
     yield console.log('in search reducer ', form.data);
+    yield put({
+      type: 'FORM_TO_UPDATE',
+      payload: form.data
+    })
   } catch (error) {
     console.log("error search Form", error);
   }
