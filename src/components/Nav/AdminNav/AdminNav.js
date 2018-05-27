@@ -19,7 +19,7 @@ import ReportingNav from '../ReportingNav/ReportingNav';
 import Header from '../../Header/Header';
 import AdminDataEntryNav from '../../Nav/DataEntryNav/AdminDataEntryNav';
 
-const drawerWidth = 240;
+const drawerWidth = 190;
 
 const styles = theme => ({
   root: {
@@ -66,6 +66,11 @@ class AdminNav extends Component {
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar >
+            <Header />
+            <Typography variant="display1" color="inherit" className={classes.flex}>
+              Data Management System
+            </Typography>
+            <br />
             <Button>
               <Link to="/adminlandingpage" style={{ color: "white", textDecoration: 'none' }}>
                 Home
@@ -84,6 +89,7 @@ class AdminNav extends Component {
           <List>
             <br />
             <br/>
+            <br />
             <Typography variant="title">
               Reporting
             </Typography>
@@ -104,6 +110,7 @@ class AdminNav extends Component {
             </ListItem>
           </List>
           <Divider />
+          <br />
           <List>
             <Typography variant="title">
               Admin Entry Tools
