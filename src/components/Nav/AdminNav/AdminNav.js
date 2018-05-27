@@ -36,6 +36,7 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    color: 'primary'
   },
   drawerPaper: {
     position: 'fixed',
@@ -64,10 +65,10 @@ class AdminNav extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="fixed" className={classes.appBar}>
+        <AppBar position="fixed" color="primary" className={classes.appBar}>
           <Toolbar >
             <Header />
-            <Typography variant="display1" color="inherit" className={classes.flex}>
+            <Typography variant="display1" color="inherit" className={classes.flex} style={{paddingLeft: '20px'}}>
               Data Management System
             </Typography>
             <br />
@@ -90,21 +91,21 @@ class AdminNav extends Component {
             <br />
             <br/>
             <br />
-            <Typography variant="title">
+            <Typography variant="title" className="navTitle">
               Reporting
             </Typography>
             <ListItem button>
-              <Link to="/custom_report" style={{ color: "black", textDecoration: 'none' }}>
+              <Link to="/custom_report" className="navButton">
                 Custom Report
               </Link>
             </ListItem>
             <ListItem button>
-              <Link to="/federal_report" style={{ color: "black", textDecoration: 'none' }}>
+              <Link to="/federal_report" className="navButton">
                 Federal Report
               </Link>
             </ListItem>
             <ListItem button>
-              <Link to="/county_report" style={{ color: "black", textDecoration: 'none' }}>
+              <Link to="/county_report" className="navButton">
                 County Report
               </Link>
             </ListItem>
@@ -112,16 +113,16 @@ class AdminNav extends Component {
           <Divider />
           <br />
           <List>
-            <Typography variant="title">
+            <Typography variant="title" className="navTitle">
               Admin Entry Tools
             </Typography>
             <ListItem button>
-              <Link to="/user_entry_page" style={{ color: "black", textDecoration: 'none' }}>
+              <Link to="/user_entry_page" className="navButton">
                 User Entry
             </Link>
             </ListItem>
             <ListItem button>
-              <Link to="/search_and_update" style={{ color: "black", textDecoration: 'none' }}>
+              <Link to="/search_and_update" className="navButton">
                 Search/Update
             </Link>
             </ListItem>
@@ -129,16 +130,16 @@ class AdminNav extends Component {
           <List>
             <Divider />
             <br />
-            <Typography variant="title">
+            <Typography variant="title" className="navTitle">
               Data Entry
                   </Typography>
             <ListItem button>
-              <Link to="/telephone" style={{ color: 'black', textDecoration: "none" }}>
+              <Link to="/telephone" className="navButton">
                 Telephone
                     </Link>
             </ListItem>
             <ListItem button>
-              <Link to="/in-person" style={{ color: 'black', textDecoration: "none" }}>
+              <Link to="/in-person" className="navButton">
                 In-Person
                     </Link>
             </ListItem>

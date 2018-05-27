@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import 'typeface-roboto';
-
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -23,11 +23,22 @@ import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
 import UserEntryPage from './components/UserEntryPage/UserEntryPage';
 import SearchUpdatePage from './components/SearchUpdatePage/SearchUpdatePage';
-
-
 import './styles/main.css';
+import { teal, grey } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: teal[500],
+    },
+    secondary: {
+      main: grey[600]
+    },
+  }
+});
 
 const App = () => (
+  <MuiThemeProvider theme={theme}>
   <div>
     <Header />
     <Router>
@@ -95,6 +106,7 @@ const App = () => (
       </Switch>
     </Router>
   </div>
+  </MuiThemeProvider>
 );
 
 export default App;

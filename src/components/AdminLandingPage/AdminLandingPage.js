@@ -15,14 +15,9 @@ class AdminLandingPage extends Component {
 
     return (
       <div>
-        <div>
-          {/* <Header title="SVC" /> */}
           <AdminNav />
-        </div>
-        <div>
+        <div style={{float: "right"}}>
           <h1>Instructions</h1>
-        </div>
-        <div>
           <h2>Welcome</h2>
           <p>
             Access to the administrator views is provided by clicking items under REPORTS and ACTIONS on the navigation bar to the left. <br/>Clicking Federal or County displays the selected report. <br/> Clicking Custom allows an admin to select various reporting criteria for reviewing.
