@@ -76,6 +76,7 @@ class InPersonServices extends Component {
                             <br />
                             <input type="checkbox" id="legal_ofp_hro" name="legal_ofp_hro" value={this.state.legal_ofp_hro} onChange={this.handleChangeFor} /><label htmlFor="legal_ofp_hro">Assistance Obtaining OFP or HRO</label>
                             <input type="checkbox" id="legal_immigration" name="legal_immigration" value={this.state.legal_immigration} onChange={this.handleChangeFor} /><label htmlFor="legal_immigration">Immigration-related support(U Visa, etc.)</label>
+                            <br />
                             <input type="checkbox" id="legal_intervention" name="legal_intervention" value={this.state.legal_intervention} onChange={this.handleChangeFor} /><label htmlFor="legal_intervention">Intervention with landlord, academic institution, or creditor</label>
                         </div>
                         <br />

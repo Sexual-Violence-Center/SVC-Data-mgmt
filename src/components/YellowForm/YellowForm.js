@@ -7,6 +7,7 @@ import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
 import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
+import SubmitButton from '../FormComponents/SubmitButton/SubmitButton';
 
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
@@ -18,11 +19,12 @@ const style = {
     title: {
         backgroundColor: '#fbff97',
         textAlign: 'center',
-        color: 'black'
-    }, 
-    // submitButton: {
-    //     padding: '0 30px'
-    // }
+        color: 'black', 
+        padding: '10px',
+    },
+    paper:{
+        backgroundColor: '#feffde'
+    }
 }
 
 class YellowForm extends Component {
@@ -48,26 +50,20 @@ class YellowForm extends Component {
             DataEntryNav = <UserNav />
         }
         return (
-            <div style={{ float: "right" }}>
+            <div style={{ float: "right", marginRight: '80px' }}>
                 {DataEntryNav}
-                <Paper>
-                    <Card>
-                        <Typography variant="display1" color="secondary" style={style.title}>
+                <Paper style={style.paper}>
+                    <Card style={{margin: '10px'}}>
+                        <Typography variant="display1" style={style.title}>
                             In-Person Contact Form for Primary AND Secondary Victims
-                    </Typography>
+                        </Typography>
                     </Card>
                     <InPersonContactInfo />
                     <InpersonServices />
                     <UnmetNeeds />
                     <Referrals />
                     <Demographics />
-                    <Card style={{ padding: '20px', margin: '10px', textAlign: 'center' }}>
-                        <Button onClick={this.handleSubmit}>
-                            <Typography variant="headline">
-                                Submit
-                            </Typography>
-                        </Button>
-                    </Card>
+                    <SubmitButton handleSubmit={this.handleSubmit}/>
                 </Paper>
             </div>
         )

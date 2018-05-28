@@ -55,6 +55,7 @@ class ContactInfo extends Component {
                             Date:
                 <input type="date" name="date_entered" value={this.state.date_entered} onChange={this.handleChangeFor} />
                         </label>
+                        <br />
                         <label>
                             Start Time:
                 <input type="time" name="start_time" value={this.state.start_time} onChange={this.handleChangeFor} />
