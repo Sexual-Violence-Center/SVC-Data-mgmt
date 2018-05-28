@@ -15,9 +15,14 @@ const mapStateToProps = state => ({
 })
 
 const style = {
-    backgroundColor: '#fbff97',
-    textAlign: 'center',
-    color: 'black'
+    title: {
+        backgroundColor: '#fbff97',
+        textAlign: 'center',
+        color: 'black'
+    }, 
+    // submitButton: {
+    //     padding: '0 30px'
+    // }
 }
 
 class YellowForm extends Component {
@@ -47,7 +52,7 @@ class YellowForm extends Component {
                 {DataEntryNav}
                 <Paper>
                     <Card>
-                        <Typography variant="display1" color="secondary" style={style}>
+                        <Typography variant="display1" color="secondary" style={style.title}>
                             In-Person Contact Form for Primary AND Secondary Victims
                     </Typography>
                     </Card>
@@ -58,7 +63,7 @@ class YellowForm extends Component {
                     <Demographics />
                     <Card style={{ padding: '20px', margin: '10px', textAlign: 'center' }}>
                         <Button onClick={this.handleSubmit}>
-                            <Typography variant="title">
+                            <Typography variant="headline">
                                 Submit
                             </Typography>
                         </Button>
