@@ -6,6 +6,11 @@ const mapStateToProps = state => ({
     state
 });
 
+const style = {
+    padding: '20px',
+    margin: '10px'
+}
+
 class PhoneServices extends Component {
     constructor() {
         super();
@@ -37,7 +42,7 @@ class PhoneServices extends Component {
     render() {
         return (
             <div className="phoneServices">
-                <Card style={{padding: '20px', margin: '10px'}}>
+                <Card style={style}>
                     <h2>Telephone Services</h2>
                     <div className="telephoneChoices">
                         <p>(check all that apply)</p>

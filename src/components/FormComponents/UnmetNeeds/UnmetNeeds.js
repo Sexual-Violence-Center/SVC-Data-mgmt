@@ -6,6 +6,11 @@ const mapStateToProps = state => ({
     state
 });
 
+const style = {
+    padding: '20px',
+    margin: '10px'
+}
+
 class UnmetNeeds extends Component {
     constructor() {
         super();
@@ -37,7 +42,7 @@ class UnmetNeeds extends Component {
     render() {
         return (
             <div className="unmetNeeds">
-                <Card style={{ padding: '20px', margin: '10px' }}>
+                <Card style={style}>
                     <h2>Unmet Needs</h2>
                     <div className="unmetNeedsContainer">
                         <label>Were there any unmet needs for this individual?</label>

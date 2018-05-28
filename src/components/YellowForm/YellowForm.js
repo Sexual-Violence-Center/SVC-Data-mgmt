@@ -23,7 +23,7 @@ const style = {
         padding: '10px',
     },
     paper:{
-        backgroundColor: '#feffde'
+        backgroundColor: '#fdffc4'
     }
 }
 

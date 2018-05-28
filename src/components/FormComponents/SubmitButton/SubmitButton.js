@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Card, Button, Typography } from '@material-ui/core';
 
+const style = {
+    padding: '20px',
+    margin: '10px',
+    textAlign: 'center'
+}
+
 class SubmitButton extends Component {
     render() {
         return (
             <div>
-                <Card style={{ padding: '20px', margin: '10px', textAlign: 'center' }}>
+                <Card style={style}>
                     <Button onClick={this.props.handleSubmit}>
                         <Typography variant="headline">
                             Submit

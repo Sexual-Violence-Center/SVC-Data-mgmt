@@ -6,6 +6,11 @@ const mapStateToProps = state => ({
     state
 });
 
+const style = {
+    padding: '20px',
+    margin: '10px'
+}
+
 class Referrals extends Component {
     constructor() {
         super()
@@ -35,7 +40,7 @@ class Referrals extends Component {
     render() {
         return (
             <div className="referrals">
-                <Card style={{padding: '20px', margin: '10px'}}>
+                <Card style={style}>
                     <h2>Referrals</h2>
                     <p>(please fill in name of organization)</p>
                     <form>

@@ -6,6 +6,11 @@ const mapStateToProps = state => ({
     state
 });
 
+const style = {
+    padding: '20px',
+    margin: '10px'
+}
+
 class TelephoneContactInfo extends Component {
     constructor() {
         super();
@@ -41,7 +46,7 @@ class TelephoneContactInfo extends Component {
     render() {
         return (
             <div className="contactInfo">
-                <Card style={{padding: '20px', margin: '10px'}}>
+                <Card style={style}>
                     <h2>Contact Info</h2>
                     <label>
                         Advocate/Counselor Name:

@@ -6,6 +6,11 @@ const mapStateToProps = state => ({
     state
 });
 
+const style = {
+    padding: '20px',
+    margin: '10px'
+}
+
 class Support extends Component {
     constructor() {
         super();
@@ -32,7 +37,7 @@ class Support extends Component {
     render() {
         return (
             <div className="support">
-                <Card style={{padding: '20px', margin: '10px'}}>
+                <Card style={style}>
                     <h2>Did They Feel Supported?</h2>
                     <p><strong>MANDATORY</strong> Did you feel that you were supported on this call?</p>
                     <select name="supported_on_call" value={this.state.supported_on_call} onChange={this.handleChangeFor}>

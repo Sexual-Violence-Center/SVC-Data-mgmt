@@ -8,11 +8,16 @@ import ImmigrantStatus from './DemographicComponents/ImmigrantStatus';
 import DemographicOther from './DemographicComponents/DemographicOther';
 import { Card } from '@material-ui/core';
 
+const style = {
+    padding: '20px',
+    margin: '10px'
+}
+
 class Demographics extends Component {
     render() {
         return (
             <div className="demographics">
-                <Card style={{padding: '20px', margin: '10px'}}>
+                <Card style={style}>
                     <h2>Victim/Survivor Demographics</h2>
                     <TypeOfViolence />
                     <PoliceReport />
