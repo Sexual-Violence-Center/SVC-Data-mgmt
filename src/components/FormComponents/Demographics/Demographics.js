@@ -6,19 +6,22 @@ import DisabilityStatus from './DemographicComponents/DisabilityStatus';
 import EthnicBackground from './DemographicComponents/EthnicBackground';
 import ImmigrantStatus from './DemographicComponents/ImmigrantStatus';
 import DemographicOther from './DemographicComponents/DemographicOther';
+import { Card } from '@material-ui/core';
 
 class Demographics extends Component {
-    render(){
+    render() {
         return (
             <div className="demographics">
-            <h2>Victim/Survivor Demographics</h2>
-            <TypeOfViolence />
-            <PoliceReport />
-            <Survey />
-            <DisabilityStatus />
-            <EthnicBackground />
-            <ImmigrantStatus />
-            <DemographicOther />
+                <Card style={{padding: '20px', margin: '10px'}}>
+                    <h2>Victim/Survivor Demographics</h2>
+                    <TypeOfViolence />
+                    <PoliceReport />
+                    <Survey />
+                    <DisabilityStatus />
+                    <EthnicBackground />
+                    <ImmigrantStatus />
+                    <DemographicOther />
+                </Card>
         </div>
         )
     }

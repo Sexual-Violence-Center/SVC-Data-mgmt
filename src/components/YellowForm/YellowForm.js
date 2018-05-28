@@ -8,9 +8,17 @@ import Demographics from '../FormComponents/Demographics/Demographics';
 import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 
+import { Paper, Typography, Card, Button } from '@material-ui/core';
+
 const mapStateToProps = state => ({
     state
 })
+
+const style = {
+    backgroundColor: '#fbff97',
+    textAlign: 'center',
+    color: 'black'
+}
 
 class YellowForm extends Component {
     constructor() {
@@ -29,21 +37,33 @@ class YellowForm extends Component {
 
     render() {
         let DataEntryNav;
-        if(this.props.state.user.userInfo === true ){
+        if (this.props.state.user.userInfo === true) {
             DataEntryNav = <AdminNav />
-        } else if (this.props.state.user.userInfo === false ){
-            DataEntryNav = <UserNav/>
-        } 
+        } else if (this.props.state.user.userInfo === false) {
+            DataEntryNav = <UserNav />
+        }
         return (
-            <div style={{float: "right"}}>
+            <div style={{ float: "right" }}>
                 {DataEntryNav}
-                <h1>In-Person Contact Form for Primary AND Secondary Victims</h1>
-                <InPersonContactInfo />
-                <InpersonServices />
-                <UnmetNeeds />
-                <Referrals />
-                <Demographics />
-                <button onClick={this.handleSubmit}>Submit</button>
+                <Paper>
+                    <Card>
+                        <Typography variant="display1" color="secondary" style={style}>
+                            In-Person Contact Form for Primary AND Secondary Victims
+                    </Typography>
+                    </Card>
+                    <InPersonContactInfo />
+                    <InpersonServices />
+                    <UnmetNeeds />
+                    <Referrals />
+                    <Demographics />
+                    <Card style={{ padding: '20px', margin: '10px', textAlign: 'center' }}>
+                        <Button onClick={this.handleSubmit}>
+                            <Typography variant="title">
+                                Submit
+                            </Typography>
+                        </Button>
+                    </Card>
+                </Paper>
             </div>
         )
     }
