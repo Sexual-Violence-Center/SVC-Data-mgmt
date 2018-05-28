@@ -15,7 +15,7 @@ const style = {
     margin: '10px'
   },
   paper: {
-    padding: '10px', 
+    padding: '10px',
     backgroundColor: grey[300]
   }
 }
@@ -29,10 +29,14 @@ class UserLandingPage extends Component {
         <div style={{ float: "right", marginRight: '50px', marginTop: '20px' }}>
           <Paper style={style.paper}>
             <Card style={style.titleCard}>
-              <Typography variant="display2" style={{textAlign: 'center', color: grey[50]}}>Welcome!</Typography>
+              <Typography variant="display2" style={{ textAlign: 'center', color: grey[50] }}>
+                Welcome!
+              </Typography>
             </Card>
             <Card style={style.card}>
-              <Typography variant="display1" style={{textAlign: 'center'}}>Instructions</Typography>
+              <Typography variant="display1" style={{ textAlign: 'center' }}>
+                Instructions
+              </Typography>
               <br />
               <Divider />
               <br />
