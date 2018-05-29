@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import Header from '../Header/Header';
 
 
 const mapStateToProps = state => ({
@@ -64,7 +65,7 @@ class LoginPage extends Component {
     return (
       <div>
         { this.renderAlert() }
-        <form onSubmit={this.login}>
+        <form className="loginForm" onSubmit={this.login}>
           <h1>Login</h1>
           <div>
             <label htmlFor="username">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ReportingNav from '../Nav/ReportingNav/ReportingNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 import CustomAge from './CustomReportComponents/AgeCustomReport';
 import CustomContactType from './CustomReportComponents/ContactTypeComponent';
 import CustomDisability from './CustomReportComponents/DisabilityCustomReport';
@@ -32,7 +32,7 @@ const mapStateToProps = state => ({
     state,
 });
 
-class customReportSelectionPage extends Component{
+class customReportSelectionPage extends Component {
     state = {
         //tbd if needed
     }
@@ -47,27 +47,27 @@ class customReportSelectionPage extends Component{
         // TODO: this.props.dispatch({ sage and reducer to be added})
     }
 
-    render(){
+    render() {
         const customReportTopic = [
-            'Age', 'Contact Type', 'Disabilities', 
-            'Gender Identity', 'Immigrant Country', 
-            'Individuals Serviced', 'In-Person Crisis Counseling', 
-            'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)', 
-            'In-Person Medical Advocacy', 'Other In-Person Advocacy', 
-            'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity', 
-            'Referrals', 'Sexual Orientation', 
-            'Special Classification of Victims', 'Supported on Call', 
-            'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)', 
+            'Age', 'Contact Type', 'Disabilities',
+            'Gender Identity', 'Immigrant Country',
+            'Individuals Serviced', 'In-Person Crisis Counseling',
+            'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)',
+            'In-Person Medical Advocacy', 'Other In-Person Advocacy',
+            'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity',
+            'Referrals', 'Sexual Orientation',
+            'Special Classification of Victims', 'Supported on Call',
+            'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)',
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-    // loop over all custom report topics to display on screen
+        // loop over all custom report topics to display on screen
         let individualTopic = customReportTopic.map(topic => {
             return (
                 <option
                     key={topic}>
                     {topic}
-                </option>  
+                </option>
             )
         })
         // console.log('individualTopic', individualTopic);
@@ -98,17 +98,18 @@ class customReportSelectionPage extends Component{
         //     )
         // }
 
-        return ( 
+        return (
             <div>
-                < ReportingNav / >
+                <AdminNav />
+                <div style={{ float: "right" }}>
                 <h2> Custom Report Page </h2>
-                {/* add calendar */}
-                <form onSubmit={this.submitCustomReport}>
-                    <select className="customReportTopics" multiple>
-                        {individualTopic}
-                    </select>
-                    <input type="submit" />
-                </form>
+                    {/* add calendar */}
+                    <form onSubmit={this.submitCustomReport}>
+                        <select className="customReportTopics" multiple>
+                            {individualTopic}
+                        </select>
+                        <input type="submit" />
+                    </form>
 
                 <div className="customReportSpecificTopic">
                     < CustomAge />
@@ -134,6 +135,7 @@ class customReportSelectionPage extends Component{
                     < UnmetNeedsCustom />
                     < TypesOfVictimizationCustom />
                     < ZipCodeCustom />
+                </div>
                 </div>
             </div>
         ) //end return

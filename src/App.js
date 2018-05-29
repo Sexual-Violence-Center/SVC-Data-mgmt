@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -7,30 +6,39 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import 'typeface-roboto';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-// import Home from './components/Home/Home';
-// import Logout from './components/Home/Logout';
-import AdminTools from './components/AdminTools/AdminTools';
 import DataEntryPage from './components/DataEntryPage/DataEntryPage';
 import PinkForm from './components/PinkForm/PinkForm';
 import YellowForm from './components/YellowForm/YellowForm';
 import FederalReport from './components/FederalReport/FederalReport';
 import CountyReport from './components/CountyReport/CountyReport';
 import CustomReport from './components/CustomReport/CustomReport';
-import ReportingPage from './components/ReportingPage/ReportingPage';
 import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
 import UserEntryPage from './components/UserEntryPage/UserEntryPage';
 import SearchUpdatePage from './components/SearchUpdatePage/SearchUpdatePage';
-
-
 import './styles/main.css';
+import { teal, grey } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: teal[400],
+    },
+    secondary: {
+      main: grey[600]
+    },
+  }
+});
 
 const App = () => (
+  <MuiThemeProvider theme={theme}>
   <div>
-    <Header title="SVC" />
+    <Header />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/login" />
@@ -41,10 +49,6 @@ const App = () => (
         <Route
           path="/register"
           component={RegisterPage}
-        />
-        <Route
-          path="/admin_tools"
-          component={AdminTools}
         />
         <Route
           path="/telephone"
@@ -70,10 +74,6 @@ const App = () => (
           path="/custom_report"
           component={CustomReport}
         />
-        <Route 
-        path="/reporting_page"
-        component={ReportingPage}
-        />
         <Route
           path="/userlandingpage"
           component={UserLandingPage}
@@ -96,6 +96,7 @@ const App = () => (
       </Switch>
     </Router>
   </div>
+  </MuiThemeProvider>
 );
 
 export default App;

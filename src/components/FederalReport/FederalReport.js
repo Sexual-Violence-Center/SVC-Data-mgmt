@@ -3,41 +3,55 @@ import { connect } from 'react-redux';
 // import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-// import getFederalReducer from '../../redux/reducers/getFederalReducer';
-import ReportingNav from '../Nav/ReportingNav/ReportingNav';
+// import getPersonReducer from '../../redux/reducers/getPersonReducer';
+
+import AdminNav from '../Nav/AdminNav/AdminNav';
 
 
 const mapStateToProps = state => ({
     user: state.user,
     person: state.getFederalReducer,
     state,
-  });
- 
+});
 
-class FederalReport extends Component{ 
-    constructor(){
+
+class FederalReport extends Component {
+    constructor() {
         super();
         this.state = {
             startDate: '',
             endDate: '',
         }
     }
-    print = () => {
-        console.log('print button clicked');
-        window.print();
+
+    handleChangeFor = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+
+    }
+    submit = () => {
+        this.props.dispatch({
+            type: 'GET_PERSON_DATA',
+            payload: this.state
+        })
     }
 
-    componentDidMount () {
-        
-        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-        this.props.dispatch({ type:'GET_PERSON_DATA', payload: {startDate: '1900-01-01', endDate: '2020-01-01'}});
-        console.log(this.props.state.getFederalReducer)
+    componentDidMount() {
+
+        this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        this.props.dispatch({ type: 'GET_PERSON_DATA', payload: { startDate: '1900-01-01', endDate: '2020-01-01' } });
+        console.log(this.props.state.getPersonReducer)
     }
 
-    render () {
+    render() {
         return (
             <div className="federalReport">
-            <ReportingNav />
+            <AdminNav />
             <h2> Select a date range for the Federal Report:</h2>
             
             Start Date:

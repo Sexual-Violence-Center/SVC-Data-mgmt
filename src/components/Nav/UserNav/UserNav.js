@@ -15,9 +15,8 @@ import Divider from '@material-ui/core/Divider';
 
 import Logout from '../../Logout/Logout';
 import Header from '../../Header/Header';
-import ReportingNav from './AdminNavComponents/ReportingNav';
-import AdminToolsNav from './AdminNavComponents/AdminToolsNav';
-import AdminDataEntryNav from './AdminNavComponents/AdminDataEntryNav';
+import InPerson from '../../YellowForm/YellowForm';
+import Telephone from '../../PinkForm/PinkForm';
 
 const drawerWidth = 190;
 
@@ -57,10 +56,7 @@ const styles = theme => ({
   },
 });
 
-
-
-class AdminNav extends Component {
-
+class UserNav extends Component {
   render() {
     const { classes } = this.props;
     return (
@@ -68,12 +64,12 @@ class AdminNav extends Component {
         <AppBar position="fixed" color="primary" className={classes.appBar}>
           <Toolbar >
             <Header />
-            <Typography variant="display1" color="inherit" className={classes.flex} style={{paddingLeft: '20px'}}>
+            <Typography variant="display1" color="inherit" className={classes.flex} style={{ paddingLeft: '20px' }}>
               Data Management System
             </Typography>
             <br />
             <Button>
-              <Link to="/adminlandingpage" style={{ color: "white", textDecoration: 'none' }}>
+              <Link to="/userlandingpage" style={{ color: "white", textDecoration: 'none' }}>
                 Home
               </Link>
             </Button>
@@ -86,19 +82,34 @@ class AdminNav extends Component {
             paper: classes.drawerPaper,
           }}
         >
-        <div className={classes.toolbar} />
-          <ReportingNav />
-          <AdminToolsNav />
-          <AdminDataEntryNav />
+          <div className={classes.toolbar} />
+          <Divider />
+          <br />
+          <br />
+          <br />
+          <List>
+          <Typography variant="title" className="navTitle">
+            Forms
+          </Typography>
+            <ListItem button>
+              <Link to="/telephone" className="navButton">
+                Telephone
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to="/in-person" className="navButton">
+                In-Person
+              </Link>
+            </ListItem>
+          </List>
         </Drawer>
       </div>
     )
   }
 };
 
-AdminNav.propTypes = {
+UserNav.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-
-export default withStyles(styles)(AdminNav);
+export default withStyles(styles)(UserNav);
