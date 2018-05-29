@@ -1,7 +1,15 @@
 let customReportObject = {
 
 //AGE
-    victim_age_zero_to_twelve: ` "victim_age" BETWEEN $3 AND $4 `,
+    victim_age_zero_to_twelve: ` "victim_age" BETWEEN 0 AND 12 `,
+    victim_age_zero_to_eighteen: ` "victim_age" BETWEEN 0 AND 18 `,
+    victim_age_thirteen_to_seventeen: ` "victim_age" BETWEEN 13 AND 17 `,
+    victim_age_eighteen_to_twentyfour: ` "victim_age" BETWEEN 18 AND 24 `,
+    victim_age_nineteen_to_fifty: ` "victim_age" BETWEEN 19 AND 50 `,
+    victim_age_twentyfive_to_fiftynine: ` "victim_age" BETWEEN 25 AND 59 `,
+    victim_age_oler_than_fifty: ` "victim_age" > 50 `,
+    victim_age_sixty_and_older: ` "victim_age" >= 60 `,
+    victim_age_unknown: ` "victim_age" IS NULL `,
 
 //CONTACT TYPE - phone in-person
     phone_contact: ` "contact_type" = 'phone'  `,
