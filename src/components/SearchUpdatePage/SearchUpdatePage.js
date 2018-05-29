@@ -25,6 +25,7 @@ class SearchUpdatePage extends Component {
     handleChangeFor = (event) => {
         this.setState({
             userInput: event.target.value
+            
         })
     }
 
@@ -34,11 +35,19 @@ class SearchUpdatePage extends Component {
             payload: this.state.userInput
         })
     }
+    
     // if there is data in the reducer it means the user searched for something
     //shows form if true
     renderForm = () => {
+        // if (this.props.state.updateFormReducer.id) {
+        //     return <UpdateForm 
+        //     userInput= {this.state.userInput}
+        //     />
+            //incoming change from merge
         if (this.props.state.updateFormReducer && this.props.state.updateFormReducer.id) {
-            return <UpdateForm />
+            return <UpdateForm 
+            userInput= {this.state.userInput}
+            />
         }
     }
 
@@ -46,6 +55,7 @@ class SearchUpdatePage extends Component {
 
     render() {
         return (
+
             <div>
                 <AdminNav />
                 <div style={{ float: "right" }}>
@@ -56,7 +66,7 @@ class SearchUpdatePage extends Component {
                         <input type="text" name="userInput" value={this.state.userInput} onChange={this.handleChangeFor} />
                         </label>
                     </form>
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <button value="submit" onClick={this.handleSubmit}>Submit</button>
                     {this.renderForm()}
                 </div>
             </div>
