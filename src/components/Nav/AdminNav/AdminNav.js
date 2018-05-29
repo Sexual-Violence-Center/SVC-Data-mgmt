@@ -6,12 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import classNames from 'classnames';
-import { Manager, Target, Popper } from 'react-popper';
-import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
-import { List, ListItem } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
 
 import Logout from '../../Logout/Logout';
 import Header from '../../Header/Header';

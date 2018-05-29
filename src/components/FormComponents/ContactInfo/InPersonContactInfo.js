@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Card } from '@material-ui/core';
-import { TextField, Menu, MenuItem, Input, InputLabel, Select, FormControl, Divider } from '@material-ui/core';
+import { Card } from '@material-ui/core';
+import { TextField, MenuItem, InputLabel, Select, FormControl, Divider, Typography } from '@material-ui/core';
 
 const styles = theme => ({
     container: {
@@ -21,6 +21,9 @@ const styles = theme => ({
     formControl: {
         margin: theme.spacing.unit,
         minWidth: 120,
+    },
+    group: {
+        margin: `${theme.spacing.unit}px 0`,
       },
 });
 
@@ -50,8 +53,8 @@ class ContactInfo extends Component {
     handleChangeFor = (event) => {
         const target = event.target;
         const value = target.type === ('checkbox') ? target.checked :
-            target.type === ('radio') ? target.checked :
-                target.value;
+                      target.type === ('radio') ? target.checked :
+                      target.value;
         const name = target.name;
 
         this.setState({
@@ -72,9 +75,6 @@ class ContactInfo extends Component {
                     <div>
                         <h2>Contact Info</h2>
                         <form>
-                            {/* <label>
-                            Advocate/Counselor Name:
-                        </label> */}
                             <TextField
                                 name="advocate_name"
                                 label="Advocate/Counselor Name"
@@ -84,10 +84,6 @@ class ContactInfo extends Component {
                                 value={this.state.advocate_name}
                                 onChange={this.handleChangeFor}
                             />
-                            {/* <input type="text" name="advocate_name" value={this.state.advocate_name} onChange={this.handleChangeFor} /> */}
-                            {/* <label>
-                            Date:
-                        </label> */}
                             <TextField
                                 name="date_entered"
                                 label="Date"
@@ -100,11 +96,6 @@ class ContactInfo extends Component {
                                     shrink: true,
                                 }}
                             />
-                            {/* <input type="date" name="date_entered" value={this.state.date_entered} onChange={this.handleChangeFor} /> */}
-                            {/* <br /> */}
-                            {/* <label>
-                            Start Time:
-                        </label> */}
                             <TextField
                                 name="start_time"
                                 label="Start Time"
@@ -116,10 +107,6 @@ class ContactInfo extends Component {
                                     shrink: true,
                                 }}
                             />
-                            {/* <input type="time" name="start_time" value={this.state.start_time} onChange={this.handleChangeFor} />
-                        <label>
-                            End Time:
-                        </label> */}
                             <TextField
                                 name="end_time"
                                 label="End Time"
@@ -131,11 +118,7 @@ class ContactInfo extends Component {
                                     shrink: true,
                                 }}
                             />
-                            {/* <input type="time" name="end_time" value={this.state.end_time} onChange={this.handleChangeFor} /> */}
                             <br />
-                            {/* <label>
-                                Contact Date:
-                        </label> */}
                             <TextField
                                 name="contact_date"
                                 label="Contact Date"
@@ -148,33 +131,17 @@ class ContactInfo extends Component {
                                     shrink: true,
                                 }}
                             />
-                            {/* <input type="date" name="contact_date" value={this.state.contact_date} onChange={this.handleChangeFor} /> */}
-                            {/* <label>
-                                Location(where services are being provided):
-                        </label> */}
                             <TextField
                                 name="service_location"
                                 label="Location(where services are being provided)"
                                 // className={classes.textField}
                                 type="text"
                                 margin="normal"
-                                style={{width: 600}}
+                                style={{ width: 600 }}
                                 value={this.state.service_location}
                                 onChange={this.handleChangeFor}
                             />
                             <br />
-                            {/* <input type="text" name="service_location" value={this.state.service_location} onChange={this.handleChangeFor} /> */}
-
-                            {/* <label>
-                                County:
-                    </label>
-                            <select name="service_county" value={this.state.service_county} onChange={this.handleChangeFor}>
-                                <option>Select One</option>
-                                <option value="Hennepin">Hennepin</option>
-                                <option value="Scott">Scott</option>
-                                <option value="Carver">Carver</option>
-                                <option value="Other">Other</option>
-                            </select> */}
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="service_county">County</InputLabel>
                                 <Select
@@ -207,10 +174,6 @@ class ContactInfo extends Component {
                                 value={this.state.in_person_client_number}
                                 onChange={this.handleChangeFor}
                             />
-                            {/* <label>
-                                Client Number:
-                        </label>
-                            <input type="text" name="in_person_client_number" value={this.state.in_person_client_number} onChange={this.handleChangeFor} /> */}
                             <TextField
                                 name="victim_zipcode"
                                 label="Zip Code"
@@ -220,46 +183,57 @@ class ContactInfo extends Component {
                                 value={this.state.victim_zipcode}
                                 onChange={this.handleChangeFor}
                             />
-                            {/* <label>
-                                Zip Code:
-                        </label>
-                            <input type="number" name="victim_zipcode" value={this.state.victim_zipcode} onChange={this.handleChangeFor} /> */}
-
                             <br />
-                            <label>
-                                Type of Victim/Survivor:
-                    </label>
-                            <select name="victim_type" value={this.state.victim_type} onChange={this.handleChangeFor}>
-                                <option>Select One</option>
-                                <option value="adult primary">Adult Primary Victim</option>
-                                <option value="youth primary">Youth Primary Victim</option>
-                                <option value="adult secondary">Adult Secondary Victim</option>
-                                <option value="youth secondary">Youth Secondary Victim</option>
-                            </select>
-
-
-                            <label>
-                                How did they hear about SVC?:
-                        </label>
-                            <input type="text" name="victim_referral_source" value={this.state.victim_referral_source} onChange={this.handleChangeFor} />
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="victim_type">Type of Victim/Survivor</InputLabel>
+                                <Select
+                                    value={this.state.victim_type}
+                                    onChange={this.handleChangeFor}
+                                    className={classes.textField}
+                                    inputProps={{
+                                        name: 'victim_type',
+                                        id: 'victim_type',
+                                    }}>
+                                    <MenuItem value="">
+                                        <em>Select One</em>
+                                    </MenuItem>
+                                    <Divider />
+                                    <MenuItem value="adult primary">Adult Primary Victim</MenuItem>
+                                    <Divider />
+                                    <MenuItem value="youth primary">Youth Primary Victim</MenuItem>
+                                    <Divider />
+                                    <MenuItem value="adult secondary">Adult Secondary Victim</MenuItem>
+                                    <Divider />
+                                    <MenuItem value="youth secondary">Youth Secondary Victim</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <TextField
+                                name="victim_referral_source"
+                                label="How did they hear about SVC?"
+                                style={{ width: 300 }}
+                                type="text"
+                                margin="normal"
+                                value={this.state.victim_referral_source}
+                                onChange={this.handleChangeFor}
+                            />
                         </form>
                         <br />
-                        <div>
-                            <label>
-                                Have they contacted SVC before?:
-                        </label>
+                        <Typography variant="subheading" >
+                            Have they contacted SVC before?:
                             <form value={this.state.victim_prior_contact} onClick={this.handleChangeFor}>
-                                <input type="radio" id="victim_prior_contact_yes" name="victim_prior_contact" value={true} /><label htmlFor="victim_prior_contact_yes">yes</label>
-                                <input type="radio" id="victim_prior_contact_no" name="victim_prior_contact" value={false} /><label htmlFor="victim_prior_contact_no">no</label>
+                                <input type="radio" name="victim_prior_contact" value={true} />
+                                <label htmlFor="victim_prior_contact_yes">yes</label>
+                                <input type="radio" name="victim_prior_contact" value={false} />
+                                <label htmlFor="victim_prior_contact_no">no</label>
                             </form>
-                        </div>
-                        <label>
+                        </Typography>
+                        <Typography variant="subheading" >
                             If yes, was it before Oct 1, 2017?:
-                    </label>
                         <form value={this.state.victim_contact_prior_oct} onChange={this.handleChangeFor}>
-                            <input type="radio" id="victim_contact_prior_oct_yes" name="victim_contact_prior_oct" value={true} /><label htmlFor="victim_contact_prior_oct_yes">yes</label>
-                            <input type="radio" id="victim_contact_prior_oct_no" name="victim_contact_prior_oct" value={false} /><label htmlFor="victim_contact_prior_oct_no">no</label>
+                            <input type="radio" name="victim_contact_prior_oct" value={true} /><label htmlFor="victim_contact_prior_oct_yes">yes</label>
+                            <input type="radio" name="victim_contact_prior_oct" value={false} /><label htmlFor="victim_contact_prior_oct_no">no</label>
                         </form>
+                        </Typography>
                     </div>
                 </Card>
             </div>
