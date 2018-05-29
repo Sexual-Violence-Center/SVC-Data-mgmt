@@ -5,12 +5,28 @@ import InpersonServices from '../FormComponents/InPersonServices/InPersonService
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
-import UserDataEntryNav from '../Nav/DataEntryNav/UserDataEntryNav';
-import AdminDataEntryNav from '../Nav/DataEntryNav/AdminDataEntryNav';
+import UserNav from '../Nav/UserNav/UserNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
+import SubmitButton from '../FormComponents/SubmitButton/SubmitButton';
+
+import { Paper, Typography, Card, Button } from '@material-ui/core';
 
 const mapStateToProps = state => ({
     state
 })
+
+const style = {
+    title: {
+        backgroundColor: '#FFEE58',
+        textAlign: 'center',
+        color: 'black', 
+        padding: '10px',
+    },
+    paper:{
+        backgroundColor: '#FFF59D', 
+        padding: '10px'
+    }
+}
 
 class YellowForm extends Component {
     constructor() {
@@ -29,23 +45,27 @@ class YellowForm extends Component {
 
     render() {
         let DataEntryNav;
-        if(this.props.state.user.userInfo === true ){
-            DataEntryNav = <AdminDataEntryNav />
-        } else if (this.props.state.user.userInfo === false ){
-            DataEntryNav = <UserDataEntryNav/>
-        } 
-
+        if (this.props.state.user.userInfo === true) {
+            DataEntryNav = <AdminNav />
+        } else if (this.props.state.user.userInfo === false) {
+            DataEntryNav = <UserNav />
+        }
         return (
-
-            <div>
+            <div style={{ float: "right", marginRight: '80px' }}>
                 {DataEntryNav}
-                <h1>SVC In-Person Counseling Form for Primary AND Secondary Victims</h1>
-                <InPersonContactInfo />
-                <InpersonServices />
-                <UnmetNeeds />
-                <Referrals />
-                <Demographics />
-                <button onClick={this.handleSubmit}>Submit</button>
+                <Paper style={style.paper}>
+                    <Card style={{margin: '10px'}}>
+                        <Typography variant="display1" style={style.title}>
+                            In-Person Contact Form for Primary AND Secondary Victims
+                        </Typography>
+                    </Card>
+                    <InPersonContactInfo />
+                    <InpersonServices />
+                    <UnmetNeeds />
+                    <Referrals />
+                    <Demographics />
+                    <SubmitButton handleSubmit={this.handleSubmit}/>
+                </Paper>
             </div>
         )
     }

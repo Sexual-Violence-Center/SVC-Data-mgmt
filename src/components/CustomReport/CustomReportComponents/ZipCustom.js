@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import Chip from '@material-ui/core/Chip';
 
-// import zipCodesObject from '../ObjectLists/ZipCode.object'
+import zipCodes from '../ObjectLists/ZipCode.object'
 
 function renderInput(inputProps) {
   const { InputProps, classes, ref, ...other } = inputProps;

@@ -2,25 +2,36 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+.navTitle{
+    padding-left: 8px;
+}
+
+.navButton{
+    text-align: center;
+    color: black;
+    text-decoration: none; 
+}
+
+
 .instructions h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: white;
     padding: 5px;
     color: #ece7e7;
 }
 
-/* form {
+.loginForm {
     background-color: #dbd5d5;
     width: 30%;
     height: 250px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
-} */
+}
 
 input {
     margin: 5px;
@@ -78,6 +89,6 @@ li a:hover {
     text-decoration: underline;
     color: #eee;
 }
-.federalReport {
+/* .federalReport {
     text-align: center;
-}
+} */
