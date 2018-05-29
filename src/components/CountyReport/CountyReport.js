@@ -47,7 +47,6 @@ class CountyReport extends Component{
     componentDidMount () {
         
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-        this.props.dispatch({ type:'GET_PERSON_DATA_COUNTY', payload: {county: 'Hennepin', startDate: '1900-01-01', endDate: '2020-01-01'}});
         console.log(this.props.state.getCountyReducer)
     }
 
