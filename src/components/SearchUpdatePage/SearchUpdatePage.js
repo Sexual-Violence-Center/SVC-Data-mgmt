@@ -30,7 +30,7 @@ class SearchUpdatePage extends Component {
     // if there is data in the reducer it means the user searched for something
     //shows form if true
     renderForm = () => {
-        if (this.props.state.updateFormReducer.id) {
+        if (this.props.state.updateFormReducer && this.props.state.updateFormReducer.id) {
             return <UpdateForm />
         }
     }
