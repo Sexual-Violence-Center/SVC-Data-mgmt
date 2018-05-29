@@ -9,7 +9,7 @@ const queryText = require("../modules/county.report.query");
 router.get("/", (req, res) => {
     //only an admin can get the report
     if (req.isAuthenticated() && req.user.user_type === true) {
-      console.log('in GET county reports', req.query.startDate, req.query.endDate);
+      console.log('in GET county reports', req.query.county, req.query.startDate, req.query.endDate);
 
       // pool.query goes here
       //example query

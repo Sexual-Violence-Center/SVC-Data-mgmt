@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Downshift from 'downshift';
@@ -11,6 +12,9 @@ import renderInput from '../StandardFunctionsForChips/renderInputFunction';
 import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
 import styles from '../StandardFunctionsForChips/chipStyles'
 
+const mapStateToProps = state => ({
+  state
+});
 
 function getSuggestions(inputValue) {
   let count = 0;
@@ -38,7 +42,7 @@ renderSuggestion.propTypes = {
 
 class AgeCustom extends React.Component {
   state = {
-    inputValue: '',
+    // inputValue: '',
     selectedItem: [],
   };
 
@@ -62,9 +66,17 @@ class AgeCustom extends React.Component {
     }
 
     this.setState({
-      inputValue: '',
+      // inputValue: '',
       selectedItem,
-    });
+    })
+
+    console.log('state', this.state);
+
+    this.props.dispatch({
+      type: 'CUSTOM_REPORT_INPUT',
+      payload: {...this.state, selectedItem}
+    })
+   
   };
 
   handleDelete = item => () => {
@@ -77,7 +89,6 @@ class AgeCustom extends React.Component {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
     // console.log('selectedItem', selectedItem);
-    console.log('value', selectedItem);
     
     return (
       <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
@@ -135,6 +146,8 @@ AgeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AgeCustom);
+const styledAgeCustom = withStyles(styles)(AgeCustom);
+export default connect(mapStateToProps)(styledAgeCustom)
+
 
     
