@@ -7,8 +7,7 @@ import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
 import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
-import SubmitButton from '../FormComponents/SubmitButton/SubmitButton';
-
+import FormButton from '../FormComponents/FormButton/FormButton'
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
 const mapStateToProps = state => ({
@@ -63,7 +62,7 @@ class YellowForm extends Component {
               <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
               <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
               <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
-              <SubmitButton handleSubmit={this.handleSubmit} />
+              <FormButton handleSubmit={this.handleSubmit} text={"Submit"}/>
             </Paper>
           </div>;
     }

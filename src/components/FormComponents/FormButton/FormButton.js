@@ -8,14 +8,14 @@ const style = {
     textAlign: 'center'
 }
 
-class SubmitButton extends Component {
+class FormButton extends Component {
     render() {
         return (
             <div>
                 <Card style={style}>
                     <Button onClick={this.props.handleSubmit}>
                         <Typography variant="headline">
-                            Submit
+                            {this.props.text}
                         </Typography>
                     </Button>
                 </Card>
@@ -24,4 +24,4 @@ class SubmitButton extends Component {
     }
 }
 
-export default SubmitButton;
+export default FormButton;
