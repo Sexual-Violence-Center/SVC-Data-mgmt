@@ -41,7 +41,6 @@ router.put('/:id', (req, res)=>{
           .catch((error)=>{
               res.sendStatus(500)
           })
-
     } else {
       res.sendStatus(403);
     }
@@ -55,7 +54,6 @@ router.delete('/:id', (req, res) => {
       let queryText = 'DELETE FROM "victim" WHERE id = $1;';
       pool.query(queryText, [req.params.id])
       .then((result) => {
-        console.log('DELETE successful', result);
           res.sendStatus(200);
       }).catch((error) => {
         console.log('error in DELETE, server side', error);

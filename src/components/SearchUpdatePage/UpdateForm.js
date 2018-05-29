@@ -8,6 +8,7 @@ import InPersonContactInfo from '../FormComponents/ContactInfo/InPersonContactIn
 import InpersonServices from '../FormComponents/InPersonServices/InPersonServices';
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
+import FormButton from '../FormComponents/FormButton/FormButton';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -22,7 +23,14 @@ const mapStateToProps = state => ({
 
  class UpdateForm extends Component{
      state={
-         form: this.props.state.updateFormReducer
+
+     }
+
+     handleSubmit = () =>{
+         this.props.dispatch({
+             type: 'UPDATE_FORM',
+             payload: this.state
+         })
      }
 
 
@@ -35,15 +43,8 @@ const mapStateToProps = state => ({
         
     }
      render() {
-        let content = null;
-        if (this.props.user.userName) {
-          content = (
-// const UpdateForm = (form)=>{
-            <p> this is a test </p>
-            )
-        }
+
         return <div>
-            {content}
             <InPersonContactInfo dispatchTo={"UPDATE_THE_FORM"} />
             <InpersonServices dispatchTo={"UPDATE_THE_FORM"} />
             <PhoneServices dispatchTo={"UPDATE_THE_FORM"} />
@@ -51,6 +52,7 @@ const mapStateToProps = state => ({
             <UnmetNeeds dispatchTo={"UPDATE_THE_FORM"} />
             <Referrals dispatchTo={"UPDATE_THE_FORM"} />
             <Demographics dispatchTo={"UPDATE_THE_FORM"} />
+            <FormButton text={"Save"} handleSubmit={this.handleSubmit} />
           </div>;
     }
 }
