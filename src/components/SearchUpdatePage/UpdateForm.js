@@ -42,16 +42,16 @@ const mapStateToProps = state => ({
             <p> this is a test </p>
             )
         }
-        return(<div>
+        return <div>
             {content}
-            <InPersonContactInfo />
-            <InpersonServices />
-            <PhoneServices />
-            <Support />
-            <UnmetNeeds />
-            <Referrals />
-            <Demographics />
-            </div>)
+            <InPersonContactInfo dispatchTo={"UPDATE_THE_FORM"} />
+            <InpersonServices dispatchTo={"UPDATE_THE_FORM"} />
+            <PhoneServices dispatchTo={"UPDATE_THE_FORM"} />
+            <Support dispatchTo={"UPDATE_THE_FORM"} />
+            <UnmetNeeds dispatchTo={"UPDATE_THE_FORM"} />
+            <Referrals dispatchTo={"UPDATE_THE_FORM"} />
+            <Demographics dispatchTo={"UPDATE_THE_FORM"} />
+          </div>;
     }
 }
 
