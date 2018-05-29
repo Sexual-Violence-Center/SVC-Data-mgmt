@@ -85,7 +85,7 @@ let customReportObject = {
     AfricanAmericanBlack: `  "victim_ethnicity" = 'African American/Black' `,
     NativeHawaiianPacificIslander: `  "victim_ethnicity" =  'Native Hawaiian/Pacific Islander'  `,
     WhiteNonLatinoCaucasian: ` "victim_ethnicity" =  'White non-Latino/Caucasian' `,
-    Other: ` "victim_ethnicity" = 'Other' AND "contact_date"  BETWEEN $1 AND $2) `,
+    victim_ethnicity_other: ` "victim_ethnicity" = 'Other' AND "contact_date"  BETWEEN $1 AND $2) `,
     MultiRacial: `  "victim_ethnicity" = 'Multi-racial'   `,
     unknown: ` "victim_ethnicity" = 'unknown' OR  "victim_ethnicity" IS NULL) `,
     total_ethnicity: `(select COUNT("victim_ethnicity") FROM "victim" `,

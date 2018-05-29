@@ -20,8 +20,8 @@ function* getPerson(action) {
     }
 }
 
-function* getPersonSaga() {
+function* getFederalSaga() {
     yield takeEvery('GET_PERSON_DATA', getPerson)
 }
 
-export default getPersonSaga;
+export default getFederalSaga;

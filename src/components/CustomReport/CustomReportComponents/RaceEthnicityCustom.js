@@ -1,118 +1,141 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import keycode from 'keycode';
+import Downshift from 'downshift';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Chip from '@material-ui/core/Chip';
 
-const mapStateToProps = state => ({
-    user: state.user,
-    state,
-});
+import RaceEthnicityObject from '../ObjectLists/RaceEthnicity.Object';
+import renderInput from '../StandardFunctionsForChips/renderInputFunction';
+import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
+import styles from '../StandardFunctionsForChips/chipStyles'
 
-class RaceEthnicityCustom extends Component {
-    constructor() {
-        super();
-        this.state = {
-            race_ethnicity: '',
-        }
+
+function getSuggestions(inputValue) {
+  let count = 0;
+
+  return RaceEthnicityObject.filter(suggestion => {
+    const keep =
+      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
+      count < 5;
+    if (keep) {
+      count += 1;
+    }
+    return keep;
+  });
+}
+
+renderSuggestion.propTypes = {
+    highlightedIndex: PropTypes.number,
+    index: PropTypes.number,
+    itemProps: PropTypes.object,
+    selectedItem: PropTypes.string,
+    suggestion: PropTypes.shape({
+        label: PropTypes.string
+    }).isRequired,
+};
+
+class RaceEthnicityCustom extends React.Component {
+  state = {
+    inputValue: '',
+    selectedItem: [],
+  };
+
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
+    }
+  };
+
+  handleInputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  };
+
+  handleChange = item => {
+    let { selectedItem } = this.state;
+    if (selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
     }
 
-    handleChangeFor = (event) => {
-        const target = event.target;
-        const value = target.type === ('checkbox') ? target.checked : target.value;
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    });
+  };
 
-        this.setState({
-            race_ethnicity: value
-        });
-    }
+  handleDelete = item => () => {
+    const selectedItem = [...this.state.selectedItem];
+    selectedItem.splice(selectedItem.indexOf(item), 1);
+    this.setState({ selectedItem });
+  };
 
-    render (){
-        return (
-
-            <div>
-                <h4> Custom Race/Ethnicity Report: </h4>
-                <form value={this.state.race_ethnicity} onClick={this.handleChangeFor} >
-                        <input type="checkbox" 
-                            id = "victim_ethnicity_asian"
-                            value = "victim_ethnicity_asian"
-                        />
-                        < label htmlFor = "victim_ethnicity_asian" >
-                            Asian
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "AfricanAmericanBlack"
-                            value = "AfricanAmericanBlack"
-                        />
-                        < label htmlFor = "AfricanAmericanBlack" >
-                            African American/Black
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "ChicanoLatino"
-                            value = "ChicanoLatino"
-                        />
-                        < label htmlFor = "ChicanoLatino" >
-                            Chican@/Latin@
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "MultiRacial"
-                            value = "MultiRacial"
-                        />
-                        < label htmlFor = "MultiRacial" >
-                            Multi-racial
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "NativeAmerican"
-                            value = "NativeAmerican"
-                        />
-                        < label htmlFor = "NativeAmerican" >
-                            Native American
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "NativeHawaiianPacificIslander"
-                            value = "NativeHawaiianPacificIslander"
-                        />
-                        < label htmlFor = "NativeHawaiianPacificIslander" >
-                            Native Hawaiian/Pacific Islander
-                        </label>
-
-                              <input type="checkbox" 
-                            id = "WhiteNonLatinoCaucasian"
-                            value = "WhiteNonLatinoCaucasian"
-                        />
-                        < label htmlFor = "WhiteNonLatinoCaucasian" >
-                            White Non-Latino/Caucasian
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "Other"
-                            value = "Other"
-                        />
-                        < label htmlFor = "Other" >
-                            Other
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "unknown"
-                            value = "unknown"
-                        />
-                        < label htmlFor = "unknown" >
-                            Unknown/Pass
-                        </label>
-
-                        <input type="checkbox" 
-                            id = "total_ethnicity"
-                            value = "total_ethnicity"
-                        />
-                        < label htmlFor = "total_ethnicity" >
-                            Race/Ethnicity Total
-                        </label>
-                </form>
-            </div>
-        )
+  render() {
+    const { classes } = this.props;
+    const { inputValue, selectedItem } = this.state;
+    // console.log('selectedItem', selectedItem);
+    console.log('value', selectedItem);
     
-    }//end render
-}// end class
+    return (
+      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+      
+        {({
+          getInputProps,
+          getItemProps,
+          isOpen,
+          inputValue: inputValue2,
+          selectedItem: selectedItem2,
+          highlightedIndex,
+        }) => (
+          <div className={classes.container}>
+          {/* <h4> Custom Contact Type Report </h4> */}
+            {renderInput({
+              fullWidth: true,
+              classes,
+              InputProps: getInputProps({
+                startAdornment: selectedItem.map(item => (
+                  <Chip
+                    key={item.value}
+                    tabIndex={-1}
+                    label={item.label}
+                    className={classes.chip}
+                    onDelete={this.handleDelete(item)}
+                    value={item.value}
+                  />
+                )),
+                onChange: this.handleInputChange,
+                onKeyDown: this.handleKeyDown,
+                placeholder: 'Race/Ethnicity Types',
+                id: 'integration-downshift-multiple',
+              }),
+            })}
+            {isOpen ? (
+              <Paper className={classes.paper} square>
+                {getSuggestions(inputValue2).map((suggestion, index) =>
+                  renderSuggestion({
+                    suggestion,
+                    index,
+                    itemProps: getItemProps({ item: suggestion }),
+                    highlightedIndex,
+                    selectedItem: selectedItem2,
+                  }),
+                )}
+              </Paper>
+            ) : null}
+          </div>
+        )}
+      </Downshift>
+    );
+  }
+}
 
-export default connect(mapStateToProps)(RaceEthnicityCustom)
+RaceEthnicityCustom.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(RaceEthnicityCustom);
+
+    

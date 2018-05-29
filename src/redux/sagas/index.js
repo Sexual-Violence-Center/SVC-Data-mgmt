@@ -2,9 +2,14 @@ import { all } from 'redux-saga/effects';
 import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import postNewVictimSaga from './postNewVictimSaga';
-import getPersonData from './getPersonSaga';
+import getFederalSaga from './getFederalSaga';
 import getUsersSaga from './getUsersSaga';
 import deleteUserSaga from './deleteUserSaga';
+
+import searchUpdateDeleteSaga from './searchUpdateDeleteSaga';
+
+import getCountySaga from './getCountySaga';
+
 
 
 export default function* rootSaga() {
@@ -12,9 +17,14 @@ export default function* rootSaga() {
     userSaga(),
     loginSaga(),
     postNewVictimSaga(),
-    getPersonData(),
+    getFederalSaga(),
     getUsersSaga(),
     deleteUserSaga(),
+
+    searchUpdateDeleteSaga(),
+
+    getCountySaga(),
+
     // watchIncrementAsync()
   ]);
 }
