@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import Header from '../Header/Header';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography'
 
 
 const mapStateToProps = state => ({
@@ -26,9 +29,9 @@ class LoginPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userInfo === true) {
       this.props.history.push('/adminlandingpage');
-    } else if (nextProps.user.userInfo === false ){
+    } else if (nextProps.user.userInfo === false) {
       this.props.history.push('/userlandingpage');
-    } 
+    }
   }
 
   login = (event) => {
@@ -54,7 +57,7 @@ class LoginPage extends Component {
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          {this.props.login.message}
         </h2>
       );
     }
@@ -64,39 +67,51 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        { this.renderAlert() }
-        <form className="loginForm" onSubmit={this.login}>
-          <h1>Login</h1>
+        <AppBar>
+          <Toolbar>
+            <Header />
+            <Typography variant="display1" color="inherit" style={{paddingLeft: '20px'}}>
+              Data Management System
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div style={{ marginTop: '100px' }}>
+          {this.renderAlert()}
           <div>
-            <label htmlFor="username">
-              Username:
+            <form className="loginForm" onSubmit={this.login}>
+              <h1>Login</h1>
+              <div>
+                <label htmlFor="username">
+                  Username:
               <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
+                    type="text"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleInputChangeFor('username')}
+                  />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="password">
+                  Password:
               <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChangeFor('password')}
+                  />
+                </label>
+              </div>
+              <div>
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Log In"
+                />
+              </div>
+            </form>
           </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-          </div>
-        </form>
+        </div>
       </div>
     );
   }

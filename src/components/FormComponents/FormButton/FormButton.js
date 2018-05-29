@@ -3,9 +3,14 @@ import { Card, Button, Typography } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 
 const style = {
-    padding: '20px',
-    margin: '10px',
-    textAlign: 'center'
+    container: {
+        padding: '20px',
+        margin: '10px',
+        float: 'right',
+    },
+    submitButton: {
+        background: '#757575',
+    }
 }
 
 class FormButton extends Component {
