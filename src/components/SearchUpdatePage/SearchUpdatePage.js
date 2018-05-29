@@ -24,7 +24,7 @@ class SearchUpdatePage extends Component {
     handleSubmit=()=>{
         this.props.dispatch({
             type: 'FORM_SEARCH',
-            payload: this.state.input
+            payload: this.state.userInput
         })
     }
     // if there is data in the reducer it means the user searched for something
