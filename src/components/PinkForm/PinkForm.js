@@ -12,7 +12,7 @@ import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import FormButton from '../FormComponents/FormButton/FormButton';
 
-import { Paper, Typography, Card, Button } from '@material-ui/core';
+import { Paper, Typography, Card } from '@material-ui/core';
 
 const mapStateToProps = state => ({
     user: state.user,
