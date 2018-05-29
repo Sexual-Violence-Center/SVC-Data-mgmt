@@ -17,8 +17,23 @@ function* searchForm(action) {
   }
 }
 
+function* updateForm(action){
+  const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
+  
+  try{
+    yield call(axios.put, `/api/victim/${action.payload.id}`, action.payload, config);
+    yield put({
+      type: 'FORM_TO_UPDATE',
+      payload: null
+    })
+  } catch(error){
+    yield console.log('error in search form ', error);
+  }
+}
+
 function* searchUpdateDeleteSaga() {
   yield takeEvery("FORM_SEARCH", searchForm);
+  yield takeEvery("UPDATE_FORM", updateForm);
 }
 
 export default searchUpdateDeleteSaga;

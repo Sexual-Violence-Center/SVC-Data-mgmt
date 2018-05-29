@@ -28,9 +28,9 @@ class Survey extends Component {
           [name]: value
         });
         this.props.dispatch({
-            type: 'ENTRY_FORM_DATA', 
-            payload: {...this.state, [name]: value }
-        })
+          type: this.props.dispatchTo,
+          payload: { ...this.state, [name]: value }
+        });
     }
 
     render() {
