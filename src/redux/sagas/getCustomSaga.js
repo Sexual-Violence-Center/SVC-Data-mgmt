@@ -1,6 +1,7 @@
 // import React from 'react';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import makeUrlFunction from './makeUrl.CustomSaga'
 
 function* getCustom (action) {
     console.log('in getCustom saga', action.payload);
@@ -10,14 +11,10 @@ function* getCustom (action) {
         const startDate = action.payload.startDate;
         const endDate = action.payload.endDate;
         const querySelector = action.payload.querySelector;
-        const customSelection = action.payload.selectedItem.map (chip => {
-            return (
-             chip.value
-            )
-        })
 
-        if (querySelector === 'NULL') {
-            customDataResponse = yield call(axios.get, `/api/custom-report/?${customSelection}=TRUE&startDate=${startDate}&endDate=${endDate}`);
+        if (querySelector == null) {
+           let urlText = makeUrlFunction(action.payload.selectedItem)
+            customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}startDate=${startDate}&endDate=${endDate}`);
             return customDataResponse
         }
         else if (querySelector === "and") {

@@ -36,7 +36,7 @@ class customReportSelectionPage extends Component {
     state = {
         startDate: '',
         endDate: '',
-        querySelector: ''
+        querySelector: null
     }
 
     handleChangeFor = (event) => {
@@ -119,7 +119,7 @@ class customReportSelectionPage extends Component {
                             <label>AND</label>
                         <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
                             <label>OR</label>
-                        <input type="radio" name="querySelector" value='NULL' onChange={this.handleChangeFor}/> 
+                        <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
                             <label>Neither</label>
                         <br/>
                     <select className="customReportTopics" multiple>
@@ -127,10 +127,6 @@ class customReportSelectionPage extends Component {
                     </select>
                     <input type="submit" />
                     </form>
-
-                    {/* <form value={this.state.querySelector} onChange = {this.handleChangeFor} >
-
-                    </form> */}
 
                     <div className="customReportSpecificTopic" 
                         style={{ float: "right"
