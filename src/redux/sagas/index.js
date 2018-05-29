@@ -9,8 +9,6 @@ import searchUpdateDeleteSaga from './searchUpdateDeleteSaga';
 import getCountySaga from './getCountySaga';
 import getCustomSaga from './getCustomSaga'
 
-
-
 export default function* rootSaga() {
   yield all([
     userSaga(),

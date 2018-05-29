@@ -101,7 +101,7 @@ class AgeCustom extends React.Component {
           selectedItem: selectedItem2,
           highlightedIndex,
         }) => (
-          <div className={classes.container}>Age
+          <div className={classes.container}>
             {renderInput({
               fullWidth: true,
               classes,

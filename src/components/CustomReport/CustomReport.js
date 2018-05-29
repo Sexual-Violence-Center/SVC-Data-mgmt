@@ -34,12 +34,19 @@ const mapStateToProps = state => ({
 
 class customReportSelectionPage extends Component{
     state = {
-        //tbd if needed
+        querySeletor: ''
     }
 
-    // componentDidMount() {
-    //     //load custom report options on page load
-    // }
+    handleChangeFor = (event) => {
+        const value = event.target.value 
+        this.setState({
+            querySeletor: value
+        });
+        this.props.dispatch({
+            type: 'CUSTOM_REPORT_INPUT',
+            payload: { querySeletor: value }
+        })
+    }
 
     submitCustomReport = (event) => {
         console.log('clicked submit Submit Custom Report');
@@ -61,7 +68,7 @@ class customReportSelectionPage extends Component{
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-    // loop over all custom report topics to display on screen
+// loop over all custom report topics to display on screen
         let individualTopic = customReportTopic.map(topic => {
             return (
                 <option
@@ -70,37 +77,18 @@ class customReportSelectionPage extends Component{
                 </option>  
             )
         })
-        // console.log('individualTopic', individualTopic);
 
         // let content = null;
-
+// Custom report options will only display if user is logged in as administrator
         // if (this.props.user.userName) {
         //     content = (
-        //         <div>
-        //         <h2> Custom Report Page </h2>
-        //         {/* add calendar */}
-        //         <form onSubmit={this.submitCustomReport}>
-        //             <select className="customReportTopics" multiple>
-        //                 {individualTopic}
-        //             </select>
-        //             <input type="submit" />
-        //         </form>
-
-        //         <div className="customReportSpecificTopic">
-        //             < CustomAge />
-        //             < CustomContactType />
-        //             < CustomDisability />
-        //             < CustomGender />
-        //             < ImmigrantCountryCustom />
-        //             < IndividualsServiced/>
-        //         </div>
-        //         </div>
+        //      TODO: add content here
         //     )
         // }
 
         return ( 
             <div>
-                < ReportingNav / >
+                < ReportingNav />
                 <h2> Custom Report Page </h2>
                 {/* add calendar */}
                 <form onSubmit={this.submitCustomReport}>
@@ -108,6 +96,11 @@ class customReportSelectionPage extends Component{
                         {individualTopic}
                     </select>
                     <input type="submit" />
+                </form>
+
+                <form value = {this.state.querySeletor} onChange = {this.handleChangeFor} >
+                    <input type="radio" name="andSelector" value= 'and' /> <label htmlFor="andSelector">AND</label>
+                    <input type="radio" name="orSelector" value='or' /> <label htmlFor="orSelector">OR</label>
                 </form>
 
                 <div className="customReportSpecificTopic">

@@ -77,7 +77,7 @@ class PhoneServicesCustom extends React.Component {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
     // console.log('selectedItem', selectedItem);
-    console.log('value', selectedItem);
+    // console.log('value', selectedItem);
     
     return (
       <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
