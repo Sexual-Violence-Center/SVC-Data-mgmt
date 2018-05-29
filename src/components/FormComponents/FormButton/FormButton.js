@@ -13,18 +13,20 @@ const style = {
     }
 }
 
-class SubmitButton extends Component {
+class FormButton extends Component {
     render() {
         return (
-            <div style={style.container}>
-                <Button variant="raised" style={style.submitButton} onClick={this.props.handleSubmit}>
-                    <Typography variant="headline" style={{color: '#F5F5F5'}}>
-                        Submit
-                    </Typography>
-                </Button>
+            <div>
+                <Card style={style}>
+                    <Button onClick={this.props.handleSubmit}>
+                        <Typography variant="headline">
+                            {this.props.text}
+                        </Typography>
+                    </Button>
+                </Card>
             </div>
         )
     }
 }
 
-export default SubmitButton;
+export default FormButton;
