@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import CustomAge from './CustomReportComponents/AgeCustomReport';
@@ -37,9 +38,10 @@ class customReportSelectionPage extends Component {
         //tbd if needed
     }
 
-    // componentDidMount() {
-    //     //load custom report options on page load
-    // }
+    componentDidMount() {
+        //load custom report options on page load
+        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    }
 
     submitCustomReport = (event) => {
         console.log('clicked submit Submit Custom Report');

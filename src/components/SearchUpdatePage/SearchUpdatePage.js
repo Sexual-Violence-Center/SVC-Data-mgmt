@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import { connect } from "react-redux";
 import UpdateForm from './UpdateForm';
 
 
 const mapStateToProps = state => ({
+    user: state.user,
     state
 });
 
@@ -15,6 +17,11 @@ class SearchUpdatePage extends Component {
             userInput: ''
         }
     }
+
+    componentDidMount(){
+        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    }
+
     handleChangeFor = (event) => {
         this.setState({
             userInput: event.target.value

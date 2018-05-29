@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 import TelephoneContactInfo from '../FormComponents/ContactInfo/TelephoneContactInfo';
 import PhoneServices from '../FormComponents/PhoneServices/PhoneServices';
 import Support from '../FormComponents/Support/Support';
@@ -13,6 +15,7 @@ import SubmitButton from '../FormComponents/SubmitButton/SubmitButton';
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
 const mapStateToProps = state => ({
+    user: state.user,
     state
 })
 
@@ -36,6 +39,11 @@ class PinkForm extends Component {
             contact_type: 'telephone'
         }
     }
+
+    componentDidMount(){
+        this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    }
+
     handleSubmit = () => {
         console.log(this.props.state.EntryFormReducer);
         this.props.dispatch({
