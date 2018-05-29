@@ -34,6 +34,7 @@ router.put('/:id', (req, res)=>{
       //returns the query string and an array of the values
       const queryText = makePutQuery(req.body)
       pool.query(queryText.query, queryText.values)
+      console.log(queryText.query, queryText.values )
           .then((result)=>{
               res.sendStatus(200);
           })

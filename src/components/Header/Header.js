@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Header = ({ title }) => (
+
+const Header = () => (
   <div className="instructions">
     <div>
-      <h1 className="lead">{ title }</h1>
+      <img src={window.location.origin + '/SVCLogo_Transparent_Background_Teal.png'} alt="SVC_Logo"/>
     </div>
   </div>
 );

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 // import Calendar from 'react-calendar'
 // import Calendar from 'rc-calendar'
-import ReportingNav from '../Nav/ReportingNav/ReportingNav';
+import AdminNav from '../Nav/AdminNav/AdminNav';
 
 
 const mapStateToProps = state => ({
@@ -11,7 +11,6 @@ const mapStateToProps = state => ({
     county: state.getCountyReducer,
     state
 });
-
 
 class CountyReport extends Component{ 
     constructor(){
@@ -55,7 +54,8 @@ class CountyReport extends Component{
     render () {
         return (
             <div className="federalReport">
-            <ReportingNav />
+            <AdminNav />
+            <div style={{float: "right"}}>
             <h2>County Report:</h2>
                 Start Date:
                 <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
@@ -682,7 +682,7 @@ class CountyReport extends Component{
                 </table>
             </section>
             
-            
+            </div>
             </div>
            
             </div>
