@@ -51,7 +51,7 @@ class FederalReport extends Component {
     render() {
         return (
             <div className="federalReport">
-            <ReportingNav />
+            <AdminNav />
             <h2> Select a date range for the Federal Report:</h2>
             
             Start Date:
