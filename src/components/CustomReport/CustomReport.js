@@ -49,10 +49,13 @@ class customReportSelectionPage extends Component{
     }
 
     submitCustomReport = (event) => {
-        console.log('clicked submit Submit Custom Report');
         event.preventDefault();
-        // TODO: this.props.dispatch({ sage and reducer to be added})
-    }
+        console.log('clicked submit Submit Custom Report', this.props.state.CustomReportReducer);
+        this.props.dispatch({
+            type: 'SUBMIT_CUSTOM_REPORT',
+            payload: { ...this.state, ...this.props.state.CustomReportReducer }
+        })
+        }
 
     render(){
         const customReportTopic = [
