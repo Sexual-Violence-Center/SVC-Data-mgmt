@@ -18,13 +18,13 @@ const mapStateToProps = state => ({
 
 const style = {
     title: {
-        backgroundColor: '#F48FB1',
+        backgroundColor: '#F8BBD0',
         textAlign: 'center',
-        color: 'black',
+        color: '#424242',
         padding: '10px',
     }, 
     paper: {
-        backgroundColor: '#F8BBD0',
+        backgroundColor: '#FCE4EC',
         padding: '10px'
     }
 }
