@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
           req.query.endDate
         ])
         .then((result) => {
-          console.log('in get county', result.rows)
           //result is an array with length one
           res.send(result.rows[0]);
         })

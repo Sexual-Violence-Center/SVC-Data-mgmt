@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 import TelephoneContactInfo from '../FormComponents/ContactInfo/TelephoneContactInfo';
 import PhoneServices from '../FormComponents/PhoneServices/PhoneServices';
 import Support from '../FormComponents/Support/Support';
@@ -8,23 +10,24 @@ import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
 import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
-import SubmitButton from '../FormComponents/SubmitButton/SubmitButton';
+import FormButton from '../FormComponents/FormButton/FormButton';
 
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
 const mapStateToProps = state => ({
+    user: state.user,
     state
 })
 
 const style = {
     title: {
-        backgroundColor: '#F48FB1',
+        backgroundColor: '#F8BBD0',
         textAlign: 'center',
-        color: 'black',
+        color: '#424242',
         padding: '10px',
     }, 
     paper: {
-        backgroundColor: '#F8BBD0',
+        backgroundColor: '#FCE4EC',
         padding: '10px'
     }
 }
@@ -66,7 +69,7 @@ class PinkForm extends Component {
           <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
           <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
           <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
-          <SubmitButton handleSubmit={this.handleSubmit} />
+          <FormButton handleSubmit={this.handleSubmit} text={'Submit'}/>
         </Paper>
       </div>;
   }

@@ -3,19 +3,24 @@ import { Card, Button, Typography } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 
 const style = {
-    padding: '20px',
-    margin: '10px',
-    textAlign: 'center'
+    container: {
+        padding: '20px',
+        margin: '10px',
+        float: 'right',
+    },
+    submitButton: {
+        background: '#757575',
+    }
 }
 
-class SubmitButton extends Component {
+class FormButton extends Component {
     render() {
         return (
             <div>
                 <Card style={style}>
                     <Button onClick={this.props.handleSubmit}>
                         <Typography variant="headline">
-                            Submit
+                            {this.props.text}
                         </Typography>
                     </Button>
                 </Card>
@@ -24,4 +29,4 @@ class SubmitButton extends Component {
     }
 }
 
-export default SubmitButton;
+export default FormButton;
