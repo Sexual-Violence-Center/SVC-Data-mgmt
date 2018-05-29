@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import Chip from '@material-ui/core/Chip';
 
-// import zipCodeObject from './ZipCode.object'
+import zipCode from './ZipCode.object'
 
 const zipCodes = [
   { label: '55111' },
