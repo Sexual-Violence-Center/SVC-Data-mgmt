@@ -8,6 +8,7 @@ import InPersonContactInfo from '../FormComponents/ContactInfo/InPersonContactIn
 import InpersonServices from '../FormComponents/InPersonServices/InPersonServices';
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
+import FormButton from '../FormComponents/FormButton/FormButton';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -25,6 +26,14 @@ const mapStateToProps = state => ({
      state={
          form: this.props.state.updateFormReducer,
          userInput: this.props.state.userInput
+
+     }
+
+     handleSubmit = () =>{
+         this.props.dispatch({
+             type: 'UPDATE_FORM',
+             payload: this.state
+         })
      }
 
 
@@ -46,18 +55,32 @@ const mapStateToProps = state => ({
      render() {
          
          
-        return(<div>
+        // return(<div>
+        //     <div>
+        //      <button onClick={this.delete}>Delete</button>
+        //      </div>
+        //     <InPersonContactInfo />
+        //     <InpersonServices />
+        //     <PhoneServices />
+        //     <Support />
+        //     <UnmetNeeds />
+        //     <Referrals />
+        //     <Demographics />
+        //     </div>)
+
+        return <div>
             <div>
              <button onClick={this.delete}>Delete</button>
              </div>
-            <InPersonContactInfo />
-            <InpersonServices />
-            <PhoneServices />
-            <Support />
-            <UnmetNeeds />
-            <Referrals />
-            <Demographics />
-            </div>)
+            <InPersonContactInfo dispatchTo={"UPDATE_THE_FORM"} />
+            <InpersonServices dispatchTo={"UPDATE_THE_FORM"} />
+            <PhoneServices dispatchTo={"UPDATE_THE_FORM"} />
+            <Support dispatchTo={"UPDATE_THE_FORM"} />
+            <UnmetNeeds dispatchTo={"UPDATE_THE_FORM"} />
+            <Referrals dispatchTo={"UPDATE_THE_FORM"} />
+            <Demographics dispatchTo={"UPDATE_THE_FORM"} />
+            <FormButton text={"Save"} handleSubmit={this.handleSubmit} />
+          </div>;
     }
 }
 

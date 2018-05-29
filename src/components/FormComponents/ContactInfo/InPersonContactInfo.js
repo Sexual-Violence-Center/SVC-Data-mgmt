@@ -36,7 +36,7 @@ class ContactInfo extends Component {
             [name]: value
         });
         this.props.dispatch({
-            type: 'ENTRY_FORM_DATA',
+            type: this.props.dispatchTo,
             payload: { ...this.state, [name]: value }
         })
     }

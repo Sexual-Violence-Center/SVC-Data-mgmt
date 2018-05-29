@@ -9,7 +9,6 @@ const fedQueryText = require('../modules/fed.report.query')
 //Get for Federal Report
 router.get("/", (req, res) => {
   if (req.isAuthenticated()  && req.user.user_type === true) { 
-    console.log('in GET federal reports', req.query.startDate, req.query.endDate);
     
     // pool.query goes here
       let queryText = fedQueryText
