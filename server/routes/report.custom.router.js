@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
       let query = makeCustomQuery(req.query, customReportObject );
         console.log(query);
       pool.query(query.queryText, query.values)
-          .then((result)=>{
+          .then((result)=>{              
               res.send(result.rows[0])
           })
           .catch((error)=>{

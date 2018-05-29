@@ -35,19 +35,34 @@ const mapStateToProps = state => ({
 
 class customReportSelectionPage extends Component {
     state = {
-        //tbd if needed
+        startDate: '',
+        endDate: '',
+        querySelector: null
     }
 
-    componentDidMount() {
-        //load custom report options on page load
-        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    handleChangeFor = (event) => {
+        const target = event.target;
+        console.log('target', target);
+        
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+        });
+            this.props.dispatch({
+                type: 'CUSTOM_REPORT_INPUT',
+                payload: { ...this.state, [name]: value }
+            })
     }
 
     submitCustomReport = (event) => {
-        console.log('clicked submit Submit Custom Report');
         event.preventDefault();
-        // TODO: this.props.dispatch({ sage and reducer to be added})
-    }
+        console.log('clicked submit Submit Custom Report', this.props.state.CustomReportReducer);
+        this.props.dispatch({
+            type: 'SUBMIT_CUSTOM_REPORT',
+            payload: { ...this.state, ...this.props.state.CustomReportReducer }
+        })
+        }
 
     render() {
         const customReportTopic = [
@@ -63,7 +78,7 @@ class customReportSelectionPage extends Component {
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-        // loop over all custom report topics to display on screen
+// loop over all custom report topics to display on screen
         let individualTopic = customReportTopic.map(topic => {
             return (
                 <option
@@ -72,48 +87,53 @@ class customReportSelectionPage extends Component {
                 </option>
             )
         })
-        // console.log('individualTopic', individualTopic);
-
+    
+// Custom report options will only display if user is logged in as administrator
         // let content = null;
-
         // if (this.props.user.userName) {
         //     content = (
-        //         <div>
-        //         <h2> Custom Report Page </h2>
-        //         {/* add calendar */}
-        //         <form onSubmit={this.submitCustomReport}>
-        //             <select className="customReportTopics" multiple>
-        //                 {individualTopic}
-        //             </select>
-        //             <input type="submit" />
-        //         </form>
-
-        //         <div className="customReportSpecificTopic">
-        //             < CustomAge />
-        //             < CustomContactType />
-        //             < CustomDisability />
-        //             < CustomGender />
-        //             < ImmigrantCountryCustom />
-        //             < IndividualsServiced/>
-        //         </div>
-        //         </div>
+        //      TODO: add content here
         //     )
         // }
 
         return (
             <div>
                 <AdminNav />
-                <div style={{ float: "right" }}>
+                <div style={{
+                    float: "right"
+                    //, marginRight: "500px" 
+                }}>
                 <h2> Custom Report Page </h2>
-                    {/* add calendar */}
-                    <form onSubmit={this.submitCustomReport}>
-                        <select className="customReportTopics" multiple>
-                            {individualTopic}
-                        </select>
-                        <input type="submit" />
+                <form onSubmit={this.submitCustomReport}>
+                    Start Date:
+                    <input type="date" name="startDate" 
+                        value={this.state.startDate} 
+                        onChange={this.handleChangeFor}
+                    />
+                    End Date:
+                    <input type="date" name="endDate" 
+                        value={this.state.endDate} 
+                        onChange={this.handleChangeFor}
+                    />
+                    <br/>
+                    {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
+                    {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeFor}/> 
+                        <label>AND</label>
+                    <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
+                        <label>OR</label>
+                    <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
+                        <label>Neither</label>
+                    <br/> */}
+                    <select className="customReportTopics" multiple>
+                        {individualTopic}
+                    </select>
+                    <input type="submit" />
                     </form>
 
-                <div className="customReportSpecificTopic">
+                    <div className="customReportSpecificTopic" 
+                        style={{ float: "right"
+                        //, marginRight: "500px" 
+                    }}>
                     < CustomAge />
                     < CustomContactType />
                     < CustomDisability />
