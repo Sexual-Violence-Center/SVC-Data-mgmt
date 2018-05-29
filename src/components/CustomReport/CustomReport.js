@@ -34,18 +34,22 @@ const mapStateToProps = state => ({
 
 class customReportSelectionPage extends Component {
     state = {
-        querySeletor: ''
+        startDate: '',
+        endDate: '',
+        querySelector: ''
     }
 
     handleChangeFor = (event) => {
-        const value = event.target.value 
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
         this.setState({
-            querySeletor: value
+            [name]: value
         });
-        this.props.dispatch({
-            type: 'CUSTOM_REPORT_INPUT',
-            payload: { querySeletor: value }
-        })
+            this.props.dispatch({
+                type: 'CUSTOM_REPORT_INPUT',
+                payload: { querySelector: value }
+            })
     }
 
     submitCustomReport = (event) => {
@@ -71,7 +75,7 @@ class customReportSelectionPage extends Component {
             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
         ]
 
-        // loop over all custom report topics to display on screen
+// loop over all custom report topics to display on screen
         let individualTopic = customReportTopic.map(topic => {
             return (
                 <option
@@ -80,9 +84,9 @@ class customReportSelectionPage extends Component {
                 </option>
             )
         })
-
-        // let content = null;
+    
 // Custom report options will only display if user is logged in as administrator
+        // let content = null;
         // if (this.props.user.userName) {
         //     content = (
         //      TODO: add content here
@@ -92,9 +96,20 @@ class customReportSelectionPage extends Component {
         return (
             <div>
                 <AdminNav />
-                <div style={{ float: "right" }}>
+                <div style={{ float: "right"
+                //, marginRight: "500px" 
+                }}>
                 <h2> Custom Report Page </h2>
-                    {/* add calendar */}
+                    Start Date:
+                    <input type="date" name="startDate" 
+                        value={this.state.startDate} 
+                        onChange={this.handleChangeFor}
+                    />
+                    End Date:
+                    <input type="date" name="endDate" 
+                        value={this.state.endDate} 
+                            onChange={this.handleChangeFor}
+                    />
                     <form onSubmit={this.submitCustomReport}>
                         <select className="customReportTopics" multiple>
                             {individualTopic}
@@ -102,9 +117,9 @@ class customReportSelectionPage extends Component {
                         <input type="submit" />
                     </form>
 
-                <form value = {this.state.querySeletor} onChange = {this.handleChangeFor} >
-                    <input type="radio" name="andSelector" value= 'and' /> <label htmlFor="andSelector">AND</label>
-                    <input type="radio" name="orSelector" value='or' /> <label htmlFor="orSelector">OR</label>
+                    <form value={this.state.querySelector} onChange = {this.handleChangeFor} >
+                        <input type="radio" name="querySelector" value= 'and' /> <label htmlFor="andSelector">AND</label>
+                        <input type="radio" name="querySelector" value='or' /> <label htmlFor="orSelector">OR</label>
                 </form>
 
                 <div className="customReportSpecificTopic">
