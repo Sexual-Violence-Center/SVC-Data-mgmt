@@ -15,20 +15,18 @@ const style = {
 
 class Demographics extends Component {
     render() {
-        return (
-            <div className="demographics">
-                <Card style={style}>
-                    <h2>Victim/Survivor Demographics</h2>
-                    <TypeOfViolence />
-                    <PoliceReport />
-                    <Survey />
-                    <DisabilityStatus />
-                    <EthnicBackground />
-                    <ImmigrantStatus />
-                    <DemographicOther />
-                </Card>
-        </div>
-        )
+        return <div className="demographics">
+            <Card style={style}>
+              <h2>Victim/Survivor Demographics</h2>
+              <TypeOfViolence dispatchTo={this.props.dispatchTo} />
+              <PoliceReport dispatchTo={this.props.dispatchTo} />
+              <Survey dispatchTo={this.props.dispatchTo} />
+              <DisabilityStatus dispatchTo={this.props.dispatchTo} />
+              <EthnicBackground dispatchTo={this.props.dispatchTo} />
+              <ImmigrantStatus dispatchTo={this.props.dispatchTo} />
+              <DemographicOther dispatchTo={this.props.dispatchTo} />
+            </Card>
+          </div>;
     }
 }
 
