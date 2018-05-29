@@ -23,15 +23,15 @@ function* getCustom (action) {
         else if (querySelector === "and") {
             let urlText = makeUrlAndFunction(action.payload.selectedItem);
             console.log('urlText', urlText);
-            customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}ANDstartDate=${startDate}&endDate=${endDate}`);
+            customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}&querySelector=${querySelector}&startDate=${startDate}&endDate=${endDate}`);
 
         }
         else if (querySelector === "or") {
             let urlText = makeUrlOrFunction(action.payload.selectedItem);
             console.log('urlText', urlText);
-            customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}ANDstartDate=${startDate}&endDate=${endDate}`);
-
+            customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}&querySelector=${querySelector}&startDate=${startDate}&endDate=${endDate}`);
         }
+
         console.log('customDataResponse', customDataResponse);
         return customDataResponse
 
