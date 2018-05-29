@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import PhoneServices from '../FormComponents/PhoneServices/PhoneServices';
 import Support from '../FormComponents/Support/Support';
@@ -33,7 +34,9 @@ const mapStateToProps = state => ({
          })
      }
 
-
+     componentDidMount(){
+        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+     }
      static getDerivedStateFromProps=(props, state)=>{
         if(props.state.updateFormReducer){
             return props.state.updateFormReducer;

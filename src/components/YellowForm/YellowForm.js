@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 import InPersonContactInfo from '../FormComponents/ContactInfo/InPersonContactInfo';
 import InPersonServices from '../FormComponents/InPersonServices/InPersonServices';
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
@@ -11,18 +13,19 @@ import FormButton from '../FormComponents/FormButton/FormButton'
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
 const mapStateToProps = state => ({
+    state: state.user,
     state
 })
 
 const style = {
     title: {
-        backgroundColor: '#FFEE58',
+        backgroundColor: '#FFF9C4',
         textAlign: 'center',
-        color: 'black', 
+        color: '#616161', 
         padding: '10px',
     },
     paper:{
-        backgroundColor: '#FFF59D', 
+        backgroundColor: '#FFFDE7', 
         padding: '10px'
     }
 }
@@ -34,6 +37,11 @@ class YellowForm extends Component {
             contact_type: 'in-person'
         }
     }
+
+    componentDidMount(){
+        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    }
+
     handleSubmit = () => {
         console.log(this.props.state.EntryFormReducer);
         this.props.dispatch({
