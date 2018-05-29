@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card } from '@material-ui/core';
+import CrisisCounseling from './InPersonServicesComponents/CrisisCounseling';
+import CriminalJusticeProcess from './InPersonServicesComponents/CriminalJusticeProcess';
+import CivilLegalProcess from './InPersonServicesComponents/CivilLegalProcess';
+import MedicalAdvocacy from './InPersonServicesComponents/MedicalAdvocacy/MedicalAdvocacy';
 
 const mapStateToProps = state => ({
     state
@@ -70,68 +74,13 @@ class InPersonServices extends Component {
                 <Card style={{ padding: '20px', margin: '10px' }}>
                     <h2>In-Person Services</h2>
                     <div className="inpersonServices">
-                        <div className="crisisCounseling">
-                            <label>1. Crisis Counseling</label>
-                            <br />
-                            <br />
-                            <input type="checkbox" id="crisis_counseling_individual" name="crisis_counseling_individual" value={this.state.crisis_counseling_individual} onChange={this.handleChangeFor} /><label htmlFor="crisis_counseling_individual">One-to-One Counseling</label>
-                            <input type="checkbox" id="crisis_counseling_group" name="crisis_counseling_group" value={this.state.crisis_counseling_group} onChange={this.handleChangeFor} /><label htmlFor="crisis_counseling_group">Support Group</label>
-                        </div>
+                        <CrisisCounseling handleChangeFor={this.handleChangeFor}/>
                         <br />
-                        <div className="justiceProcess">
-                            <label>2. Legal Advocacy: Criminal Justice Process</label>
-                            <br />
-                            <br />
-                            <input type="checkbox" id="legal_law_enforcement_interview" name="legal_law_enforcement_interview" value={this.state.legal_law_enforcement_interview} onChange={this.handleChangeFor} /><label htmlFor="legal_law_enforcement_interview">Law Enforcement Interview</label>
-                            <input type="checkbox" id="legal_prosecution_related" name="legal_prosecution_related" value={this.state.legal_prosecution_related} onChange={this.handleChangeFor} /><label htmlFor="legal_prosecution_related">Prosecution-related Advocacy</label>
-                            <input type="checkbox" id="legal_court_advocacy" name="legal_court_advocacy" value={this.state.legal_court_advocacy} onChange={this.handleChangeFor} /><label htmlFor="legal_court_advocacy">Court Advocacy(criminal case)</label>
-                        </div>
+                        <CriminalJusticeProcess handleChangeFor={this.handleChangeFor}/>
                         <br />
-                        <div className="civilLegalProcess">
-                            <label>3. Legal Advocacy: Civil Legal Process</label>
-                            <br />
-                            <br />
-                            <input type="checkbox" id="legal_ofp_hro" name="legal_ofp_hro" value={this.state.legal_ofp_hro} onChange={this.handleChangeFor} /><label htmlFor="legal_ofp_hro">Assistance Obtaining OFP or HRO</label>
-                            <input type="checkbox" id="legal_immigration" name="legal_immigration" value={this.state.legal_immigration} onChange={this.handleChangeFor} /><label htmlFor="legal_immigration">Immigration-related support(U Visa, etc.)</label>
-                            <br />
-                            <input type="checkbox" id="legal_intervention" name="legal_intervention" value={this.state.legal_intervention} onChange={this.handleChangeFor} /><label htmlFor="legal_intervention">Intervention with landlord, academic institution, or creditor</label>
-                        </div>
+                        <CivilLegalProcess handleChangeFor={this.handleChangeFor}/>
                         <br />
-                        <div className="medicalAdvocacy">
-                            <label>4. Medical Advocacy</label>
-                            <br />
-                            <br />
-                            <input type="checkbox" id="medical_exam_support" name="medical_exam_support" value={this.state.medical_exam_support} onChange={this.handleChangeFor} /><label htmlFor="medical_exam_support">Forensic Exam Support</label>
-                            <br />
-                            <label>
-                                Was transportation provided?:
-                    </label>
-                            <form value={this.state.transportation_medical_exam_support} onChange={this.handleChangeFor}>
-                                <input type="radio" id="transportation_medical_exam_support" name="transportation_medical_exam_support" value={true} /><label htmlFor="transportation_medical_exam_support">yes</label>
-                                <input type="radio" id="transportation_medical_exam_support" name="transportation_medical_exam_support" value={false} /><label htmlFor="transportation_medical_exam_support">no</label>
-                            </form>
-                            <br />
-                            <input type="checkbox" id="medical_accompaniment_medical" name="medical_accompaniment_medical" value={this.state.medical_accompaniment_medical} onChange={this.handleChangeFor} /><label htmlFor="medical_accompaniment_medical">Accompaniment to Medical Appointment</label>
-                            <br />
-                            <label>
-                                Was transportation provided?:
-                    </label>
-                            <form value={this.state.transportation_medical_accompaniment_medical} onChange={this.handleChangeFor}>
-                                <input type="radio" id="transportation_medical_accompaniment_medical" name="transportation_medical_accompaniment_medical" value={true} /><label htmlFor="transportation_medical_accompaniment_medical">yes</label>
-                                <input type="radio" id="transportation_medical_accompaniment_medical" name="transportation_medical_accompaniment_medical" value={false} /><label htmlFor="transportation_medical_accompaniment_medical">no</label>
-                            </form>
-                            <br />
-                            <input type="checkbox" id="medical_accompaniment_dental" name="medical_accompaniment_dental" value={this.state.medical_accompaniment_dental} onChange={this.handleChangeFor} /><label htmlFor="medical_accompaniment_dental">Accompaniment to Dental Appointment</label>
-                            <br />
-                            <label>
-                                Was transportation provided?:
-                    </label>
-                            <form value={this.state.transportation_medical_accompaniment_dental} onChange={this.handleChangeFor}>
-                                <input type="radio" id="transportation_medical_accompaniment_dental" name="transportation_medical_accompaniment_dental" value={true} /><label htmlFor="transportation_medical_accompaniment_dental">yes</label>
-                                <input type="radio" id="transportation_medical_accompaniment_dental" name="transportation_medical_accompaniment_dental" value={false} /><label htmlFor="transportation_medical_accompaniment_dental">no</label>
-                            </form>
-                            <br />
-                        </div>
+                        <MedicalAdvocacy handleChangeFor={this.handleChangeFor}/>
                         <br />
                         <div className="advocacyServices">
                             <label>5. Other In-Person Advocacy Services</label>
