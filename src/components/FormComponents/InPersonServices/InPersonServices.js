@@ -31,6 +31,23 @@ class InPersonServices extends Component {
             in_person_services_received_prior_oct: undefined,
         }
     }
+   
+    static getDerivedStateFromProps=(props, state)=>{
+        if(props.state.updateFormReducer){
+            const {updateFormReducer} = props.state
+            Object.keys(updateFormReducer).forEach(key=>{
+                if(updateFormReducer[key]===null){
+                    updateFormReducer[key] = undefined;
+                }
+                return null;
+            })
+            console.log(updateFormReducer);
+            return updateFormReducer;
+        }else {
+            return state;
+        }    
+        
+    } 
 
     handleChangeFor = event => {
         const target = event.target;
