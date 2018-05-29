@@ -42,7 +42,7 @@ renderSuggestion.propTypes = {
 
 class AgeCustom extends React.Component {
   state = {
-    // inputValue: '',
+    inputValue: '',
     selectedItem: [],
   };
 
@@ -64,14 +64,10 @@ class AgeCustom extends React.Component {
     if (selectedItem.indexOf(item) === -1) {
       selectedItem = [...selectedItem, item];
     }
-
     this.setState({
-      // inputValue: '',
+      inputValue: '',
       selectedItem,
     })
-
-    console.log('state', this.state);
-
     this.props.dispatch({
       type: 'CUSTOM_REPORT_INPUT',
       payload: {...this.state, selectedItem}
@@ -83,6 +79,10 @@ class AgeCustom extends React.Component {
     const selectedItem = [...this.state.selectedItem];
     selectedItem.splice(selectedItem.indexOf(item), 1);
     this.setState({ selectedItem });
+    this.props.dispatch({
+      type: 'CUSTOM_REPORT_INPUT',
+      payload: { ...this.state, selectedItem }
+    })
   };
 
   render() {

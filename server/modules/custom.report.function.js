@@ -49,7 +49,8 @@ function makeCustomQuery  (params, customReportObject) {
         } 
         //adds the contact date query and alias at the end of it
         if(array[index+1]==undefined){
-            queryText += `${contactDate} as ${alias}, `;
+            queryText 
+            // += `${contactDate} as ${alias}, `;
         }
     })//end params loop
 
@@ -57,7 +58,7 @@ function makeCustomQuery  (params, customReportObject) {
     //adds a colon
     queryText = queryText.slice(0, -2);
     queryText +=`;`
-
+  
     return {queryText: queryText, values: values}
 }
 

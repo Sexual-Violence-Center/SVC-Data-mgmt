@@ -41,6 +41,8 @@ class customReportSelectionPage extends Component {
 
     handleChangeFor = (event) => {
         const target = event.target;
+        console.log('target', target);
+        
         const value = target.value;
         const name = target.name;
         this.setState({
@@ -48,7 +50,7 @@ class customReportSelectionPage extends Component {
         });
             this.props.dispatch({
                 type: 'CUSTOM_REPORT_INPUT',
-                payload: { querySelector: value }
+                payload: { ...this.state, [name]: value }
             })
     }
 
@@ -96,10 +98,12 @@ class customReportSelectionPage extends Component {
         return (
             <div>
                 <AdminNav />
-                <div style={{ float: "right"
-                //, marginRight: "500px" 
+                <div style={{
+                    float: "right"
+                    //, marginRight: "500px" 
                 }}>
                 <h2> Custom Report Page </h2>
+                <form onSubmit={this.submitCustomReport}>
                     Start Date:
                     <input type="date" name="startDate" 
                         value={this.state.startDate} 
@@ -108,21 +112,30 @@ class customReportSelectionPage extends Component {
                     End Date:
                     <input type="date" name="endDate" 
                         value={this.state.endDate} 
-                            onChange={this.handleChangeFor}
+                        onChange={this.handleChangeFor}
                     />
-                    <form onSubmit={this.submitCustomReport}>
-                        <select className="customReportTopics" multiple>
-                            {individualTopic}
-                        </select>
-                        <input type="submit" />
+                    <br/>
+                        <input type="radio" name="querySelector" value='and' onChange={this.handleChangeFor}/> 
+                            <label>AND</label>
+                        <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
+                            <label>OR</label>
+                        <input type="radio" name="querySelector" value='NULL' onChange={this.handleChangeFor}/> 
+                            <label>Neither</label>
+                        <br/>
+                    <select className="customReportTopics" multiple>
+                        {individualTopic}
+                    </select>
+                    <input type="submit" />
                     </form>
 
-                    <form value={this.state.querySelector} onChange = {this.handleChangeFor} >
-                        <input type="radio" name="querySelector" value= 'and' /> <label htmlFor="andSelector">AND</label>
-                        <input type="radio" name="querySelector" value='or' /> <label htmlFor="orSelector">OR</label>
-                </form>
+                    {/* <form value={this.state.querySelector} onChange = {this.handleChangeFor} >
 
-                <div className="customReportSpecificTopic">
+                    </form> */}
+
+                    <div className="customReportSpecificTopic" 
+                        style={{ float: "right"
+                        //, marginRight: "500px" 
+                    }}>
                     < CustomAge />
                     < CustomContactType />
                     < CustomDisability />
