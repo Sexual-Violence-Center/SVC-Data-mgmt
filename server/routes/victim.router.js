@@ -65,4 +65,20 @@ router.delete('/:id', (req, res) => {
     }
   });
 
+router.get('/:id', (req, res)=>{
+    if(req.isAuthenticated() && req.user.user_type === true){
+        let queryText = 'SELECT * FROM "victim" WHERE id = $1;';
+        pool.query(queryText, [req.params.id])
+            .then((result)=>{
+                res.send(result.rows[0]);
+            })
+            .catch((error)=>{
+                console.log('error in get form server ', error);
+                res.sendStatus(500);
+            })
+    } else {
+        res.sendStatus(403);
+    }
+})
+
 module.exports = router;

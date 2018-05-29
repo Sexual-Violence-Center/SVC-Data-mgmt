@@ -22,7 +22,9 @@ import SupportOnCallCustom from './CustomReportComponents/SupportedOnCallCustom'
 import TransgenderedCustom from './CustomReportComponents/TransgenderedCustom';
 import TransortationCustom from './CustomReportComponents/TransportationCustom';
 import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
-import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';
+import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
+import TypesOfVictimizationCustom from './CustomReportComponents/TypesOfVictimizationCustom';
+import ZipCodeCustom from './CustomReportComponents/ZipCustom';
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -109,29 +111,31 @@ class customReportSelectionPage extends Component {
                         <input type="submit" />
                     </form>
 
-                    <div className="customReportSpecificTopic">
-                        < CustomAge />
-                        < CustomContactType />
-                        < CustomDisability />
-                        < CustomGender />
-                        < ImmigrantCountryCustom />
-                        < IndividualsServiced />
-                        < CrisisCounseling />
-                        < AdvocacyCivilCustom />
-                        < AdvocacyCriminalCustom />
-                        < AdvocacyMedicalCustom />
-                        < AdvocacyOtherCustom />
-                        < PhoneServicesCustom />
-                        < PoliceReportCustom />
-                        < RaceEthnicityCustom />
-                        < SexualOrientationCustom />
-                        < SpecialClassificationCustom />
-                        < SupportOnCallCustom />
-                        < TransgenderedCustom />
-                        < TransortationCustom />
-                        < VictimTypeCustom />
-                        < UnmetNeedsCustom />
-                    </div>
+                <div className="customReportSpecificTopic">
+                    < CustomAge />
+                    < CustomContactType />
+                    < CustomDisability />
+                    < CustomGender />
+                    < ImmigrantCountryCustom />
+                    < IndividualsServiced/>
+                    < CrisisCounseling/>
+                    < AdvocacyCivilCustom/>
+                    < AdvocacyCriminalCustom/>
+                    < AdvocacyMedicalCustom />
+                    < AdvocacyOtherCustom />
+                    < PhoneServicesCustom />
+                    < PoliceReportCustom />
+                    < RaceEthnicityCustom />
+                    < SexualOrientationCustom />
+                    < SpecialClassificationCustom />
+                    < SupportOnCallCustom />
+                    < TransgenderedCustom />
+                    < TransortationCustom />
+                    < VictimTypeCustom />
+                    < UnmetNeedsCustom />
+                    < TypesOfVictimizationCustom />
+                    < ZipCodeCustom />
+                </div>
                 </div>
             </div>
         ) //end return
