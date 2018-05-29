@@ -5,6 +5,8 @@ import CrisisCounseling from './InPersonServicesComponents/CrisisCounseling';
 import CriminalJusticeProcess from './InPersonServicesComponents/CriminalJusticeProcess';
 import CivilLegalProcess from './InPersonServicesComponents/CivilLegalProcess';
 import MedicalAdvocacy from './InPersonServicesComponents/MedicalAdvocacy/MedicalAdvocacy';
+import OtherAdvocacy from './InPersonServicesComponents/OtherAdvocacy';
+import UsedServicesBefore from './InPersonServicesComponents/UsedServicesBefore';
 
 const mapStateToProps = state => ({
     state
@@ -56,8 +58,8 @@ class InPersonServices extends Component {
     handleChangeFor = event => {
         const target = event.target;
         const value = target.type === ('checkbox') ? target.checked :
-            target.type === ('radio') ? target.checked :
-                target.value;
+                        target.type === ('radio') ? target.checked :
+                        target.value;
         const name = target.name;
 
         this.setState({
@@ -82,27 +84,9 @@ class InPersonServices extends Component {
                         <br />
                         <MedicalAdvocacy handleChangeFor={this.handleChangeFor}/>
                         <br />
-                        <div className="advocacyServices">
-                            <label>5. Other In-Person Advocacy Services</label>
-                            <p>(check any that apply)</p>
-                            <input type="checkbox" name="information_referral" value={this.state.information_referral} onChange={this.handleChangeFor} /><label htmlFor="information_referral">Information and referral</label>
-                            <br />
-                            <input type="checkbox" name="safe_at_home" value={this.state.safe_at_home} onChange={this.handleChangeFor} /><label htmlFor="safe_at_home">Safe at Home registration</label>
-                            <br />
-                            <input type="checkbox" name="emergency_financial" value={this.state.emergency_financial} onChange={this.handleChangeFor} /><label htmlFor="emergency_financial">Emergency financial assistance</label>
-                            <br />
-                            <input type="checkbox" name="reparations_claims" value={this.state.reparations_claims} onChange={this.handleChangeFor} /><label htmlFor="reparations_claims">Reparations Claims Assistance</label>
-                        </div>
+                        <OtherAdvocacy handleChangeFor={this.handleChangeFor}/>
                         <br />
-                        <div className="usedSinceOctContainer">
-                            <label>6. Has the victim/survivor used this type of in-person service since October 1, 2017?</label>
-                            <br />
-                            <br />
-                            <form value={this.state.in_person_services_received_prior_oct} onChange={this.handleChangeFor}>
-                                <input type="radio" name="in_person_services_received_prior_oct" value={!this.state.in_person_services_received_prior_oct} /><label htmlFor="in_person_services_received_prior_oct">yes</label>
-                                <input type="radio" name="in_person_services_received_prior_oct" value={this.state.in_person_services_received_prior_oct} /><label htmlFor="in_person_services_received_prior_oct">no</label>
-                            </form>
-                        </div>
+                        <UsedServicesBefore handleChangeFor={this.handleChangeFor}/>
                         <br />
                     </div>
                 </Card>
