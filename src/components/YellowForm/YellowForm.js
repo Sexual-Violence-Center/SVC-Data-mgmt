@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InPersonContactInfo from '../FormComponents/ContactInfo/InPersonContactInfo';
-import InpersonServices from '../FormComponents/InPersonServices/InPersonServices';
+import InPersonServices from '../FormComponents/InPersonServices/InPersonServices';
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
@@ -50,24 +50,22 @@ class YellowForm extends Component {
         } else if (this.props.state.user.userInfo === false) {
             DataEntryNav = <UserNav />
         }
-        return (
-            <div style={{ float: "right", marginRight: '80px' }}>
-                {DataEntryNav}
-                <Paper style={style.paper}>
-                    <Card style={{margin: '10px'}}>
-                        <Typography variant="display1" style={style.title}>
-                            In-Person Contact Form for Primary AND Secondary Victims
-                        </Typography>
-                    </Card>
-                    <InPersonContactInfo />
-                    <InpersonServices />
-                    <UnmetNeeds />
-                    <Referrals />
-                    <Demographics />
-                    <SubmitButton handleSubmit={this.handleSubmit}/>
-                </Paper>
-            </div>
-        )
+        return <div style={{ float: "right", marginRight: "80px" }}>
+            {DataEntryNav}
+            <Paper style={style.paper}>
+              <Card style={{ margin: "10px" }}>
+                <Typography variant="display1" style={style.title}>
+                  In-Person Contact Form for Primary AND Secondary Victims
+                </Typography>
+              </Card>
+              <InPersonContactInfo dispatchTo={"ENTRY_FORM_DATA"} />
+              <InPersonServices dispatchTo={"ENTRY_FORM_DATA"} />
+              <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
+              <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
+              <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
+              <SubmitButton handleSubmit={this.handleSubmit} />
+            </Paper>
+          </div>;
     }
 }
 
