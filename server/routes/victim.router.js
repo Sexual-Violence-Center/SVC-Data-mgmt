@@ -53,8 +53,8 @@ router.delete('/:id', (req, res) => {
     // console.log('authenticated user DELETE server route for Archive Page, req.params is:', req.params);
     if(req.isAuthenticated() && req.user.user_type === true) {
       let queryText = 'DELETE FROM "victim" WHERE id = $1;';
-      pool.query(queryText, [req.params.id])
-      .then((result) => {
+      console.log('DELETE ROUTER', req.params.id);
+      pool.query(queryText, [req.params.id]).then((result) => {
         console.log('DELETE successful', result);
           res.sendStatus(200);
       }).catch((error) => {

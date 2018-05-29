@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
     user: state.user,
     state,
     form: state.updateFormReducer,
+    userInput: state.userInput
 });
 
 // this.setState({
@@ -22,7 +23,8 @@ const mapStateToProps = state => ({
 
  class UpdateForm extends Component{
      state={
-         form: this.props.state.updateFormReducer
+         form: this.props.state.updateFormReducer,
+         userInput: this.props.state.userInput
      }
 
 
@@ -34,16 +36,20 @@ const mapStateToProps = state => ({
         }    
         
     }
+    delete = () => {
+        console.log('in delete', this.props.state.updateFormReducer.id )
+        this.props.dispatch({
+            type: 'DELETE_FORM',
+            payload: this.props.state.updateFormReducer
+        })
+    }
      render() {
-        let content = null;
-        if (this.props.user.userName) {
-          content = (
-// const UpdateForm = (form)=>{
-            <p> this is a test </p>
-            )
-        }
+         
+         
         return(<div>
-            {content}
+            <div>
+             <button onClick={this.delete}>Delete</button>
+             </div>
             <InPersonContactInfo />
             <InpersonServices />
             <PhoneServices />

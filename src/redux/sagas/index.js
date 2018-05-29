@@ -9,7 +9,7 @@ import deleteUserSaga from './deleteUserSaga';
 import searchUpdateDeleteSaga from './searchUpdateDeleteSaga';
 
 import getCountySaga from './getCountySaga';
-
+import deleteFormSaga from './deleteFormSaga';
 
 
 export default function* rootSaga() {
@@ -24,6 +24,8 @@ export default function* rootSaga() {
     searchUpdateDeleteSaga(),
 
     getCountySaga(),
+    deleteFormSaga(),
+
 
     // watchIncrementAsync()
   ]);
