@@ -51,10 +51,10 @@ function makeCustomQuery  (params, customReportObject) {
         console.log('keyParams', keyParams);
         
         //adds the contact date query and alias at the end of it
-        if(array[index+1]==undefined){
-            queryText += `${contactDate} ,`;
-            // as ${alias}, `;
-        }
+        // TODO: Stephen - this causes errors with the SQL query
+        // if(array[index+1]==undefined){
+        //     queryText += `${contactDate} as ${alias}, `;
+        // }
     })//end params loop
 
     //on the last on removes the space and comma

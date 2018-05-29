@@ -116,13 +116,14 @@ class customReportSelectionPage extends Component {
                         onChange={this.handleChangeFor}
                     />
                     <br/>
-                        <input type="radio" name="querySelector" value='and' onChange={this.handleChangeFor}/> 
-                            <label>AND</label>
-                        <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
-                            <label>OR</label>
-                        <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
-                            <label>Neither</label>
-                        <br/>
+                    {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
+                    {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeFor}/> 
+                        <label>AND</label>
+                    <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
+                        <label>OR</label>
+                    <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
+                        <label>Neither</label>
+                    <br/> */}
                     <select className="customReportTopics" multiple>
                         {individualTopic}
                     </select>
