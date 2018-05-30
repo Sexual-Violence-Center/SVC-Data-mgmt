@@ -42,19 +42,47 @@ function getSuggestions(inputValue) {
 class AgeCustom extends React.Component {
   state = {
     inputValue: '',
+    selectedItem: [],
+  };
+
+  handleChangeForComponent = (item) => {
+    let { selectedItem } = this.state;
+    if (this.props.selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
+    }
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    })
+    this.props.dispatch({
+      type: 'ADD_SELECTED_ITEM',
+      payload: { ...this.state, selectedItem }
+    })
+
   };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
   };
 
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    console.log('test', { inputValue, selectedItem });
+
+    if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
+    }
+  };
+
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    console.log('this.props', this.props);
+    console.log('this.props', this.prop);
     
     return (
-      <Downshift inputValue={inputValue} onChange={this.props.handleChangeForComponent} selectedItem={this.selectedItem}>
+      <Downshift inputValue={inputValue} onChange={this.handleChangeForComponent} selectedItem={this.selectedItem}>
       
         {({
           getInputProps,
@@ -69,7 +97,7 @@ class AgeCustom extends React.Component {
               fullWidth: true,
               classes,
               InputProps: getInputProps({
-                startAdornment: this.props.selectedItem.map(item => (
+                startAdornment: selectedItem.map(item => (
                   <Chip
                     key={item.value}
                     tabIndex={-1}
@@ -80,7 +108,7 @@ class AgeCustom extends React.Component {
                   />
                 )),
                 onChange: this.handleInputChange,
-                onKeyDown: this.props.handleKeyDown,
+                onKeyDown: this.handleKeyDown,
                 placeholder: 'Age Types',
                 id: 'integration-downshift-multiple',
               }),
