@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TypeOfViolence from './DemographicComponents/TypeOfViolence/TypeOfViolence';
 import PoliceReport from './DemographicComponents/PoliceReport';
-import Survey from './DemographicComponents/Survey';
+import Survey from './DemographicComponents/Survey/Survey';
 import DisabilityStatus from './DemographicComponents/DisabilityStatus';
 import EthnicBackground from './DemographicComponents/EthnicBackground';
 import ImmigrantStatus from './DemographicComponents/ImmigrantStatus';
