@@ -56,7 +56,7 @@ class ContactTypeCustom extends React.Component {
       selectedItem,
     })
     this.props.dispatch({
-      type: 'ADD_SELECTED_ITEM',
+      type: 'UPDATE_SELECTED_ITEM',
       payload: { ...this.state, selectedItem}
     })
 

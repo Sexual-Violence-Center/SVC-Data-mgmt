@@ -47,62 +47,47 @@ class customReportSelectionPage extends Component {
         selectedItem: [],
     }
 
-    handleChangeFor = (event) => {
-        const target = event.target;
-        console.log('target', target);
-        
-        const value = target.value;
-        const name = target.name;
+    handleChangeForStartDate = (event) => {
+        const value = event.target.value;
         this.setState({
-            [name]: value
+            startDate: value
         });
             this.props.dispatch({
-                type: 'CUSTOM_REPORT_INPUT',
-                payload: { ...this.state, [name]: value }
+                type: 'UPDATE_START_DATE',
+                payload: { startDate: value }
             })
     }
 
-    handleChangeForComponent = (item) => {
-        let { selectedItem } = this.state;
-        if (selectedItem.indexOf(item) === -1) {
-            selectedItem = [...selectedItem, item];
-        }
+    handleChangeForEndDate = (event) => {
+        const value = event.target.value;
         this.setState({
-            inputValue: '',
-            selectedItem,
-        })
+            endDate: value
+        });
         this.props.dispatch({
-            type: 'CUSTOM_REPORT_INPUT',
-            payload: { ...this.state, selectedItem }
+            type: 'UPDATE_END_DATE',
+            payload: { endDate: value }
         })
+    }
 
-    };
+    handleChangeForQuerySelector = (event) => {
+        const value = event.target.value;
+        this.setState({
+            querySelector: value
+        });
+        this.props.dispatch({
+            type: 'UPDATE_QUERY_SELECTOR',
+            payload: { querySelector: value }
+        })
+    }
 
     handleDelete = item => () => {
         const selectedItem = [...this.state.selectedItem];
         selectedItem.splice(selectedItem.indexOf(item), 1);
         this.setState({ selectedItem });
         this.props.dispatch({
-            type: 'CUSTOM_REPORT_INPUT',
+            type: 'UPDATE_SELECTED_ITEM',
             payload: { ...this.state, selectedItem }
         })
-    };
-
-    // handleInputChange = (event) => {
-    //     this.setState({
-    //         inputValue: event.target.value
-    //     });
-    // };
-
-    handleKeyDown = event => {
-        const { inputValue, selectedItem } = this.state;
-        console.log('test', { inputValue, selectedItem });
-        
-        if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
-        this.setState({
-            selectedItem: selectedItem.slice(0, selectedItem.length - 1),
-        });
-        }
     };
 
     submitCustomReport = (event) => {
@@ -119,28 +104,6 @@ class customReportSelectionPage extends Component {
         }
 
     render() {
-//         const customReportTopic = [
-//             'Age', 'Contact Type', 'Disabilities',
-//             'Gender Identity', 'Immigrant Country',
-//             'Individuals Serviced', 'In-Person Crisis Counseling',
-//             'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)',
-//             'In-Person Medical Advocacy', 'Other In-Person Advocacy',
-//             'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity',
-//             'Referrals', 'Sexual Orientation',
-//             'Special Classification of Victims', 'Supported on Call',
-//             'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)',
-//             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
-//         ]
-
-// // loop over all custom report topics to display on screen
-//         let individualTopic = customReportTopic.map(topic => {
-//             return (
-//                 <option
-//                     key={topic}>
-//                     {topic}
-//                 </option>
-//             )
-//         })
     
 // Custom report options will only display if user is logged in as administrator
         // let content = null;
@@ -162,25 +125,21 @@ class customReportSelectionPage extends Component {
                     Start Date:
                     <input type="date" name="startDate" 
                         value={this.state.startDate} 
-                        onChange={this.handleChangeFor}
+                        onChange={this.handleChangeForStartDate}
                     />
                     End Date:
                     <input type="date" name="endDate" 
                         value={this.state.endDate} 
-                        onChange={this.handleChangeFor}
+                        onChange={this.handleChangeForEndDate}
                     />
                     <br/>
-                    {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
-                    {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeFor}/> 
+                        <input type="radio" name="querySelector" value='and' onChange={this.handleChangeForQuerySelector}/> 
                         <label>AND</label>
-                    <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
+                        <input type="radio" name="querySelector" value='or' onChange={this.handleChangeForQuerySelector}/> 
                         <label>OR</label>
-                    <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
+                        <input type="radio" name="querySelector" value='null' onChange={this.handleChangeForQuerySelector}/> 
                         <label>Neither</label>
-                    <br/> */}
-                    {/* <select className="customReportTopics" multiple>
-                        {individualTopic}
-                    </select> */}
+                    <br/> 
                     <input type="submit" />
                     </form>
 
