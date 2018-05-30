@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Radio, Checkbox } from '@material-ui/core';
+import { Radio } from '@material-ui/core';
 
 class PriorToOctContact extends Component {
     constructor() {
