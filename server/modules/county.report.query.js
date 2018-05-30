@@ -11,7 +11,12 @@ const queryText = `SELECT
 	    "victim_contact_prior_oct" = TRUE))  AND "crisis_counseling_individual" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_individual_counseling,
      (SELECT COUNT(*) FROM "victim" WHERE ("victim_prior_contact" = FALSE 
 	    OR "victim_prior_contact" is NULL OR("victim_prior_contact" = TRUE AND 
-	    "victim_contact_prior_oct" = TRUE))  AND "crisis_counseling_group" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_group_counseling,
+			"victim_contact_prior_oct" = TRUE))  AND "crisis_counseling_group" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_group_counseling,
+			
+			(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_type" = 'adultPrimaryVictim' AND "contact_date" BETWEEN  $2 AND $3) as "adult_primary_victim",
+			(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_type" = 'adultSecondaryVictim' AND "contact_date" BETWEEN $2 AND $3) as "adult_secondary_victim",
+			(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_type" = 'youthPrimaryVictim' AND "contact_date"   BETWEEN $2 AND $3) as "youth_primary_victim",
+			(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_type" = 'youthSecondaryVictim' AND "contact_date"  BETWEEN $2 AND $3) as "youth_secondary_victim",
      
    
     (select count(*) from "victim" WHERE "service_county" = $1 AND "victim_age" BETWEEN 0 AND 18 AND "contact_date" BETWEEN $2 AND $3) as victim_age_zero_to_eightteen,
@@ -20,18 +25,18 @@ const queryText = `SELECT
     (select count(*) from "victim" WHERE "service_county" = $1 AND "victim_age" IS NULL AND "contact_date" BETWEEN $2 AND $3) as victim_age_unknown,
    
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Asian' AND "contact_date" BETWEEN  $2 AND $3) as "victim_ethnicity_asian",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'amerIndAlaskaNative' AND "contact_date"    BETWEEN $2 AND $3) as "amerIndAlaskaNative",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'hispanicOrLatino' AND "contact_date"   BETWEEN $2 AND $3) as "hispanicOrLatino",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'African-American' AND "contact_date"        BETWEEN $2 AND $3) as "africanAmerican",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'pacificIslanderHawaiian' AND     "contact_date" BETWEEN $2 AND $3) as "pacificIslanderHawaiian",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'white' AND   "contact_date" BETWEEN    $2 AND $3) as "white",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'other' AND   "contact_date" BETWEEN    $2 AND $3) as "other",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'multiple_races' AND  "contact_date"        BETWEEN '2016-05-05' AND $3) as "multiple_races",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Native American' AND "contact_date"    BETWEEN $2 AND $3) as "amerIndAlaskaNative",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Chican@/Latin@' AND "contact_date"   BETWEEN $2 AND $3) as "hispanicOrLatino",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'African American/Black' AND "contact_date"        BETWEEN $2 AND $3) as "africanAmerican",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Native Hawaiian/Pacific Islander' AND     "contact_date" BETWEEN $2 AND $3) as "pacificIslanderHawaiian",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'White Non-Latino/Caucasian' AND   "contact_date" BETWEEN    $2 AND $3) as "white",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Other' AND   "contact_date" BETWEEN    $2 AND $3) as "other",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Multi-racial' AND  "contact_date"        BETWEEN '2016-05-05' AND $3) as "multiple_races",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND  "victim_ethnicity" IS NULL  AND    "contact_date"        BETWEEN '2016-05-05' AND $3) as "not_reported",
     (select COUNT("victim_ethnicity") FROM "victim"  WHERE "service_county" = $1  AND "contact_date"        BETWEEN $2 AND $3) as "total_ethnicity",
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'male' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_male,
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'female' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_female,
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'transgender' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_transgender,
+    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'Male' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_male,
+    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'Female' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_female,
+    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_transgender" = 'TRUE' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_transgender,
     (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" IS NULL AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_unknown,
 	
 	
