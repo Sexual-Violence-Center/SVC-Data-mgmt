@@ -93,11 +93,11 @@ class customReportSelectionPage extends Component {
 
     submitCustomReport = (event) => {
         event.preventDefault();
-        console.log('clicked submit Submit Custom Report', this.props.state.CustomReportReducer);
+        // console.log('clicked submit Submit Custom Report', this.props.state.CustomReportReducer);
         this.props.dispatch({
             type: 'SUBMIT_CUSTOM_REQUEST',
-            payload: { ...this.props.state.CustomReportReducer,
-                ...this.state
+            payload: {
+                ...this.props.state.CustomReportInputReducer
             }
         })
         this.props.history.push("/custom_report_output");
@@ -120,12 +120,12 @@ class customReportSelectionPage extends Component {
               <h2> Custom Report Page </h2>
               <form onSubmit={this.submitCustomReport}>
                 Start Date:
-                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor} />
+                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeForStartDate} />
                 End Date:
-                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor} />
+                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeForEndDate} />
                 <br />
                 {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
-                {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeFor}/> 
+                {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeForQuerySelector}/> 
                         <label>AND</label>
                         <input type="radio" name="querySelector" value='or' onChange={this.handleChangeForQuerySelector}/> 
                         <label>OR</label>

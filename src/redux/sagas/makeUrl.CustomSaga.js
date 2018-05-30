@@ -1,7 +1,7 @@
 const makeUrlFunction = (array) =>{
     let urlString =    `?`;
     array.forEach(chip => {  
-        urlString += `${chip.value}=true&`
+        urlString += `${chip}=true&`
     })
     urlString = urlString.slice(0, -1);
 
