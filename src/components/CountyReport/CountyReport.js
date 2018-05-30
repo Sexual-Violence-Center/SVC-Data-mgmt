@@ -60,7 +60,7 @@ class CountyReport extends Component{
                 Start Date:
                 <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
                 End Date:
-                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
+                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor} />
                 County:
                 <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
                 <option>Select One</option>
@@ -541,7 +541,7 @@ class CountyReport extends Component{
                     </thead>
                     <tbody>
                     <tr>
-                        <td>American Indian of Alaskan Native</td>
+                        <td>American Indian or Alaskan Native</td>
                         <td>{this.props.state.getCountyReducer.amerIndAlaskaNative}</td>
                     </tr>
                     <tr>
@@ -557,7 +557,7 @@ class CountyReport extends Component{
                         <td>{this.props.state.getCountyReducer.hispanicOrLatino}</td>
                     </tr>
                     <tr>
-                        <td>Natice Hawaiian or Other Pacific Islander</td>
+                        <td>Native Hawaiian or Other Pacific Islander</td>
                         <td>{this.props.state.getCountyReducer.pacificIslanderHawaiian}</td>
                     </tr>
                     <tr>
