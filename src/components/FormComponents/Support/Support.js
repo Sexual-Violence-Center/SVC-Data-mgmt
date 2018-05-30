@@ -50,7 +50,7 @@ class Support extends Component {
         return (
             <div className="support">
                 <Card className={classes.card}>
-                    <h2><strong>MANDATORY</strong> Did you feel that you were supported on this call?</h2>
+                    <h2><strong>MANDATORY:</strong> Did you feel that you were supported on this call?</h2>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="supported_on_call">Select One</InputLabel>
                         <Select
