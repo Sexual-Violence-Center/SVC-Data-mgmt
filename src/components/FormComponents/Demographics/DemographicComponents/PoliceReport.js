@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { MenuItem, InputLabel, Select, FormControl, Divider, } from '@material-ui/core';
+
 
 const mapStateToProps = state => ({
     state
+});
+
+const styles = theme => ({
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 100,
+        textAlign: 'center'
+    },
 });
 
 class PoliceReport extends Component {
@@ -15,9 +27,7 @@ class PoliceReport extends Component {
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === ('checkbox') ? target.checked :
-                      target.type === ('radio') ? target.checked  : 
-                      target.value;
+        const value = target.value;
         const name = target.name;
     
         this.setState({
@@ -30,18 +40,35 @@ class PoliceReport extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <div>
                 <h3>Was a police report filed?</h3>
-                <select name="police_report_filed" value={this.state.police_report_filed} onChange={this.handleChangeFor}>
-                    <option>Select One</option>
-                    <option value="yes">yes</option>
-                    <option value="no">no</option>
-                    <option value="unknown">unknown</option>
-                </select>
+                <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="police_report_filed">Select One</InputLabel>
+                    <Select
+                        value={this.state.police_report_filed}
+                        onChange={this.handleChangeFor}
+                        inputProps={{
+                            name: 'police_report_filed',
+                            id: 'police_report_filed',
+                        }}>
+                        <Divider />
+                        <MenuItem value="yes">Yes</MenuItem>
+                        <Divider />
+                        <Divider />
+                        <MenuItem value="no">No</MenuItem>
+                        <Divider />
+                        <MenuItem value="unknown">Unknown</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
         )
     }
 }
 
-export default connect(mapStateToProps)(PoliceReport);
+PoliceReport.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(PoliceReport));
