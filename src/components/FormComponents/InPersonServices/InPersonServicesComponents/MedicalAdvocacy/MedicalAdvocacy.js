@@ -12,7 +12,7 @@ class MedicalAdvocacy extends Component {
     render() {
         return (
             <div className="medicalAdvocacy">
-            <label>4. Medical Advocacy</label>
+            <label><strong>4. Medical Advocacy</strong></label>
             <br />
             <br />
             <ForensicExam handleChange={this.handleChange}/>

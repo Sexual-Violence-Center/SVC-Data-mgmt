@@ -19,7 +19,7 @@ class UsedServicesBefore extends Component {
 
         return (
             <div className="usedSinceOctContainer">
-                <label>6. Has the victim/survivor used this type of in-person service since October 1, 2017?</label>
+                <label><strong>6. Has the victim/survivor used this type of in-person service since October 1, 2017?</strong></label>
                 <br />
                 <br />
                 <Radio

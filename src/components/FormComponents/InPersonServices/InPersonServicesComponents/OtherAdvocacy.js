@@ -1,23 +1,67 @@
 import React, { Component } from 'react';
+import { Checkbox } from '@material-ui/core';
 
 class OtherAdvocacy extends Component {
+    constructor() {
+        super();
+        this.state = {
+            checked1: false,
+            checked2: false,
+            checked3: false,
+            checked4: false
+        }
+    }
 
-    handleChange = (event) => {
+    handleChecked = name => (event) => {
+        this.setState({ checked: event.target.checked })
         this.props.handleChangeFor(event)
     }
 
     render() {
         return (
             <div className="advocacyServices">
-                <label>5. Other In-Person Advocacy Services</label>
+                <label><strong>5. Other In-Person Advocacy Services</strong></label>
                 <p>(check any that apply)</p>
-                <input type="checkbox" name="information_referral" value={this.props.information_referral} onChange={this.handleChange} /><label htmlFor="information_referral">Information and referral</label>
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('information_referral')}
+                    name="information_referral"
+                    value={`${!this.state.checked1}`}
+                />
+                <label>
+                    Information and referral
+                </label>
                 <br />
-                <input type="checkbox" name="safe_at_home" value={this.props.safe_at_home} onChange={this.handleChange} /><label htmlFor="safe_at_home">Safe at Home registration</label>
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('safe_at_home')}
+                    name="safe_at_home"
+                    value={`${!this.state.checked2}`}
+                />
+                <label>
+                    Safe at Home registration
+                </label>
                 <br />
-                <input type="checkbox" name="emergency_financial" value={this.props.emergency_financial} onChange={this.handleChange} /><label htmlFor="emergency_financial">Emergency financial assistance</label>
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('emergency_financial')}
+                    name="emergency_financial"
+                    value={`${!this.state.checked3}`}
+                />
+                <label>
+                    Emergency financial assistance
+                </label>
+                <br/>
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('reparations_claims')}
+                    name="reparations_claims"
+                    value={`${!this.state.checked4}`}
+                />
+                <label>
+                    Reparations Claims Assistance
+                </label>
                 <br />
-                <input type="checkbox" name="reparations_claims" value={this.props.reparations_claims} onChange={this.handleChange} /><label htmlFor="reparations_claims">Reparations Claims Assistance</label>
             </div>
         )
     }

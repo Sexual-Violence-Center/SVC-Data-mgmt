@@ -1,22 +1,56 @@
 import React, { Component } from 'react';
+import { Checkbox } from '@material-ui/core';
 
 class CivilLegalProcess extends Component {
+    constructor() {
+        super();
+        this.state = {
+            checked1: false,
+            checked2: false,
+            checked3: false
+        }
+    }
 
-    handleChange = (event) => {
+    handleChecked = name => (event) => {
+        this.setState({ checked: event.target.checked })
         this.props.handleChangeFor(event)
     }
 
     render() {
         return (
             <div className="civilLegalProcess">
-            <label>3. Legal Advocacy: Civil Legal Process</label>
-            <br />
-            <br />
-            <input type="checkbox" name="legal_ofp_hro" value={this.props.legal_ofp_hro} onChange={this.handleChange} /><label htmlFor="legal_ofp_hro">Assistance Obtaining OFP or HRO</label>
-            <input type="checkbox" name="legal_immigration" value={this.props.legal_immigration} onChange={this.handleChange} /><label htmlFor="legal_immigration">Immigration-related support(U Visa, etc.)</label>
-            <br />
-            <input type="checkbox" name="legal_intervention" value={this.props.legal_intervention} onChange={this.handleChange} /><label htmlFor="legal_intervention">Intervention with landlord, academic institution, or creditor</label>
-        </div>
+                <label><strong>3. Legal Advocacy: Civil Legal Process</strong></label>
+                <br />
+                <br />
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('legal_ofp_hro')}
+                    name="legal_ofp_hro"
+                    value={`${!this.state.checked1}`}
+                />
+                <label>
+                    Assistance Obtaining OFP or HRO
+                </label>
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('legal_immigration')}
+                    name="legal_immigration"
+                    value={`${!this.state.checked2}`}
+                />
+                <label>
+                    Immigration-related support(U Visa, etc.)
+                </label>
+                <br />
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('legal_intervention')}
+                    name="legal_intervention"
+                    value={`${!this.state.checked3}`}
+                />
+                <label>
+                    Intervention with landlord, academic institution, or creditor
+                </label>
+            </div>
         )
     }
 }
