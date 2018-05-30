@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
     user: state.user,
     state,
     form: state.updateFormReducer,
+    userInput: state.userInput
 });
 
 // this.setState({
@@ -24,6 +25,8 @@ const mapStateToProps = state => ({
 
  class UpdateForm extends Component{
      state={
+         form: this.props.state.updateFormReducer,
+         userInput: this.props.state.userInput
 
      }
 
@@ -45,9 +48,33 @@ const mapStateToProps = state => ({
         }    
         
     }
+    delete = () => {
+        console.log('in delete', this.props.state.updateFormReducer.id )
+        this.props.dispatch({
+            type: 'DELETE_FORM',
+            payload: this.props.state.updateFormReducer
+        })
+    }
      render() {
+         
+         
+        // return(<div>
+        //     <div>
+        //      <button onClick={this.delete}>Delete</button>
+        //      </div>
+        //     <InPersonContactInfo />
+        //     <InpersonServices />
+        //     <PhoneServices />
+        //     <Support />
+        //     <UnmetNeeds />
+        //     <Referrals />
+        //     <Demographics />
+        //     </div>)
 
         return <div>
+            <div>
+             <button onClick={this.delete}>Delete</button>
+             </div>
             <InPersonContactInfo dispatchTo={"UPDATE_THE_FORM"} />
             <InpersonServices dispatchTo={"UPDATE_THE_FORM"} />
             <PhoneServices dispatchTo={"UPDATE_THE_FORM"} />

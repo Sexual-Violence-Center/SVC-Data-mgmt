@@ -15,21 +15,21 @@ import FormButton from '../FormComponents/FormButton/FormButton';
 import { Paper, Typography, Card } from '@material-ui/core';
 
 const mapStateToProps = state => ({
-    user: state.user,
-    state
+  user: state.user,
+  state
 })
 
 const style = {
-    title: {
-        backgroundColor: '#F8BBD0',
-        textAlign: 'center',
-        color: '#424242',
-        padding: '10px',
-    }, 
-    paper: {
-        backgroundColor: '#FCE4EC',
-        padding: '10px'
-    }
+  title: {
+    backgroundColor: '#F8BBD0',
+    textAlign: 'center',
+    color: '#424242',
+    padding: '10px',
+  },
+  paper: {
+    backgroundColor: '#FCE4EC',
+    padding: '10px'
+  }
 }
 
 class PinkForm extends Component {
@@ -46,8 +46,9 @@ class PinkForm extends Component {
       payload: { ...this.state, ...this.props.state.EntryFormReducer }
     });
   };
-  componentDidMount(){
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
   render() {
@@ -58,22 +59,22 @@ class PinkForm extends Component {
       DataEntryNav = <UserNav />;
     }
     return <div style={{ float: "right", marginRight: "80px" }}>
-        {DataEntryNav}
-        <Paper style={style.paper}>
-          <Card style={{ margin: "10px" }}>
-            <Typography variant="display1" style={style.title}>
-              Telephone Contact Form for Primary AND Secondary Victims
+      {DataEntryNav}
+      <Paper style={style.paper}>
+        <Card style={{ margin: "10px" }}>
+          <Typography variant="display1" style={style.title}>
+            Telephone Contact Form for Primary AND Secondary Victims
             </Typography>
-          </Card>
-          <TelephoneContactInfo dispatchTo={"ENTRY_FORM_DATA"} />
-          <PhoneServices dispatchTo={"ENTRY_FORM_DATA"} />
-          <Support dispatchTo={"ENTRY_FORM_DATA"} />
-          <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
-          <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
-          <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
-          <FormButton handleSubmit={this.handleSubmit} text={'Submit'}/>
-        </Paper>
-      </div>;
+        </Card>
+        <TelephoneContactInfo dispatchTo={"ENTRY_FORM_DATA"} />
+        <PhoneServices dispatchTo={"ENTRY_FORM_DATA"} />
+        <Support dispatchTo={"ENTRY_FORM_DATA"} />
+        <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
+        <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
+        <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
+        <FormButton handleSubmit={this.handleSubmit} text={'Submit'} />
+      </Paper>
+    </div>;
   }
 }
 

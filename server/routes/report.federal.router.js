@@ -4,8 +4,6 @@ const router = express.Router();
 
 const fedQueryText = require('../modules/fed.report.query')
 
-// TODO make so only the admin can get the reports
-
 //Get for Federal Report
 router.get("/", (req, res) => {
   if (req.isAuthenticated()  && req.user.user_type === true) { 
