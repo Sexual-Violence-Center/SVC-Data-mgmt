@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Radio } from '@material-ui/core';
+import { Radio, Checkbox } from '@material-ui/core';
 
 class MedicalAccompaniment extends Component {
     constructor(){
@@ -10,8 +10,8 @@ class MedicalAccompaniment extends Component {
         }
     }
 
-    handleChecked = (event) => {
-        this.setState({checked: !this.state.checked})
+    handleChecked = name => (event) => {
+        this.setState({checked: event.target.checked})
         this.props.handleChange(event)
     }
 
@@ -47,7 +47,12 @@ class MedicalAccompaniment extends Component {
         }
         return (
             <div>
-                <input type="checkbox" name="medical_accompaniment_medical" value={this.props.medical_accompaniment_medical} onChange={this.handleChecked} />
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('medical_accompaniment_medical')}
+                    name="medical_accompaniment_medical"
+                    value={`${!this.state.checked}`}
+                />
                 <label> 
                     Accompaniment to Medical Appointment
                 </label>
