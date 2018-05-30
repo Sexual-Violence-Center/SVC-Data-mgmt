@@ -8,14 +8,20 @@ const mapStateToProps = state => ({
   state
 });
 
-class CustomReportOutput extends Component{
-    render(){
-        return(
-            <div>
-                this is a test
-            </div>
-        )
-    }
+class CustomReportOutput extends Component {
+  state = {};
+  static getDerivedStateFromProps = (props, state) => {
+      console.log(props);
+      return null;
+  };
+  render() {
+    return (
+      <div>
+        <AdminNav />
+        this is a test
+      </div>
+    );
+  }
 }
 
 export default connect(mapStateToProps)(CustomReportOutput);

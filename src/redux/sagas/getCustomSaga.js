@@ -5,20 +5,20 @@ import makeUrlFunction from './makeUrl.CustomSaga';
 
 function* getCustomReport(action) {
     try {
-        console.log('in getCustom saga', action.payload);
         const startDate = action.payload.startDate;
         const endDate = action.payload.endDate;
         // const querySelector = action.payload.querySelector;
 
         let urlText = makeUrlFunction(action.payload.selectedItem);
-        console.log('urlText', urlText);
-        let customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}ANDstartDate=${startDate}&endDate=${endDate}`);
 
-        console.log('customDataResponse', customDataResponse);
-        return customDataResponse
+        let customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}&startDate=${startDate}&endDate=${endDate}`);
+        yield put({
+            type: 'CUSTOM_REPORT',
+            payload: customDataResponse,
+        })
 
     } catch (error) {
-        console.log('error in GET Custom Report', error)
+        yield console.log('error in GET Custom Report', error)
     } 
 }
 

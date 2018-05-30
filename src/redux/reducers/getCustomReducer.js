@@ -1,4 +1,4 @@
-const CustomReportReducer = (state = {}, action) => {
+const CustomReportInputReducer = (state = {}, action) => {
     console.log('action', action.payload);
     switch (action.type) {
         case 'CUSTOM_REPORT_INPUT':
@@ -8,4 +8,4 @@ const CustomReportReducer = (state = {}, action) => {
     }
 }
 
-export default CustomReportReducer;
+export default CustomReportInputReducer;
