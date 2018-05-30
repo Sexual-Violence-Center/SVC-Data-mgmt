@@ -16,16 +16,6 @@ const mapStateToProps = state => ({
   state
 });
 
-renderSuggestion.propTypes = {
-  highlightedIndex: PropTypes.number,
-  index: PropTypes.number,
-  itemProps: PropTypes.object,
-  selectedItem: PropTypes.string,
-  suggestion: PropTypes.shape({
-    label: PropTypes.string
-  }).isRequired,
-};
-
 function getSuggestions(inputValue) {
   let count = 0;
     return AgeObject.filter(suggestion => {
@@ -38,6 +28,16 @@ function getSuggestions(inputValue) {
     return keep;
   });
 }
+
+renderSuggestion.propTypes = {
+  highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  itemProps: PropTypes.object,
+  selectedItem: PropTypes.string,
+  suggestion: PropTypes.shape({
+    label: PropTypes.string
+  }).isRequired,
+};
 
 class AgeCustom extends React.Component {
   state = {
@@ -58,7 +58,6 @@ class AgeCustom extends React.Component {
       type: 'UPDATE_SELECTED_ITEM',
       payload: { ...this.state, selectedItem }
     })
-
   };
 
   handleInputChange = event => {
@@ -67,8 +66,6 @@ class AgeCustom extends React.Component {
 
   handleKeyDown = event => {
     const { inputValue, selectedItem } = this.state;
-    console.log('test', { inputValue, selectedItem });
-
     if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
       this.setState({
         selectedItem: selectedItem.slice(0, selectedItem.length - 1),
@@ -79,11 +76,11 @@ class AgeCustom extends React.Component {
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    console.log('this.props', this.prop);
     
     return (
-      <Downshift inputValue={inputValue} onChange={this.handleChangeForComponent} selectedItem={this.selectedItem}>
-      
+      <Downshift inputValue={inputValue} 
+        onChange={this.handleChangeForComponent} 
+        selectedItem={this.selectedItem}>
         {({
           getInputProps,
           getItemProps,
@@ -139,6 +136,4 @@ AgeCustom.propTypes = {
 
 const styledAgeCustom = withStyles(styles)(AgeCustom);
 export default connect(mapStateToProps)(styledAgeCustom)
-
-
-    
+  

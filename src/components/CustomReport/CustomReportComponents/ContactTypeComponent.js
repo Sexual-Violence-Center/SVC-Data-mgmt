@@ -78,10 +78,6 @@ class ContactTypeCustom extends React.Component {
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    // console.log('selectedItem', selectedItem);
-    // console.log('value', selectedItem);
-    console.log('this.props', this.prop);
-    console.log('this.state', this.state);
     
     return (
       <Downshift inputValue={inputValue} onChange={this.handleChangeForComponent} selectedItem={selectedItem}>
