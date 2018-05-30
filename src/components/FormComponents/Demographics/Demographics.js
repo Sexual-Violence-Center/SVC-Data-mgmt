@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TypeOfViolence from './DemographicComponents/TypeOfViolence/TypeOfViolence';
 import PoliceReport from './DemographicComponents/PoliceReport';
 import Survey from './DemographicComponents/Survey/Survey';
-import DisabilityStatus from './DemographicComponents/DisabilityStatus';
+import DisabilityStatus from './DemographicComponents/DisabilityStatus/DisabilityStatus';
 import EthnicBackground from './DemographicComponents/EthnicBackground';
 import ImmigrantStatus from './DemographicComponents/ImmigrantStatus';
 import DemographicOther from './DemographicComponents/DemographicOther';

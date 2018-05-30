@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { MenuItem, InputLabel, Select, FormControl, Divider, } from '@material-ui/core';
