@@ -5,10 +5,9 @@ import postNewVictimSaga from './postNewVictimSaga';
 import getFederalSaga from './getFederalSaga';
 import getUsersSaga from './getUsersSaga';
 import deleteUserSaga from './deleteUserSaga';
-
 import searchUpdateDeleteSaga from './searchUpdateDeleteSaga';
-
 import getCountySaga from './getCountySaga';
+import getCustomSaga from './getCustomSaga'
 import deleteFormSaga from './deleteFormSaga';
 
 
@@ -20,13 +19,11 @@ export default function* rootSaga() {
     getFederalSaga(),
     getUsersSaga(),
     deleteUserSaga(),
-
-    searchUpdateDeleteSaga(),
-
     getCountySaga(),
     deleteFormSaga(),
-
-
+    getCustomSaga(),
+    searchUpdateDeleteSaga(),
     // watchIncrementAsync()
   ]);
 }
+
