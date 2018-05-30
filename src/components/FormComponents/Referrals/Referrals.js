@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { Card, TextField } from '@material-ui/core';
 
 const mapStateToProps = state => ({
     state
 });
 
-const style = {
-    padding: '20px',
-    margin: '10px'
-}
+const styles = theme => ({
+    card: {
+        padding: '20px',
+        margin: '10px'
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+})
 
 class Referrals extends Component {
     constructor() {
@@ -23,9 +32,7 @@ class Referrals extends Component {
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === ('checkbox') ? target.checked :
-            target.type === ('radio') ? target.checked :
-                target.value;
+        const value = target.value;
         const name = target.name;
 
         this.setState({
@@ -38,26 +45,47 @@ class Referrals extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <div className="referrals">
-                <Card style={style}>
+                <Card className={classes.card}>
                     <h2>Referrals</h2>
                     <p>(please fill in name of organization)</p>
-                    <form>
-                        <label htmlFor="referral_svc">SVC Services:</label>
-                        <input type="text" name="referral_svc" value={this.state.referral_svc} onChange={this.handleChangeFor} />
-                        <br />
-                        <label htmlFor="referral_agency">Other advocacy agency:</label>
-                        <input type="text" name="referral_agency" value={this.state.referral_agency} onChange={this.handleChangeFor} />
-                        <br />
-                        <label htmlFor="referral_other">Other services, support and resources(specify):</label>
-                        <input type="text" name="referral_other" value={this.state.referral_other} onChange={this.handleChangeFor} />
-                        <br />
-                    </form>
+                    <TextField
+                        name="referral_svc"
+                        label="SVC Services"
+                        className={classes.textField}
+                        type="text"
+                        margin="normal"
+                        value={this.state.referral_svc}
+                        onChange={this.handleChangeFor}
+                    />
+                    <TextField
+                        name="referral_agency"
+                        label="Other advocacy agency"
+                        className={classes.textField}
+                        type="text"
+                        margin="normal"
+                        value={this.state.referral_agency}
+                        onChange={this.handleChangeFor}
+                    />
+                    <TextField
+                        name="referral_other"
+                        label="Other services, support and resources(specify)"
+                        style={{width: 400}}
+                        type="text"
+                        margin="normal"
+                        value={this.state.referral_other}
+                        onChange={this.handleChangeFor}
+                    />
                 </Card>
             </div>
         )
     }
 }
 
-export default connect(mapStateToProps)(Referrals);
+Referrals.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(Referrals));
