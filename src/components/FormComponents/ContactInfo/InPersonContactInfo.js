@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Card } from '@material-ui/core';
 
-import AdvocateName from './InPersonContactComponents/AdvocateName';
-import CurrentDate from './InPersonContactComponents/CurrentDate';
-import StartTime from './InPersonContactComponents/StartTime';
-import EndTime from './InPersonContactComponents/EndTime';
-import ContactDate from './InPersonContactComponents/ContactDate';
-import ServiceLocation from './InPersonContactComponents/ServiceLocation';
-import County from './InPersonContactComponents/County';
-import ClientNumber from './InPersonContactComponents/ClientNumber';
-import ZipCode from './InPersonContactComponents/ZipCode';
-import TypeOfVictim from './InPersonContactComponents/TypeOfVictim';
-import HearAboutSVC from './InPersonContactComponents/HearAboutSVC';
-import PriorContact from './InPersonContactComponents/PriorContact';
-import PriorToOctContact from './InPersonContactComponents/PriorToOctContact';
+import AdvocateName from './ContactComponents/AdvocateName';
+import CurrentDate from './ContactComponents/CurrentDate';
+import StartTime from './ContactComponents/StartTime';
+import EndTime from './ContactComponents/EndTime';
+import ContactDate from './ContactComponents/ContactDate';
+import ServiceLocation from './ContactComponents/ServiceLocation';
+import County from './ContactComponents/County';
+import ClientNumber from './ContactComponents/ClientNumber';
+import ZipCode from './ContactComponents/ZipCode';
+import TypeOfVictim from './ContactComponents/TypeOfVictim';
+import HearAboutSVC from './ContactComponents/HearAboutSVC';
+import PriorContact from './ContactComponents/PriorContact';
+import PriorToOctContact from './ContactComponents/PriorToOctContact';
 
 const styles = theme => ({
     container: {
