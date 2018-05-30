@@ -27,18 +27,18 @@ const queryText = `SELECT
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Asian' AND "contact_date" BETWEEN  $2 AND $3) as "victim_ethnicity_asian",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Native American' AND "contact_date"    BETWEEN $2 AND $3) as "amerIndAlaskaNative",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Chican@/Latin@' AND "contact_date"   BETWEEN $2 AND $3) as "hispanicOrLatino",
-    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'African American/Black' AND "contact_date"        BETWEEN $2 AND $3) as "africanAmerican",
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'African American/Black' AND "contact_date"  BETWEEN $2 AND $3) as "africanAmerican",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Native Hawaiian/Pacific Islander' AND     "contact_date" BETWEEN $2 AND $3) as "pacificIslanderHawaiian",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'White non-Latino/Caucasian' AND   "contact_date" BETWEEN    $2 AND $3) as "white",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Other' AND   "contact_date" BETWEEN    $2 AND $3) as "other",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_ethnicity" = 'Multi-racial' AND  "contact_date"        BETWEEN '2016-05-05' AND $3) as "multiple_races",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND  "victim_ethnicity" IS NULL  AND    "contact_date"        BETWEEN $2 AND $3) as "not_reported",
-    (select COUNT("victim_ethnicity") FROM "victim"  WHERE "service_county" = $1  AND "contact_date"        BETWEEN $2 AND $3) as "total_ethnicity",
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'male' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_male,
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'female' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_female,
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'transgender' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_transgender,
-    (select count(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" IS NULL AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_unknown,
-	
+		(select COUNT("victim_ethnicity") FROM "victim"  WHERE "service_county" = $1  AND "contact_date"        BETWEEN $2 AND $3) as "total_ethnicity",
+		
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'Male' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_male,
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" = 'Female' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_female,
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_transgender" = 'TRUE' AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_transgender,
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_gender" IS NULL AND "contact_date" BETWEEN $2 AND $3 ) as victim_gender_unknown,
 	
 	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "violence_adult_sexual" = TRUE AND "contact_date" BETWEEN    $2 AND $3) as "violence_adult_sexual",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "violence_adult_when_child_by_family" = TRUE AND   "contact_date" BETWEEN    $2 AND $3) as "violence_adult_when_child_by_family",
@@ -62,9 +62,6 @@ const queryText = `SELECT
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "violence_other" = TRUE AND "contact_date" BETWEEN   $2 AND $3) as "violence_other",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "violence_unknown" IS NULL AND "contact_date" BETWEEN     $2 AND $3) as "violence_unknown",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_multiple_types_violence" = TRUE AND "contact_date"  BETWEEN $2 AND $3) as "victim_multiple_types_violence",
-    
-    
-    
   
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55111 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55111",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55305 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55305",
@@ -141,7 +138,7 @@ const queryText = `SELECT
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55454 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55454",
     (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_zipcode" = 55455 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_55455",
     
-    (select Count(*) FROM "victim" WHERE "service_county" = $1 AND 
+    (select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND 
     		"victim_zipcode" != 55111   AND 
     		"victim_zipcode" != 55305   AND
     		"victim_zipcode" != 55311   AND
@@ -216,83 +213,85 @@ const queryText = `SELECT
     		"victim_zipcode" != 55450   AND
     		"victim_zipcode" != 55454   AND 
     		"victim_zipcode" != 55455   AND
-            "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_total",
-            (select Count(*) FROM "victim" WHERE "service_county" = $1 AND 
-    		"victim_zipcode" = 55111   AND 
-    		"victim_zipcode" = 55305   AND
-    		"victim_zipcode" = 55311   AND
-    		"victim_zipcode" = 55116   AND 
-    		"victim_zipcode" = 55317   AND
-    		"victim_zipcode" = 55327   AND
-    		"victim_zipcode" = 55328   AND 
-    		"victim_zipcode" = 55331   AND
-    		"victim_zipcode" = 55340   AND
-    		"victim_zipcode" = 55341   AND 
-    		"victim_zipcode" = 55343   AND
-    		"victim_zipcode" = 55344   AND
-    		"victim_zipcode" = 55345   AND 
-    		"victim_zipcode" = 55346   AND
-    		"victim_zipcode" = 55347   AND
-    		"victim_zipcode" = 55356   AND 
-    		"victim_zipcode" = 55357   AND
-    		"victim_zipcode" = 55359   AND
-    		"victim_zipcode" = 55361   AND 
-    		"victim_zipcode" = 55364   AND
-    		"victim_zipcode" = 55369   AND
-    		"victim_zipcode" = 55373   AND 
-    		"victim_zipcode" = 55374   AND
-    		"victim_zipcode" = 55375   AND
-    		"victim_zipcode" = 55384   AND 
-    		"victim_zipcode" = 55387   AND
-    		"victim_zipcode" = 55388   AND
-    		"victim_zipcode" = 55391   AND 
-    		"victim_zipcode" = 55392   AND
-    		"victim_zipcode" = 55401   AND
-    		"victim_zipcode" = 55402   AND 
-    		"victim_zipcode" = 55403   AND
-    		"victim_zipcode" = 55404   AND
-    		"victim_zipcode" = 55405   AND 
-    		"victim_zipcode" = 55406   AND
-    		"victim_zipcode" = 55407   AND
-    		"victim_zipcode" = 55408   AND 
-    		"victim_zipcode" = 55409   AND
-    		"victim_zipcode" = 55410   AND
-    		"victim_zipcode" = 55411   AND 
-    		"victim_zipcode" = 55412   AND
-    		"victim_zipcode" = 55413   AND
-    		"victim_zipcode" = 55414   AND 
-    		"victim_zipcode" = 55415   AND
-    		"victim_zipcode" = 55416   AND
-    		"victim_zipcode" = 55417   AND 
-    		"victim_zipcode" = 55418   AND
-    		"victim_zipcode" = 55419   AND
-    		"victim_zipcode" = 55420   AND 
-    		"victim_zipcode" = 55422   AND
-    		"victim_zipcode" = 55423   AND
-    		"victim_zipcode" = 55424   AND 
-    		"victim_zipcode" = 55425   AND
-    		"victim_zipcode" = 55426   AND
-    		"victim_zipcode" = 55427   AND 
-    		"victim_zipcode" = 55428   AND
-    		"victim_zipcode" = 55429   AND
-    		"victim_zipcode" = 55430   AND 
-    		"victim_zipcode" = 55431   AND
-    		"victim_zipcode" = 55435   AND
-    		"victim_zipcode" = 55436   AND 
-    		"victim_zipcode" = 55437   AND
-    		"victim_zipcode" = 55438   AND
-    		"victim_zipcode" = 55439   AND 
-    		"victim_zipcode" = 55441   AND
-    		"victim_zipcode" = 55442   AND
-    		"victim_zipcode" = 55443   AND 
-    		"victim_zipcode" = 55444   AND
-    		"victim_zipcode" = 55445   AND
-    		"victim_zipcode" = 55446   AND 
-    		"victim_zipcode" = 55447   AND
-    		"victim_zipcode" = 55450   AND
-    		"victim_zipcode" = 55454   AND 
-    		"victim_zipcode" = 55455   AND
-    		"contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_other",
-   (SELECT COUNT(*) FROM "victim" WHERE "victim_zipcode" IS NULL AND "service_county" = $1 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_unkown";`;
+						"contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_other",
+
+		(select Count(*) FROM "victim" WHERE "service_county" = $1 AND
+			    "victim_zipcode" = 55111   OR 
+			    "victim_zipcode" = 55305   OR
+			    "victim_zipcode" = 55311   OR
+			    "victim_zipcode" = 55116   OR 
+			    "victim_zipcode" = 55317   OR
+			    "victim_zipcode" = 55327   OR
+			    "victim_zipcode" = 55328   OR 
+			    "victim_zipcode" = 55331   OR
+			    "victim_zipcode" = 55340   OR
+			    "victim_zipcode" = 55341   OR 
+			    "victim_zipcode" = 55343   OR
+			    "victim_zipcode" = 55344   OR
+			    "victim_zipcode" = 55345   OR 
+			    "victim_zipcode" = 55346   OR
+			    "victim_zipcode" = 55347   OR
+			    "victim_zipcode" = 55356   OR 
+			    "victim_zipcode" = 55357   OR
+			    "victim_zipcode" = 55359   OR
+			    "victim_zipcode" = 55361   OR 
+			    "victim_zipcode" = 55364   OR
+			    "victim_zipcode" = 55369   OR
+			    "victim_zipcode" = 55373   OR 
+			    "victim_zipcode" = 55374   OR
+			    "victim_zipcode" = 55375   OR
+			    "victim_zipcode" = 55384   OR 
+			    "victim_zipcode" = 55387   OR
+			    "victim_zipcode" = 55388   OR
+			    "victim_zipcode" = 55391   OR 
+			    "victim_zipcode" = 55392   OR
+			    "victim_zipcode" = 55401   OR
+			    "victim_zipcode" = 55402   OR 
+			    "victim_zipcode" = 55403   OR
+			    "victim_zipcode" = 55404   OR
+			    "victim_zipcode" = 55405   OR 
+			    "victim_zipcode" = 55406   OR
+			    "victim_zipcode" = 55407   OR
+			    "victim_zipcode" = 55408   OR 
+			    "victim_zipcode" = 55409   OR
+			    "victim_zipcode" = 55410   OR
+			    "victim_zipcode" = 55411   OR 
+			    "victim_zipcode" = 55412   OR
+			    "victim_zipcode" = 55413   OR
+			    "victim_zipcode" = 55414   OR 
+			    "victim_zipcode" = 55415   OR
+			    "victim_zipcode" = 55416   OR
+			    "victim_zipcode" = 55417   OR 
+			    "victim_zipcode" = 55418   OR
+			    "victim_zipcode" = 55419   OR
+			    "victim_zipcode" = 55420   OR 
+			    "victim_zipcode" = 55422   OR
+			    "victim_zipcode" = 55423   OR
+			    "victim_zipcode" = 55424   OR 
+			    "victim_zipcode" = 55425   OR
+			    "victim_zipcode" = 55426   OR
+			    "victim_zipcode" = 55427   OR 
+			    "victim_zipcode" = 55428   OR
+			    "victim_zipcode" = 55429   OR
+			    "victim_zipcode" = 55430   OR 
+			    "victim_zipcode" = 55431   OR
+			    "victim_zipcode" = 55435   OR
+			    "victim_zipcode" = 55436   OR 
+			    "victim_zipcode" = 55437   OR
+			    "victim_zipcode" = 55438   OR
+			    "victim_zipcode" = 55439   OR 
+			    "victim_zipcode" = 55441   OR
+			    "victim_zipcode" = 55442   OR
+			    "victim_zipcode" = 55443   OR 
+			    "victim_zipcode" = 55444   OR
+			    "victim_zipcode" = 55445   OR
+			    "victim_zipcode" = 55446   OR 
+			    "victim_zipcode" = 55447   OR
+			    "victim_zipcode" = 55450   OR
+			    "victim_zipcode" = 55454   OR 
+			    "victim_zipcode" = 55455   AND
+							"contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_total",
+						
+   (select COUNT(*) FROM "victim" WHERE "victim_zipcode" IS NULL AND "service_county" = $1 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_unkown";`;
 
    module.exports = queryText;
