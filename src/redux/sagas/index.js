@@ -12,24 +12,18 @@ import deleteFormSaga from './deleteFormSaga';
 
 
 export default function* rootSaga() {
+  yield all([
     userSaga(),
     loginSaga(),
     postNewVictimSaga(),
-    
+    getFederalSaga(),
     getUsersSaga(),
     deleteUserSaga(),
-
-    searchUpdateDeleteSaga(),
-
     getCountySaga(),
-<<<<<<< HEAD
-    getCustomSaga(),
-    getFederalSaga(),
-=======
     deleteFormSaga(),
-
->>>>>>> 3f87addf2eaba20ddfb2df64afdc7e08b5d736bb
-
+    getCustomSaga(),
+    searchUpdateDeleteSaga(),
     // watchIncrementAsync()
   ]);
 }
+
