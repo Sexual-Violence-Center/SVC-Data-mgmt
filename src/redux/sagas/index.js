@@ -10,22 +10,20 @@ import getCountySaga from './getCountySaga';
 import getCustomSaga from './getCustomSaga'
 import deleteFormSaga from './deleteFormSaga';
 
-function* rootSaga() {
+
+export default function* rootSaga() {
+  yield all([
     userSaga(),
-        loginSaga(),
-        postNewVictimSaga(),
-
-        getUsersSaga(),
-        deleteUserSaga(),
-
-        searchUpdateDeleteSaga(),
-
-        getCountySaga(),
-        getCustomSaga(),
-        getFederalSaga(),
-        deleteFormSaga()
-
-    // watchIncrementAsync(),
+    loginSaga(),
+    postNewVictimSaga(),
+    getFederalSaga(),
+    getUsersSaga(),
+    deleteUserSaga(),
+    getCountySaga(),
+    deleteFormSaga(),
+    getCustomSaga(),
+    searchUpdateDeleteSaga(),
+    // watchIncrementAsync()
+  ]);
 }
 
-export default rootSaga;
