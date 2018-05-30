@@ -10,17 +10,55 @@ const mapStateToProps = state => ({
 
 class CustomReportOutput extends Component {
   state = {};
+  
   static getDerivedStateFromProps = (props, state) => {
-      console.log(props);
+    if(props.state.CustomReportReducer){
+      return props.state.CustomReportReducer;
+    }
+    else {
       return null;
+    }
+      
   };
-  render() {
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('should componenet update');
+    if(nextProps.state.CustomReportReducer != null){
+      return true
+    }
+    else {
+      return null
+    }
+  }
+
+
+  renderOutput = ()=>{
+
+        let keys = Object.keys(this.state);
+        let values = Object.values(this.state);
+
+        let output = keys.map((key, index)=>{
+        let keyNoUnderscores = key.replace(/_|-/g, " ");
+          return(
+            <p key={key}>{keyNoUnderscores} : {values[index]}</p>
+          )
+        })
+
     return (
-      <div>
+
+      <div>{output}</div>
+    )
+  }
+
+  render() {
+
+    return <div>
         <AdminNav />
-        this is a test
-      </div>
-    );
+        <div style={{ flex: 1, margin: 'auto', textAlign: 'center' }}>
+          <h2>Custom Report</h2>
+          {this.renderOutput()}
+        </div>
+      </div>;
   }
 }
 

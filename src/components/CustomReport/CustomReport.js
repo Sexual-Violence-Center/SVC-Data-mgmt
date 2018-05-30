@@ -150,165 +150,59 @@ class customReportSelectionPage extends Component {
         //     )
         // }
 
-        return (
-            <div>
-                <AdminNav />
-                <div style={{
-                    float: "right"
-                    //, marginRight: "500px" 
-                }}>
-                <h2> Custom Report Page </h2>
-                <form onSubmit={this.submitCustomReport}>
-                    Start Date:
-                    <input type="date" name="startDate" 
-                        value={this.state.startDate} 
-                        onChange={this.handleChangeFor}
-                    />
-                    End Date:
-                    <input type="date" name="endDate" 
-                        value={this.state.endDate} 
-                        onChange={this.handleChangeFor}
-                    />
-                    <br/>
-                    {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
-                    {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeFor}/> 
+        return <div>
+            <AdminNav />
+            <div style={{ flex: .5, margin: "auto", textAlign: "center" }}>
+              <h2> Custom Report Page </h2>
+              <form onSubmit={this.submitCustomReport}>
+                Start Date:
+                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor} />
+                End Date:
+                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor} />
+                <br />
+                {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
+                {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeFor}/> 
                         <label>AND</label>
                     <input type="radio" name="querySelector" value='or' onChange={this.handleChangeFor}/> 
                         <label>OR</label>
                     <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
                         <label>Neither</label>
                     <br/> */}
-                    {/* <select className="customReportTopics" multiple>
+                {/* <select className="customReportTopics" multiple>
                         {individualTopic}
                     </select> */}
-                    <input type="submit" />
-                    </form>
+                <input type="submit" />
+              </form>
 
-                    <div className="customReportSpecificTopic" 
-                        style={{ float: "right"
-                        //, marginRight: "500px" 
-                    }}>
-                    < CustomAge handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < CustomContactType handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < CustomDisability handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < CustomGender handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < ImmigrantCountryCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < IndividualsServiced handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < CrisisCounseling handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < AdvocacyCivilCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < AdvocacyCriminalCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < AdvocacyMedicalCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < AdvocacyOtherCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < PhoneServicesCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < PoliceReportCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < RaceEthnicityCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < SexualOrientationCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < SpecialClassificationCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < SupportOnCallCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < TransgenderedCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < TransortationCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < VictimTypeCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < UnmetNeedsCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < TypesOfVictimizationCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-                    < ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent} 
-                        handleDelete={this.handleDelete} 
-                        selectedItem={this.state.selectedItem} 
-                        inputValue={this.props.inputValue}
-                    />
-
-                </div>
-                </div>
+              <div className="customReportSpecificTopic" style={{ margin: "auto", maxWidth: '400px' }
+                  //, marginRight: "500px"
+                }>
+                <CustomAge handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <CustomContactType handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <CustomDisability handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <CustomGender handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <ImmigrantCountryCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <IndividualsServiced handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <CrisisCounseling handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <AdvocacyCivilCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <AdvocacyCriminalCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <AdvocacyMedicalCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <AdvocacyOtherCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <PhoneServicesCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <PoliceReportCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <RaceEthnicityCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <SexualOrientationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <SpecialClassificationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <SupportOnCallCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <TransgenderedCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <TransortationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <VictimTypeCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <UnmetNeedsCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <TypesOfVictimizationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+              </div>
             </div>
-        ) //end return
+          </div>; //end return
 
     } //end render
 } //end class

@@ -14,7 +14,7 @@ function* getCustomReport(action) {
         let customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}&startDate=${startDate}&endDate=${endDate}`);
         yield put({
             type: 'CUSTOM_REPORT',
-            payload: customDataResponse,
+            payload: customDataResponse.data,
         })
 
     } catch (error) {
