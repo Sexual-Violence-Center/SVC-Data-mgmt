@@ -43,10 +43,6 @@ class TypeOfVictim extends Component {
                             name: 'victim_type',
                             id: 'victim_type',
                         }}>
-                        <MenuItem style={{width: '100%'}} value="">
-                            <em>Select One</em>
-                        </MenuItem>
-                        <Divider />
                         <MenuItem style={{width: '100%'}} value="adult primary">Adult Primary Victim</MenuItem>
                         <Divider />
                         <MenuItem style={{width: '100%'}} value="youth primary">Youth Primary Victim</MenuItem>
