@@ -1,38 +1,66 @@
 import React, { Component } from 'react';
+import { Radio, Checkbox } from '@material-ui/core';
 
 class DentalAccompaniment extends Component {
     constructor() {
         super();
+        // this.state.checked is a boolean to show whether or not the checkbox is checked
+        // this.state.radio is a string that will get parsed later. Determines which radio button is checked
         this.state = {
-            checked: false
+            checked: false,
+            radio: ''
         }
     }
 
-    handleChecked = (event) => {
-        this.setState({ checked: !this.state.checked })
-        this.props.handleChange(event)
+    // function to determine is checkbox is checked or not. 
+    // When checked or not, tell InPersonServices true if checked, false if not.
+    handleChecked = name => (event) => {
+        this.setState({ checked: event.target.checked });
+        this.props.handleChange(event);
     }
 
+    // function to determine which radio button gets checked.
+    // True if 'Yes' button, and false if 'No'.
     handleRadio = (event) => {
-        this.props.handleChange(event)
+        this.setState({ radio: event.target.value });
+        this.props.handleChange(event);
     }
 
     render() {
+        // Only show the radio button option if the checkbox has been checked.
+        // Hide it if it's unchecked.
         let transportation;
         if (this.state.checked) {
             transportation = <div>
                 <label>
                     Was transportation provided?:
                 </label>
-                <form value={this.props.transportation_medical_accompaniment_dental} onChange={this.handleRadio}>
-                    <input type="radio" name="transportation_medical_accompaniment_dental" value={true} /><label htmlFor="transportation_medical_accompaniment_dental">yes</label>
-                    <input type="radio" name="transportation_medical_accompaniment_dental" value={false} /><label htmlFor="transportation_medical_accompaniment_dental">no</label>
-                </form>
+                <Radio
+                    checked={this.state.radio === "true"}
+                    onChange={this.handleRadio}
+                    value="true"
+                    name="transportation_medical_accompaniment_dental"
+                    aria-label="Yes"
+                />
+                Yes
+                <Radio
+                    checked={this.state.radio === "false"}
+                    onChange={this.handleRadio}
+                    value="false"
+                    name="transportation_medical_accompaniment_dental"
+                    aria-label="No"
+                />
+                No
             </div>
-        }
+        } 
         return (
             <div>
-                <input type="checkbox" name="medical_accompaniment_dental" value={this.props.medical_accompaniment_dental} onChange={this.handleChecked} />
+                <Checkbox
+                    checked={this.state.checked}
+                    onChange={this.handleChecked('medical_accompaniment_dental')}
+                    name="medical_accompaniment_dental"
+                    value={`${!this.state.checked}`}
+                />
                 <label>
                     Accompaniment to Dental Appointment
                 </label>

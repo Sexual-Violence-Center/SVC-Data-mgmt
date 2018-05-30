@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Radio } from '@material-ui/core';
 
 class MedicalAccompaniment extends Component {
     constructor(){
         super();
         this.state = {
-            checked: false
+            checked: false,
+            radio: ''
         }
     }
 
@@ -14,6 +16,7 @@ class MedicalAccompaniment extends Component {
     }
 
     handleRadio = (event) => {
+        this.setState({radio: event.target.value})
         this.props.handleChange(event)
     }
 
@@ -24,10 +27,22 @@ class MedicalAccompaniment extends Component {
                 <label>
                     Was transportation provided?:
                 </label>
-                <form value={this.props.transportation_medical_accompaniment_medical} onChange={this.handleRadio}>
-                    <input type="radio" name="transportation_medical_accompaniment_medical" value={true} /><label htmlFor="transportation_medical_accompaniment_medical">yes</label>
-                    <input type="radio" name="transportation_medical_accompaniment_medical" value={false} /><label htmlFor="transportation_medical_accompaniment_medical">no</label>
-                </form>
+                <Radio
+                    checked={this.state.radio === "true"}
+                    onChange={this.handleRadio}
+                    value="true"
+                    name="transportation_medical_accompaniment_medical"
+                    aria-label="Yes"
+                />
+                Yes
+                <Radio
+                    checked={this.state.radio === "false"}
+                    onChange={this.handleRadio}
+                    value="false"
+                    name="transportation_medical_accompaniment_medical"
+                    aria-label="No"
+                />
+                No
             </div>
         }
         return (

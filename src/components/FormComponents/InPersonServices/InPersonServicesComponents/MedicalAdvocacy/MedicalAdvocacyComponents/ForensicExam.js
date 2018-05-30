@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
+import { Radio } from '@material-ui/core';
 
 class ForensicExam extends Component {
     constructor() {
         super();
         this.state = {
-            checked: false
+            checked: false,
+            radio: ''
         }
     }
 
     handleChecked = (event) => {
-        this.setState({checked: !this.state.checked})
-        this.props.handleChange(event)
+        this.setState({checked: !this.state.checked});
+        this.props.handleChange(event);
     }
 
     handleRadio = (event) => {
-        this.props.handleChange(event)
+        this.setState({radio: event.target.value});
+        this.props.handleChange(event);
     }
 
     render() {
@@ -25,10 +28,22 @@ class ForensicExam extends Component {
                 <label>
                     Was transportation provided?:
                 </label>
-                <form value={this.props.transportation_medical_exam_support} onChange={this.handleRadio}>
-                    <input type="radio" name="transportation_medical_exam_support" value={true} /><label htmlFor="transportation_medical_exam_support">yes</label>
-                    <input type="radio" name="transportation_medical_exam_support" value={false} /><label htmlFor="transportation_medical_exam_support">no</label>
-                </form>
+                <Radio
+                    checked={this.state.radio === "true"}
+                    onChange={this.handleRadio}
+                    value="true"
+                    name="transportation_medical_exam_support"
+                    aria-label="Yes"
+                />
+                Yes
+                <Radio
+                    checked={this.state.radio === "false"}
+                    onChange={this.handleRadio}
+                    value="false"
+                    name="transportation_medical_exam_support"
+                    aria-label="No"
+                />
+                No
             </div>
         } else {
             transportation = <div></div>

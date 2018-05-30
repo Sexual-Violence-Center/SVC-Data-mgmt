@@ -53,7 +53,7 @@ class ContactInfo extends Component {
     handleChangeFor = (event) => {
         const target = event.target;
         const value = target.type === ('checkbox') ? target.checked :
-                      target.type === ('radio') ? target.checked :
+                      target.type === ('radio') ? JSON.parse(target.value) :
                       target.value;
         const name = target.name;
 

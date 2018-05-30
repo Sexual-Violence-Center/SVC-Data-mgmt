@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from '@material-ui/core';
+import { Card, Checkbox } from '@material-ui/core';
 import CrisisCounseling from './InPersonServicesComponents/CrisisCounseling';
 import CriminalJusticeProcess from './InPersonServicesComponents/CriminalJusticeProcess';
 import CivilLegalProcess from './InPersonServicesComponents/CivilLegalProcess';
@@ -58,7 +58,7 @@ class InPersonServices extends Component {
     handleChangeFor = event => {
         const target = event.target;
         const value = target.type === ('checkbox') ? target.checked :
-                        target.type === ('radio') ? target.checked :
+                        target.type === ('radio') ? JSON.parse(target.value) :
                         target.value;
         const name = target.name;
 
@@ -94,5 +94,6 @@ class InPersonServices extends Component {
         )
     }
 }
+
 
 export default connect(mapStateToProps)(InPersonServices);
