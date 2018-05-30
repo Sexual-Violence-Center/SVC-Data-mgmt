@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TypeOfViolence from './DemographicComponents/TypeOfViolence';
+import TypeOfViolence from './DemographicComponents/TypeOfViolence/TypeOfViolence';
 import PoliceReport from './DemographicComponents/PoliceReport';
 import Survey from './DemographicComponents/Survey';
 import DisabilityStatus from './DemographicComponents/DisabilityStatus';
