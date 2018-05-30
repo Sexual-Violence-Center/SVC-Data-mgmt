@@ -21,6 +21,7 @@ import UserLandingPage from './components/UserLandingPage/UserLandingPage';
 import AdminLandingPage from './components/AdminLandingPage/AdminLandingPage';
 import UserEntryPage from './components/UserEntryPage/UserEntryPage';
 import SearchUpdatePage from './components/SearchUpdatePage/SearchUpdatePage';
+import CustomReportOutput from './components/CustomReport/CustomReportOutput';
 import './styles/main.css';
 import { teal, grey } from '@material-ui/core/colors';
 
@@ -89,6 +90,10 @@ const App = () => (
         <Route 
           path="/search_and_update"
           component={SearchUpdatePage}
+        />
+        <Route
+          path="/custom_report_output"
+          component={CustomReportOutput}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

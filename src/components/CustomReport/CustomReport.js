@@ -114,6 +114,8 @@ class customReportSelectionPage extends Component {
                 ...this.state
             }
         })
+        this.props.history.push("/custom_report_output");
+
         }
 
     render() {
