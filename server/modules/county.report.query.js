@@ -215,7 +215,7 @@ const queryText = `SELECT
     		"victim_zipcode" != 55455   AND
 						"contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_other",
 
-		(select Count(*) FROM "victim" WHERE "service_county" = $1 AND
+		(select Count(*) FROM "victim" WHERE "service_county" = $1 AND (
 			    "victim_zipcode" = 55111   OR 
 			    "victim_zipcode" = 55305   OR
 			    "victim_zipcode" = 55311   OR
@@ -289,9 +289,9 @@ const queryText = `SELECT
 			    "victim_zipcode" = 55447   OR
 			    "victim_zipcode" = 55450   OR
 			    "victim_zipcode" = 55454   OR 
-			    "victim_zipcode" = 55455   AND
+			    "victim_zipcode" = 55455     ) AND
 							"contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_total",
 						
-   (select COUNT(*) FROM "victim" WHERE "victim_zipcode" IS NULL AND "service_county" = $1 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_unkown";`;
+   (select COUNT(*) FROM "victim" WHERE "victim_zipcode" IS NULL AND "service_county" = $1 AND "contact_date"  BETWEEN $2 AND $3) as "victim_zipcode_unknown";`;
 
    module.exports = queryText;

@@ -462,7 +462,7 @@ class CountyReport extends Component{
                     </tr>
                     <tr>
                         <td>Unknown</td>
-                        <td>{this.props.state.getCountyReducer.victim_zipcode_unkown}</td>
+                        <td>{this.props.state.getCountyReducer.victim_zipcode_unknown}</td>
                     </tr>
                     <tr>
                         <td>Total:</td>
