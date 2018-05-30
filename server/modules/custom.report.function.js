@@ -14,8 +14,6 @@ function makeCustomQuery  (params, customReportObject) {
     let queryText = `SELECT `;
     let alias = 'custom_query';
 
-    console.log('in custom report function ', params);
-
     //iterates over the params object and for each key 
     //checks if the key matches a key in the customReportObject
     Object.keys(params).forEach((keyParams, index, array)=>{

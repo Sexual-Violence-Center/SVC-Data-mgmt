@@ -16,16 +16,6 @@ const mapStateToProps = state => ({
   state
 });
 
-renderSuggestion.propTypes = {
-  highlightedIndex: PropTypes.number,
-  index: PropTypes.number,
-  itemProps: PropTypes.object,
-  selectedItem: PropTypes.string,
-  suggestion: PropTypes.shape({
-    label: PropTypes.string
-  }).isRequired,
-};
-
 function getSuggestions(inputValue) {
   let count = 0;
     return AgeObject.filter(suggestion => {
@@ -39,23 +29,58 @@ function getSuggestions(inputValue) {
   });
 }
 
+renderSuggestion.propTypes = {
+  highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  itemProps: PropTypes.object,
+  selectedItem: PropTypes.string,
+  suggestion: PropTypes.shape({
+    label: PropTypes.string
+  }).isRequired,
+};
+
 class AgeCustom extends React.Component {
   state = {
     inputValue: '',
+    selectedItem: [],
+  };
+
+  handleChangeForComponent = (item) => {
+    let { selectedItem } = this.state;
+    if (this.props.selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
+    }
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    })
+    this.props.dispatch({
+      type: 'UPDATE_SELECTED_ITEM',
+      payload: { ...this.state, selectedItem }
+    })
   };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
   };
 
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
+    }
+  };
+
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    console.log('this.props', this.props);
     
     return (
-      <Downshift inputValue={inputValue} onChange={this.props.handleChangeForComponent} selectedItem={this.selectedItem}>
-      
+      <Downshift inputValue={inputValue} 
+        onChange={this.handleChangeForComponent} 
+        selectedItem={this.selectedItem}>
         {({
           getInputProps,
           getItemProps,
@@ -69,7 +94,7 @@ class AgeCustom extends React.Component {
               fullWidth: true,
               classes,
               InputProps: getInputProps({
-                startAdornment: this.props.selectedItem.map(item => (
+                startAdornment: selectedItem.map(item => (
                   <Chip
                     key={item.value}
                     tabIndex={-1}
@@ -80,7 +105,7 @@ class AgeCustom extends React.Component {
                   />
                 )),
                 onChange: this.handleInputChange,
-                onKeyDown: this.props.handleKeyDown,
+                onKeyDown: this.handleKeyDown,
                 placeholder: 'Age Types',
                 id: 'integration-downshift-multiple',
               }),
@@ -111,6 +136,4 @@ AgeCustom.propTypes = {
 
 const styledAgeCustom = withStyles(styles)(AgeCustom);
 export default connect(mapStateToProps)(styledAgeCustom)
-
-
-    
+  

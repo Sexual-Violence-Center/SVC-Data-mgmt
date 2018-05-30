@@ -8,6 +8,8 @@ function* getCustomReport(action) {
         const startDate = action.payload.startDate;
         const endDate = action.payload.endDate;
         // const querySelector = action.payload.querySelector;
+        console.log('custom saga', action.payload);
+        
 
         let urlText = makeUrlFunction(action.payload.selectedItem);
 
