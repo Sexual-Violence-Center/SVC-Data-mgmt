@@ -26,6 +26,14 @@ function makeCustomQuery  (params, customReportObject) {
           alias = "custom_query";
           return;
         }
+                //checks if the want custom start and end date
+        else if(keyParams== 'startDate'){
+            values[0]= params[keyParams];
+            return;
+        } else if (keyParams == 'endDate'){
+            values[1]= params[keyParams];
+            return;
+        } 
 
         Object.keys(customReportObject).forEach((keyCustomReport)=>{
 
@@ -35,7 +43,7 @@ function makeCustomQuery  (params, customReportObject) {
                 queryText += customReportObject[keyCustomReport];
                 alias= keyParams;
                         //adds the key as an alias to give a common column name to the return
-                if(array[index + 1] !== 'and' && array[index + 1]){
+                if(array[index + 1] !== 'and'  && array[index + 1] ){
                     alias = keyParams;
                     queryText += `${contactDate} as ${alias}, `;
                 }
@@ -46,14 +54,6 @@ function makeCustomQuery  (params, customReportObject) {
             }
         })// end customReport Loop
 
-        //checks if the want custom start and end date
-        if(keyParams== 'startDate'){
-            values[0]= params[keyParams];
-        } else if (keyParams == 'endDate'){
-            values[1]= params[keyParams];
-        } 
-
-        
         //adds the contact date query and alias at the end of it
         // TODO: Stephen - this causes errors with the SQL query
         if(!array[index+1]){
@@ -71,6 +71,8 @@ function makeCustomQuery  (params, customReportObject) {
 
 // const test = {
 //   victim_gender_male: true,
+//   startDate: '01-01-1999',
+//   endDate: '01-01-2020'
 // //   and: true,
 // //    WhiteNonLatinoCaucasian: true,
 // };
