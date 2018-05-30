@@ -188,6 +188,7 @@ class customReportSelectionPage extends Component {
                     }}>
                     < CustomAge handleChangeForComponent={this.handleChangeForComponent} 
                         handleDelete={this.handleDelete} 
+
                         selectedItem={this.state.selectedItem} 
                         inputValue={this.props.inputValue}
                     />
@@ -301,6 +302,7 @@ class customReportSelectionPage extends Component {
                         selectedItem={this.state.selectedItem} 
                         inputValue={this.props.inputValue}
                     />
+
                 </div>
                 </div>
             </div>
