@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { Card } from '@material-ui/core';
 import { TextField, MenuItem, InputLabel, Select, FormControl, Divider, Typography } from '@material-ui/core';
 
+import PriorContact from './InPersonContactComponents/PriorContact';
+import PriorToOctContact from './InPersonContactComponents/PriorToOctContact';
+
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -218,22 +221,8 @@ class ContactInfo extends Component {
                             />
                         </form>
                         <br />
-                        <Typography variant="subheading" >
-                            Have they contacted SVC before?:
-                            <form value={this.state.victim_prior_contact} onClick={this.handleChangeFor}>
-                                <input type="radio" name="victim_prior_contact" value={true} />
-                                <label htmlFor="victim_prior_contact_yes">yes</label>
-                                <input type="radio" name="victim_prior_contact" value={false} />
-                                <label htmlFor="victim_prior_contact_no">no</label>
-                            </form>
-                        </Typography>
-                        <Typography variant="subheading" >
-                            If yes, was it before Oct 1, 2017?:
-                        <form value={this.state.victim_contact_prior_oct} onChange={this.handleChangeFor}>
-                            <input type="radio" name="victim_contact_prior_oct" value={true} /><label htmlFor="victim_contact_prior_oct_yes">yes</label>
-                            <input type="radio" name="victim_contact_prior_oct" value={false} /><label htmlFor="victim_contact_prior_oct_no">no</label>
-                        </form>
-                        </Typography>
+                        <PriorContact handleChangeFor={this.handleChangeFor}/>
+                        <PriorToOctContact handleChangeFor={this.handleChangeFor}/>
                     </div>
                 </Card>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Checkbox } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 import CrisisCounseling from './InPersonServicesComponents/CrisisCounseling';
 import CriminalJusticeProcess from './InPersonServicesComponents/CriminalJusticeProcess';
 import CivilLegalProcess from './InPersonServicesComponents/CivilLegalProcess';
