@@ -134,19 +134,19 @@ class CountyReport extends Component{
                     <tbody>
                     <tr>
                         <td>Adult Primary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.amerIndAlaskaNative}</td>
+                        <td>{this.props.state.getCountyReducer.adult_primary_victim}</td>
                     </tr>
                     <tr>
                         <td>Adult Secondary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.victim_ethnicity_asian}</td>
+                        <td>{this.props.state.getCountyReducer.adult_secondary_victim}</td>
                     </tr>
                     <tr>
                         <td>Youth Primary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.africanAmerican}</td>
+                        <td>{this.props.state.getCountyReducer.youth_primary_victim}</td>
                     </tr>
                     <tr>
                         <td>Youth Secondary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.hispanicOrLatino}</td>
+                        <td>{this.props.state.getCountyReducer.youth_secondary_victim}</td>
                     </tr>
                     </tbody>
                 </table>
