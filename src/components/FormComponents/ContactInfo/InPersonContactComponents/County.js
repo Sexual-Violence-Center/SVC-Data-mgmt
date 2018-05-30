@@ -38,17 +38,17 @@ class County extends Component {
                             name: 'service_county',
                             id: 'service_county',
                         }}>
-                        <MenuItem value="">
+                        <MenuItem style={{width: '100%'}} value="">
                             <em>Select One</em>
                         </MenuItem>
                         <Divider />
-                        <MenuItem value="Hennepin">Hennepin</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="Hennepin">Hennepin</MenuItem>
                         <Divider />
-                        <MenuItem value="Scott">Scott</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="Scott">Scott</MenuItem>
                         <Divider />
-                        <MenuItem value="Carver">Carver</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="Carver">Carver</MenuItem>
                         <Divider />
-                        <MenuItem value="Other">Other</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="Other">Other</MenuItem>
                     </Select>
                 </FormControl>
             </div>

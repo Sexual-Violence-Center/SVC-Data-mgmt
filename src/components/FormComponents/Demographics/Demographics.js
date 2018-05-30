@@ -5,7 +5,7 @@ import Survey from './DemographicComponents/Survey/Survey';
 import DisabilityStatus from './DemographicComponents/DisabilityStatus/DisabilityStatus';
 import EthnicBackground from './DemographicComponents/EthnicBackground';
 import ImmigrantStatus from './DemographicComponents/ImmigrantStatus';
-import DemographicOther from './DemographicComponents/DemographicOther';
+import DemographicOther from './DemographicComponents/DemographicOther/DemographicOther';
 import { Card } from '@material-ui/core';
 
 const style = {

@@ -13,7 +13,6 @@ const styles = theme => ({
     formControl: {
         margin: theme.spacing.unit,
         minWidth: 100,
-        textAlign: 'center'
     },
 });
 
@@ -53,13 +52,11 @@ class PoliceReport extends Component {
                             name: 'police_report_filed',
                             id: 'police_report_filed',
                         }}>
+                        <MenuItem style={{width: '100%'}} value="yes">Yes</MenuItem>
                         <Divider />
-                        <MenuItem value="yes">Yes</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="no">No</MenuItem>
                         <Divider />
-                        <Divider />
-                        <MenuItem value="no">No</MenuItem>
-                        <Divider />
-                        <MenuItem value="unknown">Unknown</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="unknown">Unknown</MenuItem>
                     </Select>
                 </FormControl>
             </div>

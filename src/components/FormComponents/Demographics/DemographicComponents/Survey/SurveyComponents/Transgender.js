@@ -41,12 +41,11 @@ class Transgender extends Component {
                             name: 'victim_transgender',
                             id: 'victim_transgender',
                         }}>
+                        <MenuItem style={{width: '100%'}} value="yes">Yes</MenuItem>
                         <Divider />
-                        <MenuItem value="yes">Yes</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="no">No</MenuItem>
                         <Divider />
-                        <MenuItem value="no">No</MenuItem>
-                        <Divider />
-                        <MenuItem value="unknown">Unknown</MenuItem>
+                        <MenuItem style={{width: '100%'}} value="unknown">Unknown</MenuItem>
                         <Divider />
                     </Select>
                 </FormControl>
