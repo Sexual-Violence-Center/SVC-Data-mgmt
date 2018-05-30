@@ -3,10 +3,9 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import makeUrlFunction from './makeUrl.CustomSaga';
 
-
-function* getCustom (action) {
-    console.log('in getCustom saga', action.payload);
+function* getCustomReport(action) {
     try {
+        console.log('in getCustom saga', action.payload);
         const startDate = action.payload.startDate;
         const endDate = action.payload.endDate;
         // const querySelector = action.payload.querySelector;
@@ -24,7 +23,7 @@ function* getCustom (action) {
 }
 
 function* getCustomSaga() {
-    yield takeEvery('SUBMIT_CUSTOM_REPORT', getCustom)
+    yield takeEvery('SUBMIT_CUSTOM_REQUEST', getCustomReport)
 }
 
 export default getCustomSaga;

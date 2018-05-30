@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import keycode from 'keycode';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import AdminNav from '../Nav/AdminNav/AdminNav';
@@ -26,6 +28,9 @@ import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
 import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
 import TypesOfVictimizationCustom from './CustomReportComponents/TypesOfVictimizationCustom';
 import ZipCodeCustom from './CustomReportComponents/ZipCustom';
+
+import renderSuggestion from './StandardFunctionsForChips/renderSuggestion';
+
 import '../../styles/main.css'
 
 const mapStateToProps = state => ({
@@ -37,7 +42,9 @@ class customReportSelectionPage extends Component {
     state = {
         startDate: '',
         endDate: '',
-        querySelector: null
+        querySelector: null,
+        // inputValue: '',
+        selectedItem: [],
     }
 
     handleChangeFor = (event) => {
@@ -55,38 +62,83 @@ class customReportSelectionPage extends Component {
             })
     }
 
+    handleChangeForComponent = (item) => {
+        let { selectedItem } = this.state;
+        if (selectedItem.indexOf(item) === -1) {
+            selectedItem = [...selectedItem, item];
+        }
+        this.setState({
+            inputValue: '',
+            selectedItem,
+        })
+        this.props.dispatch({
+            type: 'CUSTOM_REPORT_INPUT',
+            payload: { ...this.state, selectedItem }
+        })
+
+    };
+
+    handleDelete = item => () => {
+        const selectedItem = [...this.state.selectedItem];
+        selectedItem.splice(selectedItem.indexOf(item), 1);
+        this.setState({ selectedItem });
+        this.props.dispatch({
+            type: 'CUSTOM_REPORT_INPUT',
+            payload: { ...this.state, selectedItem }
+        })
+    };
+
+    // handleInputChange = (event) => {
+    //     this.setState({
+    //         inputValue: event.target.value
+    //     });
+    // };
+
+    handleKeyDown = event => {
+        const { inputValue, selectedItem } = this.state;
+        console.log('test', { inputValue, selectedItem });
+        
+        if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+        this.setState({
+            selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+        });
+        }
+    };
+
     submitCustomReport = (event) => {
         event.preventDefault();
         console.log('clicked submit Submit Custom Report', this.props.state.CustomReportReducer);
         this.props.dispatch({
-            type: 'SUBMIT_CUSTOM_REPORT',
-            payload: { ...this.state, ...this.props.state.CustomReportReducer }
+            type: 'SUBMIT_CUSTOM_REQUEST',
+            payload: { ...this.props.state.CustomReportReducer,
+                ...this.state
+            }
         })
         }
 
     render() {
-        const customReportTopic = [
-            'Age', 'Contact Type', 'Disabilities',
-            'Gender Identity', 'Immigrant Country',
-            'Individuals Serviced', 'In-Person Crisis Counseling',
-            'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)',
-            'In-Person Medical Advocacy', 'Other In-Person Advocacy',
-            'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity',
-            'Referrals', 'Sexual Orientation',
-            'Special Classification of Victims', 'Supported on Call',
-            'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)',
-            'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
-        ]
+//         const customReportTopic = [
+//             'Age', 'Contact Type', 'Disabilities',
+//             'Gender Identity', 'Immigrant Country',
+//             'Individuals Serviced', 'In-Person Crisis Counseling',
+//             'In-Person Legal Advocacy(Civil)', 'In-Person Legal Advocacy(Criminal)',
+//             'In-Person Medical Advocacy', 'Other In-Person Advocacy',
+//             'Phone Services Provided', 'Police Report Filed', 'Race/Ethnicity',
+//             'Referrals', 'Sexual Orientation',
+//             'Special Classification of Victims', 'Supported on Call',
+//             'Transgender', 'Transportation', 'Victim Types(Primary / Secondary)',
+//             'Victimization Types(Totals)', 'Un-Met Needs', 'Zip Codes'
+//         ]
 
-// loop over all custom report topics to display on screen
-        let individualTopic = customReportTopic.map(topic => {
-            return (
-                <option
-                    key={topic}>
-                    {topic}
-                </option>
-            )
-        })
+// // loop over all custom report topics to display on screen
+//         let individualTopic = customReportTopic.map(topic => {
+//             return (
+//                 <option
+//                     key={topic}>
+//                     {topic}
+//                 </option>
+//             )
+//         })
     
 // Custom report options will only display if user is logged in as administrator
         // let content = null;
@@ -124,9 +176,9 @@ class customReportSelectionPage extends Component {
                     <input type="radio" name="querySelector" value='null' onChange={this.handleChangeFor}/> 
                         <label>Neither</label>
                     <br/> */}
-                    <select className="customReportTopics" multiple>
+                    {/* <select className="customReportTopics" multiple>
                         {individualTopic}
-                    </select>
+                    </select> */}
                     <input type="submit" />
                     </form>
 
@@ -134,7 +186,10 @@ class customReportSelectionPage extends Component {
                         style={{ float: "right"
                         //, marginRight: "500px" 
                     }}>
-                    < CustomAge />
+                    < CustomAge handleChangeForComponent={this.handleChangeForComponent} 
+                        handleDelete={this.handleDelete} 
+                        // handleInputChange={this.handleInputChange} 
+                        selectedItem={this.state.selectedItem} inputValue={this.props.inputValue}/>
                     < CustomContactType />
                     < CustomDisability />
                     < CustomGender />

@@ -16,9 +16,18 @@ const mapStateToProps = state => ({
   state
 });
 
+renderSuggestion.propTypes = {
+  highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  itemProps: PropTypes.object,
+  selectedItem: PropTypes.string,
+  suggestion: PropTypes.shape({
+    label: PropTypes.string
+  }).isRequired,
+};
+
 function getSuggestions(inputValue) {
   let count = 0;
-
     return AgeObject.filter(suggestion => {
     const keep =
       (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
@@ -30,68 +39,22 @@ function getSuggestions(inputValue) {
   });
 }
 
-renderSuggestion.propTypes = {
-    highlightedIndex: PropTypes.number,
-    index: PropTypes.number,
-    itemProps: PropTypes.object,
-    selectedItem: PropTypes.string,
-    suggestion: PropTypes.shape({
-        label: PropTypes.string
-    }).isRequired,
-};
-
 class AgeCustom extends React.Component {
   state = {
     inputValue: '',
-    selectedItem: [],
-  };
-
-  handleKeyDown = event => {
-    const { inputValue, selectedItem } = this.state;
-    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
-      this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
-      });
-    }
   };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
   };
 
-  handleChange = item => {
-    let { selectedItem } = this.state;
-    if (selectedItem.indexOf(item) === -1) {
-      selectedItem = [...selectedItem, item];
-    }
-    this.setState({
-      inputValue: '',
-      selectedItem,
-    })
-    this.props.dispatch({
-      type: 'CUSTOM_REPORT_INPUT',
-      payload: {...this.state, selectedItem}
-    })
-   
-  };
-
-  handleDelete = item => () => {
-    const selectedItem = [...this.state.selectedItem];
-    selectedItem.splice(selectedItem.indexOf(item), 1);
-    this.setState({ selectedItem });
-    this.props.dispatch({
-      type: 'CUSTOM_REPORT_INPUT',
-      payload: { ...this.state, selectedItem }
-    })
-  };
-
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    // console.log('selectedItem', selectedItem);
+    console.log('this.props', this.props);
     
     return (
-      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+      <Downshift inputValue={inputValue} onChange={this.props.handleChangeForComponent} selectedItem={this.selectedItem}>
       
         {({
           getInputProps,
@@ -106,18 +69,18 @@ class AgeCustom extends React.Component {
               fullWidth: true,
               classes,
               InputProps: getInputProps({
-                startAdornment: selectedItem.map(item => (
+                startAdornment: this.props.selectedItem.map(item => (
                   <Chip
                     key={item.value}
                     tabIndex={-1}
                     label={item.label}
                     className={classes.chip}
-                    onDelete={this.handleDelete(item)}
+                    onDelete={this.props.handleDelete(item)}
                     value={item.value}
                   />
                 )),
                 onChange: this.handleInputChange,
-                onKeyDown: this.handleKeyDown,
+                onKeyDown: this.props.handleKeyDown,
                 placeholder: 'Age Types',
                 id: 'integration-downshift-multiple',
               }),
