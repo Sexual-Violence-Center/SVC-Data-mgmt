@@ -28,6 +28,7 @@ import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
 import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
 import TypesOfVictimizationCustom from './CustomReportComponents/TypesOfVictimizationCustom';
 import ZipCodeCustom from './CustomReportComponents/ZipCustom';
+import LocationCustom from './CustomReportComponents/LocationCustomReport';
 
 import renderSuggestion from './StandardFunctionsForChips/renderSuggestion';
 
@@ -166,6 +167,7 @@ class customReportSelectionPage extends Component {
                 <RaceEthnicityCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <SexualOrientationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <SpecialClassificationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <LocationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <SupportOnCallCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <TransgenderedCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <TransortationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
