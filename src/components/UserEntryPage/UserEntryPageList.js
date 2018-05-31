@@ -111,16 +111,18 @@ class UserEntryPageList extends Component {
     return (
  
       <div>
-
+        <Table className={classes.root}>
+          <TableBody className={classes.table}>
             <TableRow>
               <CustomTableCell>{this.props.user.username}</CustomTableCell>
               <CustomTableCell>{user_type}</CustomTableCell>
               <CustomTableCell><Button size="small" onClick={this.handleClickOpen}>Delete</Button></CustomTableCell>
             </TableRow>
-
-      <div>
-        { dialog }
-      </div>
+          </TableBody>
+        </Table>
+        <div>
+          { dialog }
+        </div>
       </div>
     )
   }

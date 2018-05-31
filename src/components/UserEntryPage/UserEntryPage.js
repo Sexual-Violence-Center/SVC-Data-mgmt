@@ -5,9 +5,10 @@ import AdminNav from '../Nav/AdminNav/AdminNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import { Paper, Typography, Card, Grid, Table, TableBody, TableCell, TableHead, TableRow, withStyles } from '@material-ui/core';
+import { Paper, Typography, Card, Grid, Table, TableBody, TableCell, TableHead, TableRow, withStyles, Snackbar } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { teal, grey, white } from '@material-ui/core/colors';
+import { teal, grey } from '@material-ui/core/colors';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -33,18 +34,18 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.background.default,
     },
-  },
-});
+  });
 
 const style = {
   titleCard: {
-    color: white,
+    color: grey[50],
     backgroundColor: teal[300],
     padding: '20px',
     margin: '10px'
+  },
+  title: {
+    color: grey[50],
   },
   paper: {
     padding: '10px',
@@ -60,6 +61,9 @@ class UserEntryPage extends Component {
       password: '',
       user_type: false,
       message: '',
+      open: false,
+      vertical: 'top',
+      horizontal: 'center',
     };
   }
 
@@ -81,7 +85,7 @@ class UserEntryPage extends Component {
     console.log("clicked add new user submit button");
     if (this.state.username === '' || this.state.password === '') {
       this.setState({
-        message: 'Choose a username and password!',
+        message: 'Type a username and password.',
       });
     } else {
       const config = {
@@ -96,7 +100,9 @@ class UserEntryPage extends Component {
         axios.post ('/api/user/register/new', body, config)
         .then((response) => {
           if (response.status === 201) {
-            alert("You successfully added the new user!");
+            // alert("You successfully added the new user!");
+            this.handleSnackBar();
+            // console.log(this.handleSnackBar(), this.state.open);
             this.props.dispatch({
               type: 'GET_USERS_SAGA'   
           });
@@ -108,13 +114,13 @@ class UserEntryPage extends Component {
           })
           } else {
             this.setState({
-              message: 'That username might be in use already. Please try again!',
+              message: 'That username might be in use already. Please try again.',
             });
           }
         })
         .catch(() => {
           this.setState({
-            message: 'Something went wrong... It may be you are not logged in with an Admin account or that the server on Heroku is being restarted. If you are sure about your account, please wait a few minutes for Heroku and try again.',
+            message: 'Something went wrong. You can try refreshing the browser, or you may need to wait a few minutes for Heroku to restart before trying again.',
           });
         });
       }
@@ -139,6 +145,17 @@ class UserEntryPage extends Component {
     }
     return (<span />);
   }
+
+  handleSnackBar = () => {
+    this.setState({ open: true});
+    console.log('in handleSnackBar', this.state.open);
+  };
+
+  //SnackBar close
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
 
   render() {
 
@@ -220,13 +237,9 @@ class UserEntryPage extends Component {
                   <h4>Current users:</h4>
                 </div>
                 <div>
-                <Table className={classes.root}>
-                  <TableBody className={classes.table}>
 
-                     { userEntryPageList }
-                
-                  </TableBody>
-                </Table>
+                  { userEntryPageList }
+
               </div>
             </Card>
             </Paper>
@@ -237,11 +250,30 @@ class UserEntryPage extends Component {
     </div>
     );
   }
+
+  const { vertical, horizontal, open } = this.state;
+
+  let snackbar = (
+    <Snackbar
+      anchorOrigin={{ vertical, horizontal }}
+      open={open}
+      autoHideDuration={2000}
+      onClose={this.handleClose}
+      ContentProps={{
+        'aria-describedby': 'message-id',
+      }}
+      message={<span id="message-id">User added</span>}
+    />
+  )
   
     return (
-    
     <div>
-     {content}
+    <div>
+     { content }
+    </div>
+    <div>
+      { snackbar }
+    </div>
     </div>
     )
   }
