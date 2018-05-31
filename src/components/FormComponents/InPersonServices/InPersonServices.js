@@ -47,7 +47,7 @@ class InPersonServices extends Component {
                 }
                 return null;
             })
-            console.log(updateFormReducer);
+            
             return updateFormReducer;
         } else {
             return state;
