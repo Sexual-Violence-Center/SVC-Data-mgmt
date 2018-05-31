@@ -33,17 +33,7 @@ class CountyEthnicity extends Component{
         }); 
        
     }
-    submit = () => {
-        this.props.dispatch({
-            type: 'GET_PERSON_DATA_COUNTY', 
-            payload: this.state
-        })
-    }
-    print = () => {
-        console.log('print button clicked');
-        window.print();
-    }
-
+  
     componentDidMount () {
         
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
@@ -62,7 +52,7 @@ class CountyEthnicity extends Component{
                 </thead>
                 <tbody>
                 <tr>
-                    <td>American Indian of Alaskan Native</td>
+                    <td>American Indian or Alaskan Native</td>
                     <td>{this.props.state.getCountyReducer.amerIndAlaskaNative}</td>
                 </tr>
                 <tr>
@@ -78,7 +68,7 @@ class CountyEthnicity extends Component{
                     <td>{this.props.state.getCountyReducer.hispanicOrLatino}</td>
                 </tr>
                 <tr>
-                    <td>Natice Hawaiian or Other Pacific Islander</td>
+                    <td>Native Hawaiian or Other Pacific Islander</td>
                     <td>{this.props.state.getCountyReducer.pacificIslanderHawaiian}</td>
                 </tr>
                 <tr>

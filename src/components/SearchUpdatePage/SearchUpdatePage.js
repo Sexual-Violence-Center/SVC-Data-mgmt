@@ -17,18 +17,18 @@ class SearchUpdatePage extends Component {
             userInput: ''
         }
     }
-
+    //gets user info on load
     componentDidMount(){
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
     }
-
+    // sets input to state
     handleChangeFor = (event) => {
         this.setState({
             userInput: event.target.value
             
         })
     }
-
+    // calls saga
     handleSubmit = () => {
         this.props.dispatch({
             type: 'FORM_SEARCH',
@@ -39,11 +39,7 @@ class SearchUpdatePage extends Component {
     // if there is data in the reducer it means the user searched for something
     //shows form if true
     renderForm = () => {
-        // if (this.props.state.updateFormReducer.id) {
-        //     return <UpdateForm 
-        //     userInput= {this.state.userInput}
-        //     />
-            //incoming change from merge
+
         if (this.props.state.updateFormReducer && this.props.state.updateFormReducer.id) {
             return <UpdateForm 
             userInput= {this.state.userInput}

@@ -6,7 +6,7 @@ import axios from 'axios';
 function* postNewVictim(action) {
     try {
         yield console.log('postNewVictim clicked submit', action.payload);
-        let createNewVictim = yield call(axios.post, '/api/victim', action.payload)
+        let createNewVictim = yield call(axios.post, '/api/victim', action.payload);
         yield alert(`confirmation number ${createNewVictim.data.id}`);
         yield put({
             type: 'CLEAR_FORM'
