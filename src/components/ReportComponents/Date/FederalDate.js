@@ -38,6 +38,11 @@ class FederalDate extends Component {
             payload: this.state
         })
     }
+    print = () => {
+        console.log('print button clicked');
+        window.print();
+    }
+
 
     componentDidMount() {
 
@@ -56,7 +61,7 @@ class FederalDate extends Component {
                     End Date:
                     <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
                 
-                    <button onClick={this.submit}>go</button>  
+                    <button onClick={this.submit}>Submit</button>  
                     <button onClick={this.print}>Print</button>
             </div>
         );

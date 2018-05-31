@@ -67,7 +67,7 @@ class CountyDate extends Component{
                 <option value="Carver">Carver</option>
                 <option value="Other">Other</option>
                 </select>
-                <button onClick={this.submit}>go</button>  
+                <button onClick={this.submit}>Submit</button>  
                 <button onClick={this.print}>Print</button>
             </div>
             </div>

@@ -70,6 +70,11 @@ class FederalReport extends Component {
             payload: this.state
         })
     }
+    
+    print = () => {
+        console.log('print button clicked');
+        window.print();
+    }
 
     componentDidMount() {
 
