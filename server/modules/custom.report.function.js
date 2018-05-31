@@ -19,11 +19,21 @@ function makeCustomQuery  (params, customReportObject) {
     Object.keys(params).forEach((keyParams, index, array)=>{
         if (keyParams == "and") {
           queryText += " AND ";
+          alias = 'custom_query';
           return;
         } else if (keyParams == "or") {
           queryText += " OR ";
+          alias = "custom_query";
           return;
         }
+                //checks if the want custom start and end date
+        else if(keyParams== 'startDate'){
+            values[0]= params[keyParams];
+            return;
+        } else if (keyParams == 'endDate'){
+            values[1]= params[keyParams];
+            return;
+        } 
 
         Object.keys(customReportObject).forEach((keyCustomReport)=>{
 
@@ -31,30 +41,24 @@ function makeCustomQuery  (params, customReportObject) {
                 //If matches adds the countWhere string and the query text at the key
                 queryText += countWhere;
                 queryText += customReportObject[keyCustomReport];
+                alias= keyParams;
                         //adds the key as an alias to give a common column name to the return
-                if(array[index + 1] !== 'and' && array[index + 1] != undefined){
-                    queryText += `${contactDate} as ${keyParams}, `;
+                if(array[index + 1] !== 'and'  && array[index + 1] ){
+                    alias = keyParams;
+                    queryText += `${contactDate} as ${alias}, `;
                 }
             }
             else if(keyParams == keyCustomReport){
+            
                 queryText += customReportObject[keyCustomReport];               
             }
         })// end customReport Loop
 
-        //checks if the want custom start and end date
-        if(keyParams== 'startDate'){
-            values[0]= params[keyParams];
-        } else if (keyParams == 'endDate'){
-            values[1]= params[keyParams];
-        } 
-
-        console.log('keyParams', keyParams);
-        
         //adds the contact date query and alias at the end of it
         // TODO: Stephen - this causes errors with the SQL query
-        // if(array[index+1]==undefined){
-        //     queryText += `${contactDate} as ${alias}, `;
-        // }
+        if(!array[index+1]){
+            queryText += `${contactDate} as ${alias}, `;
+        }
     })//end params loop
 
     //on the last on removes the space and comma
@@ -67,8 +71,10 @@ function makeCustomQuery  (params, customReportObject) {
 
 // const test = {
 //   victim_gender_male: true,
-//   and: true,
-//   WhiteNonLatinoCaucasian: true,
+//   startDate: '01-01-1999',
+//   endDate: '01-01-2020'
+// //   and: true,
+// //    WhiteNonLatinoCaucasian: true,
 // };
 
 // console.log(makeCustomQuery(test, customReportObject))

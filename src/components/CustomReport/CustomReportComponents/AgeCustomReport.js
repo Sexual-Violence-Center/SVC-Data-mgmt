@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
 
 function getSuggestions(inputValue) {
   let count = 0;
-
     return AgeObject.filter(suggestion => {
     const keep =
       (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
@@ -31,13 +30,13 @@ function getSuggestions(inputValue) {
 }
 
 renderSuggestion.propTypes = {
-    highlightedIndex: PropTypes.number,
-    index: PropTypes.number,
-    itemProps: PropTypes.object,
-    selectedItem: PropTypes.string,
-    suggestion: PropTypes.shape({
-        label: PropTypes.string
-    }).isRequired,
+  highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  itemProps: PropTypes.object,
+  selectedItem: PropTypes.string,
+  suggestion: PropTypes.shape({
+    label: PropTypes.string
+  }).isRequired,
 };
 
 class AgeCustom extends React.Component {
@@ -46,22 +45,9 @@ class AgeCustom extends React.Component {
     selectedItem: [],
   };
 
-  handleKeyDown = event => {
-    const { inputValue, selectedItem } = this.state;
-    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
-      this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
-      });
-    }
-  };
-
-  handleInputChange = event => {
-    this.setState({ inputValue: event.target.value });
-  };
-
-  handleChange = item => {
+  handleChangeForComponent = (item) => {
     let { selectedItem } = this.state;
-    if (selectedItem.indexOf(item) === -1) {
+    if (this.props.selectedItem.indexOf(item) === -1) {
       selectedItem = [...selectedItem, item];
     }
     this.setState({
@@ -69,30 +55,32 @@ class AgeCustom extends React.Component {
       selectedItem,
     })
     this.props.dispatch({
-      type: 'CUSTOM_REPORT_INPUT',
-      payload: {...this.state, selectedItem}
-    })
-   
-  };
-
-  handleDelete = item => () => {
-    const selectedItem = [...this.state.selectedItem];
-    selectedItem.splice(selectedItem.indexOf(item), 1);
-    this.setState({ selectedItem });
-    this.props.dispatch({
-      type: 'CUSTOM_REPORT_INPUT',
+      type: 'UPDATE_SELECTED_ITEM',
       payload: { ...this.state, selectedItem }
     })
+  };
+
+  handleInputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  };
+
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
+    }
   };
 
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    // console.log('selectedItem', selectedItem);
     
     return (
-      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
-      
+      <Downshift inputValue={inputValue} 
+        onChange={this.handleChangeForComponent} 
+        selectedItem={this.selectedItem}>
         {({
           getInputProps,
           getItemProps,
@@ -112,7 +100,7 @@ class AgeCustom extends React.Component {
                     tabIndex={-1}
                     label={item.label}
                     className={classes.chip}
-                    onDelete={this.handleDelete(item)}
+                    onDelete={this.props.handleDelete(item)}
                     value={item.value}
                   />
                 )),
@@ -148,6 +136,4 @@ AgeCustom.propTypes = {
 
 const styledAgeCustom = withStyles(styles)(AgeCustom);
 export default connect(mapStateToProps)(styledAgeCustom)
-
-
-    
+  
