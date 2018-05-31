@@ -47,6 +47,12 @@ class customReportSelectionPage extends Component {
         selectedItem: [],
     }
 
+    componentDidMount = () => {
+        this.props.dispatch({
+            type: 'CUSTOM_REPORT_PAGE_LOADED'
+        })
+    }
+
     handleChangeForStartDate = (event) => {
         const value = event.target.value;
         this.setState({
@@ -81,12 +87,15 @@ class customReportSelectionPage extends Component {
         })
     }
 
-    handleDelete = item => () => {
-        const selectedItem = [...this.state.selectedItem];
+    handleDelete = (item) => () => {
+        const selectedItem = [...this.props.state.CustomReportInputReducer.selectedItem];
+        console.log('this.stat', this.props.state.CustomReportInputReducer.selectedItem);
+        
         selectedItem.splice(selectedItem.indexOf(item), 1);
+
         this.setState({ selectedItem });
         this.props.dispatch({
-            type: 'UPDATE_SELECTED_ITEM',
+            type: 'DELETE_SELECTED_ITEM',
             payload: { ...this.state, selectedItem }
         })
     };

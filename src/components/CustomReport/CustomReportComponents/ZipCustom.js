@@ -1,73 +1,43 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Downshift from 'downshift';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import MenuItem from '@material-ui/core/MenuItem';
 import Chip from '@material-ui/core/Chip';
 
 import zipCodes from '../ObjectLists/ZipCode.object'
+import renderInput from '../StandardFunctionsForChips/renderInputFunction';
+import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
+import styles from '../StandardFunctionsForChips/chipStyles'
 
-function renderInput(inputProps) {
-  const { InputProps, classes, ref, ...other } = inputProps;
+const mapStateToProps = state => ({
+  state
+});
 
-  return (
-    <TextField
-      InputProps={{
-        inputRef: ref,
-        classes: {
-          root: classes.inputRoot,
-        },
-        ...InputProps,
-      }}
-      {...other}
-    />
-  );
+function getSuggestions(inputValue) {
+  let count = 0;
+  return zipCodes.filter(suggestion => {
+    const keep =
+      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
+      count < 5;
+    if (keep) {
+      count += 1;
+    }
+    return keep;
+  });
 }
 
-function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
-  const isHighlighted = highlightedIndex === index;
-  const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
-
-  return (
-    <MenuItem
-      {...itemProps}
-      key={suggestion.label}
-      selected={isHighlighted}
-      component="div"
-      style={{
-        fontWeight: isSelected ? 500 : 400,
-      }}
-    >
-      {suggestion.label}
-    </MenuItem>
-  );
-}
 renderSuggestion.propTypes = {
   highlightedIndex: PropTypes.number,
   index: PropTypes.number,
   itemProps: PropTypes.object,
   selectedItem: PropTypes.string,
-  suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
+  suggestion: PropTypes.shape({
+    label: PropTypes.string 
+  }).isRequired,
 };
-
-function getSuggestions(inputValue) {
-  let count = 0;
-
-  return zipCodes.filter(suggestion => {
-    const keep =
-      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
-      count < 5;
-
-    if (keep) {
-      count += 1;
-    }
-
-    return keep;
-  });
-}
 
 class ZipCodeCustom extends React.Component {
   state = {
@@ -75,46 +45,44 @@ class ZipCodeCustom extends React.Component {
     selectedItem: [],
   };
 
-  handleKeyDown = event => {
-    const { inputValue, selectedItem } = this.state;
-    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
-      this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
-      });
+  handleChangeForComponent = (item) => {
+    let { selectedItem } = this.state;
+    if (this.props.selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
     }
+    console.log('selectedItem', selectedItem);
+    
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    })
+    this.props.dispatch({
+      type: 'UPDATE_SELECTED_ITEM',
+      payload: { ...this.state, selectedItem }
+    })
   };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
   };
 
-  handleChange = item => {
-    let { selectedItem } = this.state;
-
-    if (selectedItem.indexOf(item) === -1) {
-      selectedItem = [...selectedItem, item];
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
     }
-
-    this.setState({
-      inputValue: '',
-      selectedItem,
-    });
-  };
-
-  handleDelete = item => () => {
-    const selectedItem = [...this.state.selectedItem];
-    selectedItem.splice(selectedItem.indexOf(item), 1);
-
-    this.setState({ selectedItem });
   };
 
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-
+    
     return (
-        
-      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+      <Downshift inputValue={inputValue} 
+        onChange={this.handleChangeForComponent} 
+        selectedItem={this.selectedItem}>
         {({
           getInputProps,
           getItemProps,
@@ -130,11 +98,12 @@ class ZipCodeCustom extends React.Component {
               InputProps: getInputProps({
                 startAdornment: selectedItem.map(item => (
                   <Chip
-                    key={item}
+                    key={item.value}
                     tabIndex={-1}
-                    label={item}
+                    label={item.label}
                     className={classes.chip}
-                    onDelete={this.handleDelete(item)}
+                    onDelete={this.props.handleDelete(item)}
+                    value={item.value}
                   />
                 )),
                 onChange: this.handleInputChange,
@@ -149,7 +118,7 @@ class ZipCodeCustom extends React.Component {
                   renderSuggestion({
                     suggestion,
                     index,
-                    itemProps: getItemProps({ item: suggestion.label }),
+                    itemProps: getItemProps({ item: suggestion }),
                     highlightedIndex,
                     selectedItem: selectedItem2,
                   }),
@@ -167,32 +136,9 @@ ZipCodeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    height: 250,
-  },
-  container: {
-    flexGrow: 1,
-    position: 'relative',
-  },
-  paper: {
-    position: 'absolute',
-    zIndex: 1,
-    marginTop: theme.spacing.unit,
-    left: 0,
-    right: 0,
-  },
-  chip: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
-  },
-  inputRoot: {
-    flexWrap: 'wrap',
-  },
-});
-
 ZipCodeCustom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ZipCodeCustom);
+const styledZipCodeCustom = withStyles(styles)(ZipCodeCustom);
+export default connect(mapStateToProps)(styledZipCodeCustom)

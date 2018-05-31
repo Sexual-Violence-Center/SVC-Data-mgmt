@@ -1,0 +1,78 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import AdminNav from '../../Nav/AdminNav/AdminNav';
+//Style
+import { Paper, Typography, Card, Button } from '@material-ui/core';
+
+
+const mapStateToProps = state => ({
+    user: state.user,
+    county: state.getCountyReducer,
+    state
+});
+
+class CountyDate extends Component{ 
+    constructor(){
+        super();
+        this.state={
+            startDate:'',
+            endDate:'',
+            county:'',
+            service_location: ''
+        }
+    }
+
+    handleChangeFor = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        }); 
+       
+    }
+    submit = () => {
+        this.props.dispatch({
+            type: 'GET_PERSON_DATA_COUNTY', 
+            payload: this.state
+        })
+    }
+    print = () => {
+        console.log('print button clicked');
+        window.print();
+    }
+
+    componentDidMount () {
+        
+        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+        console.log(this.props.state.getCountyReducer)
+    }
+    render () {
+        return (
+            <div className="federalReport">
+            <AdminNav />
+            <div style={{float: "right"}}>
+            <h2>County Report:</h2>
+                Start Date:
+                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
+                End Date:
+                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
+                County:
+                <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
+                <option>Select One</option>
+                <option value="Hennepin">Hennepin</option>
+                <option value="Scott">Scott</option>
+                <option value="Carver">Carver</option>
+                <option value="Other">Other</option>
+                </select>
+                <button onClick={this.submit}>go</button>  
+                <button onClick={this.print}>Print</button>
+            </div>
+            </div>
+
+        )
+    }
+}
+export default connect(mapStateToProps)(CountyDate);

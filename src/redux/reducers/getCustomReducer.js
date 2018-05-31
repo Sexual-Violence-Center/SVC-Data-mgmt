@@ -1,17 +1,19 @@
-const initialState = {
+const defaultState = {
     startDate: '',
     endDate: '',
     selectedItem: [],
     querySelector: ''
 }
 
-const CustomReportInputReducer = (state = initialState, action) => {
+const CustomReportInputReducer = (state = defaultState, action) => {
     // console.log('action', action.payload);
     switch (action.type) {
-        // case 'CUSTOM_REPORT_INPUT':
-        //     return { ...state, ...action.payload };
+        case 'CUSTOM_REPORT_PAGE_LOADED':
+            return defaultState;
         case 'UPDATE_SELECTED_ITEM':
             return { ...state, selectedItem: [...state.selectedItem, action.payload.selectedItem[0].value] };
+        case 'DELETE_SELECTED_ITEM':
+            return { ...state, selectedItem: [...state.selectedItem] };
         case 'UPDATE_START_DATE':
             return { ...state, startDate: action.payload.startDate };
         case 'UPDATE_END_DATE':

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Downshift from 'downshift';
@@ -11,10 +12,12 @@ import renderInput from '../StandardFunctionsForChips/renderInputFunction';
 import renderSuggestion from '../StandardFunctionsForChips/renderSuggestion'
 import styles from '../StandardFunctionsForChips/chipStyles'
 
+const mapStateToProps = state => ({
+  state
+});
 
 function getSuggestions(inputValue) {
   let count = 0;
-
   return OtherAdvocacyObject.filter(suggestion => {
     const keep =
       (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
@@ -42,46 +45,42 @@ class OtherAdvocacyCustom extends React.Component {
     selectedItem: [],
   };
 
-  handleKeyDown = event => {
-    const { inputValue, selectedItem } = this.state;
-    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
-      this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
-      });
+  handleChangeForComponent = (item) => {
+    let { selectedItem } = this.state;
+    if (this.props.selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
     }
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    })
+    this.props.dispatch({
+      type: 'UPDATE_SELECTED_ITEM',
+      payload: { ...this.state, selectedItem }
+    })
   };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
   };
 
-  handleChange = item => {
-    let { selectedItem } = this.state;
-    if (selectedItem.indexOf(item) === -1) {
-      selectedItem = [...selectedItem, item];
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
     }
-
-    this.setState({
-      inputValue: '',
-      selectedItem,
-    });
-  };
-
-  handleDelete = item => () => {
-    const selectedItem = [...this.state.selectedItem];
-    selectedItem.splice(selectedItem.indexOf(item), 1);
-    this.setState({ selectedItem });
   };
 
   render() {
     const { classes } = this.props;
     const { inputValue, selectedItem } = this.state;
-    // console.log('selectedItem', selectedItem);
-    // console.log('value', selectedItem);
     
     return (
-      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
-      
+      <Downshift inputValue={inputValue} 
+        onChange={this.handleChangeForComponent} 
+        selectedItem={this.selectedItem}>
         {({
           getInputProps,
           getItemProps,
@@ -102,7 +101,7 @@ class OtherAdvocacyCustom extends React.Component {
                     tabIndex={-1}
                     label={item.label}
                     className={classes.chip}
-                    onDelete={this.handleDelete(item)}
+                    onDelete={this.props.handleDelete(item)}
                     value={item.value}
                   />
                 )),
@@ -136,6 +135,7 @@ OtherAdvocacyCustom.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(OtherAdvocacyCustom);
+const styledOtherAdvocacyCustom = withStyles(styles)(OtherAdvocacyCustom);
+export default connect(mapStateToProps)(styledOtherAdvocacyCustom)
 
     
