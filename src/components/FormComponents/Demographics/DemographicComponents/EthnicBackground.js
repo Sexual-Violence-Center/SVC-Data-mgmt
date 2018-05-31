@@ -63,23 +63,23 @@ class EthnicBackground extends Component {
                                 name: 'victim_ethnicity',
                                 id: 'victim_ethnicity',
                             }}>
-                            <MenuItem style={{width: '100%'}} value="asian">Asian</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="Asian">Asian</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="african american/black">African American/Black</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="African American/Black">African American/Black</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="hispanic/latino">chican@/latin@</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="Chican@/Latin@">Chican@/Latin@</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="multi-racial">Multi-racial</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="Multi-racial">Multi-racial</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="amerIndAlaskaNative">Native American/ Alaskan Native</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="Native American">Native American/ Alaskan Native</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="native hawaiian/pacific islander">Native Hawaiian/Pacific Islander</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="white non-latino/caucasian">White Non-Latino/Caucasian</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="White non-Latino/Caucasian">White Non-Latino/Caucasian</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="other">Other</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="Other">Other</MenuItem>
                             <Divider />
-                            <MenuItem style={{width: '100%'}} value="unknown/pass">Unknown/Pass</MenuItem>
+                            <MenuItem style={{width: '100%'}} value="unknown">Unknown/Pass</MenuItem>
                         </Select>
                     </FormControl>
                 <TextField

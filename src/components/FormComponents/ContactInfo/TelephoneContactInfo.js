@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from '@material-ui/core';
+import { Card, Grid } from '@material-ui/core';
 
 import AdvocateName from './ContactComponents/AdvocateName';
 import CurrentDate from './ContactComponents/CurrentDate';
@@ -42,8 +42,8 @@ class TelephoneContactInfo extends Component {
     handleChangeFor = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked :
-                      target.type === 'radio' ? target.checked :
-                      target.value;
+            target.type === 'radio' ? target.checked :
+                target.value;
         const name = target.name;
 
         this.setState({
@@ -58,17 +58,41 @@ class TelephoneContactInfo extends Component {
         return (
             <div className="contactInfo">
                 <Card style={style}>
-                    <h2>Contact Info</h2>
-                    <AdvocateName handleChangeFor={this.handleChangeFor} />
-                    <CurrentDate handleChangeFor={this.handleChangeFor} />
-                    <StartTime handleChangeFor={this.handleChangeFor} />
-                    <EndTime handleChangeFor={this.handleChangeFor} />
-                    <ContactDate handleChangeFor={this.handleChangeFor} />
-                    <ZipCode handleChangeFor={this.handleChangeFor} />
-                    <TypeOfVictim handleChangeFor={this.handleChangeFor} />
-                    <HearAboutSVC handleChangeFor={this.handleChangeFor} />
-                    <PriorContact handleChangeFor={this.handleChangeFor} />
-                    <PriorToOctContact handleChangeFor={this.handleChangeFor} />
+                    <div>
+                        <h2>Contact Info</h2>
+                        <Grid container direction="row" justify="flex-start" alignItems="center" spacing={0}>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <AdvocateName handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <CurrentDate handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <StartTime handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <EndTime handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <ContactDate handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <ZipCode handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <TypeOfVictim handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                                <HearAboutSVC handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={9} lg={3}>
+                                <PriorContact handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={9} lg={3}>
+                                <PriorToOctContact handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                        </Grid>
+                    </div>
                 </Card>
             </div>
         )

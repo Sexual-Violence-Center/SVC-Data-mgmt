@@ -32,7 +32,7 @@ class ServiceLocation extends Component {
                     label="Location(where services are being provided)"
                     type="text"
                     margin="normal"
-                    style={{ width: 600 }}
+                    style={{ width: 350, marginLeft: '10px' }}
                     value={this.props.service_location}
                     onChange={this.handleChange}
                 />
