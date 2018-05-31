@@ -87,10 +87,10 @@ class FederalReport extends Component {
         return (
             <div>
             <div style={{  float: "right", marginRight: "40px"}}>
-                <Grid container spacing={40}>
-                <Grid item xs={6} sm={6} md={3} lg={3}>
+                <Grid container direction="row" justify="space-around" alignItems="center" spacing={24}>
+                <Grid item item xs={6} sm={3} md={3}>
                 </Grid>
-                <Grid item xs={6} sm={6} md={9} lg={9} xl={12}>
+                <Grid item xs={6} sm={8} md={8}>
                     <Paper style={style.paper}>
                         <Card style={{ margin: "10px"}}>
                             <Typography variant="display1" style={style.title}>
