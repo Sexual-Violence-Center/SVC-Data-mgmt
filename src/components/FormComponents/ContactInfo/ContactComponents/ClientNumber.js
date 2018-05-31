@@ -15,19 +15,22 @@ class ClientNumber extends Component {
     constructor() {
         super();
         this.state = {
-            name: ''
         }
     }
 
 
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
+        //this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 
+
+
     render() {
         const { classes } = this.props;
+        console.log("client number ", this.props.in_person_client_number);
         return (
+            
             <div>
                 <TextField
                     name="in_person_client_number"

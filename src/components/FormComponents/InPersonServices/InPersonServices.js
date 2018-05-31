@@ -12,29 +12,33 @@ const mapStateToProps = state => ({
     state
 });
 
+const initialState = {
+  crisis_counseling_individual: undefined,
+  crisis_counseling_group: undefined,
+  legal_law_enforcement_interview: undefined,
+  legal_prosecution_related: undefined,
+  legal_court_advocacy: undefined,
+  legal_ofp_hro: undefined,
+  legal_immigration: undefined,
+  legal_intervention: undefined,
+  medical_exam_support: undefined,
+  transportation_medical_exam_support: undefined,
+  medical_accompaniment_medical: undefined,
+  transportation_medical_accompaniment_medical: undefined,
+  medical_accompaniment_dental: undefined,
+  transportation_medical_accompaniment_dental: undefined,
+  information_referral: undefined,
+  safe_at_home: undefined,
+  emergency_financial: undefined,
+  reparations_claims: undefined,
+  in_person_services_received_prior_oct: undefined
+};
+
 class InPersonServices extends Component {
     constructor() {
         super();
         this.state = {
-            crisis_counseling_individual: undefined,
-            crisis_counseling_group: undefined,
-            legal_law_enforcement_interview: undefined,
-            legal_prosecution_related: undefined,
-            legal_court_advocacy: undefined,
-            legal_ofp_hro: undefined,
-            legal_immigration: undefined,
-            legal_intervention: undefined,
-            medical_exam_support: undefined,
-            transportation_medical_exam_support: undefined,
-            medical_accompaniment_medical: undefined,
-            transportation_medical_accompaniment_medical: undefined,
-            medical_accompaniment_dental: undefined,
-            transportation_medical_accompaniment_dental: undefined,
-            information_referral: undefined,
-            safe_at_home: undefined,
-            emergency_financial: undefined,
-            reparations_claims: undefined,
-            in_person_services_received_prior_oct: undefined,
+          ...initialState
         }
     }
 
@@ -49,6 +53,8 @@ class InPersonServices extends Component {
           });
           console.log(updateFormReducer);
           return updateFormReducer;
+        } else if (!props.state.EntryFormReducer) {
+          return initialState;
         } else {
           return state;
         }

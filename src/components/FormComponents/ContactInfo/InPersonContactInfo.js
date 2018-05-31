@@ -43,29 +43,34 @@ const styles = theme => ({
 const mapStateToProps = state => ({
     state
 });
+const intialState = {
+  advocate_name: "",
+  date_entered: "",
+  start_time: "",
+  end_time: "",
+  contact_date: "",
+  service_location: "",
+  service_county: "",
+  in_person_client_number: "",
+  victim_zipcode: "",
+  victim_type: "",
+  victim_referral_source: "",
+  victim_prior_contact: "",
+  victim_contact_prior_oct: ""
+};
 
 class ContactInfo extends Component {
     constructor() {
         super();
-        this.state = {
-            advocate_name: '',
-            date_entered: undefined,
-            start_time: undefined,
-            end_time: undefined,
-            contact_date: undefined,
-            service_location: '',
-            service_county: '',
-            in_person_client_number: undefined,
-            victim_zipcode: undefined,
-            victim_type: '',
-            victim_referral_source: '',
-            victim_prior_contact: undefined,
-            victim_contact_prior_oct: undefined,
-        }
+        this.state = intialState
+        
     }
 
     static getDerivedStateFromProps(props, state){
-
+        if (!props.state.EntryFormReducer) {
+          console.log('refresh');
+          return intialState;
+        }
         const {updateFormReducer} = props.state;
         if (props.dispatchTo === "UPDATE_THE_FORM") {
           return updateFormReducer;
@@ -93,6 +98,7 @@ class ContactInfo extends Component {
     }
 
     render() {
+      console.log('state ', this.state)
         return <div className="contactInfo">
             <Card style={{ padding: "20px", margin: "10px" }}>
               <div>
