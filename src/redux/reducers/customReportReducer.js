@@ -1,5 +1,5 @@
 const CustomReportReducer = (state = {}, action) => {
-  console.log("action", action.payload);
+  // console.log("action", action.payload);
   switch (action.type) {
     case "CUSTOM_REPORT":
       return action.payload;

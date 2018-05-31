@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const CustomReportInputReducer = (state = initialState, action) => {
-    console.log('action', action.payload);
+    // console.log('action', action.payload);
     switch (action.type) {
         // case 'CUSTOM_REPORT_INPUT':
         //     return { ...state, ...action.payload };

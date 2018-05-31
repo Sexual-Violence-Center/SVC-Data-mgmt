@@ -51,8 +51,8 @@ class Referrals extends Component {
                 <Card className={classes.card}>
                     <h2>Referrals</h2>
                     <p>(please fill in name of organization)</p>
-                    <Grid container direction="row" justify="flex-start" alignItems="center">
-                        <Grid item xs={12} sm={12}>
+                    {/* <Grid container direction="row" justify="flex-start" alignItems="center"> */}
+                        {/* <Grid item xs={12} sm={12}> */}
                             <TextField
                                 name="referral_svc"
                                 label="SVC Services"
@@ -62,8 +62,8 @@ class Referrals extends Component {
                                 value={this.state.referral_svc}
                                 onChange={this.handleChangeFor}
                             />
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
+                        {/* </Grid> */}
+                        {/* <Grid item xs={12} sm={12}> */}
                             <TextField
                                 name="referral_agency"
                                 label="Other advocacy agency"
@@ -73,8 +73,8 @@ class Referrals extends Component {
                                 value={this.state.referral_agency}
                                 onChange={this.handleChangeFor}
                             />
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
+                        {/* </Grid> */}
+                        {/* <Grid item xs={12} sm={12}> */}
                             <TextField
                                 name="referral_other"
                                 label="Other services, support and resources(specify)"
@@ -84,8 +84,8 @@ class Referrals extends Component {
                                 value={this.state.referral_other}
                                 onChange={this.handleChangeFor}
                             />
-                        </Grid>
-                    </Grid>
+                        {/* </Grid> */}
+                    {/* </Grid> */}
                 </Card>
             </div>
         )
