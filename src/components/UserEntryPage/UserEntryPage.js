@@ -177,11 +177,9 @@ class UserEntryPage extends Component {
     );
   }
   
-    return (
-      <div style={{float: "right"}}>
-        { content }
-      </div>
-    );
+    return <div style={{ flex: 1, margin: "auto", alignItems: 'center', marginLeft: '300px' }}>
+        {content}
+      </div>;
   }
 }
 

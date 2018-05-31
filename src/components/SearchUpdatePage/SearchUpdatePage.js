@@ -54,23 +54,22 @@ class SearchUpdatePage extends Component {
 
 
     render() {
-        return (
-
-            <div>
-                <AdminNav />
-                <div style={{ float: "right" }}>
-                    <h1>Search and Update</h1>
-                    <form>
-                        <label>
-                            Search for a Form:
-                        <input type="text" name="userInput" value={this.state.userInput} onChange={this.handleChangeFor} />
-                        </label>
-                    </form>
-                    <button value="submit" onClick={this.handleSubmit}>Submit</button>
-                    {this.renderForm()}
-                </div>
+        return <div>
+            <AdminNav />
+            <div style={{ flex: 1, margin: "auto", alignItems: "center", marginLeft: "300px" }}>
+              <h1>Search and Update</h1>
+              <form>
+                <label>
+                  Search for a Form:
+                  <input type="text" name="userInput" value={this.state.userInput} onChange={this.handleChangeFor} />
+                </label>
+              </form>
+              <button value="submit" onClick={this.handleSubmit}>
+                Submit
+              </button>
+              {this.renderForm()}
             </div>
-        )
+          </div>;
     }
 }
 
