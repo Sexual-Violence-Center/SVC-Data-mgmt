@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
-import AdminNav from '../Nav/AdminNav/AdminNav';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 
-class FederalDate extends Component {
+class NewVictims extends Component {
     constructor() {
         super();
         this.state = {
@@ -47,19 +47,26 @@ class FederalDate extends Component {
 
     render() {
         return (
-            <div className="federalReport">
-                <AdminNav />
-                <h2> Select a date range for the Federal Report:</h2>
-                
-                Start Date:
-                    <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
-                    End Date:
-                    <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
-                
-                    <button onClick={this.submit}>go</button>  
-                    <button onClick={this.print}>Print</button>
-            </div>
+            <div className="dropdown">
+            <section className="new">
+                <h4>New individuals who received services during the reporting period</h4>
+                <table className="federalTable">
+                <thead>
+                    <tr>
+                        <th>Types of Individuals</th>
+                        <th>Number</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>New Individuals</td>
+                        <td>{this.props.state.getFederalReducer.new_victim}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
         );
     }
 }
-export default connect(mapStateToProps)(FederalDate);
+export default connect(mapStateToProps)(NewVictims);

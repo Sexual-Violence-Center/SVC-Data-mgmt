@@ -4,20 +4,21 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 //Style
 import { Paper, Typography, Card, Button } from '@material-ui/core';
-//Components
-import FederalDate from '../ReportComponents/FederalDate';
-import TotalVictims from '../ReportComponents/TotalVictims';
-import NewVictims from '../ReportComponents/NewVictims';
-import Ethnicity from '../ReportComponents/Ethnicity';
-import GenderIdentity from '../ReportComponents/GenderIdentity';
-import AgeRange from '../ReportComponents/AgeRange';
-import Victimization from '../ReportComponents/Victimization';
+//ReportComponents
+import FederalDate from '../ReportComponents/Date/FederalDate';
+import FederalTotalVictims from '../ReportComponents/Total/FederalTotalVictims';
+import NewVictims from '../ReportComponents/New/NewVictimsFederal';
+import FederalEthnicity from '../ReportComponents/Ethnicity/FederalEthnicity';
+import FederalGender from '../ReportComponents/Gender/FederalGender';
+import FederalAgeRange from '../ReportComponents/Age/FederalAgeRange';
+import FederalVictimization from '../ReportComponents/Victimization/FederalVictimization';
 import SpecialClassification from '../ReportComponents/SpecialClassification';
 import CompensationApplication from '../ReportComponents/CompensationApplication';
 import InformationReferral from '../ReportComponents/InformationReferral(A)';
 import AdvocacyAccompaniment from '../ReportComponents/AdvocacyAccompaniment/AdvocacyAccompaniment(B)';
 import EmotionalSupport from '../ReportComponents/EmotionalSupport(C)';
 import CriminalCivilJusticeSystemAssistance from '../ReportComponents/CriminalCivilJusticeSystemAssistance(E)';
+import NewVictimsFederal from '../ReportComponents/New/NewVictimsFederal';
 // import FederalDate from './ReportComponents/FederalDate';
 // const top = 50;
 // const left = 50;
@@ -94,12 +95,12 @@ class FederalReport extends Component {
                 </Typography>
               </Card>
             <FederalDate />
-            <TotalVictims />
-            <NewVictims />
-            <Ethnicity />
-            <GenderIdentity />
-            <AgeRange />
-            <Victimization />
+            <FederalTotalVictims />
+            <NewVictimsFederal />
+            <FederalEthnicity />
+            <FederalGender />
+            <FederalAgeRange />
+            <FederalVictimization />
             <SpecialClassification />
             <h1> Direct Services</h1>
             <CompensationApplication />

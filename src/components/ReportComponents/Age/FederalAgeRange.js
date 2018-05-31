@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
-import AdminNav from '../Nav/AdminNav/AdminNav';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
 import { Paper, Typography, Card, Button } from '@material-ui/core';
 
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 
-class GenderIdentity extends Component {
+class AgeRange extends Component {
     constructor() {
         super();
         this.state = {
@@ -47,39 +47,43 @@ class GenderIdentity extends Component {
 
     render() {
         return (
-            <section className="gender">
-                <h4>Demographics: Gender Identity</h4>
+            <section className="Age">
+                <h4>Demographics: Age</h4>
                 <table className="federalTable">
                 <thead>
                     <tr>
-                        <th>Gender Identity</th>
+                        <th>Age Range</th>
                         <th>Number</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Male</td>
-                        <td>{this.props.state.getFederalReducer.victim_gender_male}</td>
+                        <td>0-12</td>
+                        <td>{this.props.state.getFederalReducer.victim_age_zero_to_twelve}</td>
                     </tr>
                     <tr>
-                        <td>Female</td>
-                        <td>{this.props.state.getFederalReducer.victim_gender_female}</td>
+                        <td>13-17</td>
+                        <td>{this.props.state.getFederalReducer.victim_age_thirteen_to_seventeen}</td>
                     </tr>
                     <tr>
-                        <td>Non-Binary</td>
-                        <td>{this.props.state.getFederalReducer.victim_gender_non_binary}</td>
+                        <td>18-24</td>
+                        <td>{this.props.state.getFederalReducer.victim_age_eighteen_to_twentyfour}</td>
                     </tr>
                     <tr>
-                        <td>Other</td>
-                        <td>{this.props.state.getFederalReducer.victim_gender_other}</td>
+                        <td>25-59</td>
+                        <td>{this.props.state.getFederalReducer.victim_age_twentyfive_to_fiftynine}</td>
+                    </tr>
+                    <tr>
+                        <td>60+</td>
+                        <td>{this.props.state.getFederalReducer.victim_age_sixty_and_older}</td>
                     </tr>
                     <tr>
                         <td>Not Reported</td>
-                        <td>{this.props.state.getFederalReducer.victim_gender_unknown}</td>
+                        <td>{this.props.state.getFederalReducer.victim_age_unknown}</td>
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td>{this.props.state.getFederalReducer.total_gender_count}</td>
+                        <td>{this.props.state.getFederalReducer.total_age_count}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -87,4 +91,5 @@ class GenderIdentity extends Component {
         );
     }
 }
-export default connect(mapStateToProps)(GenderIdentity);
+export default connect(mapStateToProps)(AgeRange);
+   
