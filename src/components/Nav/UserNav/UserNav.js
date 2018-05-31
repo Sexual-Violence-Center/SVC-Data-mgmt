@@ -59,7 +59,7 @@ class UserNav extends Component {
         <AppBar position="fixed" color="primary" className={classes.appBar}>
           <Toolbar >
             <Header />
-            <Typography variant="display1" color="inherit" className={classes.flex} style={{ paddingLeft: '20px' }}>
+            <Typography variant="display1" color="inherit" className={classes.flex} style={{ paddingLeft: '20px', color: '#FAFAFA' }}>
               Data Management System
             </Typography>
             <br />

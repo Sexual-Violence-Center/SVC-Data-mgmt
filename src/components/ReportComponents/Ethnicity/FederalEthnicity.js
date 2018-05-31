@@ -58,7 +58,7 @@ class Ethnicity extends Component {
                     </thead>
                     <tbody>
                     <tr>
-                        <td>American Indian of Alaskan Native</td>
+                        <td>American Indian or Alaskan Native</td>
                         <td>{this.props.state.getFederalReducer.Native_American}</td>
                     </tr>
                     <tr>
@@ -74,7 +74,7 @@ class Ethnicity extends Component {
                         <td>{this.props.state.getFederalReducer.hispanicOrLatino}</td>
                     </tr>
                     <tr>
-                        <td>Natice Hawaiian or Other Pacific Islander</td>
+                        <td>Native Hawaiian or Other Pacific Islander</td>
                         <td>{this.props.state.getFederalReducer.pacificIslanderHawaiian}</td>
                     </tr>
                     <tr>
