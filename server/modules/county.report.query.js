@@ -36,6 +36,7 @@ const queryText = `SELECT
    	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "service_location" = 'Shakopee' AND "contact_date" BETWEEN  $2 AND $3) as "location_Shakopee",
    	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "service_location" = 'Shakopee Correctional Facility' AND "contact_date" BETWEEN  $2 AND $3) as "location_Shakopee_Correctional_Facility",
    	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "service_location" = 'St. Francis Hospital' AND "contact_date" BETWEEN  $2 AND $3) as "location_St_Francis",
+   	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "service_location" IS NULL AND "contact_date" BETWEEN  $2 AND $3) as "location_unknown",
    	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND (
 		   "service_location" != '212 Medical Center' AND
 		   "service_location" != 'Abbott Northwestern Hospital' AND

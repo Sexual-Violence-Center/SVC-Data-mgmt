@@ -46,7 +46,10 @@ class NewVictimsCounty extends Component{
 
     componentDidMount () {
         
-        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+        this.props.dispatch({
+                type: 
+                USER_ACTIONS.FETCH_USER
+        });
         console.log(this.props.state.getCountyReducer)
     }
     render () {
