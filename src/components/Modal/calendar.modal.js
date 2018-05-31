@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -33,26 +32,21 @@ const styles = theme => ({
 
 class CalendarModal extends React.Component {
   state = {
-    open: false,
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
+    open: true,
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.props.handleClose();
   };
 
   render() {
     const { classes } = this.props;
-    if (!this.props.show) {
-      return null;
-    }
+    // if (!this.props.show) {
+    //   return null;
+    // }
 
     return (
       <div>
-        <Button onClick={this.handleOpen}>Submit</Button>
         <Modal
           aria-labelledby="modal-no calendar date"
           aria-describedby="modal-dates required to complete report"
@@ -66,7 +60,6 @@ class CalendarModal extends React.Component {
             <Typography variant="subheading" id="simple-modal-description">
               A start date and end date are required to complete the report.
             </Typography>
-            <CalendarModal />
           </div>
         </Modal>
       </div>
@@ -76,7 +69,6 @@ class CalendarModal extends React.Component {
 
 CalendarModal.propTypes = {
   classes: PropTypes.object.isRequired,
-  show: PropTypes.bool
 };
 
 const CalendarModalWrapped = withStyles(styles)(CalendarModal);

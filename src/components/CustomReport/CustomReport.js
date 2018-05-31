@@ -189,11 +189,10 @@ class customReportSelectionPage extends Component {
                 <ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
               </div>
             </div>
-
-            <CalendarModal show={this.state.isOpen}
-                onClose={this.closeModel}>
-            </CalendarModal>
-
+            
+            {this.state.isOpen === true && <CalendarModal
+                handleClose={this.closeModel} />
+            }
           </div>; //end return
 
     } //end render
