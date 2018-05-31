@@ -18,10 +18,6 @@ const mapStateToProps = state => ({
     userInput: state.userInput
 });
 
-// this.setState({
-//     : state.updateFormReducer
-//   });
-
 
  class UpdateForm extends Component{
      state={

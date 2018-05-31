@@ -47,6 +47,7 @@ class InPersonServices extends Component {
             }
             return null;
           });
+          console.log(updateFormReducer);
           return updateFormReducer;
         } else {
           return state;
@@ -78,13 +79,21 @@ class InPersonServices extends Component {
                     <CrisisCounseling handleChangeFor={this.handleChangeFor} crisis_counseling_individual={this.state.crisis_counseling_individual} crisis_counseling_group={this.state.crisis_counseling_group} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <CriminalJusticeProcess handleChangeFor={this.handleChangeFor} legal_law_enforcement_interview={this.state.legal_law_enforcement_interview} legal_prosecution_related={this.state.legal_prosecution_related} legal_court_advocacy={this.state.legal_court_advocacy}/>
+                    <CriminalJusticeProcess handleChangeFor={this.handleChangeFor} legal_law_enforcement_interview={this.state.legal_law_enforcement_interview} legal_prosecution_related={this.state.legal_prosecution_related} legal_court_advocacy={this.state.legal_court_advocacy} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <CivilLegalProcess handleChangeFor={this.handleChangeFor} />
+                    <CivilLegalProcess handleChangeFor={this.handleChangeFor} legal_ofp_hro={this.state.legal_ofp_hro} legal_immigration={this.state.legal_immigration} legal_intervention={this.state.legal_intervention} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <MedicalAdvocacy handleChangeFor={this.handleChangeFor} />
+                    <MedicalAdvocacy 
+                        handleChangeFor={this.handleChangeFor} 
+                        transportation_medical_exam_support={this.state.transportation_medical_exam_support} 
+                        transportation_medical_accompaniment_dental={this.state.transportation_medical_accompaniment_dental} 
+                        transportation_medical_accompaniment_medical={this.state.transportation_medical_accompaniment_medical}
+                        medical_exam_support={this.state.medical_exam_support}
+                        medical_accompaniment_medical={this.state.medical_accompaniment_medical}
+                        medical_accompaniment_dental={this.state.medical_accompaniment_dental}
+                        />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <OtherAdvocacy handleChangeFor={this.handleChangeFor} />
