@@ -53,7 +53,7 @@ class CountyDate extends Component{
         return (
             <div className="federalReport">
             <AdminNav />
-            <div style={{float: "right"}}>
+            <div>
             <h2>County Report:</h2>
                 Start Date:
                 <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
