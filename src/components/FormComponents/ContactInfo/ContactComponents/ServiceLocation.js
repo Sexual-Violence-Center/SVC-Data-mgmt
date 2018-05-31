@@ -43,7 +43,7 @@ class ServiceLocation extends Component {
         // If 'Other' is selected, then a Text Field will appear with the ability
         // to change the value of Service Location with a custom location.
         let other;
-        if (this.state.name === 'Other') {
+        if (this.state.location === 'Other') {
 
             other = <TextField
                 name="service_location"
