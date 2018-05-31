@@ -19,17 +19,19 @@ class ServiceLocation extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
+            location: '',
             other: ''
         }
     }
 
-
+    // Function to change the value of Service Location in InPersonServices from the drop down
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
+        this.setState({ location: event.target.value });
         this.props.handleChangeFor(event);
     }
 
+    // If 'Other' is selected, then the value of Service Location will then look at
+    // the value that's being input from TextField.
     handleChangeOther = (event) => {
         this.setState({ other: event.target.value });
         this.props.handleChangeFor(event);
@@ -37,19 +39,21 @@ class ServiceLocation extends Component {
 
     render() {
         const { classes } = this.props;
-        
-        let other; 
-        if(this.state.name === 'Other'){
+
+        // If 'Other' is selected, then a Text Field will appear with the ability
+        // to change the value of Service Location with a custom location.
+        let other;
+        if (this.state.name === 'Other') {
 
             other = <TextField
-            name="service_location"
-            label="Specify Other Location"
-            className={classes.textField}
-            type="text"
-            margin="normal"
-            value={this.props.service_location}
-            onChange={this.handleChangeOther}
-        />
+                name="service_location"
+                label="Specify Other Location"
+                className={classes.textField}
+                type="text"
+                margin="normal"
+                value={this.props.service_location}
+                onChange={this.handleChangeOther}
+            />
         }
 
         return (
@@ -57,7 +61,7 @@ class ServiceLocation extends Component {
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="service_location">Location of Service</InputLabel>
                     <Select
-                        value={this.state.name}
+                        value={this.state.location}
                         onChange={this.handleChange}
                         className={classes.textField}
                         inputProps={{
