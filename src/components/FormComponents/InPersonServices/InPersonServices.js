@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from '@material-ui/core';
+import { Card, Grid } from '@material-ui/core';
 import CrisisCounseling from './InPersonServicesComponents/CrisisCounseling';
 import CriminalJusticeProcess from './InPersonServicesComponents/CriminalJusticeProcess';
 import CivilLegalProcess from './InPersonServicesComponents/CivilLegalProcess';
@@ -37,29 +37,29 @@ class InPersonServices extends Component {
             in_person_services_received_prior_oct: undefined,
         }
     }
-   
-    static getDerivedStateFromProps=(props, state)=>{
-        if(props.state.updateFormReducer){
-            const {updateFormReducer} = props.state
-            Object.keys(updateFormReducer).forEach(key=>{
-                if(updateFormReducer[key]===null){
+
+    static getDerivedStateFromProps = (props, state) => {
+        if (props.state.updateFormReducer) {
+            const { updateFormReducer } = props.state
+            Object.keys(updateFormReducer).forEach(key => {
+                if (updateFormReducer[key] === null) {
                     updateFormReducer[key] = undefined;
                 }
                 return null;
             })
             console.log(updateFormReducer);
             return updateFormReducer;
-        }else {
+        } else {
             return state;
-        }    
-        
-    } 
+        }
+
+    }
 
     handleChangeFor = event => {
         const target = event.target;
         const value = target.type === ('checkbox') ? target.checked :
-                        target.type === ('radio') ? JSON.parse(target.value) :
-                        target.value;
+            target.type === ('radio') ? JSON.parse(target.value) :
+                target.value;
         const name = target.name;
 
         this.setState({
@@ -74,20 +74,28 @@ class InPersonServices extends Component {
         return (
             <div className="in-personServicesContainer">
                 <Card style={{ padding: '20px', margin: '10px' }}>
-                    <h2>In-Person Services</h2>
-                    <div className="inpersonServices">
-                        <CrisisCounseling handleChangeFor={this.handleChangeFor}/>
-                        <br />
-                        <CriminalJusticeProcess handleChangeFor={this.handleChangeFor}/>
-                        <br />
-                        <CivilLegalProcess handleChangeFor={this.handleChangeFor}/>
-                        <br />
-                        <MedicalAdvocacy handleChangeFor={this.handleChangeFor}/>
-                        <br />
-                        <OtherAdvocacy handleChangeFor={this.handleChangeFor}/>
-                        <br />
-                        <UsedServicesBefore handleChangeFor={this.handleChangeFor}/>
-                        <br />
+                    <div>
+                        <h2>In-Person Services</h2>
+                        <Grid container direction="column" justify="center" alignItems="flex-start">
+                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CrisisCounseling handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CriminalJusticeProcess handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CivilLegalProcess handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <MedicalAdvocacy handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <OtherAdvocacy handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <UsedServicesBefore handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                        </Grid>
                     </div>
                 </Card>
             </div>
