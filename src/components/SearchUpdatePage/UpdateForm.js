@@ -29,7 +29,7 @@ const mapStateToProps = state => ({
      handleSubmit = () =>{
          this.props.dispatch({
              type: 'UPDATE_FORM',
-             payload: this.state
+             payload: this.props.state.updateFormReducer
          })
      }
 
