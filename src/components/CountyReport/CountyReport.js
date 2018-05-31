@@ -14,7 +14,7 @@ import CountyAgeRange from '../ReportComponents/Age/CountyAgeRange';
 import CountyGender from '../ReportComponents/Gender/CountyGender';
 import CountyEthnicity from '../ReportComponents/Ethnicity/CountyEthnicity';
 import CountyVictimization from '../ReportComponents/Victimization/CountyVicitimization';
-
+import CountyLocationType from '../ReportComponents/CountyLocation';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -97,6 +97,7 @@ class CountyReport extends Component{
             <NewVictimsCounty />
             <CountyVictimType />
             <Zipcode />
+            <CountyLocationType />
             <CountyAgeRange />
             <CountyGender />
             <CountyEthnicity />
