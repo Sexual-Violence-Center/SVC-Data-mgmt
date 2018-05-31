@@ -126,7 +126,7 @@ class UserEntryPage extends Component {
     if(this.props.user) {
       content = (
     <div>
-      <div style={{float: "right", marginRight: "40px"}}>
+      <div style={{}}>
         <AdminNav />
         <Grid container spacing={40}>
           <Grid item xs={6} sm={6} md={3} lg={3}></Grid>
@@ -139,8 +139,8 @@ class UserEntryPage extends Component {
                 </Typography>
               </Card>
             {this.renderAlert()}
-              <Card style={{margin: "10px"}}>
-                <h2>Add a new user:</h2>
+              <Card style={{margin: "10px", padding: "20px"}}>
+                <h3>Add a new user:</h3>
                   Username:
                   <input
                     type="text"
@@ -184,7 +184,7 @@ class UserEntryPage extends Component {
                     </div>
                 </form>
               </Card>
-              <Card>
+              <Card style={{margin: "10px", padding: "20px"}}>
                 <div>
                   <h3>Current users:</h3>
                 </div>
