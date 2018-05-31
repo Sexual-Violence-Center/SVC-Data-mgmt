@@ -5,10 +5,25 @@ import AdminNav from '../Nav/AdminNav/AdminNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
 
+import { Paper, Typography, Card, Grid } from '@material-ui/core';
+
 const mapStateToProps = state => ({
   user: state.user,
   state,
 });
+
+const style = {
+  title: {
+      backgroundColor: '#FFF9C4',
+      textAlign: 'center',
+      color: '#616161',
+      padding: '10px',
+  },
+  paper: {
+      backgroundColor: '#FFFDE7',
+      padding: '10px'
+  }
+}
 
 class UserEntryPage extends Component {
   constructor(props) {
@@ -67,13 +82,13 @@ class UserEntryPage extends Component {
           })
           } else {
             this.setState({
-              message: 'Ooops! That username might be in use already. Please try again!',
+              message: 'That username might be in use already. Please try again!',
             });
           }
         })
         .catch(() => {
           this.setState({
-            message: 'Whoops! Something went wrong... It may be you are not logged in with an Admin account or that the server on Heroku is being restarted. If you are sure about your account, please wait a few minutes for Heroku and try again.',
+            message: 'Something went wrong... It may be you are not logged in with an Admin account or that the server on Heroku is being restarted. If you are sure about your account, please wait a few minutes for Heroku and try again.',
           });
         });
       }
@@ -105,75 +120,89 @@ class UserEntryPage extends Component {
       return (<UserEntryPageList key={user.id} user={user}/>)
     })
 
-      let content = null;
+    let content = null;
 
-      //TODO: update this if statement to be true when the logged-in user is user_type === true
-      if(this.props.user) {
-        content = (
-      <div>
+    //TODO: update this if statement to be true when the logged-in user is user_type === true
+    if(this.props.user) {
+      content = (
+    <div>
+      <div style={{float: "right", marginRight: "40px"}}>
         <AdminNav />
-        <h1>User Entry Page</h1>
-        {this.renderAlert()}
-          <form>
-            <h2>Add a new user:</h2>
-            <div>
-              <label htmlFor="username">
-                Username:
-                <input
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleInputChangeFor('username')}
-                />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="password">
-                Password:
-                <input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleInputChangeFor('password')}
-                />
-              </label>
-              </div>
+        <Grid container spacing={40}>
+          <Grid item xs={6} sm={6} md={3} lg={3}></Grid>
+          <Grid item xs={6} sm={6} md={9} lg={9} xl={12}>
+            <Paper style={style.paper}>
+              <Card style={{margin: "10px"}}>
+                <Typography variant="display1"
+                style={style.title}>
+                User Entry Page
+                </Typography>
+              </Card>
+            {this.renderAlert()}
+              <form>
+                <h2>Add a new user:</h2>
+                <div>
+                  <label htmlFor="username">
+                    Username:
+                    <input
+                      type="text"
+                      name="username"
+                      value={this.state.username}
+                      onChange={this.handleInputChangeFor('username')}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label htmlFor="password">
+                    Password:
+                    <input
+                      type="password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handleInputChangeFor('password')}
+                    />
+                  </label>
+                  </div>
+                  </form>
+                <label>
+                  User type:
+                </label>
+              <form
+                value={this.state.user_type}
+                      onChange={this.handleInputChangeFor('user_type')}>
+                    <input
+                      type="radio"
+                      id="user_type_admin"
+                      name="user_type"
+                      value={true}/>
+                      <label htmlFor="user_type_admin">Admin</label>
+                      <input
+                      type="radio"
+                      id="user_type_standard"
+                      name="user_type"
+                      value={false}/>
+                      <label htmlFor="user_type_standard">Standard</label>
+                <div>
+                  <button
+                    name="submit"
+                    onClick={this.registerUser}
+                  >
+                  Submit</button>
+                </div>
               </form>
-            <label>
-              User type:
-            </label>
-           <form
-             value={this.state.user_type}
-                  onChange={this.handleInputChangeFor('user_type')}>
-                <input
-                  type="radio"
-                  id="user_type_admin"
-                  name="user_type"
-                  value={true}/>
-                  <label htmlFor="user_type_admin">Admin</label>
-                  <input
-                  type="radio"
-                  id="user_type_standard"
-                  name="user_type"
-                  value={false}/>
-                  <label htmlFor="user_type_standard">Standard</label>
             <div>
-              <button
-                name="submit"
-                onClick={this.registerUser}
-              >
-              Submit</button>
+              <h3>Current users:</h3>
             </div>
-          </form>
-        <div>
-          <h3>Current users:</h3>
-        </div>
-        <div>
+            <div>
 
-          { userEntryPageList }
-
-        </div>
+              { userEntryPageList }
+            
+            </div>
+            </Paper>
+          </Grid>
+        </Grid>
       </div>
+    </div>
     );
   }
   
