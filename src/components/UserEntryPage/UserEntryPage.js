@@ -5,11 +5,39 @@ import AdminNav from '../Nav/AdminNav/AdminNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
 
-import { Paper, Typography, Card, Grid } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import { Paper, Typography, Card, Grid, Table, TableBody, TableCell, TableHead, TableRow, withStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
+
 
 const mapStateToProps = state => ({
   user: state.user,
   state,
+});
+
+const CustomTableCell = withStyles(theme => ({
+  body: {
+    fontSize: 15,
+  },
+}))(TableCell);
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+  row: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
 });
 
 const style = {
@@ -116,6 +144,8 @@ class UserEntryPage extends Component {
 
   render() {
 
+    const { classes } = this.props;
+
     const userEntryPageList = this.props.state.getUsersReducer.map((user) => {
       return (<UserEntryPageList key={user.id} user={user}/>)
     })
@@ -128,9 +158,9 @@ class UserEntryPage extends Component {
     <div>
       <div style={{}}>
         <AdminNav />
-        <Grid container spacing={40}>
-          <Grid item xs={6} sm={6} md={3} lg={3}></Grid>
-          <Grid item xs={6} sm={6} md={9} lg={9} xl={12}>
+        <Grid container direction="row" justify="space-between" alignItems="center" spacing={40}>
+          <Grid item xs={6} sm={3}></Grid>
+          <Grid item xs={6} sm={8}>
             <Paper style={style.paper}>
               <Card style={{margin: "10px"}}>
                 <Typography variant="display1"
@@ -156,7 +186,7 @@ class UserEntryPage extends Component {
                     value={this.state.password}
                     onChange={this.handleInputChangeFor('password')}
                   />
-                  
+                  <br />
                   <label>
                     User type:
                   </label>
@@ -176,37 +206,52 @@ class UserEntryPage extends Component {
                       value={false}/>
                       <label htmlFor="user_type_standard">Standard</label>
                     <div>
-                      <button
+                      <Button
                         name="submit"
+                        variant="flat"
+                        color="primary"
                         onClick={this.registerUser}
                       >
-                      Submit</button>
+                      Submit</Button>
                     </div>
                 </form>
               </Card>
               <Card style={{margin: "10px", padding: "20px"}}>
                 <div>
-                  <h3>Current users:</h3>
+                  <h4>Current users:</h4>
                 </div>
                 <div>
+                <Table className={classes.root}>
+                  <TableBody className={classes.table}>
 
-                  { userEntryPageList }
+                     { userEntryPageList }
                 
-                </div>
+                  </TableBody>
+                </Table>
+              </div>
             </Card>
             </Paper>
           </Grid>
+          <Grid item sm={1}></Grid>
         </Grid>
       </div>
     </div>
     );
   }
   
-    return <div style={{ flex: 1, margin: "auto", alignItems: 'center', marginLeft: '300px' }}>
-        {content}
-      </div>;
+    return (
+    
+    <div>
+
+     {content}
+
+    </div>
+    )
   }
 }
 
+UserEntryPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps)(UserEntryPage);
+export default connect(mapStateToProps)(withStyles(styles)(UserEntryPage));

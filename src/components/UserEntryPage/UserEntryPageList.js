@@ -1,11 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import { Typography, Table, TableBody, TableCell, TableHead, TableRow, withStyles} from '@material-ui/core';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const mapStateToProps = state => ({
   state
 })
+
+const CustomTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+    width: '100%',
+  },
+  body: {
+    width: '50%',
+    fontSize: 15,
+  },
+}))(TableCell);
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+  row: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+      width: '100%',
+    },
+  },
+});
 
 class UserEntryPageList extends Component {
   state = {
@@ -65,28 +96,28 @@ class UserEntryPageList extends Component {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
+          <Button onClick={this.handleClose}>
             No, keep the user.
           </Button>
-          <Button onClick={this.handleDelete} color="primary" autoFocus>
+          <Button onClick={this.handleDelete} autoFocus>
             Yes, delete the user.
           </Button>
         </DialogActions>
       </Dialog>
         )
 
+    const { classes } = this.props;
+
     return (
  
       <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>{this.props.user.username}</td>
-              <td>{user_type}</td>
-              <td><Button onClick={this.handleClickOpen} variant="raised" color="primary">Delete</Button></td>
-              </tr>
-          </tbody>
-        </table>
+
+            <TableRow>
+              <CustomTableCell>{this.props.user.username}</CustomTableCell>
+              <CustomTableCell>{user_type}</CustomTableCell>
+              <CustomTableCell><Button size="small" onClick={this.handleClickOpen}>Delete</Button></CustomTableCell>
+            </TableRow>
+
       <div>
         { dialog }
       </div>
@@ -95,4 +126,8 @@ class UserEntryPageList extends Component {
   }
 }
 
-export default connect(mapStateToProps)(UserEntryPageList);
+UserEntryPageList.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(UserEntryPageList));
