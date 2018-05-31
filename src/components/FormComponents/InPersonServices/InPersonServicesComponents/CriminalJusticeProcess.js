@@ -12,6 +12,14 @@ class CriminalJusticeProcess extends Component {
             checked3: false,
         }
     }
+    static getDerivedStateFromProps(props, state){
+        if (props.legal_law_enforcement_interview != undefined){
+            return {...state, checked1: props.legal_law_enforcement_interview}
+        }
+    }
+
+
+
     // Once one of the checkboxes is checked, look for the name and tell InPersonServices which
     // one has been clicked and set it's value to whichever boolean corresponds to it's checked status
     handleChecked = name => (event) => {

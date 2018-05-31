@@ -69,35 +69,33 @@ class InPersonServices extends Component {
         })
     }
     render() {
-        return (
-            <div className="in-personServicesContainer">
-                <Card style={{ padding: '20px', margin: '10px' }}>
-                    <div>
-                        <h2>In-Person Services</h2>
-                        <Grid container direction="column" justify="center" alignItems="flex-start">
-                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <CrisisCounseling handleChangeFor={this.handleChangeFor} crisis_counseling_individual={this.state.crisis_counseling_individual} crisis_counseling_group={this.state.crisis_counseling_group}/>
-                            </Grid>
-                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <CriminalJusticeProcess handleChangeFor={this.handleChangeFor} />
-                            </Grid>
-                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <CivilLegalProcess handleChangeFor={this.handleChangeFor} />
-                            </Grid>
-                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <MedicalAdvocacy handleChangeFor={this.handleChangeFor} />
-                            </Grid>
-                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <OtherAdvocacy handleChangeFor={this.handleChangeFor} />
-                            </Grid>
-                            <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <UsedServicesBefore handleChangeFor={this.handleChangeFor} />
-                            </Grid>
-                        </Grid>
-                    </div>
-                </Card>
-            </div>
-        )
+        return <div className="in-personServicesContainer">
+            <Card style={{ padding: "20px", margin: "10px" }}>
+              <div>
+                <h2>In-Person Services</h2>
+                <Grid container direction="column" justify="center" alignItems="flex-start">
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <CrisisCounseling handleChangeFor={this.handleChangeFor} crisis_counseling_individual={this.state.crisis_counseling_individual} crisis_counseling_group={this.state.crisis_counseling_group} />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <CriminalJusticeProcess handleChangeFor={this.handleChangeFor} legal_law_enforcement_interview={this.state.legal_law_enforcement_interview} legal_prosecution_related={this.state.legal_prosecution_related} legal_court_advocacy={this.state.legal_court_advocacy}/>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <CivilLegalProcess handleChangeFor={this.handleChangeFor} />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <MedicalAdvocacy handleChangeFor={this.handleChangeFor} />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <OtherAdvocacy handleChangeFor={this.handleChangeFor} />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <UsedServicesBefore handleChangeFor={this.handleChangeFor} />
+                  </Grid>
+                </Grid>
+              </div>
+            </Card>
+          </div>;
     }
 }
 
