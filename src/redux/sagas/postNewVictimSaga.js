@@ -1,4 +1,4 @@
-import { call, takeEvery } from 'redux-saga/effects';
+import { call, takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 // enter a new victim contact form into the database and 
@@ -8,6 +8,9 @@ function* postNewVictim(action) {
         yield console.log('postNewVictim clicked submit', action.payload);
         let createNewVictim = yield call(axios.post, '/api/victim', action.payload)
         yield alert(`confirmation number ${createNewVictim.data.id}`);
+        yield put({
+            type: 'CLEAR_FORM'
+        })
     } catch (error) {
         console.log('error in POST new victim', error)
     }
