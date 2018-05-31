@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Typography } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
+import { Button, Typography } from '@material-ui/core';
 
 const style = {
     container: {
@@ -16,14 +15,12 @@ const style = {
 class FormButton extends Component {
     render() {
         return (
-            <div>
-                <Card style={style}>
-                    <Button onClick={this.props.handleSubmit}>
-                        <Typography variant="headline">
-                            {this.props.text}
-                        </Typography>
-                    </Button>
-                </Card>
+            <div style={style.container}>
+                <Button style={style.submitButton} onClick={this.props.handleSubmit}>
+                    <Typography variant="headline" style={{ color: '#F5F5F5' }}>
+                        {this.props.text}
+                    </Typography>
+                </Button>
             </div>
         )
     }

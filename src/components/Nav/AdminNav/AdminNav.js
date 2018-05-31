@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import classNames from 'classnames';
-import { Manager, Target, Popper } from 'react-popper';
-import Paper from '@material-ui/core/Paper';
-import Drawer from '@material-ui/core/Drawer';
-import { List, ListItem } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
+import { AppBar, Toolbar, Typography, Button, Drawer, Grid } from '@material-ui/core';
 
 import Logout from '../../Logout/Logout';
 import Header from '../../Header/Header';
@@ -65,32 +56,38 @@ class AdminNav extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="fixed" color="primary" className={classes.appBar}>
-          <Toolbar >
-            <Header />
-            <Typography variant="display1" color="inherit" className={classes.flex} style={{paddingLeft: '20px'}}>
-              Data Management System
-            </Typography>
-            <br />
-            <Button>
-              <Link to="/adminlandingpage" style={{ color: "white", textDecoration: 'none' }}>
-                Home
-              </Link>
-            </Button>
-            <Logout />
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-        <div className={classes.toolbar} />
-          <ReportingNav />
-          <AdminToolsNav />
-          <AdminDataEntryNav />
-        </Drawer>
+        <Grid container >
+          <Grid item xs={3} sm={6} lg={12}>
+            <AppBar position="fixed" color="primary" className={classes.appBar}>
+              <Toolbar >
+                <Header />
+                <Typography variant="display1" color="inherit" className={classes.flex} style={{ paddingLeft: '20px' }}>
+                  Data Management System
+                  </Typography>
+                <br />
+                <Button>
+                  <Link to="/adminlandingpage" style={{ color: "white", textDecoration: 'none' }}>
+                    Home
+                    </Link>
+                </Button>
+                <Logout />
+              </Toolbar>
+            </AppBar>
+          </Grid>
+          <Grid item xs={3} sm={3}>
+            <Drawer
+              variant="permanent"
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              <div className={classes.toolbar} />
+              <ReportingNav />
+              <AdminToolsNav />
+              <AdminDataEntryNav />
+            </Drawer>
+          </Grid>
+        </Grid>
       </div>
     )
   }

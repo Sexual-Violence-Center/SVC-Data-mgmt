@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Homeless from './DemographicOtherComponents/Homeless';
+import LimitedEnglish from './DemographicOtherComponents/LimitedEnglish';
+import Veteran from './DemographicOtherComponents/Veteran';
 
 const mapStateToProps = state => ({
     state
@@ -17,9 +20,8 @@ class DemographicOther extends Component {
 
     handleChangeFor = event => {
         const target = event.target;
-        const value = target.type === ('checkbox') ? target.checked :
-                      target.type === ('radio') ? target.checked  : 
-                      target.value;
+        const value = target.type === ('checkbox') ? target.checked:
+                                                     target.value;
         const name = target.name;
     
         this.setState({
@@ -35,12 +37,9 @@ class DemographicOther extends Component {
         return (
             <div>
                 <h3>Other</h3>
-                <input type="checkbox" name="homeless" value={this.state.homeless} onChange={this.handleChangeFor}/><label htmlFor="homeless">Currently Homeless</label>
-                <br />
-                <input type="checkbox" name="limited_english" value={this.state.limited_english} onChange={this.handleChangeFor}/><label htmlFor="limited_english">Limited English Proficiency</label>
-                <br />
-                <input type="checkbox" name="veteran" value={this.state.veteran} onChange={this.handleChangeFor}/><label htmlFor="veteran">U.S. Veteran</label>
-                <br />
+                <Homeless handleChangeFor={this.handleChangeFor}/>
+                <LimitedEnglish handleChangeFor={this.handleChangeFor}/>
+                <Veteran handleChangeFor={this.handleChangeFor}/>
             </div>
         )
     }

@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from '@material-ui/core';
+import { Card, Grid } from '@material-ui/core';
+import CrisisCounseling from './PhoneServicesComponents/CrisisCounseling';
+import InformationReferral from './PhoneServicesComponents/InformationReferral';
+import CriminalJustice from './PhoneServicesComponents/CriminalJustice';
+import OtherEmergency from './PhoneServicesComponents/OtherEmergency';
+import FinancialEmergency from './PhoneServicesComponents/FinancialEmergency';
+import ReparationsClaims from './PhoneServicesComponents/ReparationsClaims';
+
 
 const mapStateToProps = state => ({
     state
@@ -43,20 +50,29 @@ class PhoneServices extends Component {
         return (
             <div className="phoneServices">
                 <Card style={style}>
-                    <h2>Telephone Services</h2>
-                    <div className="telephoneChoices">
+                    <div>
+                        <h2>Telephone Services</h2>
                         <p>(check all that apply)</p>
-                        <input type="checkbox" id="crisis_counseling" name="crisis_counseling" value={this.state.crisis_counseling} onChange={this.handleChangeFor} /><label htmlFor="crisis_counseling">Crisis Counseling</label>
-                        <br />
-                        <input type="checkbox" id="information_referral" name="information_referral" value={this.state.information_referral} onChange={this.handleChangeFor} /><label htmlFor="information_referral">Info and/or referral(including appointments/intakes for service</label>
-                        <br />
-                        <input type="checkbox" id="information_criminal_justice" name="information_criminal_justice" value={this.state.information_criminal_justice} onChange={this.handleChangeFor} /><label htmlFor="information_criminal_justice">Information about the criminal justice process</label>
-                        <br />
-                        <input type="checkbox" id="other_emergency_justice" name="other_emergency_justice" value={this.state.other_emergency_justice} onChange={this.handleChangeFor} /><label htmlFor="other_emergency_justice">Other emergency justice-related assistance</label>
-                        <br />
-                        <input type="checkbox" id="emergency_financial" name="emergency_financial" value={this.state.emergency_financial} onChange={this.handleChangeFor} /><label htmlFor="emergency_financial">Emergency Financial Assistance</label>
-                        <br />
-                        <input type="checkbox" id="reparations_claims" name="reparations_claims" value={this.state.reparations_claims} onChange={this.handleChangeFor} /><label htmlFor="reparations_claims">Reparations Claims Assistance</label>
+                        <Grid container direction="column" justify="center" alignItems="flex-start">
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CrisisCounseling handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <InformationReferral handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CriminalJustice handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <OtherEmergency handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <FinancialEmergency handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <ReparationsClaims handleChangeFor={this.handleChangeFor} />
+                            </Grid>
+                        </Grid>
                     </div>
                 </Card>
             </div>

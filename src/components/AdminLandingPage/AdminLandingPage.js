@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AdminNav from "../Nav/AdminNav/AdminNav";
-import PropTypes from 'prop-types';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { withStyles } from '@material-ui/core/styles';
 import { Card, Paper, Typography, Divider } from '@material-ui/core';
 import { teal, grey } from '@material-ui/core/colors';
 

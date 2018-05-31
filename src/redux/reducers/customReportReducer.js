@@ -1,7 +1,7 @@
-const defaultState = {}
+const defaultState = {};
 
 const CustomReportReducer = (state = defaultState, action) => {
-  console.log("action", action.payload);
+  // console.log("action", action.payload);
   switch (action.type) {
     case "CUSTOM_REPORT":
       return action.payload;
