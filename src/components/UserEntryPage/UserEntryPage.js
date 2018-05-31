@@ -139,37 +139,30 @@ class UserEntryPage extends Component {
                 </Typography>
               </Card>
             {this.renderAlert()}
-              <form>
+              <Card style={{margin: "10px"}}>
                 <h2>Add a new user:</h2>
-                <div>
-                  <label htmlFor="username">
-                    Username:
-                    <input
-                      type="text"
-                      name="username"
-                      value={this.state.username}
-                      onChange={this.handleInputChangeFor('username')}
-                    />
+                  Username:
+                  <input
+                    type="text"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleInputChangeFor('username')}
+                  />
+                  <br />
+                  Password:
+                  <input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChangeFor('password')}
+                  />
+                  
+                  <label>
+                    User type:
                   </label>
-                </div>
-                <div>
-                  <label htmlFor="password">
-                    Password:
-                    <input
-                      type="password"
-                      name="password"
-                      value={this.state.password}
-                      onChange={this.handleInputChangeFor('password')}
-                    />
-                  </label>
-                  </div>
-                  </form>
-                <label>
-                  User type:
-                </label>
-              <form
-                value={this.state.user_type}
-                      onChange={this.handleInputChangeFor('user_type')}>
+                  <form
+                  value={this.state.user_type}
+                        onChange={this.handleInputChangeFor('user_type')}>
                     <input
                       type="radio"
                       id="user_type_admin"
@@ -182,22 +175,25 @@ class UserEntryPage extends Component {
                       name="user_type"
                       value={false}/>
                       <label htmlFor="user_type_standard">Standard</label>
+                    <div>
+                      <button
+                        name="submit"
+                        onClick={this.registerUser}
+                      >
+                      Submit</button>
+                    </div>
+                </form>
+              </Card>
+              <Card>
                 <div>
-                  <button
-                    name="submit"
-                    onClick={this.registerUser}
-                  >
-                  Submit</button>
+                  <h3>Current users:</h3>
                 </div>
-              </form>
-            <div>
-              <h3>Current users:</h3>
-            </div>
-            <div>
+                <div>
 
-              { userEntryPageList }
-            
-            </div>
+                  { userEntryPageList }
+                
+                </div>
+            </Card>
             </Paper>
           </Grid>
         </Grid>
