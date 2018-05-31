@@ -106,56 +106,36 @@ class LoginPage extends Component {
             <Grid item xs={12} sm={4}>
               <Paper className={classes.paper}>
                 <div>
-                  {/* <form className="loginForm" onSubmit={this.login}> */}
-                    <Card className={classes.titleCard}>
-                      <Typography variant="display1" style={{ textAlign: 'center', color: grey[50] }}>Login</Typography>
-                    </Card>
-                    <Card className={classes.card}>
-                      <div>
-                        <TextField
-                          name="username"
-                          label="Username"
-                          className={classes.textField}
-                          type="text"
-                          margin="normal"
-                          value={this.state.username}
-                          onChange={this.handleInputChangeFor('username')}
-                        />
-                        {/* <label htmlFor="username">
-                          Username:
-                      <input
-                            type="text"
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.handleInputChangeFor('username')}
-                          />
-                        </label> */}
-                      </div>
-                      <div>
+                  <Card className={classes.titleCard}>
+                    <Typography variant="display1" style={{ textAlign: 'center', color: grey[50] }}>Login</Typography>
+                  </Card>
+                  <Card className={classes.card}>
+                    <div>
                       <TextField
-                          name="password"
-                          label="Password"
-                          className={classes.textField}
-                          type="password"
-                          margin="normal"
-                          value={this.state.password}
-                          onChange={this.handleInputChangeFor('password')}
-                        />
-                        {/* <label htmlFor="password">
-                          Password:
-                      <input
-                            type="password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleInputChangeFor('password')}
-                          />
-                        </label> */}
-                      </div>
-                      <div style={{float: 'right'}}>
-                        <Button variant="raised" onClick={this.login}>Log In</Button>
-                      </div>
-                    </Card>
-                  {/* </form> */}
+                        name="username"
+                        label="Username"
+                        className={classes.textField}
+                        type="text"
+                        margin="normal"
+                        value={this.state.username}
+                        onChange={this.handleInputChangeFor('username')}
+                      />
+                    </div>
+                    <div>
+                      <TextField
+                        name="password"
+                        label="Password"
+                        className={classes.textField}
+                        type="password"
+                        margin="normal"
+                        value={this.state.password}
+                        onChange={this.handleInputChangeFor('password')}
+                      />
+                    </div>
+                    <div style={{ float: 'right' }}>
+                      <Button variant="raised" onClick={this.login}>Log In</Button>
+                    </div>
+                  </Card>
                 </div>
               </Paper>
             </Grid>
