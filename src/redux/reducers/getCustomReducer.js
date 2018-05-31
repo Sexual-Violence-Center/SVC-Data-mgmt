@@ -12,6 +12,8 @@ const CustomReportInputReducer = (state = initialState, action) => {
         //     return { ...state, ...action.payload };
         case 'UPDATE_SELECTED_ITEM':
             return { ...state, selectedItem: [...state.selectedItem, action.payload.selectedItem[0].value] };
+        case 'DELETE_SELECTED_ITEM':
+            return { ...state, selectedItem: [...state.selectedItem] };
         case 'UPDATE_START_DATE':
             return { ...state, startDate: action.payload.startDate };
         case 'UPDATE_END_DATE':
