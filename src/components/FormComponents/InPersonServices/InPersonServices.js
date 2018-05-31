@@ -39,20 +39,18 @@ class InPersonServices extends Component {
     }
 
     static getDerivedStateFromProps = (props, state) => {
-        if (props.state.updateFormReducer) {
-            const { updateFormReducer } = props.state
-            Object.keys(updateFormReducer).forEach(key => {
-                if (updateFormReducer[key] === null) {
-                    updateFormReducer[key] = undefined;
-                }
-                return null;
-            })
-            
-            return updateFormReducer;
+        if (props.dispatchTo === "UPDATE_THE_FORM") {
+          const { updateFormReducer } = props.state;
+          Object.keys(updateFormReducer).forEach(key => {
+            if (updateFormReducer[key] === null) {
+              updateFormReducer[key] = undefined;
+            }
+            return null;
+          });
+          return updateFormReducer;
         } else {
-            return state;
+          return state;
         }
-
     }
 
     handleChangeFor = event => {
@@ -78,7 +76,7 @@ class InPersonServices extends Component {
                         <h2>In-Person Services</h2>
                         <Grid container direction="column" justify="center" alignItems="flex-start">
                             <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <CrisisCounseling handleChangeFor={this.handleChangeFor} />
+                                <CrisisCounseling handleChangeFor={this.handleChangeFor} crisis_counseling_individual={this.state.crisis_counseling_individual} crisis_counseling_group={this.state.crisis_counseling_group}/>
                             </Grid>
                             <Grid  item xs={12} sm={12} md={12} lg={12} xl={12}>
                                 <CriminalJusticeProcess handleChangeFor={this.handleChangeFor} />

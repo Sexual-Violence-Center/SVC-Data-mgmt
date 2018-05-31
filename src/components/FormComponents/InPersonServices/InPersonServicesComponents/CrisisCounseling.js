@@ -11,6 +11,17 @@ class CrisisCounseling extends Component {
             checked2: false
         }
     }
+
+    static getDerivedStateFromProps(props, state){
+        console.log(props);
+        if(props.crisis_counseling_individual != undefined){
+            return {...state, checked1: props.crisis_counseling_individual};
+        } else if(props.crisis_counseling_group != undefined){
+            return{...state, checked2: props.crisis_counseling_group}
+        } else {
+            return null;
+        }
+    }
     // Once one of the checkboxes is checked, look for the name and tell InPersonServices which
     // one has been clicked and set it's value to whichever boolean corresponds to it's checked status
     handleChecked = name => (event) => {
@@ -25,7 +36,7 @@ class CrisisCounseling extends Component {
                 <br />
                 <br />
                 <Checkbox
-                    checked={this.state.checked}
+                    checked={this.state.checked1}
                     onChange={this.handleChecked('crisis_counseling_individual')}
                     name="crisis_counseling_individual"
                     value={`${!this.state.checked1}`}
@@ -34,7 +45,7 @@ class CrisisCounseling extends Component {
                     One-to-One Counseling
                 </label>
                 <Checkbox
-                    checked={this.state.checked}
+                    checked={this.state.checked2}
                     onChange={this.handleChecked('crisis_counseling_group')}
                     name="crisis_counseling_group"
                     value={`${!this.state.checked2}`}
