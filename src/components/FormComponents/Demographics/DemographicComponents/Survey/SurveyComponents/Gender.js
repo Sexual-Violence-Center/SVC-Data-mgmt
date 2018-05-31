@@ -15,7 +15,7 @@ class Gender extends Component {
     constructor() {
         super();
         this.state = {
-            name: ''
+            gender: ''
         }
     }
 
@@ -32,7 +32,7 @@ class Gender extends Component {
                                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="victim_gender">Gender</InputLabel>
                     <Select
-                        value={this.state.name}
+                        value={this.state.gender}
                         onChange={this.handleChange}
                         className={classes.textField}
                         inputProps={{
@@ -46,6 +46,8 @@ class Gender extends Component {
                         <MenuItem style={{width: '100%'}} value="Non-Binary">Non-Binary</MenuItem>
                         <Divider />
                         <MenuItem style={{width: '100%'}} value="Other">Other</MenuItem>
+                        <Divider />
+                        <MenuItem style={{width: '100%'}} value="Not Reported">Not Reported</MenuItem>
                     </Select>
                 </FormControl>
             </div>
