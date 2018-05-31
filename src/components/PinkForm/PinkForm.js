@@ -63,7 +63,7 @@ class PinkForm extends Component {
         <div style={{ float: "right", marginRight: "40px" }}>
           {DataEntryNav}
           <Grid container spacing={40}>
-            <Grid item xs={6} sm={6} md={3}>
+            <Grid item xs={6} sm={6} md={3} lg={3}>
             </Grid>
             <Grid item xs={6} sm={6} md={9} lg={9} xl={12}>
               <Paper style={style.paper}>

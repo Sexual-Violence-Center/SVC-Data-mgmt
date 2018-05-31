@@ -86,43 +86,43 @@ class ContactInfo extends Component {
                     <div>
                         <h2>Contact Info</h2>
                         <Grid container direction="row" justify="flex-start" alignItems="center" spacing={0}>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <AdvocateName handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <CurrentDate handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={66}>
                                 <StartTime handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <EndTime handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <ContactDate handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <ServiceLocation handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <County handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <ClientNumber handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <ZipCode handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <TypeOfVictim handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <HearAboutSVC handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={3}>
+                            <Grid item xs={12} sm={12} md={9} lg={9}>
                                 <PriorContact handleChangeFor={this.handleChangeFor} />
                             </Grid>
-                            <Grid item xs={12} sm={12} md={9} lg={3}>
+                            <Grid item xs={12} sm={12} md={9} lg={9}>
                                 <PriorToOctContact handleChangeFor={this.handleChangeFor} />
                             </Grid>
                         </Grid>
