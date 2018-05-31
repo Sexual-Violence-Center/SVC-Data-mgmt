@@ -14,18 +14,18 @@ class ReportingNav extends Component {
             Reporting
           </Typography>
           <ListItem button>
+            <Link to="/county_report" className="navButton">
+              County
+              </Link>
+          </ListItem>
+          <ListItem button>
             <Link to="/custom_report" className="navButton">
-              Custom Report
+              Custom
               </Link>
           </ListItem>
           <ListItem button>
             <Link to="/federal_report" className="navButton">
-              Federal Report
-              </Link>
-          </ListItem>
-          <ListItem button>
-            <Link to="/county_report" className="navButton">
-              County Report
+              Federal
               </Link>
           </ListItem>
         </List>

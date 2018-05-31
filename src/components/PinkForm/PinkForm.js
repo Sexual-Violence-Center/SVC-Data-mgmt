@@ -12,7 +12,7 @@ import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import FormButton from '../FormComponents/FormButton/FormButton';
 
-import { Paper, Typography, Card } from '@material-ui/core';
+import { Paper, Typography, Card, Grid } from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -58,23 +58,47 @@ class PinkForm extends Component {
     } else if (this.props.state.user.userInfo === false) {
       DataEntryNav = <UserNav />;
     }
-    return <div style={{ float: "right", marginRight: "80px" }}>
-      {DataEntryNav}
-      <Paper style={style.paper}>
-        <Card style={{ margin: "10px" }}>
-          <Typography variant="display1" style={style.title}>
-            Telephone Contact Form for Primary AND Secondary Victims
-            </Typography>
-        </Card>
-        <TelephoneContactInfo dispatchTo={"ENTRY_FORM_DATA"} />
-        <PhoneServices dispatchTo={"ENTRY_FORM_DATA"} />
-        <Support dispatchTo={"ENTRY_FORM_DATA"} />
-        <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
-        <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
-        <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
-        <FormButton handleSubmit={this.handleSubmit} text={'Submit'} />
-      </Paper>
-    </div>;
+    return (
+      <div>
+        <div style={{ float: "right", marginRight: "40px" }}>
+          {DataEntryNav}
+          <Grid container spacing={40}>
+            <Grid item xs={6} sm={6} md={12}>
+            </Grid>
+            <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
+              <Paper style={style.paper}>
+                <Card style={{ margin: "10px" }}>
+                  <Typography variant="display1" style={style.title}>
+                    Telephone Contact Form for Primary AND Secondary Victims
+                </Typography>
+                </Card>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <TelephoneContactInfo dispatchTo={"ENTRY_FORM_DATA"} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <PhoneServices dispatchTo={"ENTRY_FORM_DATA"} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Support dispatchTo={"ENTRY_FORM_DATA"} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <UnmetNeeds dispatchTo={"ENTRY_FORM_DATA"} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <FormButton handleSubmit={this.handleSubmit} text={'Submit'} />
+                </Grid>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+    );
   }
 }
 
