@@ -30,22 +30,7 @@ router.get('/users', (req, res) => {
   }
 });
 
-// Handles POST request with new user data
-// The only thing different from this and every other post we've seen
-// is that the password gets encrypted before being inserted
-//TODO: this is the standard project file--we should comment this out or delete it before deployment
-// router.post('/register', (req, res, next) => {
-//   const username = req.body.username;
-//   const password = encryptLib.encryptPassword(req.body.password);
-//   const queryText = 'INSERT INTO person (username, password) VALUES ($1, $2) RETURNING id';
-//   pool.query(queryText, [username, password])
-//     .then(() => { res.sendStatus(201); })
-//     .catch((err) => { next(err); });
-// });
-
 //Handles POST request for Admin to create a new user from the UserEntryPage
-//TODO: the standard register route (above) shoud be disabled when development reaches
-//the stage where we no longer need the flexibility of having the standard registration process
 router.post('/register/new', (req, res, next) => {
   console.log('In admin-only backend post route for adding new user on UserEntryPage:', req.user);
   if(req.isAuthenticated() && req.user.user_type === true) {
