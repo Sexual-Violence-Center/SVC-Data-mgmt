@@ -18,10 +18,6 @@ const mapStateToProps = state => ({
     userInput: state.userInput
 });
 
-// this.setState({
-//     : state.updateFormReducer
-//   });
-
 
  class UpdateForm extends Component{
      state={
@@ -33,21 +29,21 @@ const mapStateToProps = state => ({
      handleSubmit = () =>{
          this.props.dispatch({
              type: 'UPDATE_FORM',
-             payload: this.state
+             payload: this.props.state.updateFormReducer
          })
      }
 
      componentDidMount(){
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
      }
-     static getDerivedStateFromProps=(props, state)=>{
-        if(props.state.updateFormReducer){
-            return props.state.updateFormReducer;
-        }else {
-            return null;
-        }    
+    //  static getDerivedStateFromProps=(props, state)=>{
+    //     if(props.state.updateFormReducer){
+    //         return props.state.updateFormReducer;
+    //     }else {
+    //         return null;
+    //     }    
         
-    }
+    // }
     delete = () => {
         console.log('in delete', this.props.state.updateFormReducer.id )
         this.props.dispatch({
@@ -57,20 +53,6 @@ const mapStateToProps = state => ({
     }
      render() {
          
-         
-        // return(<div>
-        //     <div>
-        //      <button onClick={this.delete}>Delete</button>
-        //      </div>
-        //     <InPersonContactInfo />
-        //     <InpersonServices />
-        //     <PhoneServices />
-        //     <Support />
-        //     <UnmetNeeds />
-        //     <Referrals />
-        //     <Demographics />
-        //     </div>)
-
         return <div>
             <div>
              <button onClick={this.delete}>Delete</button>
