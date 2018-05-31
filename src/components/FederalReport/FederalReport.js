@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
 });
 const style = {
     title: {
-        backgroundColor: 'teal',
+        backgroundColor: '#00acb0',
         textAlign: 'center',
         color: 'white', 
         padding: '10px',
