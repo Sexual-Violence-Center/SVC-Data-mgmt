@@ -53,7 +53,7 @@ class CountyDate extends Component{
         return (
             <div className="federalReport">
             <AdminNav />
-            <div style={{float: "right"}}>
+            <div>
             <h2>County Report:</h2>
                 Start Date:
                 <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
@@ -67,7 +67,7 @@ class CountyDate extends Component{
                 <option value="Carver">Carver</option>
                 <option value="Other">Other</option>
                 </select>
-                <button onClick={this.submit}>go</button>  
+                <button onClick={this.submit}>Submit</button>  
                 <button onClick={this.print}>Print</button>
             </div>
             </div>

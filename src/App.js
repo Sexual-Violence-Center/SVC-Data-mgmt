@@ -28,10 +28,10 @@ import { teal, grey } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[400],
+      main: teal[300],
     },
     secondary: {
-      main: grey[600]
+      main: grey[300]
     },
   }
 });

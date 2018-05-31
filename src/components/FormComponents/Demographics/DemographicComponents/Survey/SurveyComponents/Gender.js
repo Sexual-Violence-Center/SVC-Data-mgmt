@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { TextField } from '@material-ui/core';
+import { MenuItem, InputLabel, Select, FormControl, Divider, } from '@material-ui/core';
 
 const styles = theme => ({
     textField: {
@@ -15,7 +15,7 @@ class Gender extends Component {
     constructor() {
         super();
         this.state = {
-            name: ''
+            gender: ''
         }
     }
 
@@ -29,15 +29,27 @@ class Gender extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <TextField
-                    name="victim_gender"
-                    label="Gender"
-                    className={classes.textField}
-                    type="text"
-                    margin="normal"
-                    value={this.props.victim_gender}
-                    onChange={this.handleChange}
-                />
+                                <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="victim_gender">Gender</InputLabel>
+                    <Select
+                        value={this.state.gender}
+                        onChange={this.handleChange}
+                        className={classes.textField}
+                        inputProps={{
+                            name: 'victim_gender',
+                            id: 'victim_gender',
+                        }}>
+                        <MenuItem style={{width: '100%'}} value="Male">Male</MenuItem>
+                        <Divider />
+                        <MenuItem style={{width: '100%'}} value="Female">Female</MenuItem>
+                        <Divider />
+                        <MenuItem style={{width: '100%'}} value="Non-Binary">Non-Binary</MenuItem>
+                        <Divider />
+                        <MenuItem style={{width: '100%'}} value="Other">Other</MenuItem>
+                        <Divider />
+                        <MenuItem style={{width: '100%'}} value="Not Reported">Not Reported</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
         )
     }
