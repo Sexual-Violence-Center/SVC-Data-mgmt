@@ -47,6 +47,12 @@ class customReportSelectionPage extends Component {
         selectedItem: [],
     }
 
+    componentDidMount = () => {
+        this.props.dispatch({
+            type: 'CUSTOM_REPORT_PAGE_LOADED'
+        })
+    }
+
     handleChangeForStartDate = (event) => {
         const value = event.target.value;
         this.setState({
