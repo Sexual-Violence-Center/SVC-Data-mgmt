@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
-import { Card, Grid} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
+import { Paper, Typography, Card, Button, Grid } from '@material-ui/core';
+import CalendarModal from "../../Modal/calendar.modal"
 
 const styles = theme => ({
     container: {
@@ -45,12 +46,48 @@ class CountyDate extends Component{
         }
     }
 
+    handleChangeFor = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        }); 
+       
+    }
+    submit = () => {
+        console.log(this.state);
+        if (this.state.startDate === '' || this.state.endDate === '') {
+            console.log('no date', this.props.startDate);
+
+            this.setState({
+                isOpen: true
+            });
+        } else {
+            this.props.dispatch({
+                type: 'GET_PERSON_DATA_COUNTY', 
+                payload: this.state
+            })
+        }
+    }
+
+    print = () => {
+        console.log('print button clicked');
+        window.print();
+    }
+
     componentDidMount () {
-        
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
         console.log(this.props.state.getCountyReducer)
     }
-    
+
+    closeModel = () => {
+        this.setState({
+            isOpen: false
+        });
+    }
+
     render () {
         return (
             <div className="federalReport">
@@ -96,9 +133,14 @@ class CountyDate extends Component{
                 <button onClick={this.print}>Print</button>
             </Grid>
             </div>
+
+            {this.state.isOpen === true && <CalendarModal
+                handleClose={this.closeModel} />
+            }
             </div>
 
         )
     }
 }
+
 export default connect(mapStateToProps)(CountyDate);
