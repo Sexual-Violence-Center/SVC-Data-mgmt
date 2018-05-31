@@ -77,10 +77,6 @@ class NewVictimsCounty extends Component{
                         <td>Total Clients Served in Group Counseling Program</td>
                         <td>{this.props.state.getCountyReducer.total_clients_group_counseling}</td>
                     </tr>
-                    <tr>
-                        <td>Location of Service</td>
-                        <td><input type="text" name="service_location" value={this.state.service_location} onChange={this.handleChangeFor}/></td>
-                    </tr>
                     </tbody>
                 </table>
             </section>
