@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import keycode from 'keycode';
+import Modal from '@material-ui/core/Modal';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import AdminNav from '../Nav/AdminNav/AdminNav';
@@ -28,8 +29,10 @@ import VictimTypeCustom from './CustomReportComponents/VitcimTypeCustom';
 import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';   
 import TypesOfVictimizationCustom from './CustomReportComponents/TypesOfVictimizationCustom';
 import ZipCodeCustom from './CustomReportComponents/ZipCustom';
+import LocationCustom from './CustomReportComponents/LocationCustomReport';
 
 import renderSuggestion from './StandardFunctionsForChips/renderSuggestion';
+import CalendarModal from '../Modal/calendar.modal'
 
 import '../../styles/main.css'
 
@@ -43,8 +46,8 @@ class customReportSelectionPage extends Component {
         startDate: '',
         endDate: '',
         querySelector: null,
-        // inputValue: '',
         selectedItem: [],
+        isOpen: false
     }
 
     componentDidMount = () => {
@@ -76,16 +79,16 @@ class customReportSelectionPage extends Component {
         })
     }
 
-    handleChangeForQuerySelector = (event) => {
-        const value = event.target.value;
-        this.setState({
-            querySelector: value
-        });
-        this.props.dispatch({
-            type: 'UPDATE_QUERY_SELECTOR',
-            payload: { querySelector: value }
-        })
-    }
+    // handleChangeForQuerySelector = (event) => {
+    //     const value = event.target.value;
+    //     this.setState({
+    //         querySelector: value
+    //     });
+    //     this.props.dispatch({
+    //         type: 'UPDATE_QUERY_SELECTOR',
+    //         payload: { querySelector: value }
+    //     })
+    // }
 
     handleDelete = (item) => () => {
         const selectedItem = [...this.props.state.CustomReportInputReducer.selectedItem];
@@ -101,18 +104,29 @@ class customReportSelectionPage extends Component {
     };
 
     submitCustomReport = (event) => {
-        event.preventDefault();
-        // console.log('clicked submit Submit Custom Report', this.props.state.CustomReportReducer);
-        this.props.dispatch({
-            type: 'SUBMIT_CUSTOM_REQUEST',
-            payload: {
-                ...this.props.state.CustomReportInputReducer
-            }
-        })
-        this.props.history.push("/custom_report_output");
-
+        event.preventDefault();        
+        if (this.state.startDate === '' || this.state.endDate === '') {
+            this.setState({
+                isOpen: true
+            });
+        } else {
+            this.props.dispatch({
+                type: 'SUBMIT_CUSTOM_REQUEST',
+                payload: {
+                    ...this.props.state.CustomReportInputReducer
+                }
+            })
+            this.props.history.push("/custom_report_output");
         }
+        console.log(this.state)
+    }
 
+    closeModel = () => {
+        this.setState({
+            isOpen: false
+        });
+    }
+ 
     render() {
     
 // Custom report options will only display if user is logged in as administrator
@@ -146,7 +160,6 @@ class customReportSelectionPage extends Component {
                     </select> */}
                 <input type="submit" />
               </form>
-
               <div className="customReportSpecificTopic" style={{ margin: "auto", maxWidth: '400px' }
                   //, marginRight: "500px"
                 }>
@@ -166,6 +179,7 @@ class customReportSelectionPage extends Component {
                 <RaceEthnicityCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <SexualOrientationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <SpecialClassificationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+                <LocationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <SupportOnCallCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <TransgenderedCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <TransortationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
@@ -175,6 +189,10 @@ class customReportSelectionPage extends Component {
                 <ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
               </div>
             </div>
+            
+            {this.state.isOpen === true && <CalendarModal
+                handleClose={this.closeModel} />
+            }
           </div>; //end return
 
     } //end render
