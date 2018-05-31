@@ -4,11 +4,10 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
-
 import Button from '@material-ui/core/Button';
 import { Paper, Typography, Card, Grid, Table, TableBody, TableCell, TableHead, TableRow, withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
-
+import { teal, grey, white } from '@material-ui/core/colors';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -41,18 +40,17 @@ const styles = theme => ({
 });
 
 const style = {
-  title: {
-      backgroundColor: '#FFF9C4',
-      textAlign: 'center',
-      color: '#616161',
-      padding: '10px',
+  titleCard: {
+    color: white,
+    backgroundColor: teal[300],
+    padding: '20px',
+    margin: '10px'
   },
   paper: {
-      backgroundColor: '#FFFDE7',
-      padding: '10px'
+    padding: '10px',
+    backgroundColor: grey[300]
   }
 }
-
 class UserEntryPage extends Component {
   constructor(props) {
     super(props);
@@ -162,7 +160,7 @@ class UserEntryPage extends Component {
           <Grid item xs={6} sm={3}></Grid>
           <Grid item xs={6} sm={8}>
             <Paper style={style.paper}>
-              <Card style={{margin: "10px"}}>
+              <Card style={style.titleCard}>
                 <Typography variant="display1"
                 style={style.title}>
                 User Entry Page
@@ -187,9 +185,9 @@ class UserEntryPage extends Component {
                     onChange={this.handleInputChangeFor('password')}
                   />
                   <br />
-                  <label>
+                  <h4>
                     User type:
-                  </label>
+                  </h4>
                   <form
                   value={this.state.user_type}
                         onChange={this.handleInputChangeFor('user_type')}>
@@ -205,6 +203,7 @@ class UserEntryPage extends Component {
                       name="user_type"
                       value={false}/>
                       <label htmlFor="user_type_standard">Standard</label>
+                      <br /><br />
                     <div>
                       <Button
                         name="submit"
@@ -242,9 +241,7 @@ class UserEntryPage extends Component {
     return (
     
     <div>
-
      {content}
-
     </div>
     )
   }
