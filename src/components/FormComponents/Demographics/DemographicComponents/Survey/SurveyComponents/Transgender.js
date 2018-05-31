@@ -37,6 +37,7 @@ class Transgender extends Component {
                     <Select
                         value={this.state.name}
                         onChange={this.handleChange}
+                        className={classes.textField}
                         inputProps={{
                             name: 'victim_transgender',
                             id: 'victim_transgender',
