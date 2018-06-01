@@ -72,15 +72,15 @@ class PoliceReport extends Component {
               id: "police_report_filed"
             }}
           >
-            <MenuItem style={{ width: "100%" }} value="yes">
+            <MenuItem style={{ width: "100%" }} value={true}>
               Yes
             </MenuItem>
             <Divider />
-            <MenuItem style={{ width: "100%" }} value="no">
+            <MenuItem style={{ width: "100%" }} value={false}>
               No
             </MenuItem>
             <Divider />
-            <MenuItem style={{ width: "100%" }} value="unknown">
+            <MenuItem style={{ width: "100%" }} value={undefined}>
               Unknown
             </MenuItem>
           </Select>
