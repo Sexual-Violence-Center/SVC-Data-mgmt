@@ -109,7 +109,8 @@ class FederalReport extends Component {
     render() {
         return (
             <div>
-                <div style={{  float: "right", marginRight: "40px"}}>
+                <div style={{  float: "right", marginRight: "350px"}}>
+                <AdminNav />
                     <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
                         <Grid item item xs={3} sm={3} md={3}>
                         </Grid>

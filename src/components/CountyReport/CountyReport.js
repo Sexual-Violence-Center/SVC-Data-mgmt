@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 });
 const style = {
     title: {
-        backgroundColor: 'teal',
+        backgroundColor: '#00acb0',
         textAlign: 'center',
         color: 'white', 
         padding: '10px',
@@ -99,10 +99,29 @@ class CountyReport extends Component{
     }
 
     render () {
+        // //
+        // return (
+        //     // <AdminNav />
+        //     <div style= {{float: "right", marginRight: "350px"
+        //       //   position: 'absolute',
+        //         //   top: `${top}%`,
+        //         //   left: `${left}%`,
+        //         //   transform: `translate(-${top}%, -${left}%)`,
+        //     }} 
+        //     >
+        //     <Paper style={style.paper}>
+        //       <Card style={{ margin: "10px"}}>
+        //         <Typography variant="display1" style={style.title}>
+        //         County Report
+        //         </Typography>
+        //       </Card>
+        // //
         return (
+
            <div>
-                <div style= {{float: "right", marginRight: "40px"}}>
-                    <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
+                <div style= {{float: "right", marginRight: "350px"}}>
+                <AdminNav />
+                    <Grid container direction="row" justify="space-around" alignItems="center" spacing={40}>
                         <Grid item item xs={3} sm={3} md={3}>
                         </Grid>
                         <Grid item xs={8} sm={8} md={9} lg={9} xl={12}>
