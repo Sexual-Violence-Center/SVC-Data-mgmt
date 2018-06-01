@@ -87,10 +87,10 @@ class UpdateForm extends Component {
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'right',
+                    horizontal: 'left',
                 }}
                 open={this.props.updateFormAlertReducer.isOpen}
-                autoHideDuration={2000}
+                autoHideDuration={5000}
                 onClose={this.handleClose}
                 ContentProps={{
                     'aria-describedby': 'message-id',
