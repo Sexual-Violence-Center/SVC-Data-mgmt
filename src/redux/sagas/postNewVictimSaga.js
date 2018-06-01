@@ -13,11 +13,15 @@ function* postNewVictim(action) {
             }
         })
         let createNewVictim = yield call(axios.post, '/api/victim', payload);
-
-        yield alert(`confirmation number ${createNewVictim.data.id}`);
+        yield console.log('postNewVictim', createNewVictim.data.id);
+        // yield alert(`confirmation number ${createNewVictim.data.id}`);
         yield put({
-            type: 'CLEAR_FORM'
+            type: 'DISPLAY_VICTIM_ID_NUMBER',
+            payload: createNewVictim.data.id
         })
+        // yield put({
+        //     type: 'CLEAR_FORM'
+        // })
 
     } catch (error) {
         console.log('error in POST new victim', error)

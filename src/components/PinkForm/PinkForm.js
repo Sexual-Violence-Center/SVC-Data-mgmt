@@ -12,7 +12,9 @@ import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import FormButton from '../FormComponents/FormButton/FormButton';
 
-import { Paper, Typography, Card, Grid } from '@material-ui/core';
+import SubmitDialog from '../FormComponents/SubmitDialog/SubmitDialog';
+
+import { Paper, Typography, Card, Grid, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -36,15 +38,15 @@ class PinkForm extends Component {
   constructor() {
     super();
     this.state = {
-      contact_type: "telephone"
+      contact_type: "telephone", 
     };
   }
   handleSubmit = () => {
     console.log(this.props.state.EntryFormReducer);
-    this.props.dispatch({
-      type: "ADD_NEW_VICTIM",
-      payload: { ...this.state, ...this.props.state.EntryFormReducer }
-    });
+    // this.props.dispatch({
+    //   type: "ADD_NEW_VICTIM",
+    //   payload: { ...this.state, ...this.props.state.EntryFormReducer }
+    // });
   };
 
   componentDidMount() {
@@ -91,7 +93,7 @@ class PinkForm extends Component {
                   <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <FormButton handleSubmit={this.handleSubmit} text={'Submit'} />
+                <SubmitDialog handleSubmit={this.handleSubmit} text={'Submit'} />
                 </Grid>
               </Paper>
             </Grid>
