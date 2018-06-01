@@ -6,14 +6,14 @@ import axios from 'axios';
 function* postNewVictim(action) {
     try {
          let payload = action.payload;
-        yield console.log('postNewVictim clicked submit', action.payload);
+        // yield console.log('postNewVictim clicked submit', action.payload);
         yield Object.keys(payload).map(key=>{
             if(payload[key]===""){
                 payload[key]=null;
             }
         })
         let createNewVictim = yield call(axios.post, '/api/victim', payload);
-        yield console.log('postNewVictim', createNewVictim.data.id);
+        // yield console.log('postNewVictim', createNewVictim.data.id);
         // yield alert(`confirmation number ${createNewVictim.data.id}`);
         yield put({
             type: 'DISPLAY_VICTIM_ID_NUMBER',
