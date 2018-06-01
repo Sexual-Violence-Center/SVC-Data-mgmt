@@ -18,9 +18,6 @@ const styles = theme => ({
 class TypeOfVictim extends Component {
     constructor() {
         super();
-        this.state = {
-            name: ''
-        }
     }
 
 
