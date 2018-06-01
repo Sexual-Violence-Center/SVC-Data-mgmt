@@ -26,7 +26,8 @@ const makeQuery = toInsert => {
   queryText += `) RETURNING *;`;
   // returns the queryText and values as part of an object
   //pool.query(queryText.queryText, queryText.values)
-  console.log(queryText);
+  console.log('queryText ', queryText);
+  console.log('values ', values);
   return { queryText: queryText, values: values };
 };
 

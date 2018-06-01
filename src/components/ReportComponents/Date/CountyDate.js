@@ -3,9 +3,31 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
-import { Paper, Typography, Card, Button } from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
+import { Paper, Typography, Card, Button, Grid } from '@material-ui/core';
 import CalendarModal from "../../Modal/calendar.modal"
 
+// const styles = theme => ({
+//     container: {
+//         display: 'flex',
+//         flexWrap: 'wrap',
+//     },
+//     textField: {
+//         marginLeft: theme.spacing.unit,
+//         marginRight: theme.spacing.unit,
+//         width: 200,
+//     },
+//     menu: {
+//         width: 200,
+//     },
+//     formControl: {
+//         margin: theme.spacing.unit,
+//         minWidth: 120,
+//     },
+//     group: {
+//         margin: `${theme.spacing.unit}px 0`,
+//     },
+// });
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -72,20 +94,24 @@ class CountyDate extends Component{
             <AdminNav />
             <div>
             <h2>County Report:</h2>
-                Start Date:
-                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
-                End Date:
-                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
-                County:
-                <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
-                <option>Select One</option>
-                <option value="Hennepin">Hennepin</option>
-                <option value="Scott">Scott</option>
-                <option value="Carver">Carver</option>
-                <option value="Other">Other</option>
-                </select>
+            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
+                <Grid item xs={12} sm={12} md={6} lg={6}>
+                    Start Date:
+                    <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
+                    End Date:
+                    <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
+                    County:
+                    <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
+                    <option>Select One</option>
+                    <option value="Hennepin">Hennepin</option>
+                    <option value="Scott">Scott</option>
+                    <option value="Carver">Carver</option>
+                    <option value="Other">Other</option>
+                    </select>
+                </Grid>
                 <button onClick={this.submit}>Submit</button>  
                 <button onClick={this.print}>Print</button>
+            </Grid>
             </div>
 
             {this.state.isOpen === true && <CalendarModal

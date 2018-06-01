@@ -4,11 +4,6 @@ import { Checkbox } from '@material-ui/core';
 class AbusedChildFamily extends Component {
     constructor() {
         super();
-        //state will be for determining which checkbox has been checked.
-        // if false, don't show as checked, true is checked.
-        this.state = {
-            checked: false,
-        }
     }
     // Once one of the checkboxes is checked, look for the name and tell InPersonServices which
     // one has been clicked and set it's value to whichever boolean corresponds to it's checked status
@@ -21,10 +16,10 @@ class AbusedChildFamily extends Component {
         return (
             <div>
                 <Checkbox
-                    checked={this.state.checked}
+                    checked={this.props.violence_adult_when_child_by_family}
                     onChange={this.handleChecked('violence_adult_when_child_by_family')}
                     name="violence_adult_when_child_by_family"
-                    value={`${!this.state.checked1}`}
+                    value={`${!this.props.violence_adult_when_child_by_family}`}
                 />
                 <label>
                 Adult abused as child - family

@@ -5,23 +5,20 @@ import axios from 'axios';
 // return new ID number which will be written on the paper form
 function* postNewVictim(action) {
     try {
-         let payload = action.payload;
-        // yield console.log('postNewVictim clicked submit', action.payload);
-        yield Object.keys(payload).map(key=>{
-            if(payload[key]===""){
-                payload[key]=null;
+        let payload = action.payload;
+        yield Object.keys(payload).map(key => {
+            if (payload[key] === "") {
+                payload[key] = null;
             }
         })
         let createNewVictim = yield call(axios.post, '/api/victim', payload);
-        // yield console.log('postNewVictim', createNewVictim.data.id);
-        // yield alert(`confirmation number ${createNewVictim.data.id}`);
         yield put({
             type: 'DISPLAY_VICTIM_ID_NUMBER',
             payload: createNewVictim.data.id
         })
-        // yield put({
-        //     type: 'CLEAR_FORM'
-        // })
+        yield put({
+            type: 'CLEAR_FORM'
+        })
 
     } catch (error) {
         console.log('error in POST new victim', error)

@@ -14,36 +14,28 @@ const styles = theme => ({
 class OtherViolence extends Component {
     constructor() {
         super();
-        //state will be for determining which checkbox has been checked.
-        // if false, don't show as checked, true is checked.
-        this.state = {
-            checked: false,
-            specify: ''
-        }
     }
     // Once one of the checkboxes is checked, look for the name and tell InPersonServices which
     // one has been clicked and set it's value to whichever boolean corresponds to it's checked status
     handleChecked = name => (event) => {
-        this.setState({ checked: event.target.checked })
         this.props.handleChangeFor(event)
     }
 
     handleChange = (event) => {
-        this.setState({ specify: event.target.value })
         this.props.handleChangeFor(event)
     }
     render() {
         const { classes } = this.props;
 
         let specify;
-        if (this.state.checked) {
+        if (this.props.violence_other) {
             specify = <div><TextField
                 name="violence_other_specify"
                 label="specify"
                 className={classes.textField}
                 type="text"
                 margin="normal"
-                value={this.state.violence_other_specify}
+                value={this.props.violence_other_specify}
                 onChange={this.handleChange}
             /></div>
         }
@@ -51,10 +43,10 @@ class OtherViolence extends Component {
             <div>
                 <br />
                 <Checkbox
-                    checked={this.state.checked}
+                    checked={this.props.violence_other}
                     onChange={this.handleChecked('violence_other')}
                     name="violence_other"
-                    value={`${!this.state.checked1}`}
+                    value={`${!this.props.violence_other}`}
                 />
                 <label>
                     Other

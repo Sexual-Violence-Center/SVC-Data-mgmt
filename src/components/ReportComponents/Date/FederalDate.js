@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
-import { Paper, Typography, Card, Button } from '@material-ui/core';
+import { Paper, Typography, Card, Button, TextField  } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
 
 
 const mapStateToProps = state => ({
@@ -56,10 +58,36 @@ class FederalDate extends Component {
                 <AdminNav />
                 <h2> Select a date range for the Federal Report:</h2>
                 
-                Start Date:
-                    <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
-                    End Date:
-                    <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
+                <div style={{float: "left", padding: "10px"}}>
+                <TextField
+                    name="startDate"
+                    label=" Start Date"
+                    className={this.props.textField}
+                    type="date"
+                    margin="normal"
+                    value={this.state.startDate}
+                    onChange={this.handleChangeFor}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                </div>
+                <div style={{float: "left", padding: "10px"}}>
+                <TextField
+                    name="endDate"
+                    label=" End Date"
+                    className={this.props.textField}
+                    type="date"
+                    margin="normal"
+                    value={this.state.endDate}
+                    onChange={this.handleChangeFor}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                </div>
+                <br />
+                    {/* <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/> */}
                 
                     <button onClick={this.submit}>Submit</button>  
                     <button onClick={this.print}>Print</button>
