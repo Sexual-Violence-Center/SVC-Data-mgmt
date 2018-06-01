@@ -9,7 +9,7 @@ import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
 import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
-import FormButton from '../FormComponents/FormButton/FormButton';
+import SubmitDialog from '../FormComponents/SubmitDialog/SubmitDialog';
 
 
 import { Paper, Typography, Card, Grid } from '@material-ui/core';
@@ -91,7 +91,7 @@ class YellowForm extends Component {
                                     <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                    <FormButton handleSubmit={this.handleSubmit} text={"Submit"} />
+                                <SubmitDialog handleSubmit={this.handleSubmit} text={'Submit'} />
                                 </Grid>
                             </Paper>
                         </Grid>
