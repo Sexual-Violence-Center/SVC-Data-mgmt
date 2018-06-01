@@ -163,16 +163,6 @@ class CountyReport extends Component{
                                 <CountyVictimization />
                                     </Grid>
                                     </Card>
-                                    {/* <Card style={{margin: "10px", padding: "20px" }}>
-                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                    <EmotionalSupport />
-                                    </Grid>
-                                    </Card>
-                                    <Card style={{margin: "10px", padding: "20px" }}>
-                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                    <CriminalCivilJusticeSystemAssistance />
-                                </Grid>
-                                </Card> */}
                             </Paper>
                             <Grid item xs={1} sm={1}>
                             </Grid>
@@ -185,9 +175,11 @@ class CountyReport extends Component{
     }
 }
             
-            
+CountyReport.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps)(CountyReport);
+export default connect(mapStateToProps)(withStyles(styles)(CountyReport));
 
 //  {/* {/* <h2>County Report:</h2>
 //                 Start Date:
