@@ -89,7 +89,7 @@ class UpdateForm extends Component {
                     vertical: 'bottom',
                     horizontal: 'right',
                 }}
-                open={this.props.updateFormAlertReducer}
+                open={this.props.updateFormAlertReducer.isOpen}
                 autoHideDuration={2000}
                 onClose={this.handleClose}
                 ContentProps={{
