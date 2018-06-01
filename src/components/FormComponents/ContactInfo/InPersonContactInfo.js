@@ -66,6 +66,20 @@ class ContactInfo extends Component {
         
     }
 
+    onClick = () => {
+        this.setState({
+        advocate_name: "Blake",
+        date_entered: "2018-06-05",
+        start_time: "13:00",
+        end_time: "13:30",
+        contact_date: "2018-05-01",
+        service_location: "HCMC",
+        service_county: "Hennepin",
+        victim_zipcode: "55425",
+        victim_type: "adultPrimaryVictim",
+      })
+    }
+
     static getDerivedStateFromProps(props, state){
         if (!props.state.EntryFormReducer) {
           return intialState;
@@ -101,14 +115,16 @@ class ContactInfo extends Component {
             <Card style={{ padding: "20px", margin: "10px" }}>
               <div>
                 <h2>Contact Info</h2>
-                <Grid container direction="row" justify="flex-start" alignItems="center" spacing={0}>
+                <Grid container direction="row" justify="flex-start" alignItems="center" spacing={0}
+                onClick={this.onClick}
+                >
                   <Grid item xs={12} sm={12} md={6} lg={6}>
                     <AdvocateName handleChangeFor={this.handleChangeFor} advocate_name={this.state.advocate_name} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={6} lg={6}>
                     <CurrentDate handleChangeFor={this.handleChangeFor} date_entered={this.state.date_entered} />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={66}>
+                  <Grid item xs={12} sm={12} md={6} lg={6}>
                     <StartTime handleChangeFor={this.handleChangeFor} start_time={this.state.start_time} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={6} lg={6}>
