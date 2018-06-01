@@ -109,11 +109,11 @@ class FederalReport extends Component {
     render() {
         return (
             <div>
-                <div style={{  float: "right", marginRight: "350px"}}>
+                <div style={{  float: "right", marginRight: "40px"}}>
                     <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
-                        <Grid item item xs={6} sm={3} md={3}>
+                        <Grid item item xs={3} sm={3} md={3}>
                         </Grid>
-                        <Grid item xs={6} sm={6} md={9} lg={9} xl={12}>
+                        <Grid item xs={8} sm={8} md={9} lg={9} xl={12}>
                             <Paper style={style.paper}>
                                 <Card style={{ margin: "10px"}}>
                                     <Typography variant="display1" style={style.title}>
@@ -187,6 +187,8 @@ class FederalReport extends Component {
                                 </Grid>
                                 </Card>
                             </Paper>
+                            <Grid item xs={1} sm={1}>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </div> 
