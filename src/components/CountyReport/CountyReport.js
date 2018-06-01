@@ -17,15 +17,32 @@ import CountyGender from '../ReportComponents/Gender/CountyGender';
 import CountyEthnicity from '../ReportComponents/Ethnicity/CountyEthnicity';
 import CountyVictimization from '../ReportComponents/Victimization/CountyVicitimization';
 import CountyLocationType from '../ReportComponents/CountyLocation';
+import { teal, grey } from '@material-ui/core/colors';
 
 const mapStateToProps = state => ({
     user: state.user,
     county: state.getCountyReducer,
     state
 });
-const style = {
+// const style = {
+//     titleCard: {
+//       color: grey[50],
+//       backgroundColor: teal[300],
+//       padding: '20px',
+//       margin: '10px',
+//       color: 'white'
+//     },
+//     title: {
+//       color: grey[50],
+//     },
+//     paper: {
+//       padding: '10px',
+//       backgroundColor: grey[300]
+//     }
+//   }
+  const style = {
     title: {
-        backgroundColor: '#00acb0',
+        backgroundColor:  teal[300],
         textAlign: 'center',
         color: 'white', 
         padding: '10px',
@@ -33,7 +50,7 @@ const style = {
         // position: 'abosolute',
     },
     paper:{
-        backgroundColor: 'lightgray', 
+        backgroundColor: grey[300], 
         padding: '10px',
         // margin: '50px',
         
@@ -79,8 +96,8 @@ class CountyReport extends Component{
         this.setState({
           [name]: value
         }); 
-       
     }
+
     submit = () => {
         this.props.dispatch({
             type: 'GET_PERSON_DATA_COUNTY', 
@@ -99,29 +116,13 @@ class CountyReport extends Component{
     }
 
     render () {
-        // //
-        // return (
-        //     // <AdminNav />
-        //     <div style= {{float: "right", marginRight: "350px"
-        //       //   position: 'absolute',
-        //         //   top: `${top}%`,
-        //         //   left: `${left}%`,
-        //         //   transform: `translate(-${top}%, -${left}%)`,
-        //     }} 
-        //     >
-        //     <Paper style={style.paper}>
-        //       <Card style={{ margin: "10px"}}>
-        //         <Typography variant="display1" style={style.title}>
-        //         County Report
-        //         </Typography>
-        //       </Card>
-        // //
+      
         return (
 
            <div>
-                <div style= {{float: "right", marginRight: "350px"}}>
+                <div style= {{ flex: .5, margin: "auto", textAlign: "center" }}>
                 <AdminNav />
-                    <Grid container direction="row" justify="space-around" alignItems="center" spacing={40}>
+                    <Grid container direction="row" justify="absolute" alignItems="center" spacing={40}>
                         <Grid item item xs={3} sm={3} md={3}>
                         </Grid>
                         <Grid item xs={8} sm={8} md={9} lg={9} xl={12}>
@@ -131,6 +132,11 @@ class CountyReport extends Component{
                                         County Report
                                     </Typography>
                                 </Card>
+                                <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyDate />
+                                    </Grid>
+                                    </Card>
                                 <Card style={{margin: "10px", padding: "20px" }}>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                 <HennepinResidents />

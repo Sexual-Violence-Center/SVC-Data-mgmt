@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Modal from '@material-ui/core/Modal';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
 
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import CustomAge from './CustomReportComponents/AgeCustomReport';
@@ -30,9 +31,13 @@ import UnmetNeedsCustom from './CustomReportComponents/UnmetNeedsCustom';
 import TypesOfVictimizationCustom from './CustomReportComponents/TypesOfVictimizationCustom';
 import ZipCodeCustom from './CustomReportComponents/ZipCustom';
 import LocationCustom from './CustomReportComponents/LocationCustomReport';
+import DateCustom from './CustomReportComponents/DateCustom';
+
 
 import renderSuggestion from './StandardFunctionsForChips/renderSuggestion';
 import CalendarModal from '../Modal/calendar.modal'
+import { teal, grey } from '@material-ui/core/colors';
+
 
 import '../../styles/main.css'
 
@@ -40,6 +45,45 @@ const mapStateToProps = state => ({
     user: state.user,
     state,
 });
+const style = {
+    title: {
+        backgroundColor:  teal[300],
+        textAlign: 'center',
+        color: 'white', 
+        padding: '10px',
+        
+        // position: 'abosolute',
+    },
+    paper:{
+        backgroundColor: grey[300], 
+        padding: '10px',
+        // margin: '50px',
+        
+    }
+}
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+    menu: {
+        width: 200,
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+    group: {
+        margin: `${theme.spacing.unit}px 0`,
+    },
+});
+
+
 
 class customReportSelectionPage extends Component {
     state = {
@@ -103,23 +147,23 @@ class customReportSelectionPage extends Component {
         })
     };
 
-    submitCustomReport = (event) => {
-        event.preventDefault();        
-        if (this.state.startDate === '' || this.state.endDate === '') {
-            this.setState({
-                isOpen: true
-            });
-        } else {
-            this.props.dispatch({
-                type: 'SUBMIT_CUSTOM_REQUEST',
-                payload: {
-                    ...this.props.state.CustomReportInputReducer
-                }
-            })
-            this.props.history.push("/custom_report_output");
-        }
-        console.log(this.state)
-    }
+    // submitCustomReport = (event) => {
+    //     event.preventDefault();        
+    //     if (this.state.startDate === '' || this.state.endDate === '') {
+    //         this.setState({
+    //             isOpen: true
+    //         });
+    //     } else {
+    //         this.props.dispatch({
+    //             type: 'SUBMIT_CUSTOM_REQUEST',
+    //             payload: {
+    //                 ...this.props.state.CustomReportInputReducer
+    //             }
+    //         })
+    //         this.props.history.push("/custom_report_output");
+    //     }
+    //     console.log(this.state)
+    // }
 
     closeModel = () => {
         this.setState({
@@ -139,30 +183,60 @@ class customReportSelectionPage extends Component {
 
         return <div>
             <AdminNav />
-            <div style={{ flex: .5, margin: "auto", textAlign: "center" }}>
-              <h2> Custom Report Page </h2>
-              <form onSubmit={this.submitCustomReport}>
-                Start Date:
-                <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeForStartDate} />
-                End Date:
-                <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeForEndDate} />
-                <br />
-                {/* TODO: the form is to allow users "AND" or "OR" comparisions for custom reports */}
-                {/* <input type="radio" name="querySelector" value = 'and' onChange={this.handleChangeForQuerySelector}/> 
-                        <label>AND</label>
-                        <input type="radio" name="querySelector" value='or' onChange={this.handleChangeForQuerySelector}/> 
-                        <label>OR</label>
-                        <input type="radio" name="querySelector" value='null' onChange={this.handleChangeForQuerySelector}/> 
-                        <label>Neither</label>
-                    <br/> */}
-                {/* <select className="customReportTopics" multiple>
-                        {individualTopic}
-                    </select> */}
-                <input type="submit" />
+            <div style={{ flex: .5, margin: "20px", marginLeft: "200px", textAlign: "center" }}>
+           {/* <Card > */}
+              
+              <Paper style={style.paper}>
+              {/* <Card style={{ margin: "10px"}}>
+                                    <Typography variant="display1" style={style.title}>
+                                        Custom Report
+                                    </Typography>
+                                </Card>
+              <Card style={{margin: "10px", padding: "20px"}}>
+                    <form onSubmit={this.submitCustomReport}>
+                        <div style={{float: "left", padding: "10px"}}>
+              
+                            <TextField
+                                  name="startDate"
+                                label=" Start Date"
+                                className={this.props.textField}
+                                type="date"
+                                margin="normal"
+                                value={this.state.startDate}
+                                onChange={this.handleChangeFor}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}/>
+                        </div>
+                        <div style={{float: "left", padding: "10px"}}>
+                            <TextField
+                                name="endDate"
+                                label=" End Date"
+                                className={this.props.textField}
+                                type="date"
+                                margin="normal"
+                                value={this.state.endDate}
+                                onChange={this.handleChangeFor}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}/>
+                            </div> */}
+                {/* <br />
+                <Button
+                        name="submit"
+                        variant="flat"
+                        color="primary"
+                        onClick={this.submitCustomReport}
+                      >
+                      Submit</Button>
               </form>
-              <div className="customReportSpecificTopic" style={{ margin: "auto", maxWidth: '400px' }
+              </Card> */}
+              {/* <Card style={{margin: "10px", padding: "20px"}}> */}
+              <div className="customReportSpecificTopic" style={{ margin: "auto"  }
                   //, marginRight: "500px"
                 }>
+                <DateCustom />
+                <Card style={{margin: "10px", padding: "20px"}}>
                 <CustomAge handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <CustomContactType handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <CustomDisability handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
@@ -187,7 +261,10 @@ class customReportSelectionPage extends Component {
                 <UnmetNeedsCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <TypesOfVictimizationCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                 <ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
+              
+              </Card>
               </div>
+              </Paper>
             </div>
             
             {this.state.isOpen === true && <CalendarModal

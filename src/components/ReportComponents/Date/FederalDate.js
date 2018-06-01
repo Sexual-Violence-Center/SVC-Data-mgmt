@@ -58,7 +58,7 @@ class FederalDate extends Component {
                 <AdminNav />
                 <h2> Select a date range for the Federal Report:</h2>
                 
-                <div style={{float: "left", padding: "10px"}}>
+                <div style={{align: "center", float: "left", padding: "10px"}}>
                 <TextField
                     name="startDate"
                     label=" Start Date"
@@ -72,7 +72,7 @@ class FederalDate extends Component {
                     }}
                 />
                 </div>
-                <div style={{float: "left", padding: "10px"}}>
+                <div style={{align: "center", float: "left", padding: "10px"}}>
                 <TextField
                     name="endDate"
                     label=" End Date"
@@ -87,10 +87,23 @@ class FederalDate extends Component {
                 />
                 </div>
                 <br />
-                    {/* <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/> */}
-                
-                    <button onClick={this.submit}>Submit</button>  
-                    <button onClick={this.print}>Print</button>
+                <br />
+                <div>
+                <Button
+                        name="submit"
+                        variant="flat"
+                        color="primary"
+                        onClick={this.submit}
+                      >
+                      Submit</Button>
+                      <Button
+                        name="submit"
+                        variant="flat"
+                        color="primary"
+                        onClick={this.print}
+                      >
+                      Print</Button>
+                </div>
             </div>
         );
     }
