@@ -14,14 +14,9 @@ const styles = theme => ({
 class CurrentDate extends Component {
     constructor() {
         super();
-        this.state = {
-            name: ''
-        }
     }
 
-
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 

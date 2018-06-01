@@ -14,14 +14,11 @@ const styles = theme => ({
 class AdvocateName extends Component {
     constructor() {
         super();
-        this.state = {
-            name: ''
-        }
     }
 
 
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
+        //this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 
