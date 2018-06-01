@@ -17,29 +17,20 @@ class UsedServicesBefore extends Component {
 
     render() {
 
-        return (
-            <div className="usedSinceOctContainer">
-                <label><strong>6. Has the victim/survivor used this type of in-person service since October 1, 2017?</strong></label>
-                <br />
-                <br />
-                <Radio
-                    checked={this.state.radio === "true"}
-                    onChange={this.handleChange}
-                    value="true"
-                    name="in_person_services_received_prior_oct"
-                    aria-label="Yes"
-                />
-                Yes
-                <Radio
-                    checked={this.state.radio === "false"}
-                    onChange={this.handleChange}
-                    value="false"
-                    name="in_person_services_received_prior_oct"
-                    aria-label="No"
-                />
-                No
-            </div>
-        )
+        return <div className="usedSinceOctContainer">
+            <label>
+              <strong>
+                6. Has the victim/survivor used this type of in-person
+                service since October 1, 2017?
+              </strong>
+            </label>
+            <br />
+            <br />
+            <Radio checked={`${this.props.in_person_services_received_prior_oct}` === "true"} onChange={this.handleChange} value="true" name="in_person_services_received_prior_oct" aria-label="Yes" />
+            Yes
+            <Radio checked={`${this.props.in_person_services_received_prior_oct}` === "false"} onChange={this.handleChange} value="false" name="in_person_services_received_prior_oct" aria-label="No" />
+            No
+          </div>;
     }
 }
 
