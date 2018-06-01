@@ -25,7 +25,6 @@ class TypeOfVictim extends Component {
 
 
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 
@@ -36,7 +35,7 @@ class TypeOfVictim extends Component {
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="victim_type">Type of Victim/Survivor</InputLabel>
                     <Select
-                        value={this.state.name}
+                        value={this.props.victim_type}
                         onChange={this.handleChange}
                         className={classes.textField}
                         inputProps={{
