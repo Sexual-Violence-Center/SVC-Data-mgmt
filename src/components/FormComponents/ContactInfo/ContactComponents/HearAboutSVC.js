@@ -13,14 +13,10 @@ const styles = theme => ({
 class HearAboutSVC extends Component {
     constructor() {
         super();
-        this.state = {
-            name: ''
-        }
     }
 
 
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 

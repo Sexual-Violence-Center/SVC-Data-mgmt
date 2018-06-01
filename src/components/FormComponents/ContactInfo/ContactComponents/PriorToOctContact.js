@@ -4,13 +4,9 @@ import { Radio } from '@material-ui/core';
 class PriorToOctContact extends Component {
     constructor() {
         super();
-        this.state = {
-            radio: ''
-        }
     }
 
     handleRadio = (event) => {
-        this.setState({ radio: event.target.value });
         this.props.handleChangeFor(event);
     }
 
