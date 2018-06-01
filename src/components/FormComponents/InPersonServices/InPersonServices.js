@@ -12,29 +12,33 @@ const mapStateToProps = state => ({
     state
 });
 
+const initialState = {
+  crisis_counseling_individual: false,
+  crisis_counseling_group: false,
+  legal_law_enforcement_interview: false,
+  legal_prosecution_related: false,
+  legal_court_advocacy: false,
+  legal_ofp_hro: false,
+  legal_immigration: false,
+  legal_intervention: false,
+  medical_exam_support: false,
+  transportation_medical_exam_support: '',
+  medical_accompaniment_medical: false,
+  transportation_medical_accompaniment_medical: '',
+  medical_accompaniment_dental: false,
+  transportation_medical_accompaniment_dental: '',
+  information_referral: false,
+  safe_at_home: false,
+  emergency_financial: false,
+  reparations_claims: false,
+  in_person_services_received_prior_oct: ""
+};
+
 class InPersonServices extends Component {
     constructor() {
         super();
         this.state = {
-            crisis_counseling_individual: undefined,
-            crisis_counseling_group: undefined,
-            legal_law_enforcement_interview: undefined,
-            legal_prosecution_related: undefined,
-            legal_court_advocacy: undefined,
-            legal_ofp_hro: undefined,
-            legal_immigration: undefined,
-            legal_intervention: undefined,
-            medical_exam_support: undefined,
-            transportation_medical_exam_support: undefined,
-            medical_accompaniment_medical: undefined,
-            transportation_medical_accompaniment_medical: undefined,
-            medical_accompaniment_dental: undefined,
-            transportation_medical_accompaniment_dental: undefined,
-            information_referral: undefined,
-            safe_at_home: undefined,
-            emergency_financial: undefined,
-            reparations_claims: undefined,
-            in_person_services_received_prior_oct: undefined,
+          ...initialState
         }
     }
 
@@ -49,6 +53,8 @@ class InPersonServices extends Component {
           });
           console.log(updateFormReducer);
           return updateFormReducer;
+        } else if (!props.state.EntryFormReducer) {
+          return initialState;
         } else {
           return state;
         }
@@ -85,21 +91,13 @@ class InPersonServices extends Component {
                     <CivilLegalProcess handleChangeFor={this.handleChangeFor} legal_ofp_hro={this.state.legal_ofp_hro} legal_immigration={this.state.legal_immigration} legal_intervention={this.state.legal_intervention} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <MedicalAdvocacy 
-                        handleChangeFor={this.handleChangeFor} 
-                        transportation_medical_exam_support={this.state.transportation_medical_exam_support} 
-                        transportation_medical_accompaniment_dental={this.state.transportation_medical_accompaniment_dental} 
-                        transportation_medical_accompaniment_medical={this.state.transportation_medical_accompaniment_medical}
-                        medical_exam_support={this.state.medical_exam_support}
-                        medical_accompaniment_medical={this.state.medical_accompaniment_medical}
-                        medical_accompaniment_dental={this.state.medical_accompaniment_dental}
-                        />
+                    <MedicalAdvocacy handleChangeFor={this.handleChangeFor} transportation_medical_exam_support={this.state.transportation_medical_exam_support} transportation_medical_accompaniment_dental={this.state.transportation_medical_accompaniment_dental} transportation_medical_accompaniment_medical={this.state.transportation_medical_accompaniment_medical} medical_exam_support={this.state.medical_exam_support} medical_accompaniment_medical={this.state.medical_accompaniment_medical} medical_accompaniment_dental={this.state.medical_accompaniment_dental} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <OtherAdvocacy handleChangeFor={this.handleChangeFor} />
+                    <OtherAdvocacy handleChangeFor={this.handleChangeFor} information_referral={this.state.information_referral} safe_at_home={this.state.safe_at_home} emergency_financial={this.state.emergency_financial} reparations_claims={this.state.reparations_claims} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <UsedServicesBefore handleChangeFor={this.handleChangeFor} />
+                    <UsedServicesBefore handleChangeFor={this.handleChangeFor} in_person_services_received_prior_oct ={this.state.in_person_services_received_prior_oct}/>
                   </Grid>
                 </Grid>
               </div>

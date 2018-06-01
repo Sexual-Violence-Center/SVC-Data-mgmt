@@ -21,38 +21,38 @@ class County extends Component {
 
 
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
+
         this.props.handleChangeFor(event);
     }
 
     render() {
         const { classes } = this.props;
-        return (
-            <div>
-                <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="service_county">County</InputLabel>
-                    <Select
-                        value={this.state.name}
-                        onChange={this.handleChange}
-                        inputProps={{
-                            name: 'service_county',
-                            id: 'service_county',
-                        }}>
-                        <MenuItem style={{width: '100%'}} value="">
-                            <em>Select One</em>
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem style={{width: '100%'}} value="Hennepin">Hennepin</MenuItem>
-                        <Divider />
-                        <MenuItem style={{width: '100%'}} value="Scott">Scott</MenuItem>
-                        <Divider />
-                        <MenuItem style={{width: '100%'}} value="Carver">Carver</MenuItem>
-                        <Divider />
-                        <MenuItem style={{width: '100%'}} value="Other">Other</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-        )
+        return <div>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="service_county">County</InputLabel>
+              <Select value={this.props.service_county} onChange={this.handleChange} inputProps={{ name: "service_county", id: "service_county" }}>
+                <MenuItem style={{ width: "100%" }} value="">
+                  <em>Select One</em>
+                </MenuItem>
+                <Divider />
+                <MenuItem style={{ width: "100%" }} value="Hennepin">
+                  Hennepin
+                </MenuItem>
+                <Divider />
+                <MenuItem style={{ width: "100%" }} value="Scott">
+                  Scott
+                </MenuItem>
+                <Divider />
+                <MenuItem style={{ width: "100%" }} value="Carver">
+                  Carver
+                </MenuItem>
+                <Divider />
+                <MenuItem style={{ width: "100%" }} value="Other">
+                  Other
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </div>;
     }
 }
 
