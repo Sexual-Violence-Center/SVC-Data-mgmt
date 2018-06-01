@@ -9,6 +9,7 @@ import getCountyReducer from './getCountyReducer';
 import updateFormReducer from './updateFormReducer';
 import CustomReportInputReducer from './getCustomReducer';
 import CustomReportReducer from './customReportReducer';
+import updateFormAlertReducer from './updateFormAlertReducer'
 
 
 const store = combineReducers({
@@ -22,6 +23,7 @@ const store = combineReducers({
   updateFormReducer,
   CustomReportInputReducer,
   CustomReportReducer,
+  updateFormAlertReducer,
 });
 
 export default store;

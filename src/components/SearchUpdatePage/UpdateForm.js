@@ -11,12 +11,16 @@ import InpersonServices from '../FormComponents/InPersonServices/InPersonService
 import UnmetNeeds from '../FormComponents/UnmetNeeds/UnmetNeeds';
 import Referrals from '../FormComponents/Referrals/Referrals';
 import FormButton from '../FormComponents/FormButton/FormButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const mapStateToProps = state => ({
     user: state.user,
     state,
     form: state.updateFormReducer,
-    userInput: state.userInput
+    userInput: state.userInput,
+    updateFormAlertReducer: state.updateFormAlertReducer
 });
 
 
@@ -33,6 +37,13 @@ class UpdateForm extends Component {
             payload: this.props.state.updateFormReducer
         })
     }
+
+    handleClose = (event, reason) => {
+        this.props.dispatch({
+            type: 'CLOSE_UPDATE_SNACKBAR',
+            payload: { isOpen: false }
+        })
+    };
 
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -72,6 +83,30 @@ class UpdateForm extends Component {
                     </div>
                 </div>
             </Card>
+
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                open={this.props.updateFormAlertReducer}
+                autoHideDuration={2000}
+                onClose={this.handleClose}
+                ContentProps={{
+                    'aria-describedby': 'message-id',
+                }}
+                message={<span id="message-id">Update Successful</span>}
+                action={[
+                    <IconButton
+                        key="close"
+                        aria-label="Close"
+                        color="inherit"
+                        onClick={this.handleClose}
+                    >
+                        <CloseIcon />
+                    </IconButton>,
+                ]}
+            />
         </div>;
     }
 }
