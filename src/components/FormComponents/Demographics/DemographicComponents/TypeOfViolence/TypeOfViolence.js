@@ -24,25 +24,25 @@ const mapStateToProps = state => ({
 });
 
 const initialState = {
-  violence_adult_sexual: undefined,
-  violence_adult_when_child_by_family: undefined,
-  violence_adult_when_child_by_other: undefined,
-  violence_bullying: undefined,
-  violence_child_pornography: undefined,
-  violence_domestic: undefined,
-  violence_elder: undefined,
-  violence_exposing: undefined,
-  violence_internet: undefined,
-  violence_minor_by_family: undefined,
-  violence_minor_by_other: undefined,
-  violence_phone: undefined,
-  violence_exploitation_trafficking: undefined,
-  violence_harassment: undefined,
-  violence_stalking: undefined,
-  violence_teen_dating: undefined,
-  violence_other: undefined,
+  violence_adult_sexual: false,
+  violence_adult_when_child_by_family: false,
+  violence_adult_when_child_by_other: false,
+  violence_bullying: false,
+  violence_child_pornography: false,
+  violence_domestic: false,
+  violence_elder: false,
+  violence_exposing: false,
+  violence_internet: false,
+  violence_minor_by_family: false,
+  violence_minor_by_other: false,
+  violence_phone: false,
+  violence_exploitation_trafficking: false,
+  violence_harassment: false,
+  violence_stalking: false,
+  violence_teen_dating: false,
+  violence_other: false,
   violence_other_specify: "",
-  violence_unknown: undefined
+  violence_unknown: false
 };
 
 class TypeOfViolence extends Component {
@@ -88,29 +88,27 @@ class TypeOfViolence extends Component {
   };
 
   render() {
-    return (
-      <div>
+    return <div>
         <h3>Type of Sexual Violence</h3>
-        <AdultSexualAssault handleChangeFor={this.handleChangeFor} />
-        <AbusedChildFamily handleChangeFor={this.handleChangeFor} />
-        <AbusedChildOther handleChangeFor={this.handleChangeFor} />
-        <Bullying handleChangeFor={this.handleChangeFor} />
-        <ChildPornography handleChangeFor={this.handleChangeFor} />
-        <DomesticViolence handleChangeFor={this.handleChangeFor} />
-        <ElderAbuse handleChangeFor={this.handleChangeFor} />
-        <Exposing handleChangeFor={this.handleChangeFor} />
-        <InternetRelated handleChangeFor={this.handleChangeFor} />
-        <MinorCSAFamily handleChangeFor={this.handleChangeFor} />
-        <MinorCSAOther handleChangeFor={this.handleChangeFor} />
-        <ObsceneCall handleChangeFor={this.handleChangeFor} />
-        <Exploitation handleChangeFor={this.handleChangeFor} />
-        <Harassment handleChangeFor={this.handleChangeFor} />
-        <Stalking handleChangeFor={this.handleChangeFor} />
-        <TeenDating handleChangeFor={this.handleChangeFor} />
-        <OtherViolence handleChangeFor={this.handleChangeFor} />
-        <UnknownViolence handleChangeFor={this.handleChangeFor} />
-      </div>
-    );
+        <AdultSexualAssault handleChangeFor={this.handleChangeFor} violence_adult_sexual={this.state.violence_adult_sexual} />
+        <AbusedChildFamily handleChangeFor={this.handleChangeFor} violence_adult_when_child_by_family={this.state.violence_adult_when_child_by_family} />
+        <AbusedChildOther handleChangeFor={this.handleChangeFor} violence_adult_when_child_by_other={this.state.violence_adult_when_child_by_other} />
+        <Bullying handleChangeFor={this.handleChangeFor} violence_bullying={this.state.violence_bullying} />
+        <ChildPornography handleChangeFor={this.handleChangeFor} violence_child_pornography={this.state.violence_child_pornography} />
+        <DomesticViolence handleChangeFor={this.handleChangeFor} violence_domestic={this.state.violence_domestic} />
+        <ElderAbuse handleChangeFor={this.handleChangeFor} violence_elder={this.state.violence_elder} />
+        <Exposing handleChangeFor={this.handleChangeFor} violence_exposing={this.state.violence_exposing} />
+        <InternetRelated handleChangeFor={this.handleChangeFor} violence_internet={this.state.violence_internet} />
+        <MinorCSAFamily handleChangeFor={this.handleChangeFor} violence_minor_by_family={this.state.violence_minor_by_family} />
+        <MinorCSAOther handleChangeFor={this.handleChangeFor} violence_minor_by_other={this.state.violence_minor_by_other} />
+        <ObsceneCall handleChangeFor={this.handleChangeFor} violence_phone={this.state.violence_phone} />
+        <Exploitation handleChangeFor={this.handleChangeFor} violence_exploitation_trafficking={this.state.violence_exploitation_trafficking} />
+        <Harassment handleChangeFor={this.handleChangeFor} violence_harassment={this.state.violence_harassment} />
+        <Stalking handleChangeFor={this.handleChangeFor} violence_stalking={this.state.violence_stalking} />
+        <TeenDating handleChangeFor={this.handleChangeFor} violence_teen_dating={this.state.violence_teen_dating} />
+        <OtherViolence handleChangeFor={this.handleChangeFor} violence_other={this.state.violence_other} violence_other_specify={this.state.violence_other_specify} />
+        <UnknownViolence handleChangeFor={this.handleChangeFor} violence_unknown={this.state.violence_unknown} />
+      </div>;
   }
 }
 
