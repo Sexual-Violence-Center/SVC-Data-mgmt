@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
-import { Paper, Typography, Card, Button } from '@material-ui/core';
+import { Paper, Typography, Card, Button, } from '@material-ui/core';
 
 
 const mapStateToProps = state => ({
