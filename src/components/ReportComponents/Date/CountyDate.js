@@ -7,27 +7,27 @@ import {withStyles} from '@material-ui/core/styles';
 import { Paper, Typography, Card, Button, Grid } from '@material-ui/core';
 import CalendarModal from "../../Modal/calendar.modal"
 
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    menu: {
-        width: 200,
-    },
-    formControl: {
-        margin: theme.spacing.unit,
-        minWidth: 120,
-    },
-    group: {
-        margin: `${theme.spacing.unit}px 0`,
-    },
-});
+// const styles = theme => ({
+//     container: {
+//         display: 'flex',
+//         flexWrap: 'wrap',
+//     },
+//     textField: {
+//         marginLeft: theme.spacing.unit,
+//         marginRight: theme.spacing.unit,
+//         width: 200,
+//     },
+//     menu: {
+//         width: 200,
+//     },
+//     formControl: {
+//         margin: theme.spacing.unit,
+//         minWidth: 120,
+//     },
+//     group: {
+//         margin: `${theme.spacing.unit}px 0`,
+//     },
+// });
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -94,41 +94,21 @@ class CountyDate extends Component{
             <AdminNav />
             <div>
             <h2>County Report:</h2>
-            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={0}>
+            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
                 <Grid item xs={12} sm={12} md={6} lg={6}>
                     Start Date:
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     End Date:
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     County:
-                </Grid>
-                
                     <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
-                
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <option>Select One</option>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <option value="Hennepin">Hennepin</option>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <option value="Scott">Scott</option>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <option value="Carver">Carver</option>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <option value="Other">Other</option>
+                    </select>
                 </Grid>
-                </select>
                 <button onClick={this.submit}>Submit</button>  
                 <button onClick={this.print}>Print</button>
             </Grid>

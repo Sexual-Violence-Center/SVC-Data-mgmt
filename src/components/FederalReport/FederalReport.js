@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 //Style
-import { Paper, Typography, Card, Button, Grid } from '@material-ui/core';
+import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 //ReportComponents
 import FederalDate from '../ReportComponents/Date/FederalDate';
 import FederalTotalVictims from '../ReportComponents/Total/FederalTotalVictims';
@@ -44,6 +46,27 @@ const style = {
         
     }
 }
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+    menu: {
+        width: 200,
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+    group: {
+        margin: `${theme.spacing.unit}px 0`,
+    },
+});
 
 class FederalReport extends Component {
     constructor() {
@@ -86,63 +109,94 @@ class FederalReport extends Component {
     render() {
         return (
             <div>
-            <div style={{  float: "right", marginRight: "40px"}}>
-                <Grid container direction="row" justify="space-around" alignItems="center" spacing={24}>
-                <Grid item item xs={6} sm={3} md={3}>
-                </Grid>
-                <Grid item xs={6} sm={8} md={8}>
-                    <Paper style={style.paper}>
-                        <Card style={{ margin: "10px"}}>
-                            <Typography variant="display1" style={style.title}>
-                                Federal Report
-                            </Typography>
-                        </Card>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <FederalDate />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <FederalTotalVictims />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <NewVictimsFederal />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <FederalEthnicity />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <FederalGender />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <FederalAgeRange />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <FederalVictimization />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <SpecialClassification />
-                            </Grid>
-                            <h1> Direct Services</h1>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <CompensationApplication />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <InformationReferral />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <AdvocacyAccompaniment />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <EmotionalSupport />
-                            </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <CriminalCivilJusticeSystemAssistance />
+                <div style={{  float: "right", marginRight: "350px"}}>
+                    <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
+                        <Grid item item xs={6} sm={3} md={3}>
                         </Grid>
-                    </Paper>
-                </Grid>
-            </Grid>
-        </div> 
-        </div>
+                        <Grid item xs={6} sm={6} md={9} lg={9} xl={12}>
+                            <Paper style={style.paper}>
+                                <Card style={{ margin: "10px"}}>
+                                    <Typography variant="display1" style={style.title}>
+                                        Federal Report
+                                    </Typography>
+                                </Card>
+                                <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <FederalDate />
+                                </Grid>
+                                </Card>
+                                <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <FederalTotalVictims />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <NewVictimsFederal />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <FederalEthnicity />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <FederalGender />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <FederalAgeRange />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <FederalVictimization />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <SpecialClassification />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                    <h1> Direct Services</h1>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <CompensationApplication />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <InformationReferral />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <AdvocacyAccompaniment />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <EmotionalSupport />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <CriminalCivilJusticeSystemAssistance />
+                                </Grid>
+                                </Card>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                </div> 
+            </div>
         );
     }    
 }
-export default connect(mapStateToProps)(FederalReport);
+
+FederalReport.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(FederalReport));

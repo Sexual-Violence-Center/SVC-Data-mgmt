@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
-import { Paper, Typography, Card, Button } from '@material-ui/core';
+import { Paper, Typography, Card, Button, TextField  } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
 
 
 const mapStateToProps = state => ({
@@ -57,7 +59,21 @@ class FederalDate extends Component {
                 <h2> Select a date range for the Federal Report:</h2>
                 
                 Start Date:
-                    <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
+                <div>
+                <TextField
+                    name="date_entered"
+                    label="Date"
+                    className={this.props.textField}
+                    type="date"
+                    margin="normal"
+                    value={this.state.startDate}
+                    onChange={this.handleChangeFor}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                </div>
+                    {/* <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/> */}
                     End Date:
                     <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
                 
