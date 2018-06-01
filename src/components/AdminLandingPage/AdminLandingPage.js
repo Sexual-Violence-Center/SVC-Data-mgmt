@@ -46,24 +46,22 @@ class AdminLandingPage extends Component {
                 </Card>
                 <Card style={style.card}>
                   <Typography variant="headline" style={{ textAlign: 'center' }}>
-                    Instructions
+                    Reporting, Admin Entry Tools, Data Entry
               </Typography>
                   <br />
                   <Divider />
                   <br />
                   <Typography variant="subheading">
-                    Access to the administrator views is provided by clicking items under REPORTS and ACTIONS on the navigation bar to the left.
+                    Federal and County reporting displays the selected report.
                 <br />
-                    <br />Clicking Federal or County displays the selected report.
+                    <br /> Custom reporting allows you to select various reporting criteria.
                 <br />
-                    <br /> Clicking Custom allows an admin to select various reporting criteria for reviewing.
+                    <br /> User Entry allows you to create or delete a user.
                 <br />
-                    <br /> Clicking Data Entry provides an admin with the basic user view, where data can be entered for the "pink and yellow forms".
+                    <br /> Search/Update allows you to bring up a specific record for reviewing, editing, or deleting.
                 <br />
-                    <br /> Clicking Search Reports allows an admin to bring up a specific record
-                <br /> (by typing the record's confirmation number) for reviewing, editing, or deleting.
+                    <br /> Data Entry allows you to enter Telephone (pink form) and In-Person (yellow form) contacts.
                 <br />
-                    <br /> Clicking Users allows an admin to add or delete a user (username, password, user type) from the application.
               </Typography>
                 </Card>
               </Paper>
