@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 //Style
-import { Paper, Typography, Card, Button } from '@material-ui/core';
+import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 //ReportComponents
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import CountyDate from '../ReportComponents/Date/CountyDate';
@@ -37,6 +39,27 @@ const style = {
         
     }
 }
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+    menu: {
+        width: 200,
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+    group: {
+        margin: `${theme.spacing.unit}px 0`,
+    },
+});
 
 class CountyReport extends Component{ 
     constructor(){
@@ -44,8 +67,7 @@ class CountyReport extends Component{
         this.state={
             startDate:'',
             endDate:'',
-            county:'',
-            service_location: ''
+            county:''
         }
     }
 
@@ -78,31 +100,85 @@ class CountyReport extends Component{
 
     render () {
         return (
-            // <AdminNav />
-            <div style= {{float: "right", marginRight: "350px"
-              //   position: 'absolute',
-                //   top: `${top}%`,
-                //   left: `${left}%`,
-                //   transform: `translate(-${top}%, -${left}%)`,
-            }} 
-            >
-            <Paper style={style.paper}>
-              <Card style={{ margin: "10px"}}>
-                <Typography variant="display1" style={style.title}>
-                County Report
-                </Typography>
-              </Card>
-            <CountyDate />
-            <HennepinResidents />
-            <NewVictimsCounty />
-            <CountyVictimType />
-            <Zipcode />
-            <CountyLocationType />
-            <CountyAgeRange />
-            <CountyGender />
-            <CountyEthnicity />
-            <CountyVictimization />
-            </Paper>
+           <div>
+                <div style= {{float: "right", marginRight: "40px"}}>
+                    <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
+                        <Grid item item xs={3} sm={3} md={3}>
+                        </Grid>
+                        <Grid item xs={8} sm={8} md={9} lg={9} xl={12}>
+                            <Paper style={style.paper}>
+                                <Card style={{ margin: "10px"}}>
+                                    <Typography variant="display1" style={style.title}>
+                                        County Report
+                                    </Typography>
+                                </Card>
+                                <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <HennepinResidents />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <NewVictimsCounty />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyVictimType />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyVictimType />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <Zipcode />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyLocationType />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyAgeRange />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                    <h1> Direct Services</h1>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyGender />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyEthnicity />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                <CountyVictimization />
+                                    </Grid>
+                                    </Card>
+                                    {/* <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <EmotionalSupport />
+                                    </Grid>
+                                    </Card>
+                                    <Card style={{margin: "10px", padding: "20px" }}>
+                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <CriminalCivilJusticeSystemAssistance />
+                                </Grid>
+                                </Card> */}
+                            </Paper>
+                            <Grid item xs={1} sm={1}>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </div>
             </div>
         
         )
