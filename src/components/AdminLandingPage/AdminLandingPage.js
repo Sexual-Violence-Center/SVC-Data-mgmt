@@ -46,23 +46,22 @@ class AdminLandingPage extends Component {
                 </Card>
                 <Card style={style.card}>
                   <Typography variant="headline" style={{ textAlign: 'center' }}>
-                    Instructions
+                    Reporting, Admin Entry Tools, Data Entry
               </Typography>
                   <br />
                   <Divider />
                   <br />
                   <Typography variant="subheading">
-                    Access administrator tasks by clicking items under REPORTS and ACTIONS to the left.
+                    Federal and County reporting displays the selected report.
                 <br />
-                    <br /> Federal or County displays the selected report.
+                    <br /> Custom reporting allows you to select various reporting criteria.
                 <br />
-                    <br /> Custom allows you to select various reporting criteria.
-                <br />
-                    <br /> Data Entry allows you to enter In-Person (yellow form) and Telephone (pink form) Contacts.
+                    <br /> User Entry allows you to create or delete a user.
                 <br />
                     <br /> Search/Update allows you to bring up a specific record for reviewing, editing, or deleting.
                 <br />
-                    <br />  User Entry allows you to create or delete a user.
+                    <br /> Data Entry allows you to enter Telephone (pink form) and In-Person (yellow form) contacts.
+                <br />
               </Typography>
                 </Card>
               </Paper>

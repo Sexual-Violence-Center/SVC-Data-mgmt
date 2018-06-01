@@ -44,13 +44,12 @@ class UserLandingPage extends Component {
                   <Divider />
                   <br />
                   <Typography variant="subheading">
-                    SVC input forms are color coded to represent the type of service that was provided. 
-                    <br /> - Pink forms are for telephone contacts.
-                     <br /> - Yellow form are for in-person contacts.
+                    SVC contact forms are color coded to represent the type of service provided. 
+                    <br />    - Pink forms are for telephone contacts.
+                     <br />   - Yellow form are for in-person contacts.
                   <br />
                     <br />
-                    The required data entry portal for your form can be found on the left hand side of your screen. Select the form that matches the type <br />
-                    of form you're entering.
+                    Select the form option on the left that matches the type of form you are entering.
                 </Typography>
                 </Card>
               </Paper>
