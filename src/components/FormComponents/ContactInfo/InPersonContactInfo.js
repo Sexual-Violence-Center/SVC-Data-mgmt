@@ -68,7 +68,6 @@ class ContactInfo extends Component {
 
     static getDerivedStateFromProps(props, state){
         if (!props.state.EntryFormReducer) {
-          console.log('refresh');
           return intialState;
         }
         const {updateFormReducer} = props.state;
@@ -98,7 +97,6 @@ class ContactInfo extends Component {
     }
 
     render() {
-      console.log('state ', this.state)
         return <div className="contactInfo">
             <Card style={{ padding: "20px", margin: "10px" }}>
               <div>
