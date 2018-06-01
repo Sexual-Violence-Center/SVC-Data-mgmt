@@ -26,6 +26,10 @@ function* updateForm(action){
       type: 'FORM_TO_UPDATE',
       payload: null
     })
+    yield put({
+      type: 'UPDATE_SUCCESSFUL',
+      payload: { isOpen: true }
+    })
   } catch(error){
     yield console.log('error in search form ', error);
   }
