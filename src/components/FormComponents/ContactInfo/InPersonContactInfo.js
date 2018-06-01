@@ -108,7 +108,7 @@ class ContactInfo extends Component {
                   <Grid item xs={12} sm={12} md={6} lg={6}>
                     <CurrentDate handleChangeFor={this.handleChangeFor} date_entered={this.state.date_entered} />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={66}>
+                  <Grid item xs={12} sm={12} md={6} lg={6}>
                     <StartTime handleChangeFor={this.handleChangeFor} start_time={this.state.start_time} />
                   </Grid>
                   <Grid item xs={12} sm={12} md={6} lg={6}>
