@@ -65,7 +65,48 @@ let customReportObject = {
 //IN-PERSON MEDICAL ADVOCACY
     emergency_med_care_medical: `      "medical_accompaniment_medical" = TRUE `,
     emergency_med_care_dental: `      "medical_accompaniment_dental" = TRUE  `,
-    forensic_exam: ` "medical_exam_support" = TRUE AND       `,
+    forensic_exam: ` "medical_exam_support" = TRUE AND `,
+
+//LOCATIONS
+
+    location_212: ` "service_location" ='212 Medical Center' `,
+    location_ANW: ` "service_location" ='Abbott Northwestern Hospital' `,
+    location_BPHS: ` "service_location" ='Belle Plaine High School' `,
+    location_Fairview: ` "service_location" ='Fairview Southdale Hospital' `,
+    location_HCJail: ` "service_location" ='Hennepin County Jail' `,
+    location_HCMC: ` "service_location" ='HCMC' `,
+    location_House_Charity: ` "service_location" ='House of Charity' `,
+    location_Maple_Grove_Hospital: ` "service_location" ='Maple Grove Hospital' `,
+    location_Methodist: ` "service_location" ='Methodist Hospital' `,
+    location_New_PragueHS: ` "service_location" ='New Prague High School' `,
+    location_PEASE: ` "service_location" ='PEASE' `,
+    location_Plymouth: ` "service_location" ='Plymouth' `,
+    location_Richfield_Health_Services: ` "service_location" ='Richfield Health Services' `,
+    location_SCJail: ` "service_location" ='Scott County Jail' `,
+    location_SVC: ` "service_location" ='Sexual Violence Center' `,
+    location_Shakopee: ` "service_location" ='Shakopee' `,
+    location_Shakopee_Correctional_Facility: ` "service_location" ='Shakopee Correctional Facility' AND `,
+    location_St_Francis: ` "service_location" ='St. Francis Hospital' `,
+    location_unknown: ` "service_location" IS NULL `,
+    location_other: `(
+		   "service_location" != '212 Medical Center' AND
+		   "service_location" != 'Abbott Northwestern Hospital' AND
+		   "service_location" != 'Belle Plaine High School' AND
+		   "service_location" != 'Fairview Southdale Hospital' AND
+		   "service_location" != 'Hennepin County Jail' AND
+		   "service_location" != 'HCMC' AND
+		   "service_location" != 'House of Charity' AND
+		   "service_location" != 'Maple Grove Hospital' AND
+		   "service_location" != 'Methodist Hospital' AND
+		   "service_location" != 'New Prague High School' AND
+		   "service_location" != 'PEASE' AND
+		   "service_location" != 'Plymouth' AND
+		   "service_location" != 'Richfield Health Services' AND
+		   "service_location" != 'Scott County Jail' AND
+		   "service_location" != 'Sexual Violence Center' AND
+		   "service_location" != 'Shakopee' AND
+		   "service_location" != 'Shakopee Correctional Facility' AND
+		   "service_location" != 'St. Francis Hospital') `,
 
 //OTHER IN-PERSON ADVOCACY
     information_referral_person: `"information_referral" = TRUE AND "contact_type" = 'in-person' `,

@@ -4,6 +4,7 @@ import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 //Style
 import { Paper, Typography, Card, Button } from '@material-ui/core';
+import CalendarModal from "../../Modal/calendar.modal"
 
 
 const mapStateToProps = state => ({
@@ -34,21 +35,37 @@ class CountyDate extends Component{
        
     }
     submit = () => {
-        this.props.dispatch({
-            type: 'GET_PERSON_DATA_COUNTY', 
-            payload: this.state
-        })
+        console.log(this.state);
+        if (this.state.startDate === '' || this.state.endDate === '') {
+            console.log('no date', this.props.startDate);
+
+            this.setState({
+                isOpen: true
+            });
+        } else {
+            this.props.dispatch({
+                type: 'GET_PERSON_DATA_COUNTY', 
+                payload: this.state
+            })
+        }
     }
+
     print = () => {
         console.log('print button clicked');
         window.print();
     }
 
     componentDidMount () {
-        
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
         console.log(this.props.state.getCountyReducer)
     }
+
+    closeModel = () => {
+        this.setState({
+            isOpen: false
+        });
+    }
+
     render () {
         return (
             <div className="federalReport">
@@ -70,9 +87,14 @@ class CountyDate extends Component{
                 <button onClick={this.submit}>Submit</button>  
                 <button onClick={this.print}>Print</button>
             </div>
+
+            {this.state.isOpen === true && <CalendarModal
+                handleClose={this.closeModel} />
+            }
             </div>
 
         )
     }
 }
+
 export default connect(mapStateToProps)(CountyDate);
