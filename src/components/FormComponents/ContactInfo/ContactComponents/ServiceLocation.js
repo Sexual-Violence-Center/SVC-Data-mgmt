@@ -61,12 +61,12 @@ class ServiceLocation extends Component {
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="service_location">Location of Service</InputLabel>
                     <Select
-                        value={this.state.location}
+                        value={this.props.service_location}
                         onChange={this.handleChange}
                         className={classes.textField}
                         inputProps={{
-                            name: 'service_location',
-                            id: 'service_location',
+                            name: `service_location`,
+                            id: `service_location`,
                         }}>
                         <MenuItem style={{ width: '100%' }} value="212 Medical Center">212 Medical Center</MenuItem>
                         <Divider />

@@ -50,6 +50,8 @@ class YellowForm extends Component {
             type: 'ADD_NEW_VICTIM',
             payload: { ...this.state, ...this.props.state.EntryFormReducer }
         })
+        this.props.history.push("/in-person");
+        this.forceUpdate();
     }
 
     render() {
