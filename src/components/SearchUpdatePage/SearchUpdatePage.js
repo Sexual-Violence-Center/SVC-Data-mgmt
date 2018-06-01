@@ -97,7 +97,7 @@ class SearchUpdatePage extends Component {
                                 <div>
                                     <TextField
                                         name="userInput"
-                                        label="Search for a Form"
+                                        label="Confirmation Number"
                                         className={classes.textField}
                                         type="text"
                                         margin="normal"
