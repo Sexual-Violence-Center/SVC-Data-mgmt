@@ -1,6 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { Button, Card } from '@material-ui/core';
 
 import PhoneServices from '../FormComponents/PhoneServices/PhoneServices';
 import Support from '../FormComponents/Support/Support';
@@ -19,44 +20,41 @@ const mapStateToProps = state => ({
 });
 
 
- class UpdateForm extends Component{
-     state={
-         form: this.props.state.updateFormReducer,
-         userInput: this.props.state.userInput
+class UpdateForm extends Component {
+    state = {
+        form: this.props.state.updateFormReducer,
+        userInput: this.props.state.userInput
 
-     }
+    }
 
-     handleSubmit = () =>{
-         this.props.dispatch({
-             type: 'UPDATE_FORM',
-             payload: this.props.state.updateFormReducer
-         })
-     }
+    handleSubmit = () => {
+        this.props.dispatch({
+            type: 'UPDATE_FORM',
+            payload: this.props.state.updateFormReducer
+        })
+    }
 
-     componentDidMount(){
-        this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-     }
+    componentDidMount() {
+        this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    }
     //  static getDerivedStateFromProps=(props, state)=>{
     //     if(props.state.updateFormReducer){
     //         return props.state.updateFormReducer;
     //     }else {
     //         return null;
     //     }    
-        
+
     // }
     delete = () => {
-        console.log('in delete', this.props.state.updateFormReducer.id )
+        console.log('in delete', this.props.state.updateFormReducer.id)
         this.props.dispatch({
             type: 'DELETE_FORM',
             payload: this.props.state.updateFormReducer
         })
     }
-     render() {
-         
+    render() {
+
         return <div>
-            <div>
-             <button onClick={this.delete}>Delete</button>
-             </div>
             <InPersonContactInfo dispatchTo={"UPDATE_THE_FORM"} />
             <InpersonServices dispatchTo={"UPDATE_THE_FORM"} />
             <PhoneServices dispatchTo={"UPDATE_THE_FORM"} />
@@ -64,8 +62,17 @@ const mapStateToProps = state => ({
             <UnmetNeeds dispatchTo={"UPDATE_THE_FORM"} />
             <Referrals dispatchTo={"UPDATE_THE_FORM"} />
             <Demographics dispatchTo={"UPDATE_THE_FORM"} />
-            <FormButton text={"Save"} handleSubmit={this.handleSubmit} />
-          </div>;
+            <Card style={{padding: '20px', margin: '10px', postion: 'fixed'}}>
+                <div>
+                    <div style={{ float: 'left', marginLeft: '20px' }}>
+                        <Button variant="raised" style={{ backgroundColor: '#F44336', color: '#FFEBEE' }} onClick={this.delete}>Delete</Button>
+                    </div>
+                    <div style={{ float: 'right', marginRight: '20px' }}>
+                        <FormButton text={"Save"} handleSubmit={this.handleSubmit} />
+                    </div>
+                </div>
+            </Card>
+        </div>;
     }
 }
 
