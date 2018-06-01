@@ -4,16 +4,10 @@ import { Checkbox } from '@material-ui/core';
 class ChildPornography extends Component {
     constructor() {
         super();
-        //state will be for determining which checkbox has been checked.
-        // if false, don't show as checked, true is checked.
-        this.state = {
-            checked: false,
-        }
     }
     // Once one of the checkboxes is checked, look for the name and tell InPersonServices which
     // one has been clicked and set it's value to whichever boolean corresponds to it's checked status
     handleChecked = name => (event) => {
-        this.setState({ checked: event.target.checked })
         this.props.handleChangeFor(event)
     }
 
@@ -21,10 +15,10 @@ class ChildPornography extends Component {
         return (
             <div>
                 <Checkbox
-                    checked={this.state.checked}
+                    checked={this.props.violence_child_pornography}
                     onChange={this.handleChecked('violence_child_pornography')}
                     name="violence_child_pornography"
-                    value={`${!this.state.checked}`}
+                    value={`${!this.props.violence_child_pornography}`}
                 />
                 <label>
                     Child Pornography

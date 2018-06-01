@@ -35,7 +35,7 @@ class Transgender extends Component {
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="victim_transgender">Transgender</InputLabel>
                     <Select
-                        value={this.state.transgender}
+                        value={this.props.victim_transgender}
                         onChange={this.handleChange}
                         className={classes.textField}
                         inputProps={{

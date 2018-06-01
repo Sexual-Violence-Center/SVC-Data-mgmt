@@ -14,14 +14,9 @@ const styles = theme => ({
 class Gender extends Component {
     constructor() {
         super();
-        this.state = {
-            gender: ''
-        }
     }
 
-
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 
@@ -29,10 +24,10 @@ class Gender extends Component {
         const { classes } = this.props;
         return (
             <div>
-                                <FormControl className={classes.formControl}>
+                <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="victim_gender">Gender</InputLabel>
                     <Select
-                        value={this.state.gender}
+                        value={this.props.victim_gender}
                         onChange={this.handleChange}
                         className={classes.textField}
                         inputProps={{
