@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Grid } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { Card, Grid, Typography } from '@material-ui/core';
 
 import AdvocateName from './ContactComponents/AdvocateName';
 import CurrentDate from './ContactComponents/CurrentDate';
@@ -14,13 +16,19 @@ import PriorContact from './ContactComponents/PriorContact';
 import PriorToOctContact from './ContactComponents/PriorToOctContact';
 
 const mapStateToProps = state => ({
-    state
+  state
 });
 
-const style = {
+const styles = theme => ({
+  card: {
     padding: '20px',
     margin: '10px'
-}
+  },
+  importantText: {
+    color: '#F44336',
+    marginLeft: '20px'
+  }
+})
 
 const initialState = {
   advocate_name: "",
@@ -80,9 +88,10 @@ class TelephoneContactInfo extends Component {
     });
   };
   render() {
+    const { classes } = this.props;
     return (
       <div className="contactInfo">
-        <Card style={style}>
+        <Card className={classes.card}>
           <div>
             <h2>Contact Info</h2>
             <Grid
@@ -93,34 +102,43 @@ class TelephoneContactInfo extends Component {
               spacing={0}
             >
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <AdvocateName handleChangeFor={this.handleChangeFor} advocate_name={this.state.advocate_name}/>
+                <AdvocateName handleChangeFor={this.handleChangeFor} advocate_name={this.state.advocate_name} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <CurrentDate handleChangeFor={this.handleChangeFor} date_entered={this.state.date_entered}/>
+                <CurrentDate handleChangeFor={this.handleChangeFor} date_entered={this.state.date_entered} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <StartTime handleChangeFor={this.handleChangeFor} start_time={this.state.start_time}/>
+                <StartTime handleChangeFor={this.handleChangeFor} start_time={this.state.start_time} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <EndTime handleChangeFor={this.handleChangeFor} end_time={this.state.end_time}/>
+                <EndTime handleChangeFor={this.handleChangeFor} end_time={this.state.end_time} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <ContactDate handleChangeFor={this.handleChangeFor} contact_date={this.state.contact_date}/>
+                <ContactDate handleChangeFor={this.handleChangeFor} contact_date={this.state.contact_date} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <ZipCode handleChangeFor={this.handleChangeFor} victim_zipcode={this.state.victim_zipcode}/>
+                <ZipCode handleChangeFor={this.handleChangeFor} victim_zipcode={this.state.victim_zipcode} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <TypeOfVictim handleChangeFor={this.handleChangeFor} victim_type={this.state.victim_type}/>
+                <TypeOfVictim handleChangeFor={this.handleChangeFor} victim_type={this.state.victim_type} />
+                <Typography variant="body2" className={classes.importantText}>
+                  * Mandatory field
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                <HearAboutSVC handleChangeFor={this.handleChangeFor} victim_referral_source={this.state.victim_referral_source}/>
+                <HearAboutSVC handleChangeFor={this.handleChangeFor} victim_referral_source={this.state.victim_referral_source} />
               </Grid>
               <Grid item xs={12} sm={12} md={9} lg={9}>
-                <PriorContact handleChangeFor={this.handleChangeFor} victim_prior_contact={this.state.victim_prior_contact}/>
+                <PriorContact handleChangeFor={this.handleChangeFor} victim_prior_contact={this.state.victim_prior_contact} />
+                <Typography variant="body2" className={classes.importantText}>
+                  * Mandatory field
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={9} lg={9}>
-                <PriorToOctContact handleChangeFor={this.handleChangeFor} victim_contact_prior_oct={this.state.victim_contact_prior_oct}/>
+                <PriorToOctContact handleChangeFor={this.handleChangeFor} victim_contact_prior_oct={this.state.victim_contact_prior_oct} />
+                <Typography variant="body2" className={classes.importantText}>
+                  * Mandatory field
+                </Typography>
               </Grid>
             </Grid>
           </div>
@@ -130,4 +148,8 @@ class TelephoneContactInfo extends Component {
   }
 }
 
-export default connect(mapStateToProps)(TelephoneContactInfo);
+TelephoneContactInfo.PropTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(TelephoneContactInfo));
