@@ -43,10 +43,10 @@ class PinkForm extends Component {
   }
   handleSubmit = () => {
     console.log(this.props.state.EntryFormReducer);
-    // this.props.dispatch({
-    //   type: "ADD_NEW_VICTIM",
-    //   payload: { ...this.state, ...this.props.state.EntryFormReducer }
-    // });
+    this.props.dispatch({
+      type: "ADD_NEW_VICTIM",
+      payload: { ...this.state, ...this.props.state.EntryFormReducer }
+    });
   };
 
   componentDidMount() {
