@@ -187,51 +187,6 @@ class customReportSelectionPage extends Component {
            {/* <Card > */}
               
               <Paper style={style.paper}>
-              {/* <Card style={{ margin: "10px"}}>
-                                    <Typography variant="display1" style={style.title}>
-                                        Custom Report
-                                    </Typography>
-                                </Card>
-              <Card style={{margin: "10px", padding: "20px"}}>
-                    <form onSubmit={this.submitCustomReport}>
-                        <div style={{float: "left", padding: "10px"}}>
-              
-                            <TextField
-                                  name="startDate"
-                                label=" Start Date"
-                                className={this.props.textField}
-                                type="date"
-                                margin="normal"
-                                value={this.state.startDate}
-                                onChange={this.handleChangeFor}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}/>
-                        </div>
-                        <div style={{float: "left", padding: "10px"}}>
-                            <TextField
-                                name="endDate"
-                                label=" End Date"
-                                className={this.props.textField}
-                                type="date"
-                                margin="normal"
-                                value={this.state.endDate}
-                                onChange={this.handleChangeFor}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}/>
-                            </div> */}
-                {/* <br />
-                <Button
-                        name="submit"
-                        variant="flat"
-                        color="primary"
-                        onClick={this.submitCustomReport}
-                      >
-                      Submit</Button>
-              </form>
-              </Card> */}
-              {/* <Card style={{margin: "10px", padding: "20px"}}> */}
               <div className="customReportSpecificTopic" style={{ margin: "auto"  }
                   //, marginRight: "500px"
                 }>
