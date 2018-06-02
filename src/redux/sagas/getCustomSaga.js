@@ -5,13 +5,9 @@ import makeUrlFunction from './makeUrl.CustomSaga';
 
 function* getCustomReport(action) {
     try {
-        const startDate = action.payload.startDate;
-        const endDate = action.payload.endDate;
-        // const querySelector = action.payload.querySelector;
-        console.log('custom saga', action.payload);
+        const {startDate, endDate, querySelector, selectedItem} = action.payload;
         
-
-        let urlText = makeUrlFunction(action.payload.selectedItem);
+        let urlText = makeUrlFunction(selectedItem, querySelector);
 
         let customDataResponse = yield call(axios.get, `/api/custom-report/${urlText}&startDate=${startDate}&endDate=${endDate}`);
         yield put({
