@@ -47,53 +47,9 @@ const style = {
 class DateCustom extends Component{ 
     constructor(){
         super();
-        this.state={
-            startDate:'',
-            endDate:'',
-            county:'',
-        }
     }
 
-    handleChangeForStartDate = (event) => {
-        const value = event.target.value;
-        this.setState({
-            startDate: value
-        });
-            this.props.dispatch({
-                type: 'UPDATE_START_DATE',
-                payload: { startDate: value }
-            })
-    }
-
-    handleChangeForEndDate = (event) => {
-        const value = event.target.value;
-        this.setState({
-            endDate: value
-        });
-        this.props.dispatch({
-            //TODO: FIX this to remove from redux state
-            type: 'UPDATE_END_DATE',
-            payload: { endDate: value }
-        })
-    }
-
-    submitCustomReport = (event) => {
-        event.preventDefault();        
-        if (this.state.startDate === '' || this.state.endDate === '') {
-            this.setState({
-                isOpen: true
-            });
-        } else {
-            this.props.dispatch({
-                type: 'SUBMIT_CUSTOM_REQUEST',
-                payload: {
-                    ...this.props.state.CustomReportInputReducer
-                }
-            })
-            this.props.history.push("/custom_report_output");
-        }
-        console.log(this.state)
-    }
+    
     componentDidMount () {
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
         console.log(this.props.state.getCountyReducer)
@@ -109,7 +65,7 @@ class DateCustom extends Component{
                 </Typography>
             </Card>
             <Card style={{margin: "10px", padding: "20px"}}>
-                <form onSubmit={this.submitCustomReport}>
+                <form onSubmit={this.props.submitCustomReport}>
                     <div style={{float: "left", padding: "10px"}}>
             
                         <TextField
@@ -118,8 +74,8 @@ class DateCustom extends Component{
                             className={this.props.textField}
                             type="date"
                             margin="normal"
-                            value={this.state.startDate}
-                            onChange={this.handleChangeForStartDate}
+                            value={this.props.startDate}
+                            onChange={this.props.handleChangeForStartDate}
                             InputLabelProps={{
                                 shrink: true,
                             }}/>
@@ -131,8 +87,8 @@ class DateCustom extends Component{
                             className={this.props.textField}
                             type="date"
                             margin="normal"
-                            value={this.state.endDate}
-                            onChange={this.handleChangeForEndDate}
+                            value={this.props.endDate}
+                            onChange={this.props.handleChangeForEndDate}
                             InputLabelProps={{
                                 shrink: true,
                             }}/>
@@ -142,7 +98,7 @@ class DateCustom extends Component{
                         name="submit"
                         variant="flat"
                         color="primary"
-                        onClick={this.submitCustomReport}
+                        onClick={this.props.submitCustomReport}
                       >
                       Submit</Button>
               </form>
