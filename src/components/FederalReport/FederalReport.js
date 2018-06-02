@@ -6,6 +6,8 @@ import AdminNav from '../Nav/AdminNav/AdminNav';
 import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { teal, grey } from '@material-ui/core/colors';
+
 //ReportComponents
 import FederalDate from '../ReportComponents/Date/FederalDate';
 import FederalTotalVictims from '../ReportComponents/Total/FederalTotalVictims';
@@ -32,7 +34,7 @@ const mapStateToProps = state => ({
 });
 const style = {
     title: {
-        backgroundColor: '#00acb0',
+        backgroundColor:  teal[300],
         textAlign: 'center',
         color: 'white', 
         padding: '10px',
@@ -40,7 +42,7 @@ const style = {
         // position: 'abosolute',
     },
     paper:{
-        backgroundColor: 'lightgray', 
+        backgroundColor: grey[300], 
         padding: '10px',
         // margin: '50px',
         
@@ -109,19 +111,20 @@ class FederalReport extends Component {
     render() {
         return (
             <div>
-                <div style={{  float: "right", marginRight: "350px"}}>
+                <div>
+                    {/*  style={{ flex: .5, margin: "auto", textAlign: "center" }} */}
                 <AdminNav />
                     <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
-                        <Grid item item xs={3} sm={3} md={3}>
+                        <Grid item xs={2} sm={2} md={3}>
                         </Grid>
-                        <Grid item xs={8} sm={8} md={9} lg={9} xl={12}>
+                        <Grid item xs={7} sm={7} md={9} lg={9} xl={12}>
                             <Paper style={style.paper}>
                                 <Card style={{ margin: "10px"}}>
                                     <Typography variant="display1" style={style.title}>
                                         Federal Report
                                     </Typography>
                                 </Card>
-                                <Card style={{margin: "10px", padding: "20px" }}>
+                                <Card style={{margin: "10px", padding: "20px", textAlign:"center"}}>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                     <FederalDate />
                                 </Grid>
@@ -188,7 +191,7 @@ class FederalReport extends Component {
                                 </Grid>
                                 </Card>
                             </Paper>
-                            <Grid item xs={1} sm={1}>
+                            <Grid item xs={3} sm={3}>
                             </Grid>
                         </Grid>
                     </Grid>
