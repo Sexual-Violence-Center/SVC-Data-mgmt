@@ -26,10 +26,10 @@ class UserLandingPage extends Component {
     return (
       <div>
         <UserNav />
-        <div style={{ float: "right", marginRight: '50px', marginTop: '20px' }}>
-          <Grid container>
-            <Grid item xs={6} sm={6}></Grid>
-            <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
+        <div>
+          <Grid container direction="row" justify="space-around" alignItems="center" spacing={40}>
+            <Grid item sm={2}></Grid>
+            <Grid item xs={12} sm={8}>
               <Paper style={style.paper}>
                 <Card style={style.titleCard}>
                   <Typography variant="display2" style={{ textAlign: 'center', color: grey[50] }}>
@@ -54,6 +54,7 @@ class UserLandingPage extends Component {
                 </Card>
               </Paper>
             </Grid>
+            <Grid item sm={2}></Grid>
           </Grid>
         </div>
       </div>
