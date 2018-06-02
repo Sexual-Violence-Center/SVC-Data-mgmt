@@ -57,7 +57,8 @@ class CriminalJusticeProcess extends Component {
                 />
                 <label>
                     Prosecution-related Advocacy
-                    </label>
+                </label>
+                <br />
                 <Checkbox
                     checked={this.state.checked3}
                     onChange={this.handleChecked('legal_court_advocacy')}
@@ -66,7 +67,7 @@ class CriminalJusticeProcess extends Component {
                 />
                 <label>
                     Court Advocacy(criminal case)
-                    </label>
+                </label>
             </div>
         )
     }

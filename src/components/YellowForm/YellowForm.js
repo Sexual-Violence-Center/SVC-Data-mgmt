@@ -29,7 +29,7 @@ const style = {
     paper: {
         backgroundColor: '#FFFDE7',
         padding: '10px'
-    }
+    }, 
 }
 
 class YellowForm extends Component {
