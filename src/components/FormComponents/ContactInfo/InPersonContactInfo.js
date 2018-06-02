@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Card, Grid } from '@material-ui/core';
+import { Card, Grid, Typography } from '@material-ui/core';
 
 import AdvocateName from './ContactComponents/AdvocateName';
 import CurrentDate from './ContactComponents/CurrentDate';
@@ -19,29 +19,33 @@ import PriorContact from './ContactComponents/PriorContact';
 import PriorToOctContact from './ContactComponents/PriorToOctContact';
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    menu: {
-        width: 200,
-    },
-    formControl: {
-        margin: theme.spacing.unit,
-        minWidth: 120,
-    },
-    group: {
-        margin: `${theme.spacing.unit}px 0`,
-    },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  menu: {
+    width: 200,
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+  },
+  group: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
+  importantText: {
+    color: '#F44336',
+    marginLeft: '15px'
+  }
 });
 
 const mapStateToProps = state => ({
-    state
+  state
 });
 const initialState = {
   advocate_name: "",
@@ -105,6 +109,7 @@ class ContactInfo extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div className="contactInfo">
         <Card style={{ padding: "20px", margin: "10px" }}>
@@ -126,7 +131,7 @@ class ContactInfo extends Component {
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <CurrentDate
                   handleChangeFor={this.handleChangeFor}
-                  date_entered={this.state.date_entered.substring(0,10)}
+                  date_entered={this.state.date_entered.substring(0, 10)}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -144,7 +149,7 @@ class ContactInfo extends Component {
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <ContactDate
                   handleChangeFor={this.handleChangeFor}
-                  contact_date={this.state.contact_date.substring(0,10)}
+                  contact_date={this.state.contact_date.substring(0, 10)}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -178,6 +183,9 @@ class ContactInfo extends Component {
                   handleChangeFor={this.handleChangeFor}
                   victim_type={this.state.victim_type}
                 />
+                <Typography variant="body2" className={classes.importantText}>
+                  * Mandatory field
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <HearAboutSVC
@@ -190,12 +198,18 @@ class ContactInfo extends Component {
                   handleChangeFor={this.handleChangeFor}
                   victim_prior_contact={this.state.victim_prior_contact}
                 />
+              <Typography variant="body2" className={classes.importantText}>
+                * Mandatory field
+              </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={9} lg={9}>
                 <PriorToOctContact
                   handleChangeFor={this.handleChangeFor}
                   victim_contact_prior_oct={this.state.victim_contact_prior_oct}
                 />
+                <Typography variant="body2" className={classes.importantText}>
+                  * Mandatory field
+                </Typography>
               </Grid>
             </Grid>
           </div>
@@ -206,7 +220,7 @@ class ContactInfo extends Component {
 }
 
 ContactInfo.propTypes = {
-    classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(withStyles(styles)(ContactInfo));
