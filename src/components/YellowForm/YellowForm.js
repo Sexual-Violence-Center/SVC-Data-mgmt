@@ -64,7 +64,7 @@ class YellowForm extends Component {
         return (
             <div>
                     {DataEntryNav}
-                <div style={{ float: "right", marginRight: "40px" }}>
+                <div>
                     <Grid container direction="row" justify="space-around" alignItems="center" spacing={40}>
                         <Grid item xs={6} sm={3} md={3}>
                         </Grid>
