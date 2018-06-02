@@ -89,7 +89,7 @@ class customReportSelectionPage extends Component {
     state = {
         startDate: '',
         endDate: '',
-        querySelector: null,
+        querySelector: "",
         selectedItem: [],
         isOpen: false
     }
@@ -123,16 +123,16 @@ class customReportSelectionPage extends Component {
         })
     }
 
-    // handleChangeForQuerySelector = (event) => {
-    //     const value = event.target.value;
-    //     this.setState({
-    //         querySelector: value
-    //     });
-    //     this.props.dispatch({
-    //         type: 'UPDATE_QUERY_SELECTOR',
-    //         payload: { querySelector: value }
-    //     })
-    // }
+    handleChangeForQuerySelector = (event) => {
+        const value = event.target.value;
+        this.setState({
+            querySelector: value
+        });
+        this.props.dispatch({
+            type: 'UPDATE_QUERY_SELECTOR',
+            payload: { querySelector: value }
+        })
+    }
 
     handleDelete = (item) => () => {
         const selectedItem = [...this.props.state.CustomReportInputReducer.selectedItem];
@@ -191,7 +191,7 @@ class customReportSelectionPage extends Component {
                 <div className="customReportSpecificTopic" style={{ margin: "auto" }
                     //, marginRight: "500px"
                   }>
-                  <DateCustom startDate={this.state.startDate} endDate={this.state.endDate} submitCustomReport={this.submitCustomReport} handleChangeForEndDate={this.handleChangeForEndDate} handleChangeForStartDate={this.handleChangeForStartDate} />
+                  <DateCustom querySelector = {this.state.querySelector} handleChangeForQuerySelector={this.handleChangeForQuerySelector} startDate={this.state.startDate} endDate={this.state.endDate} submitCustomReport={this.submitCustomReport} handleChangeForEndDate={this.handleChangeForEndDate} handleChangeForStartDate={this.handleChangeForStartDate} />
                   <Card style={{ margin: "10px", padding: "20px" }}>
                     <CustomAge handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                     <CustomContactType handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
