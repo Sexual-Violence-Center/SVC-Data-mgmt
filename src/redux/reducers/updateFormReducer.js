@@ -5,6 +5,8 @@ const updateFormReducer = (state = {}, action) => {
       return action.payload;
     case "UPDATE_THE_FORM":
         return {...state, ...action.payload};
+    case "CLEAR_UPDATE_REDUCER":
+      return {};
     default:
       return state;
   }
