@@ -2,37 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 //Style
-import {withStyles} from '@material-ui/core/styles';
-import { Paper, Typography, Card, Button, Grid } from '@material-ui/core';
-import CalendarModal from "../../Modal/calendar.modal"
-
-// const styles = theme => ({
-//     container: {
-//         display: 'flex',
-//         flexWrap: 'wrap',
-//     },
-//     textField: {
-//         marginLeft: theme.spacing.unit,
-//         marginRight: theme.spacing.unit,
-//         width: 200,
-//     },
-//     menu: {
-//         width: 200,
-//     },
-//     formControl: {
-//         margin: theme.spacing.unit,
-//         minWidth: 120,
-//     },
-//     group: {
-//         margin: `${theme.spacing.unit}px 0`,
-//     },
-// });
+import { Paper, Typography, Card, Button, TextField } from '@material-ui/core';
+import { MenuItem, InputLabel, Select, FormControl, Divider, } from '@material-ui/core';
 
 const mapStateToProps = state => ({
     user: state.user,
     county: state.getCountyReducer,
     state
+});
+
+const styles = theme => ({
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        Width: 200,
+    },
 });
 
 class CountyDate extends Component{ 
@@ -42,7 +33,6 @@ class CountyDate extends Component{
             startDate:'',
             endDate:'',
             county:'',
-            service_location: ''
         }
     }
 
@@ -57,21 +47,11 @@ class CountyDate extends Component{
        
     }
     submit = () => {
-        console.log(this.state);
-        if (this.state.startDate === '' || this.state.endDate === '') {
-            console.log('no date', this.props.startDate);
-
-            this.setState({
-                isOpen: true
-            });
-        } else {
-            this.props.dispatch({
-                type: 'GET_PERSON_DATA_COUNTY', 
-                payload: this.state
-            })
-        }
+        this.props.dispatch({
+            type: 'GET_PERSON_DATA_COUNTY', 
+            payload: this.state
+        })
     }
-
     print = () => {
         console.log('print button clicked');
         window.print();
@@ -82,45 +62,95 @@ class CountyDate extends Component{
         console.log(this.props.state.getCountyReducer)
     }
 
-    closeModel = () => {
-        this.setState({
-            isOpen: false
-        });
-    }
-
     render () {
+        const { classes } = this.props;
         return (
+            // <Card container>
             <div className="federalReport">
-            <AdminNav />
-            <div>
-            <h2>County Report:</h2>
-            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
-                    Start Date:
-                    <input type="date" name="startDate" value={this.state.startDate} onChange={this.handleChangeFor}/>
-                    End Date:
-                    <input type="date" name="endDate" value={this.state.endDate} onChange={this.handleChangeFor}/>
-                    County:
-                    <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
-                    <option>Select One</option>
-                    <option value="Hennepin">Hennepin</option>
-                    <option value="Scott">Scott</option>
-                    <option value="Carver">Carver</option>
-                    <option value="Other">Other</option>
-                    </select>
-                </Grid>
-                <button onClick={this.submit}>Submit</button>  
-                <button onClick={this.print}>Print</button>
-            </Grid>
+                <AdminNav />
+                <div>
+                    <h2>Select a date range and county for report</h2>
+                        <div style={{float: "left", padding: "10px"}}>
+                            <TextField
+                                name="startDate"
+                                label=" Start Date"
+                                className={classes.textField}
+                                type="date"
+                                margin="normal"
+                                value={this.state.startDate}
+                                onChange={this.handleChangeFor}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}/>
+                        </div>
+                        <div style={{float: "left", padding: "10px"}}>
+                            <TextField
+                                name="endDate"
+                                label=" End Date"
+                                className={classes.textField}
+                                type="date"
+                                margin="normal"
+                                value={this.state.endDate}
+                                onChange={this.handleChangeFor}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}/>
+                            </div>
+                            <div style={{float: "left", padding: "10px"}}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="county">County</InputLabel>
+                                <Select
+                                    value={this.state.county}
+                                    onChange={this.handleChangeFor}
+                                    className={classes.textField}
+                                    inputProps={{
+                                        name: 'county',
+                                        id: 'county',
+                                    }}>
+                                    <MenuItem style={{width: '100%'}} value="Hennepin">Hennepin</MenuItem>
+                                    <Divider />
+                                    <MenuItem style={{width: '100%'}} value="Scott">Scott</MenuItem>
+                                    <Divider />
+                                    <MenuItem style={{width: '100%'}} value="Carver">Carver</MenuItem>
+                                    <Divider />
+                                    <MenuItem style={{width: '100%'}} value="Other">Other</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <br />
+                        <div style={{float: "left", padding: "10px"}}>
+                        {/* County:
+                        <select name="county" value={this.state.county} onChange={this.handleChangeFor}>
+                        <option>Select One</option>
+                        <option value="Hennepin">Hennepin</option>
+                        <option value="Scott">Scott</option>
+                        <option value="Carver">Carver</option>
+                        <option value="Other">Other</option>
+                        </select> */}
+                        <div>
+                      <Button
+                        name="submit"
+                        variant="flat"
+                        color="primary"
+                        onClick={this.submit}
+                      >
+                      Submit</Button>
+                      <Button
+                        name="submit"
+                        variant="flat"
+                        color="primary"
+                        onClick={this.print}
+                      >
+                      Print</Button>
+                    </div>
+                    </div>
+                </div>
             </div>
-
-            {this.state.isOpen === true && <CalendarModal
-                handleClose={this.closeModel} />
-            }
-            </div>
-
         )
     }
 }
+CountyDate.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps)(CountyDate);
+export default connect(mapStateToProps)(withStyles(styles)(CountyDate));

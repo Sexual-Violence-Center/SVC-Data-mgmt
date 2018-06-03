@@ -14,14 +14,10 @@ const styles = theme => ({
 class StartTime extends Component {
     constructor() {
         super();
-        this.state = {
-            name: ''
-        }
     }
 
 
     handleChange = (event) => {
-        this.setState({ name: event.target.value });
         this.props.handleChangeFor(event);
     }
 
