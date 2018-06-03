@@ -69,20 +69,6 @@ class ContactInfo extends Component {
     this.state = initialState;
   }
 
-  onClick = () => {
-    this.setState({
-    advocate_name: "Blake",
-    date_entered: "2018-06-05",
-    start_time: "13:00",
-    end_time: "13:30",
-    contact_date: "2018-05-01",
-    service_location: "HCMC",
-    service_county: "Hennepin",
-    victim_zipcode: "55425",
-    victim_type: "adultPrimaryVictim",
-  })
-}
-
   static getDerivedStateFromProps = (props, state) => {
     //if on update the form sets state to the update form reducer
     //changes any null values to undefined
@@ -135,7 +121,6 @@ class ContactInfo extends Component {
               justify="flex-start"
               alignItems="center"
               spacing={0}
-              onClick={this.onClick}
             >
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <AdvocateName
