@@ -63,6 +63,7 @@ class UpdateForm extends Component {
             type: 'DELETE_FORM',
             payload: this.props.state.updateFormReducer
         })
+        this.props.clearUserInput();
     }
     render() {
 
