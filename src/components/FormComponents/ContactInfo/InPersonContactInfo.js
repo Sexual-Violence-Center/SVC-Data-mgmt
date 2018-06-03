@@ -76,7 +76,7 @@ class ContactInfo extends Component {
       const { updateFormReducer } = props.state;
       Object.keys(updateFormReducer).forEach(key => {
         if (updateFormReducer[key] === null) {
-          updateFormReducer[key] = undefined;
+          updateFormReducer[key] = "";
         }
         return null;
       });
