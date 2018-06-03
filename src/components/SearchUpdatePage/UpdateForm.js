@@ -36,6 +36,7 @@ class UpdateForm extends Component {
             type: 'UPDATE_FORM',
             payload: this.props.state.updateFormReducer
         })
+        this.props.clearUserInput();
     }
 
     handleClose = (event, reason) => {

@@ -77,6 +77,11 @@ class SearchUpdatePage extends Component {
             payload: { isOpen: false }
         })
     };
+    clearUserInput=()=>{
+        this.setState({
+            userInput: '',
+        })
+    }
 
     // if there is data in the reducer it means the user searched for something
     //shows form if true
@@ -85,6 +90,7 @@ class SearchUpdatePage extends Component {
         if (this.props.state.updateFormReducer && this.props.state.updateFormReducer.id) {
             return <UpdateForm
                 userInput={this.state.userInput}
+                clearUserInput={this.clearUserInput}
             />
         }
     }
