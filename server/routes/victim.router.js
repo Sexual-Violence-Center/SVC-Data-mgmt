@@ -32,6 +32,14 @@ router.put('/:id', (req, res)=>{
     if (req.isAuthenticated() && req.user.user_type === true) {
       //function takes in req.body(id is part of body)
       //returns the query string and an array of the values
+        //if value is empty string turns to undefined
+        //sql doens't like empty sting for date
+        Object.keys(req.body).forEach(key => {
+          if (req.body[key] === "") {
+            req.body[key] = undefined;
+          }
+        });
+
       const queryText = makePutQuery(req.body)
       console.log(queryText.query, queryText.values);
       pool.query(queryText.query, queryText.values)
@@ -39,6 +47,7 @@ router.put('/:id', (req, res)=>{
               res.sendStatus(200);
           })
           .catch((error)=>{
+              console.log('error in put victim router', error)
               res.sendStatus(500)
           })
     } else {
