@@ -124,8 +124,8 @@ class CountyReport extends Component{
                 <div style= {{ flex: .5, margin: "20px", marginLeft: "200px", textAlign: "center" }}>
                 <AdminNav />
                 {/* grid is changing layout- difference from custom */}
-                    <Grid container direction="row" justify="absolute" alignItems="center" spacing={40}>
-                        {/* <Grid item item xs={3} sm={3} md={3}>
+                    {/* <Grid container direction="row" justify="absolute" alignItems="center" spacing={40}>
+                        <Grid item item xs={3} sm={3} md={3}>
                         </Grid>
                         <Grid item xs={8} sm={8} md={9} lg={9} xl={12}> */}
                             <Paper style={style.paper}>
@@ -189,13 +189,12 @@ class CountyReport extends Component{
                                     </Card>
                             </Paper>
                             {/* <Grid item xs={1} sm={1}>
-                            </Grid> */}
-                        {/* </Grid> */}
-                    </Grid>
+                             </Grid>
+                        </Grid>
+                    </Grid> */}
                 </div>
             </div>
-        
-        )
+                )
     }
 }
             
