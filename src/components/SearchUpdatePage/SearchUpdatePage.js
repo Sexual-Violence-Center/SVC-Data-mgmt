@@ -12,6 +12,7 @@ import { Grid, Typography, Toolbar, AppBar, Paper, Card, TextField, Button } fro
 import { teal, grey } from '@material-ui/core/colors';
 
 
+
 const mapStateToProps = state => ({
     user: state.user,
     state
@@ -106,7 +107,7 @@ class SearchUpdatePage extends Component {
                                     />
                                 </div>
                                 <div style={{ float: 'right' }}>
-                                    <Button value="submit" variant="raised" onClick={this.handleSubmit}>
+                                    <Button value="submit" color="primary" onClick={this.handleSubmit}>
                                         Submit
                                 </Button>
                                 </div>
