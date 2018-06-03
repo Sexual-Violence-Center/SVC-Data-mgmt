@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
         backgroundColor: grey[300], 
         padding: '10px',
         margin: '10px',
-        
+       
         
     }
 }
@@ -123,6 +123,7 @@ class CountyReport extends Component{
            <div>
                 <div style= {{ flex: .5, margin: "20px", marginLeft: "200px", textAlign: "center" }}>
                 <AdminNav />
+                {/* grid is changing layout- difference from custom */}
                     <Grid container direction="row" justify="absolute" alignItems="center" spacing={40}>
                         {/* <Grid item item xs={3} sm={3} md={3}>
                         </Grid>
@@ -187,8 +188,8 @@ class CountyReport extends Component{
                                     </Grid>
                                     </Card>
                             </Paper>
-                            <Grid item xs={1} sm={1}>
-                            </Grid>
+                            {/* <Grid item xs={1} sm={1}>
+                            </Grid> */}
                         {/* </Grid> */}
                     </Grid>
                 </div>
