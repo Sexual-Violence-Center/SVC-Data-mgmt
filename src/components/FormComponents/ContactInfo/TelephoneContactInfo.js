@@ -118,12 +118,12 @@ class TelephoneContactInfo extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <ZipCode handleChangeFor={this.handleChangeFor} victim_zipcode={this.state.victim_zipcode} />
-              </Grid>
-              <Grid item xs={12} sm={12} md={6} lg={6}>
-                <TypeOfVictim handleChangeFor={this.handleChangeFor} victim_type={this.state.victim_type} />
                 <Typography variant="body2" className={classes.importantText}>
                   * Mandatory field
                 </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={6}>
+                <TypeOfVictim handleChangeFor={this.handleChangeFor} victim_type={this.state.victim_type} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <HearAboutSVC handleChangeFor={this.handleChangeFor} victim_referral_source={this.state.victim_referral_source} />
