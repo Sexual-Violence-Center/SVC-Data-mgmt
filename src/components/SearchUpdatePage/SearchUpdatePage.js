@@ -3,6 +3,9 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import UpdateForm from './UpdateForm';
@@ -15,7 +18,8 @@ import { teal, grey } from '@material-ui/core/colors';
 
 const mapStateToProps = state => ({
     user: state.user,
-    state
+    state,
+    updateFormAlertReducer: state.updateFormAlertReducer
 });
 
 const styles = theme => ({
@@ -67,6 +71,13 @@ class SearchUpdatePage extends Component {
         })
     }
 
+    handleClose = (event, reason) => {
+        this.props.dispatch({
+            type: 'CLOSE_UPDATE_SNACKBAR',
+            payload: { isOpen: false }
+        })
+    };
+
     // if there is data in the reducer it means the user searched for something
     //shows form if true
     renderForm = () => {
@@ -77,8 +88,6 @@ class SearchUpdatePage extends Component {
             />
         }
     }
-
-
 
     render() {
         const { classes } = this.props;
@@ -118,6 +127,30 @@ class SearchUpdatePage extends Component {
                 </Grid>
                 <Grid item sm={3}></Grid>
             </Grid>
+
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                }}
+                open={this.props.updateFormAlertReducer.isOpen}
+                autoHideDuration={5000}
+                onClose={this.handleClose}
+                ContentProps={{
+                    'aria-describedby': 'message-id',
+                }}
+                message={<span id="message-id">Update Successful</span>}
+                action={[
+                    <IconButton
+                        key="close"
+                        aria-label="Close"
+                        color="inherit"
+                        onClick={this.handleClose}
+                    >
+                        <CloseIcon />
+                    </IconButton>,
+                ]}
+            />
         </div>;
     }
 }

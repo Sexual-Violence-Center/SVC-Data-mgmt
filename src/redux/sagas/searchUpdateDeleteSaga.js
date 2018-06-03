@@ -19,7 +19,7 @@ function* searchForm(action) {
 
 function* updateForm(action){
   const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
-  
+
   try{
     yield call(axios.put, `/api/victim/${action.payload.id}`, action.payload, config);
     yield put({
