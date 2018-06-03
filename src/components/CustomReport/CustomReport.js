@@ -187,6 +187,7 @@ class customReportSelectionPage extends Component {
               {/* <Card > */}
 
               <Paper style={style.paper}>
+
                 {/* <Card style={{margin: "10px", padding: "20px"}}> */}
                 <div className="customReportSpecificTopic" style={{ margin: "auto" }
                     //, marginRight: "500px"
@@ -219,6 +220,7 @@ class customReportSelectionPage extends Component {
                     <ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.props.inputValue} />
                   </Card>
                 </div>
+
               </Paper>
             </div>
 
