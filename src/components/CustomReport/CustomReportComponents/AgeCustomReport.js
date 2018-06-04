@@ -46,6 +46,8 @@ class AgeCustom extends React.Component {
   };
 
   handleChangeForComponent = (item) => {
+    console.log('chip', this.state.selectedItem);
+    
     let { selectedItem } = this.state;
     if (this.props.selectedItem.indexOf(item) === -1) {
       selectedItem = [...selectedItem, item];
@@ -54,6 +56,8 @@ class AgeCustom extends React.Component {
       inputValue: '',
       selectedItem,
     })
+    console.log('chip', this.state.selectedItem);
+
     this.props.dispatch({
       type: 'UPDATE_SELECTED_ITEM',
       payload: { ...this.state, selectedItem }
