@@ -134,9 +134,8 @@ class customReportSelectionPage extends Component {
         })
     }
 
-    handleDelete = (item) => () => {
+    handleDelete = (item) => () => {        
         const selectedItem = [...this.props.state.CustomReportInputReducer.selectedItem];
-        console.log('this.stat', this.props.state.CustomReportInputReducer.selectedItem);
         
         selectedItem.splice(selectedItem.indexOf(item), 1);
 
@@ -146,6 +145,7 @@ class customReportSelectionPage extends Component {
             payload: { ...this.state, selectedItem }
         })
     };
+
 
     submitCustomReport = (event) => {
         event.preventDefault();        
