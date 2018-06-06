@@ -46,8 +46,6 @@ class FederalDate extends Component {
 
     submit = () => {
         if (this.state.startDate === '' || this.state.endDate === '') {
-            console.log('no');
-
             this.setState({
                 isOpen: true
             });
