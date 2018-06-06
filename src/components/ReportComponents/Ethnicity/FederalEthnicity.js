@@ -90,6 +90,10 @@ class Ethnicity extends Component {
                         <td>{this.props.state.getFederalReducer.multiple_races}</td>
                     </tr>
                     <tr>
+                        <td>Total</td>
+                        <td>{this.props.state.getFederalReducer.total_ethnicity}</td>
+                    </tr>
+                    <tr>
                         <td>Not Reported</td>
                         <td>{this.props.state.getFederalReducer.not_reported}</td>
                     </tr>
