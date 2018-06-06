@@ -33,5 +33,22 @@ router.get("/", (req, res) => {
     }
 });
 
+router.get("/violenceother", (req, res)=>{
+  if(req.isAuthenticated() && req.user.user_type === true){
+
+    let queryText = `SELECT "violence_other_specify" FROM "victim" WHERE "violence_other" = TRUE AND "violence_other_specify" IS NOT NULL AND "contact_date" BETWEEN $2 AND $3 AND "service_county" = $1;`;
+    pool.query(queryText, [req.query.county, req.query.startDate, req.query.endDate])
+        .then((result)=>{
+          res.send(result.rows)
+        })
+        .catch((error)=>{
+          console.log('error in get ', error);
+          res.sendStatus(500);
+        })
+  } else{
+    res.sendStatus(403);
+  }
+})
+
 
 module.exports = router;
