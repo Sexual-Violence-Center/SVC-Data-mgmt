@@ -62,6 +62,10 @@ class TotalVictims extends Component {
                         <td>Total:</td>
                         <td>{this.props.state.getFederalReducer.total_victims}</td>
                     </tr>
+                    <tr>
+                        <td>Anonymous Contacts:</td>
+                        <td>{this.props.state.getFederalReducer.anon_victim}</td>
+                    </tr>
                     </tbody>
                 </table>
             </section>
