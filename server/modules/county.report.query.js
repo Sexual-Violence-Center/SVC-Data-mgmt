@@ -12,6 +12,8 @@ const queryText = `SELECT
      (SELECT COUNT(*) FROM "victim" WHERE ("victim_prior_contact" = FALSE 
 	    OR "victim_prior_contact" is NULL OR("victim_prior_contact" = TRUE AND 
 			"victim_contact_prior_oct" = TRUE))  AND "crisis_counseling_group" = true AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3) as total_clients_group_counseling,
+
+	(select COUNT(*) FROM "victim"  WHERE ("victim_zipcode" IS NULL AND "contact_type" = 'phone' AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "service_county" = $1 AND "contact_date" BETWEEN $2 AND $3)) as "anon_victim",
 			
 	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_type" = 'adultPrimaryVictim' AND "contact_date" BETWEEN  $2 AND $3) as "adult_primary_victim",
 	(select COUNT(*) FROM "victim" WHERE "service_county" = $1 AND "victim_type" = 'adultSecondaryVictim' AND "contact_date" BETWEEN $2 AND $3) as "adult_secondary_victim",
