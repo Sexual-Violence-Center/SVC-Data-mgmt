@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
+import CalendarModal from '../../Modal/calendar.modal'
+
+
 //Style
 import { Paper, Typography, Card, Button, TextField  } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-
-
+import keycode from 'keycode';
+import Modal from '@material-ui/core/Modal';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -34,12 +37,28 @@ class FederalDate extends Component {
         });
 
     }
-    submit = () => {
-        this.props.dispatch({
-            type: 'GET_PERSON_DATA',
-            payload: this.state
-        })
+
+    closeModel = () => {
+        this.setState({
+            isOpen: false
+        });
     }
+
+    submit = () => {
+        if (this.state.startDate === '' || this.state.endDate === '') {
+            console.log('no');
+
+            this.setState({
+                isOpen: true
+            });
+        } else {
+            this.props.dispatch({
+                type: 'GET_PERSON_DATA',
+                payload: this.state
+            })
+        }
+    }
+    
     print = () => {
         console.log('print button clicked');
         window.print();
@@ -104,6 +123,7 @@ class FederalDate extends Component {
                       >
                       Print</Button>
                 </div>
+                {this.state.isOpen === true && <CalendarModal handleClose={this.closeModel} />}
             </div>
         );
     }
