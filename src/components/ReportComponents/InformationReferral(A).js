@@ -73,6 +73,10 @@ class InformationReferral extends Component {
                         <td>(A4) Referral to other services, supports, resources</td>
                         <td>{this.props.state.getFederalReducer.referral_other_services}</td>
                     </tr>
+                    <tr>
+                        <td><strong> Total Information & Referral Services </strong></td>
+                        <td>{this.props.state.getFederalReducer.total_A_information_referral}</td>
+                    </tr>
                     </tbody>
                 </table>
             </section>

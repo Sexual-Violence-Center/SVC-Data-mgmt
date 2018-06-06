@@ -48,7 +48,7 @@ class EmotionalSupport extends Component {
     render() {
         return (
             <section className="emotionalSupport">
-                <h4>(C) Emotional Support of Safety Services: Total services provided during the reporting period</h4>
+                <h4>(C) Emotional Support or Safety Services: Total services provided during the reporting period</h4>
                 <table className="federalTable">
                 <thead>
                     <tr>
@@ -76,6 +76,10 @@ class EmotionalSupport extends Component {
                     <tr>
                         <td>(C7) Emergency Financial Assistance</td>
                         <td>{this.props.state.getFederalReducer.emergency_financial}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Emotional Support or Safety Services</strong></td>
+                        <td>{this.props.state.getFederalReducer.total_C_Emotional_support_safety_service}</td>
                     </tr>
                     </tbody>
                 </table>
