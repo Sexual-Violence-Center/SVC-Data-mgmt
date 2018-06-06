@@ -46,7 +46,7 @@ let customReportObject = {
 
 //INDIVIDUALS SERVICED - TOTAL AND NEW
     total_victims: `  "contact_date" BETWEEN $1 AND  $2 `,
-    new_victim: `  "victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE) `,
+    new_victim: `  ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) `,
 
 //IN-PERSON CRISIS COUNSELING
     crisis_counseling_individual: `  "crisis_counseling_individual" = TRUE `,

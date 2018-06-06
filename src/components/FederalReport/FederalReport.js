@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminNav from '../Nav/AdminNav/AdminNav';
+
 //Style
 import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { teal, grey } from '@material-ui/core/colors';
+
 
 //ReportComponents
 import FederalDate from '../ReportComponents/Date/FederalDate';
@@ -89,11 +91,20 @@ class FederalReport extends Component {
         });
 
     }
+
     submit = () => {
-        this.props.dispatch({
-            type: 'GET_PERSON_DATA',
-            payload: this.state
-        })
+        if (this.state.startDate === '' || this.state.endDate === '') {
+            console.log('no');
+            
+            this.setState({
+                isOpen: true
+            });
+        } else {
+            this.props.dispatch({
+                type: 'GET_PERSON_DATA',
+                payload: this.state
+            })
+        }
     }
     
     print = () => {

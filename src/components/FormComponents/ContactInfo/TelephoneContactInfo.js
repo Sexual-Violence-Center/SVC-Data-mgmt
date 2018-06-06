@@ -75,7 +75,7 @@ class TelephoneContactInfo extends Component {
       target.type === "checkbox"
         ? target.checked
         : target.type === "radio"
-          ? target.checked
+          ? JSON.parse(target.value)
           : target.value;
     const name = target.name;
 
@@ -89,18 +89,11 @@ class TelephoneContactInfo extends Component {
   };
   render() {
     const { classes } = this.props;
-    return (
-      <div className="contactInfo">
+    return <div className="contactInfo">
         <Card className={classes.card}>
           <div>
             <h2>Contact Info</h2>
-            <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="center"
-              spacing={0}
-            >
+            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={0}>
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <AdvocateName handleChangeFor={this.handleChangeFor} advocate_name={this.state.advocate_name} />
               </Grid>
@@ -143,8 +136,7 @@ class TelephoneContactInfo extends Component {
             </Grid>
           </div>
         </Card>
-      </div>
-    );
+      </div>;
   }
 }
 

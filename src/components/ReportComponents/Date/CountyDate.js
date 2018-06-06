@@ -4,9 +4,13 @@ import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import AdminNav from '../../Nav/AdminNav/AdminNav';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import CalendarModal from '../../Modal/calendar.modal'
+
 //Style
 import { Paper, Typography, Card, Button, TextField } from '@material-ui/core';
 import { MenuItem, InputLabel, Select, FormControl, Divider, } from '@material-ui/core';
+import keycode from 'keycode';
+import Modal from '@material-ui/core/Modal';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -46,12 +50,26 @@ class CountyDate extends Component{
         }); 
        
     }
-    submit = () => {
-        this.props.dispatch({
-            type: 'GET_PERSON_DATA_COUNTY', 
-            payload: this.state
-        })
+
+    closeModel = () => {
+        this.setState({
+            isOpen: false
+        });
     }
+
+    submit = () => {
+        if (this.state.startDate === '' || this.state.endDate === '') {
+            this.setState({
+                isOpen: true
+            });
+        } else {
+            this.props.dispatch({
+                type: 'GET_PERSON_DATA_COUNTY', 
+                payload: this.state
+            })
+        }
+    }
+
     print = () => {
         console.log('print button clicked');
         window.print();
@@ -145,6 +163,9 @@ class CountyDate extends Component{
                     </div>
                     </div>
                 </div>
+
+                {this.state.isOpen === true && <CalendarModal handleClose={this.closeModel} />}
+
             </div>
         )
     }

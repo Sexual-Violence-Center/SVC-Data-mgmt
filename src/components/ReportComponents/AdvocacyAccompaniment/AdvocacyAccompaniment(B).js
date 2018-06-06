@@ -81,6 +81,10 @@ class AdvocacyAccompaniment extends Component {
                         <td>(B9) Transportation Assistance</td>
                         <td>{this.props.state.getFederalReducer.transportation}</td>
                     </tr>
+                     <tr>
+                        <td><strong> Total Personal Advocacy/Accompaniment </strong></td>
+                        <td>{this.props.state.getFederalReducer.total_B_personal_advocacy_accompaniment}</td>
+                    </tr>
                     </tbody>
                 </table>
             </section>

@@ -12,8 +12,15 @@ let fedQueryText =
     (select COUNT(*) FROM "victim"  WHERE ("victim_prior_contact" = FALSE OR 	
         "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
         "victim_contact_prior_oct" = TRUE)) AND 
-        "contact_date" BETWEEN $1 AND $2) as "new_victim", ` +
-	
+        "contact_date" BETWEEN $1 AND $2) as "new_victim", 
+    (select COUNT(*) FROM "victim"  WHERE ("victim_zipcode" IS NULL AND 
+        "contact_type" = 'phone' AND ("victim_prior_contact" = FALSE OR 	
+        "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
+        "victim_contact_prior_oct" = TRUE)) AND 
+        "contact_date" BETWEEN '2018-01-01' AND '2018-03-31')) as "anon_victim", 
+    
+    ` +
+        
 // COUNTS FOR  - Demographics
     `(select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Asian' 
         AND "contact_date" BETWEEN $1 AND $2) as "victim_ethnicity_asian",
@@ -125,8 +132,7 @@ BETWEEN $1 AND $2) as "total_gender_count",` +
     (select COUNT(*) FROM "victim" WHERE ("victim_immigrant" IS NOT NULL AND 
         "victim_immigrant" != 'No' AND "victim_immigrant" != 'Unknown') AND 
         "contact_date" BETWEEN $1 AND $2) as "victim_immigrant",
-    (select COUNT(*) FROM "victim" WHERE ("victim_transgender" = 'yes' OR 
-        "victim_gender" = 'transgender' OR "victim_sexual_orientation" = 'Gay' 
+    (select COUNT(*) FROM "victim" WHERE ("victim_transgender" = 'TRUE' OR "victim_sexual_orientation" = 'Gay' 
         OR "victim_sexual_orientation" = 'Lesbian') AND "contact_date" BETWEEN $1 AND $2) as "lgbtq",
     (select COUNT(*) FROM "victim" WHERE "veteran" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "veteran",

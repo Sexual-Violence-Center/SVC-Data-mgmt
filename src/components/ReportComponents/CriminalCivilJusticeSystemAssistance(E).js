@@ -75,12 +75,16 @@ class CriminalCivilJusticeSystemAssistance extends Component {
                         <td>{this.props.state.getFederalReducer.legal_prosecution_related}</td>
                     </tr>
                     <tr>
-                        <td>Law Enforcement Interview Advocacy/Accompaniment</td>
+                        <td>(E9) Law Enforcement Interview Advocacy/Accompaniment</td>
                         <td>{this.props.state.getFederalReducer.legal_law_enforcement_interview}</td>
                     </tr>
                     <tr>
-                        <td>Criminal Advocacy/Accompaniment</td>
+                        <td>(E10) Criminal Advocacy/Accompaniment</td>
                         <td>{this.props.state.getFederalReducer.legal_court_advocacy}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Criminal/Civil Justice System Assistance</strong></td>
+                        <td>{this.props.state.getFederalReducer.total_E_criminal_civil_justice_system}</td>
                     </tr>
                     </tbody>
                 </table>
