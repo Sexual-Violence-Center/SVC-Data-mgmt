@@ -12,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-// GET request for list of users in the person table. List displays username and user_type on the UserEnterPage (along with a delete button)
+// GET request for list of users in the person table. List displays username and user_type on the UserEntryPage (along with a delete button)
 router.get('/users', (req, res) => {
   console.log('in admin-only backend GET for user list on UserEntryPage');
   if(req.isAuthenticated() && req.user.user_type === true) {
