@@ -42,27 +42,27 @@ renderSuggestion.propTypes = {
 class AgeCustom extends React.Component {
   state = {
     inputValue: '',
-    selectedItem: [],
+    // selectedItem: [],
   };
 
-  handleChangeForComponent = (item) => {
-    console.log('chip', this.state.selectedItem);
+  // handleChangeForComponent = (item) => {
+  //   console.log('chip', this.props.selectedItem);
     
-    let { selectedItem } = this.state;
-    if (this.props.selectedItem.indexOf(item) === -1) {
-      selectedItem = [...selectedItem, item];
-    }
-    this.setState({
-      inputValue: '',
-      selectedItem,
-    })
-    console.log('chip', this.state.selectedItem);
+  //   let { selectedItem } = this.props;
+  //   if (this.props.selectedItem.indexOf(item) === -1) {
+  //     selectedItem = [...this.props.selectedItem, item];
+  //   }
+  //   this.setState({
+  //     inputValue: '',
+  //     selectedItem,
+  //   })
+  //   console.log('chip', selectedItem);
 
-    this.props.dispatch({
-      type: 'UPDATE_SELECTED_ITEM',
-      payload: { ...this.state, selectedItem }
-    })
-  };
+  //   this.props.dispatch({
+  //     type: 'UPDATE_SELECTED_ITEM',
+  //     payload: { ...this.state, selectedItem }
+  //   })
+  // };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
@@ -72,19 +72,20 @@ class AgeCustom extends React.Component {
     const { inputValue, selectedItem } = this.state;
     if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
       this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+        selectedItem: this.props.selectedItem.slice(0, this.props.selectedItem.length - 1),
       });
     }
   };
 
   render() {
     const { classes } = this.props;
-    const { inputValue, selectedItem } = this.state;
+    const { inputValue } = this.state;
+    const { selectedItem } = this.props;
     
     return (
       <Downshift inputValue={inputValue} 
-        onChange={this.handleChangeForComponent} 
-        selectedItem={this.selectedItem}>
+        onChange={this.props.handleChangeForComponent} 
+        selectedItem={selectedItem}>
         {({
           getInputProps,
           getItemProps,
