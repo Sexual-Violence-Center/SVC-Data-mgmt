@@ -5,12 +5,12 @@ Blake Burbach, Brittany Marty, Sarah Bloomberg, Stephen Engler, and Ty Richardso
 The SVC Data Management Tool is a Single Page Application hosted on Heroku which runs in the browser. It facilitates entry of client interaction data, and it outputs reporting and statistical data for Sexual Violence Center. No personal identifying information is entered into or contained within the application. The data entry aligns with their current data collection forms. The reporting provides the specific data required for federal and county funding sources and flexible custom reporting capabilities to search various categories of data collected by SVC. There are two levels of access, Standard and Admin. All registration of users is controlled by Admins.
 
 ### Techology Used
-React
-Redux
-Material-UI/Next
-Node/Express
-PostgreSQL
-Heroku
+- React
+- Redux
+- Material-UI/Next
+- Node/Express
+- PostgreSQL
+- Heroku
 
 ### Views and Features
 Upon login, Standard users and Admin users are presented different Landing Pages and Navigation bars. The navigation access allowed Standard users is a subset of the navigation access allowed Admin users. The Standard user's data entry views, Telephone and In-Person, are color-coded to match the color of the paper forms from which they are entering data.
@@ -51,145 +51,10 @@ Admin Search and Update page
 ### Database/SQL
 
 db name = svc-data
+db table = person
+db table = victim
 
-CREATE TABLE person (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (1000) NOT NULL,
-    user_type BOOLEAN -- "admin" = true, "user" = false
-);
-
-CREATE TABLE victim (
-	id SERIAL PRIMARY KEY,
---  SVC Advocacy Information
-	date_entered DATE,
-	advocate_name VARCHAR (255),
-	contact_date DATE,
-	
-	start_time TIMETZ,
-	end_time TIMETZ,
-	
-	service_location VARCHAR (255),
-	service_county VARCHAR (255),
-	in_person_client_number INTEGER,
-	
---  Victim/Survivor Information
-	victim_zipcode INTEGER,
-	victim_type VARCHAR (255), -- drop down
-	victim_referral_source VARCHAR (255),
-	victim_prior_contact BOOLEAN,
-	victim_contact_prior_oct BOOLEAN, --CHANGED FROM victim_prior_oct
-	
---  In-Person Services Provided
-	crisis_counseling_individual BOOLEAN,
-	crisis_counseling_group BOOLEAN,
-	legal_law_enforcement_interview BOOLEAN,
-	legal_prosecution_related BOOLEAN,
-	legal_court_advocacy BOOLEAN,
-	legal_ofp_hro BOOLEAN,  
-	legal_immigration BOOLEAN,
-	legal_intervention BOOLEAN,
-	
-	medical_exam_support BOOLEAN,
-	transportation_medical_exam_support BOOLEAN,
-	medical_accompaniment_medical BOOLEAN,
-	transportation_medical_accompaniment_medical BOOLEAN,
-	medical_accompaniment_dental BOOLEAN,
-	transportation_medical_accompaniment_dental BOOLEAN,
-	
--- Other Services Provided
-	crisis_counseling BOOLEAN,  
-	information_referral BOOLEAN,
-	information_criminal_justice BOOLEAN, 
-	other_emergency_justice BOOLEAN,
-	safe_at_home BOOLEAN,
-	emergency_financial BOOLEAN,
-	reparations_claims BOOLEAN,
-	
-	in_person_services_received_prior_oct BOOLEAN,
-	
---  Unmet needs
-	unmet_need_financial BOOLEAN,
-	unmet_need_shelter_housing BOOLEAN,
-	unmet_need_other BOOLEAN,  
-	unmet_need_staying_where VARCHAR (255),
-	unmet_other_descr VARCHAR (255),
-	
--- Referral Services
-	referral_svc VARCHAR (255),
-	referral_agency VARCHAR (255),
-	referral_other VARCHAR (255),
-	
-	supported_on_call VARCHAR (255), --drop down of yes, no, or unknown/hung up
-	
-	
---  Type of Sexual Violence
-	violence_adult_sexual BOOLEAN, 
-	
-	violence_adult_when_child_by_family BOOLEAN, -- CHANGED FROM violence_adult_child_family
-	violence_adult_when_child_by_other BOOLEAN, -- CHANGED FROM violence_adult_child_other
-	
-	violence_bullying BOOLEAN,
-	violence_child_pornography BOOLEAN,
-	violence_domestic BOOLEAN,
-	violence_elder BOOLEAN,
-	violence_exposing BOOLEAN,
-	violence_internet BOOLEAN,
-	
-	violence_minor_by_family BOOLEAN, -- CHANGED FORM violence_minor_family
-	violence_minor_by_other BOOLEAN, -- CHANGED FORM violence_minor_other
-	
-	violence_phone BOOLEAN,
-	
-	violence_exploitation_trafficking BOOLEAN,  -- CHANGED FROM violence_exploitation
-	
-	violence_harassment BOOLEAN,
-	violence_stalking BOOLEAN,
-	violence_teen_dating BOOLEAN,
-	violence_other BOOLEAN,
-	violence_other_specify VARCHAR (255),
-	violence_unknown BOOLEAN,
-	victim_multiple_types_violence BOOLEAN, -- CHANGED FROM victim_multiple
-	
---  sice Report
- 	police_report_filed VARCHAR (255),
-
---  Demographic Survery
-	victim_age INTEGER,
-	victim_gender VARCHAR (255),
-	victim_transgender VARCHAR (255), --drop down of yes, no, or unknown/pass
-	victim_sexual_orientation VARCHAR (255),
-	victim_gender_pronouns VARCHAR (255),
-	
---	Disability Status
-	disability_blind BOOLEAN,
-	disability_physical BOOLEAN,
-	disability_mental BOOLEAN,
-	disability_deaf BOOLEAN,
-	disability_developmental BOOLEAN,
-	disability_other BOOLEAN,
-	disability_other_specify VARCHAR (255),
-	disability_unknown BOOLEAN,
-	disability_none BOOLEAN,
-	
---  Ethnic background. Will be a drop down
-	victim_ethnicity VARCHAR (255),
-	victim_ethnicity_other_specify VARCHAR (255),
-	
---  Immigrant Status. Will be a drop down
-	victim_immigrant VARCHAR (255),
-	victim_immigrant_other_specify VARCHAR (255),
-	
---  Other
-	homeless BOOLEAN,
-	limited_english BOOLEAN,
-	veteran BOOLEAN,
-	
-	victim_number VARCHAR (255),
-	contact_type VARCHAR (255),
-	form_number INTEGER
-	
-);
+The SQL script is extensive. See the file database.sql in the root of this repo.
 
 ### Express/Passport with React
 This version uses React to control the login requests and redirection in coordination with client-side routing.
