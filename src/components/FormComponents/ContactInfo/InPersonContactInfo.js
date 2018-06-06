@@ -158,7 +158,6 @@ class ContactInfo extends Component {
                   service_location={this.state.service_location}
                 />
               </Grid>
-              {/* doesn't work */}
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <County
                   handleChangeFor={this.handleChangeFor}
@@ -180,7 +179,6 @@ class ContactInfo extends Component {
                   * Mandatory field
                 </Typography>
               </Grid>
-              {/* doesn't work */}
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <TypeOfVictim
                   handleChangeFor={this.handleChangeFor}

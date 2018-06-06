@@ -1,9 +1,65 @@
-# Express/Passport with React
+# Sexual Violence Center Data Management Tool
+Blake Burbach, Brittany Marty, Sarah Bloomberg, Stephen Engler, and Ty Richardson
+
+## Application Overview
+The SVC Data Management Tool is a Single Page Application hosted on Heroku which runs in the browser. It facilitates entry of client interaction data, and it outputs reporting and statistical data for Sexual Violence Center. No personal identifying information is entered into or contained within the application. The data entry aligns with their current data collection forms. The reporting provides the specific data required for federal and county funding sources and flexible custom reporting capabilities to search various categories of data collected by SVC. There are two levels of access, Standard and Admin. All registration of users is controlled by Admins.
+
+### Techology Used
+- React
+- Redux
+- Material-UI/Next
+- Node/Express
+- PostgreSQL
+- Heroku
+
+### Views and Features
+Upon login, Standard users and Admin users are presented different Landing Pages and Navigation bars. The navigation access allowed Standard users is a subset of the navigation access allowed Admin users. The Standard user's data entry views, Telephone and In-Person, are color-coded to match the color of the paper forms from which they are entering data.
+
+#### Standard user examples:
+
+Standard user landing page
+
+![Standard user landing page](documentation/images/StandardUserLandingPage.png)
+
+Standard user contact form
+
+![In-Person Contact Form](documentation/images/In-PersonContactForm.png)
+
+
+#### Admin user examples:
+
+Admin landing page
+
+![Admin user landing page](documentation/images/AdminUserLandingPage.png)
+
+Admin County Report
+
+![County Report](documentation/images/CountyReport.png)
+
+Admin Custom Reporting
+
+![Custom Reports](documentation/images/CustomReports.png)
+
+Admin User Entry Page
+
+![User Entry Page](documentation/images/UserEntryPage.png)
+
+Admin Search and Update page
+
+![SearchUpdate](documentation/images/SearchUpdate.png)
+
+### Database/SQL
+
+db name = svc-data
+db table = person
+db table = victim
+
+The SQL script is extensive. See the file database.sql in the root of this repo.
+
+### Express/Passport with React
 This version uses React to control the login requests and redirection in coordination with client-side routing.
 
-We **STONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Prerequisites
+### Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -11,32 +67,13 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
-
-## Database
-* db name = svc-data
-* db tables = person
-            victim
-
-Create a new database called `prime_app` and create a `person` table:
-
-```SQL
-CREATE TABLE person (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (1000) NOT NULL
-);
-```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
-
-## Download (Don't Clone) This Repository
+### Download (Don't Clone) This Repository
 
 * Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
 * Unzip the project and start with the code in that folder.
 * Create a new GitHub project and push this code to the new repository.
 
-## Development Setup Instructions
+### Development Setup Instructions
 
 * Run `npm install`
 * Create a `.env` file at the root of the project and paste this line into the file:
@@ -44,27 +81,16 @@ If you would like to name your database something else, you will need to change 
     SERVER_SESSION_SECRET=superDuperSecret
     ```
     While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
+
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run dev`
 * Navigate to `localhost:3000`
 
-## Debugging
-
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run dev:client`. Start the debugging server by selecting the Debug button.
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
-
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-## Linting
+### Linting
 
 The Airbnb ESLint for react is a part of this project. If you would like to take advantage of this in VS Code, you can add the `ESLint` extension. Click the `Extensions` button (the button right below the `Debug`) and search for `ESLint`. Click `install` for the first result and then click `Reload`. Then it should be all set up!
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-## Production Build
+### Production Build
 
 This is the build Heroku will run, but during development, you will likely not need to use it.
 
@@ -72,254 +98,19 @@ This is the build Heroku will run, but during development, you will likely not n
 * Run `npm start`
 * Navigate to `localhost:5000`
 
-## Lay of the Land
+### Lay of the Land
 
 * `src/` contains the React application
 * `public/` contains static assets for the client-side
 * `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
 * `server/` contains the Express App
 
-## Deployment
+### Deployment
 
 1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Herkoku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-
-
-"0"
-amerIndAlaskaNative
-:
-"0"
-assisted_with_victim_compensation
-:
-"2"
-crisis_counseling_group
-:
-"0"
-crisis_counseling_individual
-:
-"17"
-crisis_intervention
-:
-"27"
-disability_deaf
-:
-"1"
-emergency_financial
-:
-"1"
-emergency_med_care
-:
-"0"
-forensic_exam
-:
-"7"
-hispanicOrLatino
-:
-"0"
-homeless
-:
-"0"
-hotline_intervention
-:
-"1"
-info_criminal_justice_process
-:
-"6"
-info_victims_rights
-:
-"3"
-law_enforcement_interview
-:
-"5"
-legal_court_advocacy
-:
-"0"
-legal_immigration
-:
-"5"
-legal_intervention
-:
-"1"
-legal_law_enforcement_interview
-:
-"5"
-legal_prosecution_related
-:
-"1"
-lgbtq
-:
-"0"
-limited_english
-:
-"2"
-multiple_races
-:
-"0"
-new_victim
-:
-"19"
-not_reported
-:
-"0"
-ofp_hro
-:
-"1"
-other
-:
-"0"
-other_emergency_justice
-:
-"0"
-pacificIslanderHawaiian
-:
-"0"
-referral_other_services
-:
-"0"
-referral_victim_support
-:
-"3"
-total_A_information_referral
-:
-"9"
-total_B_personal_advocacy_accompaniment
-:
-"12"
-total_C_Emotional_support_safety_service
-:
-"12"
-total_E_criminal_civil_justice_system
-:
-"8"
-total_age_count
-:
-"20"
-total_ethnicity
-:
-"20"
-total_gender_count
-:
-"19"
-total_victims
-:
-"27"
-transportation
-:
-"0"
-veteran
-:
-"0"
-victim_age_eighteen_to_twentyfour
-:
-"5"
-victim_age_sixty_and_older
-:
-"0"
-victim_age_thirteen_to_seventeen
-:
-"3"
-victim_age_twentyfive_to_fiftynine
-:
-"12"
-victim_age_unknown
-:
-"7"
-victim_age_zero_to_twelve
-:
-"0"
-victim_ethnicity_asian
-:
-"1"
-victim_gender_female
-:
-"0"
-victim_gender_male
-:
-"0"
-victim_gender_transgender
-:
-"0"
-victim_gender_unknown
-:
-"8"
-victim_immigrant
-:
-"4"
-victim_multiple_types_violence
-:
-"3"
-victims_with_disabilities
-:
-"5"
-violence_adult_sexual
-:
-"18"
-violence_adult_when_child_by_family
-:
-"1"
-violence_adult_when_child_by_other
-:
-"2"
-violence_adult_when_child_total
-:
-"2"
-violence_bullying
-:
-"1"
-violence_child_pornography
-:
-"0"
-violence_domestic
-:
-"0"
-violence_elder
-:
-"0"
-violence_exploitation_trafficking
-:
-"0"
-violence_exposing
-:
-"0"
-violence_harassment
-:
-"1"
-violence_internet
-:
-"0"
-violence_minor_by_family
-:
-"1"
-violence_minor_by_other
-:
-"2"
-violence_minor_total
-:
-"3"
-violence_other
-:
-"0"
-violence_phone
-:
-"0"
-violence_stalking
-:
-"0"
-violence_stalking_harassment_total
-:
-"1"
-violence_teen_dating
-:
-"1"
-violence_unknown
-:
-"1"
-white
-:
-"0"
+2. Link the Heroku project to the project GitHub Repo
+3. Create an Herkoku Postgres database
+4. Connect to the Heroku Postgres database from Postico
+5. Create the necessary tables
+6. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
+7. In the deploy section, select manual deploy
