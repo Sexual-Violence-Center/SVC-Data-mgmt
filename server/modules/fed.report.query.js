@@ -12,8 +12,15 @@ let fedQueryText =
     (select COUNT(*) FROM "victim"  WHERE ("victim_prior_contact" = FALSE OR 	
         "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
         "victim_contact_prior_oct" = TRUE)) AND 
-        "contact_date" BETWEEN $1 AND $2) as "new_victim", ` +
-	
+        "contact_date" BETWEEN $1 AND $2) as "new_victim", 
+    (select COUNT(*) FROM "victim"  WHERE ("victim_zipcode" IS NULL AND 
+        "contact_type" = 'phone' AND ("victim_prior_contact" = FALSE OR 	
+        "victim_prior_contact" 	is NULL OR("victim_prior_contact" = TRUE AND 
+        "victim_contact_prior_oct" = TRUE)) AND 
+        "contact_date" BETWEEN '2018-01-01' AND '2018-03-31')) as "anon_victim", 
+    
+    ` +
+        
 // COUNTS FOR  - Demographics
     `(select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Asian' 
         AND "contact_date" BETWEEN $1 AND $2) as "victim_ethnicity_asian",
