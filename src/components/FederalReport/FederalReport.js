@@ -123,19 +123,18 @@ class FederalReport extends Component {
         return (
             <div>
                 <div>
-                    {/*  style={{ flex: .5, margin: "auto", textAlign: "center" }} */}
                 <AdminNav />
                     <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
-                        <Grid item xs={2} sm={2} md={3}>
+                        <Grid item xs={3} sm={3}>
                         </Grid>
-                        <Grid item xs={7} sm={7} md={9} lg={9} xl={12}>
+                        <Grid item xs={8} sm={8}>
                             <Paper style={style.paper}>
                                 <Card style={{ margin: "10px"}}>
                                     <Typography variant="display1" style={style.title}>
                                         Federal Report
                                     </Typography>
                                 </Card>
-                                <Card style={{margin: "10px", padding: "20px", textAlign:"center"}}>
+                                <Card style={{margin: "10px", padding: "20px"}}>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                     <FederalDate />
                                 </Grid>
@@ -202,7 +201,7 @@ class FederalReport extends Component {
                                 </Grid>
                                 </Card>
                             </Paper>
-                            <Grid item xs={3} sm={3}>
+                            <Grid item xs={1} sm={1}>
                             </Grid>
                         </Grid>
                     </Grid>
