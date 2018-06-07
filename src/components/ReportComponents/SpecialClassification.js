@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -8,6 +15,16 @@ const mapStateToProps = state => ({
     state,
 });
 
+const styles = theme => ({
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+    },
+    table: {
+      minWidth: 700,
+    },
+  });
 
 class SpecailClassification extends Component {
     constructor() {
@@ -42,47 +59,48 @@ class SpecailClassification extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <section className="total">
                 <h4>Types of Victimization: Special classification of individuals</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Types of Individuals</th>
-                        <th>Number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Deaf/Hard of Hearing</td>
-                        <td>{this.props.state.getFederalReducer.disability_deaf}</td>
-                    </tr>
-                    <tr>
-                        <td>Homeless</td>
-                        <td>{this.props.state.getFederalReducer.homeless}</td>
-                    </tr>
-                    <tr>
-                        <td>Immigrants/Refugees/Asylum Seekers</td>
-                        <td>{this.props.state.getFederalReducer.victim_immigrant}</td>
-                    </tr>
-                    <tr>
-                        <td>LGBTQ</td>
-                        <td>{this.props.state.getFederalReducer.lgbtq}</td>
-                    </tr>
-                    <tr>
-                        <td>Veterans</td>
-                        <td>{this.props.state.getFederalReducer.veteran}</td>
-                    </tr>
-                    <tr>
-                        <td>Victims with Disabilities: Cognitive/Physical/Mental</td>
-                        <td>{this.props.state.getFederalReducer.victims_with_disabilities}</td>
-                    </tr>
-                    <tr>
-                        <td>Victims with Limited English Proficiency</td>
-                        <td>{this.props.state.getFederalReducer.limited_english}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Types of Individuals</TableCell>
+                        <TableCell>Number</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>Deaf/Hard of Hearing</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.disability_deaf}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Homeless</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.homeless}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Immigrants/Refugees/Asylum Seekers</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_immigrant}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>LGBTQ</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.lgbtq}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Veterans</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.veteran}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Victims with Disabilities: Cognitive/Physical/Mental</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victims_with_disabilities}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Victims with Limited English Proficiency</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.limited_english}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         );
     }

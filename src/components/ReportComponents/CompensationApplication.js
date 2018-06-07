@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -45,20 +50,20 @@ class CompensationApplication extends Component {
         return (
             <section className="assisted">
                 <h4>Individuals assisted with a victim compensation application during the reporting period</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Types of Individuals</th>
-                        <th>Number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Individuals Assisted</td>
-                        <td>{this.props.state.getFederalReducer.assisted_with_victim_compensation}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Types of Individuals</TableCell>
+                        <TableCell>Number</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>Individuals Assisted</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.assisted_with_victim_compensation}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         );
     }
