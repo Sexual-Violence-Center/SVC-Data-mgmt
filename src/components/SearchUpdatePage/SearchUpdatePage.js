@@ -99,9 +99,9 @@ class SearchUpdatePage extends Component {
         const { classes } = this.props;
         return <div>
             <AdminNav />
-            <Grid container direction="row" justify="space-between" alignItems="center">
-                <Grid item sm={3}></Grid>
-                <Grid item xs={12} sm={6}>
+            <Grid container direction="row" justify="flex-start" alignItems="center">
+                <Grid item xs={3} sm={3}></Grid>
+                <Grid item xs={8} sm={8}>
                     <Paper className={classes.paper}>
                         <div>
                             <Card className={classes.titleCard}>
@@ -131,7 +131,7 @@ class SearchUpdatePage extends Component {
                         </div>
                     </Paper>
                 </Grid>
-                <Grid item sm={3}></Grid>
+                <Grid item xs={1} sm={1}></Grid>
             </Grid>
 
             <Snackbar
