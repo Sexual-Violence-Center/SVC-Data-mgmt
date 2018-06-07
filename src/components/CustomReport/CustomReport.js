@@ -211,7 +211,7 @@ class customReportSelectionPage extends Component {
             })
             this.props.history.push("/custom_report_output");
         }
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     closeModel = () => {
@@ -255,7 +255,7 @@ class customReportSelectionPage extends Component {
                     <AdvocacyMedicalCustom handleChangeForComponent={this.handleChangeForComponent("AdvocacyMedicalCustomSelection")} handleDelete={this.handleDelete("AdvocacyMedicalCustomSelection")} selectedItem={this.state.AdvocacyMedicalCustomSelection} inputValue={this.state.inputValue} />
                     <AdvocacyOtherCustom handleChangeForComponent={this.handleChangeForComponent("AdvocacyOtherCustomSelection")} handleDelete={this.handleDelete("AdvocacyOtherCustomSelection")} selectedItem={this.state.AdvocacyOtherCustomSelection} inputValue={this.state.inputValue} />
                     <PhoneServicesCustom handleChangeForComponent={this.handleChangeForComponent("PhoneServicesCustomSelection")} handleDelete={this.handleDelete("PhoneServicesCustomSelection")} selectedItem={this.state.PhoneServicesCustomSelection} inputValue={this.state.inputValue} />
-                            <PoliceReportCustom handleChangeForComponent={this.handleChangeForComponent("PoliceReportCustomSelection")} handleDelete={this.handleDelete("PoliceReportCustomSelection")} selectedItem={this.state.PoliceReportCustomSelection} inputValue={this.state.inputValue} />
+                    <PoliceReportCustom handleChangeForComponent={this.handleChangeForComponent("PoliceReportCustomSelection")} handleDelete={this.handleDelete("PoliceReportCustomSelection")} selectedItem={this.state.PoliceReportCustomSelection} inputValue={this.state.inputValue} />
                     <RaceEthnicityCustom handleChangeForComponent={this.handleChangeForComponent("RaceEthnicityCustomSelection")} handleDelete={this.handleDelete("RaceEthnicityCustomSelection")} selectedItem={this.state.RaceEthnicityCustomSelection} inputValue={this.state.inputValue} />
                     <SexualOrientationCustom handleChangeForComponent={this.handleChangeForComponent("SexualOrientationCustomSelection")} handleDelete={this.handleDelete("SexualOrientationCustomSelection")} selectedItem={this.state.SexualOrientationCustomSelection} inputValue={this.state.inputValue} />
                     <SpecialClassificationCustom handleChangeForComponent={this.handleChangeForComponent("SpecialClassificationCustomSelection")} handleDelete={this.handleDelete("SpecialClassificationCustomSelection")} selectedItem={this.state.SpecialClassificationCustomSelection} inputValue={this.state.inputValue} />

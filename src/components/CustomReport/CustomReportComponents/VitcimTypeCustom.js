@@ -40,49 +40,30 @@ renderSuggestion.propTypes = {
 class VictimTypeCustom extends React.Component {
   state = {
     inputValue: '',
-    selectedItem: [],
-  };
-
-  handleKeyDown = event => {
-    const { inputValue, selectedItem } = this.state;
-    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
-      this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
-      });
-    }
   };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });
   };
 
-  handleChange = item => {
-    let { selectedItem } = this.state;
-    if (selectedItem.indexOf(item) === -1) {
-      selectedItem = [...selectedItem, item];
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: this.props.selectedItem.slice(0, this.props.selectedItem.length - 1),
+      });
     }
-
-    this.setState({
-      inputValue: '',
-      selectedItem,
-    });
-  };
-
-  handleDelete = item => () => {
-    const selectedItem = [...this.state.selectedItem];
-    selectedItem.splice(selectedItem.indexOf(item), 1);
-    this.setState({ selectedItem });
   };
 
   render() {
     const { classes } = this.props;
-    const { inputValue, selectedItem } = this.state;
-    // console.log('selectedItem', selectedItem);
-    // console.log('value', selectedItem);
-    
+    const { inputValue } = this.state;
+    const { selectedItem } = this.props;
+
     return (
-      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
-      
+      <Downshift inputValue={inputValue}
+        onChange={this.props.handleChangeForComponent}
+        selectedItem={selectedItem}>
         {({
           getInputProps,
           getItemProps,
@@ -103,7 +84,7 @@ class VictimTypeCustom extends React.Component {
                     tabIndex={-1}
                     label={item.label}
                     className={classes.chip}
-                    onDelete={this.handleDelete(item)}
+                    onDelete={this.props.handleDelete(item)}
                     value={item.value}
                   />
                 )),
