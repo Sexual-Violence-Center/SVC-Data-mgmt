@@ -219,7 +219,7 @@ class customReportSelectionPage extends Component {
                     //, marginRight: "500px"
                   }>
                   <DateCustom querySelector = {this.state.querySelector} handleChangeForQuerySelector={this.handleChangeForQuerySelector} startDate={this.state.startDate} endDate={this.state.endDate} submitCustomReport={this.submitCustomReport} handleChangeForEndDate={this.handleChangeForEndDate} handleChangeForStartDate={this.handleChangeForStartDate} />
-                  <Card style={{ margin: "10px", padding: "20px" }}>
+                  <Card style={{ margin: "10px", padding: "20px", paddingBottom: '600px' }}>
                             <CustomAge handleChangeForComponent={this.handleChangeForComponent("AgeCustomSelection")} handleDelete={this.handleDelete("AgeCustomSelection")} selectedItem={this.state.AgeCustomSelection} inputValue={this.state.inputValue} />
                     <CustomContactType handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.state.inputValue} />
                     <CustomDisability handleChangeForComponent={this.handleChangeForComponent} handleDelete={this.handleDelete} selectedItem={this.state.selectedItem} inputValue={this.state.inputValue} />
