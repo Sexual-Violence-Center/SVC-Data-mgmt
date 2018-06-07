@@ -31,7 +31,7 @@ Before you get started, make sure you have the following software installed on y
 * Run `npm run dev`
 * Navigate to `localhost:3000`
 
-###Techology Used
+### Techology Used
 
 - React
 - Redux
@@ -47,6 +47,12 @@ db table = person,
 db table = victim
 
 The SQL script is extensive. See the file database.sql in the root of this repo.
+
+To add an Admin user after creating DB and Tables, run the following insert statement. Login, navigate to User Entry Page, add a new Admin user, test it works, then delete this test admin user.
+
+INSERT INTO “person” (“id”, “username”, “password”, “user_type”) VALUES (‘1’, ‘ty’, ‘$2a$10$3ynnUgcr3FucUYuJm.Fs3uvvAtH3mFgN9vSQj5rLnbZid/pjviYXy’, true);
+
+username: ty    password: ty
 
 ### Express/Passport with React
 
