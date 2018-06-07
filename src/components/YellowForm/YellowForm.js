@@ -54,6 +54,16 @@ class YellowForm extends Component {
         this.forceUpdate();
     }
 
+    renderDemographics = ()=>{
+        const {EntryFormReducer}= this.props.state
+        if (EntryFormReducer.victim_prior_contact === false || EntryFormReducer.victim_contact_prior_oct === false) {
+            return <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
+              </Grid>;
+        } 
+        return null;
+    }
+
     render() {
         let DataEntryNav;
         if (this.props.state.user.userInfo === true) {
@@ -87,9 +97,7 @@ class YellowForm extends Component {
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                     <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                    <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
-                                </Grid>
+                                {this.renderDemographics()}
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                 <SubmitDialog handleSubmit={this.handleSubmit} text={'Submit'} />
                                 </Grid>
