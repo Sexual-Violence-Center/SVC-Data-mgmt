@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -49,32 +54,32 @@ class CountyVictimType extends Component{
         return (
             <section className="county">
                 <h4>New Hennepin County residents by victim type who recieved services during the reporting period</h4>
-                <table className="countyTable">
-                <thead>
-                    <tr>
-                        <th>Type of Individual</th>
-                        <th>Number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Adult Primary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.adult_primary_victim}</td>
-                    </tr>
-                    <tr>
-                        <td>Adult Secondary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.adult_secondary_victim}</td>
-                    </tr>
-                    <tr>
-                        <td>Youth Primary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.youth_primary_victim}</td>
-                    </tr>
-                    <tr>
-                        <td>Youth Secondary Victim/Survivor</td>
-                        <td>{this.props.state.getCountyReducer.youth_secondary_victim}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="countyTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Type of Individual</TableCell>
+                        <TableCell>Number</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>Adult Primary Victim/Survivor</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.adult_primary_victim}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Adult Secondary Victim/Survivor</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.adult_secondary_victim}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Youth Primary Victim/Survivor</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.youth_primary_victim}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Youth Secondary Victim/Survivor</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.youth_secondary_victim}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         )
     }

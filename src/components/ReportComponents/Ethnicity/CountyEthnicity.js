@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';Table
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -12,7 +17,7 @@ class CountyEthnicity extends Component{
     constructor(){
         super();
         this.state={
-            startDate:'',
+            starTableCellate:'',
             endDate:'',
             county:'',
             service_location: ''
@@ -39,56 +44,56 @@ class CountyEthnicity extends Component{
         return (
             <section className="race">
             <h4>Demographics: Race/Ethnicity</h4>
-            <table className="countyTable">
-            <thead>
-                <tr>
-                    <th>Race/Ethnicity</th>
-                    <th>Primary</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>American Indian or Alaskan Native</td>
-                    <td>{this.props.state.getCountyReducer.amerIndAlaskaNative}</td>
-                </tr>
-                <tr>
-                    <td>Asian</td>
-                    <td>{this.props.state.getCountyReducer.victim_ethnicity_asian}</td>
-                </tr>
-                <tr>
-                    <td>Black or African American</td>
-                    <td>{this.props.state.getCountyReducer.africanAmerican}</td>
-                </tr>
-                <tr>
-                    <td>Hispanic or Latino</td>
-                    <td>{this.props.state.getCountyReducer.hispanicOrLatino}</td>
-                </tr>
-                <tr>
-                    <td>Native Hawaiian or Other Pacific Islander</td>
-                    <td>{this.props.state.getCountyReducer.pacificIslanderHawaiian}</td>
-                </tr>
-                <tr>
-                    <td>White Non-Latino or Caucasian</td>
-                    <td>{this.props.state.getCountyReducer.white}</td>
-                </tr>
-                <tr>
-                    <td>Other Race</td>
-                    <td>{this.props.state.getCountyReducer.other}</td>
-                </tr>
-                <tr>
-                    <td>Multiple Races</td>
-                    <td>{this.props.state.getCountyReducer.multiple_races}</td>
-                </tr>
-                <tr>
-                    <td>Not Reported</td>
-                    <td>{this.props.state.getCountyReducer.not_reported}</td>
-                </tr>
-                <tr>
-                    <td>Total Ethnicity:</td>
-                    <td>{this.props.state.getCountyReducer.total_ethnicity}</td>
-                </tr>
-                </tbody>
-            </table>
+            <Table className="countyTable">
+            <TableHead>
+                <TableRow>
+                    <TableCell>Race/Ethnicity</TableCell>
+                    <TableCell>Primary</TableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                <TableRow>
+                    <TableCell>American Indian or Alaskan Native</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.amerIndAlaskaNative}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Asian</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.victim_ethnicity_asian}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Black or African American</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.africanAmerican}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Hispanic or Latino</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.hispanicOrLatino}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Native Hawaiian or Other Pacific Islander</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.pacificIslanderHawaiian}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>White Non-Latino or Caucasian</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.white}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Other Race</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.other}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Multiple Races</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.multiple_races}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Not Reported</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.not_reported}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Total Ethnicity:</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.total_ethnicity}</TableCell>
+                </TableRow>
+                </TableBody>
+            </Table>
         </section>
         )
     }
