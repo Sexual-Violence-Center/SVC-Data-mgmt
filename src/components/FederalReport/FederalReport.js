@@ -40,14 +40,10 @@ const style = {
         textAlign: 'center',
         color: 'white', 
         padding: '10px',
-        
-        // position: 'abosolute',
     },
     paper:{
         backgroundColor: grey[300], 
-        padding: '10px',
-        // margin: '50px',
-        
+        padding: '10px',        
     }
 }
 const styles = theme => ({

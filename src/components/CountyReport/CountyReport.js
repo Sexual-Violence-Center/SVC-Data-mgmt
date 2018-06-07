@@ -24,22 +24,7 @@ const mapStateToProps = state => ({
     county: state.getCountyReducer,
     state
 });
-// const style = {
-//     titleCard: {
-//       color: grey[50],
-//       backgroundColor: teal[300],
-//       padding: '20px',
-//       margin: '10px',
-//       color: 'white'
-//     },
-//     title: {
-//       color: grey[50],
-//     },
-//     paper: {
-//       padding: '10px',
-//       backgroundColor: grey[300]
-//     }
-//   }
+
   const style = {
     title: {
         backgroundColor:  teal[300],
