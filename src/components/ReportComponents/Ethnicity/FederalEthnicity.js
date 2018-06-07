@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,17 +12,6 @@ const mapStateToProps = state => ({
     person: state.getFederalReducer,
     state,
 });
-
-const styles = theme => ({
-    root: {
-      width: '100%',
-      marginTop: theme.spacing.unit * 3,
-      overflowX: 'auto',
-    },
-    table: {
-      minWidth: 700,
-    },
-  });
 
 class Ethnicity extends Component {
     constructor() {
@@ -59,7 +46,6 @@ class Ethnicity extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
             <section className="race">
                 <h4>Demographics: Race/Ethnicity</h4>
