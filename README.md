@@ -50,7 +50,7 @@ The SQL script is extensive. See the file database.sql in the root of this repo.
 
 To add an Admin user after creating DB and Tables, run the following insert statement. Login, navigate to User Entry Page, add a new Admin user, test it works, then delete this test admin user.
 
-INSERT INTO “person” (“id”, “username”, “password”, “user_type”) VALUES (‘1’, ‘ty’, ‘$2a$10$3ynnUgcr3FucUYuJm.Fs3uvvAtH3mFgN9vSQj5rLnbZid/pjviYXy’, true);
+INSERT INTO “person” (“username”, “password”, “user_type”) VALUES (‘ty’, ‘$2a$10$3ynnUgcr3FucUYuJm.Fs3uvvAtH3mFgN9vSQj5rLnbZid/pjviYXy’, true);
 
 username: ty    password: ty
 
