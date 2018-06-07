@@ -42,27 +42,7 @@ renderSuggestion.propTypes = {
 class AgeCustom extends React.Component {
   state = {
     inputValue: '',
-    // selectedItem: [],
   };
-
-  // handleChangeForComponent = (item) => {
-  //   console.log('chip', this.props.selectedItem);
-    
-  //   let { selectedItem } = this.props;
-  //   if (this.props.selectedItem.indexOf(item) === -1) {
-  //     selectedItem = [...this.props.selectedItem, item];
-  //   }
-  //   this.setState({
-  //     inputValue: '',
-  //     selectedItem,
-  //   })
-  //   console.log('chip', selectedItem);
-
-  //   this.props.dispatch({
-  //     type: 'UPDATE_SELECTED_ITEM',
-  //     payload: { ...this.state, selectedItem }
-  //   })
-  // };
 
   handleInputChange = event => {
     this.setState({ inputValue: event.target.value });

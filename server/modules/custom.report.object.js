@@ -65,7 +65,7 @@ let customReportObject = {
 //IN-PERSON MEDICAL ADVOCACY
     emergency_med_care_medical: `      "medical_accompaniment_medical" = TRUE `,
     emergency_med_care_dental: `      "medical_accompaniment_dental" = TRUE  `,
-    forensic_exam: ` "medical_exam_support" = TRUE AND `,
+    forensic_exam: ` "medical_exam_support" = TRUE `,
 
 //LOCATIONS
 
@@ -85,7 +85,7 @@ let customReportObject = {
     location_SCJail: ` "service_location" ='Scott County Jail' `,
     location_SVC: ` "service_location" ='Sexual Violence Center' `,
     location_Shakopee: ` "service_location" ='Shakopee' `,
-    location_Shakopee_Correctional_Facility: ` "service_location" ='Shakopee Correctional Facility' AND `,
+    location_Shakopee_Correctional_Facility: ` "service_location" ='Shakopee Correctional Facility' `,
     location_St_Francis: ` "service_location" ='St. Francis Hospital' `,
     location_unknown: ` "service_location" IS NULL `,
     location_other: `(
@@ -157,7 +157,7 @@ let customReportObject = {
     homeless: ` "homeless" = TRUE `,
     victim_immigrant: ` "victim_immigrant" IS NOT NULL  AND "victim_immigrant" != 'No' AND "victim_immigrant" != 'Unknown' `,
     lgbtq: ` "victim_transgender" = 'yes' OR  "victim_gender" = 'transgender' OR "victim_sexual_orientation" = 'homosexual' `,
-    veteran: ` "veteran" = TRUE AND   `,
+    veteran: ` "veteran" = TRUE   `,
     victims_with_disabilities: `  "disability_physical" = TRUE OR "disability_mental" = TRUE OR "disability_developmental" = TRUE OR "disability_other" = TRUE  `,
     limited_english: ` "limited_english" = TRUE `,
     assisted_with_victim_compensation: ` "emergency_financial" = TRUE OR "reparations_claims"= TRUE  `,
@@ -183,9 +183,9 @@ let customReportObject = {
     youthSecondayVictim: `"victim_type" = youthSecondayVictim `,
 
 //TYPES OF VICTIMIZATION
-    violence_adult_sexual: ` "violence_adult_sexual" = TRUE AND  `,
-    violence_adult_when_child_by_family: `  “violence_adult_when_child_by_family" = TRUE `,
-    violence_adult_when_child_by_other: `  “violence_adult_when_child_by_other" = TRUE  `,
+    violence_adult_sexual: ` "violence_adult_sexual" = TRUE  `,
+    violence_adult_when_child_by_family: `  "violence_adult_when_child_by_family" = TRUE `,
+    violence_adult_when_child_by_other: `  "violence_adult_when_child_by_other" = TRUE  `,
     violence_adult_when_child_total: `  "violence_adult_when_child_by_other" = TRUE OR 	 "violence_adult_when_child_by_family" = TRUE  `,
     violence_bullying: ` "violence_bullying" = TRUE `,
     violence_child_pornography: ` "violence_child_pornography" = TRUE   `,
@@ -200,7 +200,7 @@ let customReportObject = {
     violence_phone: ` "violence_phone" = TRUE  `,
     violence_harassment: ` "violence_harassment" = TRUE   `,
     violence_stalking: ` "violence_stalking" = TRUE   `,
-    violence_stalking_harassment_total: ` "violence_stalking" = TRUE OR "violence_exposing" = TRUE OR  "violence_internet" = TRUE OR "violence_phone" OR 	"violence_harassment" = TRUE   `,
+    violence_stalking_harassment_total: ` "violence_stalking" = TRUE OR "violence_exposing" = TRUE OR  "violence_internet" = TRUE OR "violence_phone" OR "violence_harassment" = TRUE   `,
     violence_teen_dating: ` "violence_teen_dating" = TRUE   `,
     violence_other: ` "violence_other" = TRUE   `,
     violence_unknown:`"violence_unknown" = TRUE   `,

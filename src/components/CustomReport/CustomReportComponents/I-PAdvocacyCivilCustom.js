@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
 
 function getSuggestions(inputValue) {
   let count = 0;
+
   return CivilAdvocacyObject.filter(suggestion => {
     const keep =
       (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
@@ -42,22 +43,6 @@ renderSuggestion.propTypes = {
 class CivilAdvocacyCustom extends React.Component {
   state = {
     inputValue: '',
-    selectedItem: [],
-  };
-
-  handleChangeForComponent = (item) => {
-    let { selectedItem } = this.state;
-    if (this.props.selectedItem.indexOf(item) === -1) {
-      selectedItem = [...selectedItem, item];
-    }
-    this.setState({
-      inputValue: '',
-      selectedItem,
-    })
-    this.props.dispatch({
-      type: 'UPDATE_SELECTED_ITEM',
-      payload: { ...this.state, selectedItem }
-    })
   };
 
   handleInputChange = event => {
@@ -68,18 +53,19 @@ class CivilAdvocacyCustom extends React.Component {
     const { inputValue, selectedItem } = this.state;
     if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
       this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+        selectedItem: this.props.selectedItem.slice(0, this.props.selectedItem.length - 1),
       });
     }
   };
 
   render() {
     const { classes } = this.props;
-    const { inputValue, selectedItem } = this.state;
+    const { inputValue } = this.state;
+    const { selectedItem } = this.props;
     
     return (
       <Downshift inputValue={inputValue} 
-        onChange={this.handleChangeForComponent}
+        onChange={this.props.handleChangeForComponent}
         selectedItem={this.selectedItem}>
         {({
           getInputProps,
