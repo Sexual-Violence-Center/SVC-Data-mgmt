@@ -46,7 +46,8 @@ const style = {
     color: grey[50],
     backgroundColor: teal[300],
     padding: '20px',
-    margin: '10px'
+    margin: '10px',
+    textAlign: 'center'
   },
   title: {
     color: grey[50],
@@ -180,11 +181,11 @@ class UserEntryPage extends Component {
     if (this.props.user) {
       content = (
         <div>
-          <div style={{}}>
+          <div>
             <AdminNav />
-            <Grid container direction="row" justify="space-between" alignItems="center" spacing={40}>
-              <Grid item xs={6} sm={3}></Grid>
-              <Grid item xs={6} sm={8}>
+            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
+              <Grid item xs={3} sm={3}></Grid>
+              <Grid item xs={8} sm={8}>
                 <Paper style={style.paper}>
                   <Card style={style.titleCard}>
                     <Typography variant="display1"
