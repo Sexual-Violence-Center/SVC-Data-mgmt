@@ -71,7 +71,7 @@ class CountyGender extends Component{
                         <TableCell>{this.props.state.getCountyReducer.victim_gender_female}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell>TableRowansgender</TableCell>
+                        <TableCell>Transgender</TableCell>
                         <TableCell>{this.props.state.getCountyReducer.victim_gender_TableRowansgender}</TableCell>
                     </TableRow>
                     <TableRow>
