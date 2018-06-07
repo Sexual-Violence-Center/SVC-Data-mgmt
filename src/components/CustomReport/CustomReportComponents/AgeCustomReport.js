@@ -42,7 +42,6 @@ renderSuggestion.propTypes = {
 class AgeCustom extends React.Component {
   state = {
     inputValue: '',
-    //selectedItem: [],
   };
 
   handleInputChange = event => {
