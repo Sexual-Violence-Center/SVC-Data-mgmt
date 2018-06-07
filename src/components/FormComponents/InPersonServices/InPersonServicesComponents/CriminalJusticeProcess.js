@@ -13,13 +13,13 @@ class CriminalJusticeProcess extends Component {
         }
     }
     static getDerivedStateFromProps(props, state){
-        if (props.legal_law_enforcement_interview != undefined){
+        if (props.legal_law_enforcement_interview !== undefined){
             state = {...state, checked1: props.legal_law_enforcement_interview}
         } 
-        if (props.legal_prosecution_related != undefined){
+        if (props.legal_prosecution_related !== undefined){
             state= { ...state, checked2: props.legal_prosecution_related };
         } 
-         if (props.legal_court_advocacy != undefined){
+         if (props.legal_court_advocacy !== undefined){
             state = {...state, checked3: props.legal_court_advocacy};
         } 
         return state;

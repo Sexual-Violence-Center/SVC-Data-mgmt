@@ -11,10 +11,10 @@ class MedicalAccompaniment extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.transportation_medical_accompaniment_medical != undefined) {
+    if (props.transportation_medical_accompaniment_medical !== undefined) {
       state = { ...state, radio: JSON.stringify(props.transportation_medical_accompaniment_medical) };
     }
-    if (props.medical_accompaniment_medical != undefined) {
+    if (props.medical_accompaniment_medical !== undefined) {
       state = { ...state, checked: props.medical_accompaniment_medical };
     }
     return state;

@@ -12,10 +12,7 @@ const styles = theme => ({
 });
 
 class Gender extends Component {
-    constructor() {
-        super();
-    }
-
+    
     handleChange = (event) => {
         this.props.handleChangeFor(event);
     }

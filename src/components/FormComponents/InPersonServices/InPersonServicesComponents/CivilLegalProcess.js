@@ -14,13 +14,13 @@ class CivilLegalProcess extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.legal_ofp_hro != undefined) {
+    if (props.legal_ofp_hro !== undefined) {
       state = { ...state, checked1: props.legal_ofp_hro };
     }
-    if (props.legal_immigration != undefined) {
+    if (props.legal_immigration !== undefined) {
       state = { ...state, checked2: props.legal_immigration };
     }
-    if (props.legal_intervention != undefined) {
+    if (props.legal_intervention !== undefined) {
       state = { ...state, checked3: props.legal_intervention };
     }
     return state;

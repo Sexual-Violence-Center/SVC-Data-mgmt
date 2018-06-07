@@ -12,9 +12,6 @@ const styles = theme => ({
 });
 
 class CurrentDate extends Component {
-    constructor() {
-        super();
-    }
 
     handleChange = (event) => {
         this.props.handleChangeFor(event);

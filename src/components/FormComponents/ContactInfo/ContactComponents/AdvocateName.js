@@ -12,10 +12,6 @@ const styles = theme => ({
 });
 
 class AdvocateName extends Component {
-    constructor() {
-        super();
-    }
-
 
     handleChange = (event) => {
         this.props.handleChangeFor(event);

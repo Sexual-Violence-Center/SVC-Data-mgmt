@@ -11,10 +11,10 @@ class ForensicExam extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.transportation_medical_exam_support != undefined) {
+    if (props.transportation_medical_exam_support !== undefined) {
       state = { ...state, radio: JSON.stringify(props.transportation_medical_exam_support) };
     }
-    if (props.medical_exam_support != undefined) {
+    if (props.medical_exam_support !== undefined) {
       state = { ...state, checked: props.medical_exam_support };
     }
     return state;

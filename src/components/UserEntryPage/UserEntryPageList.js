@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import { Typography, Table, TableBody, TableCell, TableHead, TableRow, withStyles} from '@material-ui/core';
+import { Table, TableBody, TableCell, TableRow, withStyles} from '@material-ui/core';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import PropTypes from 'prop-types';
 

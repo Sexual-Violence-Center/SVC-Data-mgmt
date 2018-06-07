@@ -12,9 +12,6 @@ const styles = theme => ({
 });
 
 class Pronouns extends Component {
-    constructor() {
-        super();
-    }
 
     handleChange = (event) => {
         this.props.handleChangeFor(event);

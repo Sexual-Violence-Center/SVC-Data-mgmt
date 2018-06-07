@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { Card, TextField, Grid } from '@material-ui/core';
+import { Card, TextField } from '@material-ui/core';
 
 const mapStateToProps = state => ({
     state

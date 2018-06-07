@@ -5,21 +5,20 @@ import AdminNav from '../Nav/AdminNav/AdminNav';
 import UserEntryPageList from './UserEntryPageList';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import { Paper, Typography, Card, Grid, Table, TableBody, TableCell, TableHead, TableRow, withStyles, Snackbar, TextField, Radio } from '@material-ui/core';
+import { Paper, Typography, Card, Grid, withStyles, Snackbar, TextField, Radio } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { teal, grey } from '@material-ui/core/colors';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
   state,
 });
 
-const CustomTableCell = withStyles(theme => ({
-  body: {
-    fontSize: 15,
-  },
-}))(TableCell);
+// const CustomTableCell = withStyles(theme => ({
+//   body: {
+//     fontSize: 15,
+//   },
+// }));
 
 const styles = theme => ({
   root: {
