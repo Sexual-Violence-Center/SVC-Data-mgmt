@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -8,6 +15,16 @@ const mapStateToProps = state => ({
     state,
 });
 
+const styles = theme => ({
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+    },
+    table: {
+      minWidth: 700,
+    },
+  });
 
 class Ethnicity extends Component {
     constructor() {
@@ -42,59 +59,60 @@ class Ethnicity extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <section className="race">
                 <h4>Demographics: Race/Ethnicity</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Race/Ethnicity</th>
-                        <th>Primary</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>American Indian or Alaskan Native</td>
-                        <td>{this.props.state.getFederalReducer.Native_American}</td>
-                    </tr>
-                    <tr>
-                        <td>Asian</td>
-                        <td>{this.props.state.getFederalReducer.victim_ethnicity_asian}</td>
-                    </tr>
-                    <tr>
-                        <td>Black or African American</td>
-                        <td>{this.props.state.getFederalReducer.africanAmerican}</td>
-                    </tr>
-                    <tr>
-                        <td>Hispanic or Latino</td>
-                        <td>{this.props.state.getFederalReducer.hispanicOrLatino}</td>
-                    </tr>
-                    <tr>
-                        <td>Native Hawaiian or Other Pacific Islander</td>
-                        <td>{this.props.state.getFederalReducer.pacificIslanderHawaiian}</td>
-                    </tr>
-                    <tr>
-                        <td>White Non-Latino or Caucasian</td>
-                        <td>{this.props.state.getFederalReducer.white}</td>
-                    </tr>
-                    <tr>
-                        <td>Other Race</td>
-                        <td>{this.props.state.getFederalReducer.Other}</td>
-                    </tr>
-                    <tr>
-                        <td>Multiple Races</td>
-                        <td>{this.props.state.getFederalReducer.multiple_races}</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>{this.props.state.getFederalReducer.total_ethnicity}</td>
-                    </tr>
-                    <tr>
-                        <td>Not Reported</td>
-                        <td>{this.props.state.getFederalReducer.not_reported}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Race/Ethnicity</TableCell>
+                        <TableCell>Primary</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>American Indian or Alaskan Native</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.Native_American}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Asian</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_ethnicity_asian}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Black or African American</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.africanAmerican}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Hispanic or Latino</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.hispanicOrLatino}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Native Hawaiian or Other Pacific Islander</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.pacificIslanderHawaiian}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>White Non-Latino or Caucasian</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.white}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Other Race</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.Other}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Multiple Races</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.multiple_races}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Total</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.total_ethnicity}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Not Reported</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.not_reported}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         );
     }
