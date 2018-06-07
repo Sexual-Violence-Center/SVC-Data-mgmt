@@ -24,22 +24,7 @@ const mapStateToProps = state => ({
     county: state.getCountyReducer,
     state
 });
-// const style = {
-//     titleCard: {
-//       color: grey[50],
-//       backgroundColor: teal[300],
-//       padding: '20px',
-//       margin: '10px',
-//       color: 'white'
-//     },
-//     title: {
-//       color: grey[50],
-//     },
-//     paper: {
-//       padding: '10px',
-//       backgroundColor: grey[300]
-//     }
-//   }
+
   const style = {
     title: {
         backgroundColor:  teal[300],
@@ -121,12 +106,12 @@ class CountyReport extends Component{
         return (
 
            <div>
-                <div style= {{ flex: .5, margin: "20px", marginLeft: "200px", textAlign: "center" }}>
+                <div>
                 <AdminNav />
-                    <Grid container direction="row" justify="absolute" alignItems="center" spacing={40}>
-                        {/* <Grid item item xs={3} sm={3} md={3}>
+                    <Grid container direction="row" justify="flex-start" alignItems="center" spacing={40}>
+                        <Grid item item xs={3} sm={3}>
                         </Grid>
-                        <Grid item xs={8} sm={8} md={9} lg={9} xl={12}> */}
+                        <Grid item xs={8} sm={8}>
                             <Paper style={style.paper}>
                                 <Card style={{ margin: "10px"}}>
                                     <Typography variant="display1" style={style.title}>
@@ -189,7 +174,7 @@ class CountyReport extends Component{
                             </Paper>
                             <Grid item xs={1} sm={1}>
                             </Grid>
-                        {/* </Grid> */}
+                        </Grid>
                     </Grid>
                 </div>
             </div>

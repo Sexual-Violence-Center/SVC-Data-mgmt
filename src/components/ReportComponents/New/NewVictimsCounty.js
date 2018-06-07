@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -8,13 +13,13 @@ const mapStateToProps = state => ({
     state
 });
 
-class NewVictimsCounty extends Component{ 
-    constructor(){
+class NewVictimsCounty extends Component {
+    constructor() {
         super();
-        this.state={
-            startDate:'',
-            endDate:'',
-            county:'',
+        this.state = {
+            startDate: '',
+            endDate: '',
+            county: '',
             service_location: ''
         }
     }
@@ -23,15 +28,15 @@ class NewVictimsCounty extends Component{
         const target = event.target;
         const value = target.value;
         const name = target.name;
-    
+
         this.setState({
-          [name]: value
-        }); 
-       
+            [name]: value
+        });
+
     }
     submit = () => {
         this.props.dispatch({
-            type: 'GET_PERSON_DATA_COUNTY', 
+            type: 'GET_PERSON_DATA_COUNTY',
             payload: this.state
         })
     }
@@ -40,44 +45,44 @@ class NewVictimsCounty extends Component{
         window.print();
     }
 
-    componentDidMount () {
-        
+    componentDidMount() {
+
         this.props.dispatch({
-                type: 
+            type:
                 USER_ACTIONS.FETCH_USER
         });
         console.log(this.props.state.getCountyReducer)
     }
-    render () {
+    render() {
         return (
             <section className="new">
                 <h4>New Hennepin County residents who recieved services during the reporting period</h4>
-                <table className="countyTable">
-                <thead>
-                    <tr>
-                        <th>Types of Individuals</th>
-                        <th>Number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Total Clients Served During the Reporting Period</td>
-                        <td>{this.props.state.getCountyReducer.new_victim}</td>
-                    </tr>
-                    <tr>
-                        <td>Total Clients Served in Advocacy Program</td>
-                        <td>{this.props.state.getCountyReducer.new_victim}</td>
-                    </tr>
-                    <tr>
-                        <td>Total Clients Served in Individual Counseling Program</td>
-                        <td>{this.props.state.getCountyReducer.total_clients_individual_counseling}</td>
-                    </tr>
-                    <tr>
-                        <td>Total Clients Served in Group Counseling Program</td>
-                        <td>{this.props.state.getCountyReducer.total_clients_group_counseling}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="countyTable">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Types of Individuals</TableCell>
+                            <TableCell>Number</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell>Total Clients Served During the Reporting Period</TableCell>
+                            <TableCell>{this.props.state.getCountyReducer.new_victim}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Total Clients Served in Advocacy Program</TableCell>
+                            <TableCell>{this.props.state.getCountyReducer.new_victim}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Total Clients Served in Individual Counseling Program</TableCell>
+                            <TableCell>{this.props.state.getCountyReducer.total_clients_individual_counseling}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Total Clients Served in Group Counseling Program</TableCell>
+                            <TableCell>{this.props.state.getCountyReducer.total_clients_group_counseling}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         )
     }

@@ -8,7 +8,7 @@ const EntryFormReducer = (state = intialState, action) => {
         case 'ENTRY_FORM_DATA':
             return {...state, ...action.payload};
         case 'CLEAR_FORM':
-            return null;
+            return intialState;
         default:
             return state;
     }

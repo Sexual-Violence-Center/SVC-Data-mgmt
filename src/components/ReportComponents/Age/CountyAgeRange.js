@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -12,7 +17,7 @@ class CountyAgeRange extends Component{
     constructor(){
         super();
         this.state={
-            startDate:'',
+            starTableCellate:'',
             endDate:'',
             county:'',
             service_location: ''
@@ -40,7 +45,7 @@ class CountyAgeRange extends Component{
         window.print();
     }
 
-    componentDidMount () {
+    componenTableCellidMount () {
         
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
         console.log(this.props.state.getCountyReducer)
@@ -49,32 +54,32 @@ class CountyAgeRange extends Component{
         return (
             <section className="Age">
             <h4>Demographics: Age</h4>
-            <table className="countyTable">
-            <thead>
-                <tr>
-                    <th>Age Range</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>0 - 18</td>
-                    <td>{this.props.state.getCountyReducer.victim_age_zero_to_eightteen}</td>
-                </tr>
-                <tr>
-                    <td>19 - 50</td>
-                    <td>{this.props.state.getCountyReducer.victim_age_nineteen_to_fifty}</td>
-                </tr>
-                <tr>
-                    <td>50+</td>
-                    <td>{this.props.state.getCountyReducer.victim_age_over_fifty}</td>
-                </tr>
-                <tr>
-                    <td>Not Reported</td>
-                    <td>{this.props.state.getCountyReducer.victim_age_unknown}</td>
-                </tr>
-                </tbody>
-            </table>
+            <Table className="countyTable">
+            <TableHead>
+                <TableRow>
+                    <TableCell>Age Range</TableCell>
+                    <TableCell>Total</TableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                <TableRow>
+                    <TableCell>0 - 18</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.victim_age_zero_to_eightteen}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>19 - 50</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.victim_age_nineteen_to_fifty}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>50+</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.victim_age_over_fifty}</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>Not Reported</TableCell>
+                    <TableCell>{this.props.state.getCountyReducer.victim_age_unknown}</TableCell>
+                </TableRow>
+                </TableBody>
+            </Table>
         </section>
         )
     }

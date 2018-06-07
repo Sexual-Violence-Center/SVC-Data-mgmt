@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -8,6 +15,16 @@ const mapStateToProps = state => ({
     state,
 });
 
+const styles = theme => ({
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+    },
+    table: {
+      minWidth: 700,
+    },
+  });
 
 class AgeRange extends Component {
     constructor() {
@@ -42,47 +59,48 @@ class AgeRange extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <section className="Age">
                 <h4>Demographics: Age</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Age Range</th>
-                        <th>Number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>0-12</td>
-                        <td>{this.props.state.getFederalReducer.victim_age_zero_to_twelve}</td>
-                    </tr>
-                    <tr>
-                        <td>13-17</td>
-                        <td>{this.props.state.getFederalReducer.victim_age_thirteen_to_seventeen}</td>
-                    </tr>
-                    <tr>
-                        <td>18-24</td>
-                        <td>{this.props.state.getFederalReducer.victim_age_eighteen_to_twentyfour}</td>
-                    </tr>
-                    <tr>
-                        <td>25-59</td>
-                        <td>{this.props.state.getFederalReducer.victim_age_twentyfive_to_fiftynine}</td>
-                    </tr>
-                    <tr>
-                        <td>60+</td>
-                        <td>{this.props.state.getFederalReducer.victim_age_sixty_and_older}</td>
-                    </tr>
-                    <tr>
-                        <td>Not Reported</td>
-                        <td>{this.props.state.getFederalReducer.victim_age_unknown}</td>
-                    </tr>
-                    <tr>
-                        <td>Total:</td>
-                        <td>{this.props.state.getFederalReducer.total_age_count}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Age Range</TableCell>
+                        <TableCell>Number</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>0-12</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_age_zero_to_twelve}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>13-17</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_age_thirteen_to_seventeen}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>18-24</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_age_eighteen_to_twentyfour}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>25-59</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_age_twentyfive_to_fiftynine}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>60+</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_age_sixty_and_older}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Not Reported</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.victim_age_unknown}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Total:</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.total_age_count}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         );
     }

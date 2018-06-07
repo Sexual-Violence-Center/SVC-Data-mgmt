@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -45,40 +50,40 @@ class EmotionalSupport extends Component {
         return (
             <section className="emotionalSupport">
                 <h4>(C) Emotional Support or Safety Services: Total services provided during the reporting period</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Service Details</th>
-                        <th>Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>(C1) Crisis Intervention</td>
-                        <td>{this.props.state.getFederalReducer.crisis_intervention}</td>
-                    </tr>
-                    <tr>
-                        <td>(C2) Hotline/Crisis Counseling</td>
-                        <td>{this.props.state.getFederalReducer.hotline_intervention}</td>
-                    </tr>
-                    <tr>
-                        <td>(C4) Individual Counseling</td>
-                        <td>{this.props.state.getFederalReducer.crisis_counseling_individual}</td>
-                    </tr>
-                    <tr>
-                        <td>(C5) Support Groups</td>
-                        <td>{this.props.state.getFederalReducer.crisis_counseling_group}</td>
-                    </tr>
-                    <tr>
-                        <td>(C7) Emergency Financial Assistance</td>
-                        <td>{this.props.state.getFederalReducer.emergency_financial}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total Emotional Support or Safety Services</strong></td>
-                        <td>{this.props.state.getFederalReducer.total_C_Emotional_support_safety_service}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Service Details</TableCell>
+                        <TableCell>Total</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>(C1) Crisis Intervention</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.crisis_intervention}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(C2) Hotline/Crisis Counseling</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.hotline_intervention}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(C4) Individual Counseling</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.crisis_counseling_individual}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(C5) Support Groups</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.crisis_counseling_group}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(C7) Emergency Financial Assistance</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.emergency_financial}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell><strong>Total Emotional Support or Safety Services</strong></TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.total_C_Emotional_support_safety_service}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         );
     }

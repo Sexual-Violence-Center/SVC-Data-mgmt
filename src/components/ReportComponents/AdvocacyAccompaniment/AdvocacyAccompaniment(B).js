@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -45,44 +50,44 @@ class AdvocacyAccompaniment extends Component {
         return (
             <section className="">
                 <h4>(B) Personal Advocacy/Accompaniment</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Service Details</th>
-                        <th>Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>(B1) Victim Advocacy/Accompaniment to Emergency Medical Care</td>
-                        <td>{this.props.state.getFederalReducer.emergency_med_care}</td>
-                    </tr>
-                    <tr>
-                        <td>(B2) Victim Advocacy/Accompaniment to Medical Forensic Exam</td>
-                        <td>{this.props.state.getFederalReducer.forensic_exam}</td>
-                    </tr>
-                    <tr>
-                        <td>(B3) Law Enforcement Interview Advocacy/Accompaniment</td>
-                        <td>{this.props.state.getFederalReducer.law_enforcement_interview}</td>
-                    </tr>
-                    <tr>
-                        <td>(B6) Immigration Assistance</td>
-                        <td>{this.props.state.getFederalReducer.legal_immigration}</td>
-                    </tr>
-                    <tr>
-                        <td>(B7) Intervention with Employer, Creditor, Landlord, or Academic Institution</td>
-                        <td>{this.props.state.getFederalReducer.legal_intervention}</td>
-                    </tr>
-                    <tr>
-                        <td>(B9) Transportation Assistance</td>
-                        <td>{this.props.state.getFederalReducer.transportation}</td>
-                    </tr>
-                     <tr>
-                        <td><strong> Total Personal Advocacy/Accompaniment </strong></td>
-                        <td>{this.props.state.getFederalReducer.total_B_personal_advocacy_accompaniment}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Service Details</TableCell>
+                        <TableCell>Total</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>(B1) Victim Advocacy/Accompaniment to Emergency Medical Care</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.emergency_med_care}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(B2) Victim Advocacy/Accompaniment to Medical Forensic Exam</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.forensic_exam}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(B3) Law Enforcement Interview Advocacy/Accompaniment</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.law_enforcement_interview}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(B6) Immigration Assistance</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_immigration}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(B7) Intervention with Employer, Creditor, Landlord, or Academic Institution</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_intervention}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(B9) Transportation Assistance</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.transportation}</TableCell>
+                    </TableRow>
+                     <TableRow>
+                        <TableCell><strong> Total Personal Advocacy/Accompaniment </strong></TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.total_B_personal_advocacy_accompaniment}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         );
     }

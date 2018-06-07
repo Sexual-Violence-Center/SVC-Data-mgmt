@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -12,7 +17,7 @@ class CountyGender extends Component{
     constructor(){
         super();
         this.state={
-            startDate:'',
+            starTableCellate:'',
             endDate:'',
             county:'',
             service_location: ''
@@ -49,32 +54,32 @@ class CountyGender extends Component{
         return (
             <section className="gender">
                 <h4>Demographics: Gender Identity</h4>
-                <table className="countyTable">
-                <thead>
-                    <tr>
-                        <th>Gender Identity</th>
-                        <th>Number</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Male</td>
-                        <td>{this.props.state.getCountyReducer.victim_gender_male}</td>
-                    </tr>
-                    <tr>
-                        <td>Female</td>
-                        <td>{this.props.state.getCountyReducer.victim_gender_female}</td>
-                    </tr>
-                    <tr>
-                        <td>Transgender</td>
-                        <td>{this.props.state.getCountyReducer.victim_gender_transgender}</td>
-                    </tr>
-                    <tr>
-                        <td>Unknown</td>
-                        <td>{this.props.state.getCountyReducer.victim_gender_unknown}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="countyTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Gender Identity</TableCell>
+                        <TableCell>Number</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>Male</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.victim_gender_male}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Female</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.victim_gender_female}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>TableRowansgender</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.victim_gender_TableRowansgender}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Unknown</TableCell>
+                        <TableCell>{this.props.state.getCountyReducer.victim_gender_unknown}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
             </section>
         )
     }

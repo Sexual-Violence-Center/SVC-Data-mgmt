@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -46,44 +51,44 @@ class CriminalCivilJusticeSystemAssistance extends Component {
             <div className="federalReport">
                <section className="total">
                 <h4>(E) Criminal/Civil Justice System Assistance: Total services provided during the reporting period</h4>
-                <table className="federalTable">
-                <thead>
-                    <tr>
-                        <th>Service Details</th>
-                        <th>Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>(E4) Civil Legal Assistance in Obtaining Protection or Restraining Order</td>
-                        <td>{this.props.state.getFederalReducer.ofp_hro}</td>
-                    </tr>
-                    <tr>
-                        <td>(E6) Other Emergency-Justice Related Assistance</td>
-                        <td>{this.props.state.getFederalReducer.other_emergency_justice}</td>
-                    </tr>
-                    <tr>
-                        <td>(E7) Immigration Assistance</td>
-                        <td>{this.props.state.getFederalReducer.legal_immigration}</td>
-                    </tr>
-                    <tr>
-                        <td>(E8) Prosecution Interview Advocacy/Accompaniment</td>
-                        <td>{this.props.state.getFederalReducer.legal_prosecution_related}</td>
-                    </tr>
-                    <tr>
-                        <td>(E9) Law Enforcement Interview Advocacy/Accompaniment</td>
-                        <td>{this.props.state.getFederalReducer.legal_law_enforcement_interview}</td>
-                    </tr>
-                    <tr>
-                        <td>(E10) Criminal Advocacy/Accompaniment</td>
-                        <td>{this.props.state.getFederalReducer.legal_court_advocacy}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total Criminal/Civil Justice System Assistance</strong></td>
-                        <td>{this.props.state.getFederalReducer.total_E_criminal_civil_justice_system}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <Table className="federalTable">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Service Details</TableCell>
+                        <TableCell>Total</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    <TableRow>
+                        <TableCell>(E4) Civil Legal Assistance in Obtaining Protection or Restraining Order</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.ofp_hro}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(E6) Other Emergency-Justice Related Assistance</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.other_emergency_justice}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(E7) Immigration Assistance</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_immigration}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(E8) Prosecution Interview Advocacy/Accompaniment</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_prosecution_related}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(E9) Law Enforcement Interview Advocacy/Accompaniment</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_law_enforcement_interview}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>(E10) Criminal Advocacy/Accompaniment</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_court_advocacy}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell><strong>Total Criminal/Civil Justice System Assistance</strong></TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.total_E_criminal_civil_justice_system}</TableCell>
+                    </TableRow>
+                    </TableBody>
+                </Table>
                 </section>
             </div>
         );
