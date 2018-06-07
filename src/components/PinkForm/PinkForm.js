@@ -38,7 +38,7 @@ class PinkForm extends Component {
   constructor() {
     super();
     this.state = {
-      contact_type: "telephone", 
+      contact_type: "telephone"
     };
   }
   handleSubmit = () => {
@@ -53,6 +53,19 @@ class PinkForm extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
+  renderDemographics = () => {
+    const { EntryFormReducer } = this.props.state;
+    if (
+      EntryFormReducer.victim_prior_contact === false ||
+      EntryFormReducer.victim_contact_prior_oct === false
+    ) {
+      return <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
+        </Grid>;
+    }
+    return null;
+  };
+
   render() {
     let DataEntryNav;
     if (this.props.state.user.userInfo === true) {
@@ -64,15 +77,20 @@ class PinkForm extends Component {
       <div>
         <div>
           {DataEntryNav}
-          <Grid container direction="row" justify="space-around" alignItems="center" spacing={40}>
-            <Grid item xs={6} sm={3} md={3}>
-            </Grid>
+          <Grid
+            container
+            direction="row"
+            justify="space-around"
+            alignItems="center"
+            spacing={40}
+          >
+            <Grid item xs={6} sm={3} md={3} />
             <Grid item xs={6} sm={8} md={8}>
               <Paper style={style.paper}>
                 <Card style={{ margin: "10px" }}>
                   <Typography variant="display1" style={style.title}>
                     Telephone Contact Form for Primary AND Secondary Victims
-                </Typography>
+                  </Typography>
                 </Card>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <TelephoneContactInfo dispatchTo={"ENTRY_FORM_DATA"} />
@@ -89,15 +107,16 @@ class PinkForm extends Component {
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <Referrals dispatchTo={"ENTRY_FORM_DATA"} />
                 </Grid>
+                {this.renderDemographics()}
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <Demographics dispatchTo={"ENTRY_FORM_DATA"} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <SubmitDialog handleSubmit={this.handleSubmit} text={'Submit'} />
+                  <SubmitDialog
+                    handleSubmit={this.handleSubmit}
+                    text={"Submit"}
+                  />
                 </Grid>
               </Paper>
             </Grid>
-            <Grid item sm={1} md={1}></Grid>
+            <Grid item sm={1} md={1} />
           </Grid>
         </div>
       </div>
