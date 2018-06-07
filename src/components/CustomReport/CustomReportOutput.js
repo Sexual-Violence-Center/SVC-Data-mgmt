@@ -23,7 +23,7 @@ class CustomReportOutput extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
     console.log('should componenet update');
-    if(nextProps.state.CustomReportReducer != null){
+    if(nextProps.state.CustomReportReducer !== null){
       return true
     }
     else {

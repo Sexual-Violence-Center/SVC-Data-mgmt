@@ -16,10 +16,6 @@ const styles = theme => ({
 });
 
 class TypeOfVictim extends Component {
-    constructor() {
-        super();
-    }
-
 
     handleChange = (event) => {
         this.props.handleChangeFor(event);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 //Style
-import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
+import { Paper, Typography, Card, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 //ReportComponents

@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-import AdminNav from '../../Nav/AdminNav/AdminNav';
-//Style
-import { Paper, Typography, Card, Button } from '@material-ui/core';
-
 
 const mapStateToProps = state => ({
     user: state.user,

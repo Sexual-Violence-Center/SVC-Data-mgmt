@@ -7,10 +7,8 @@ import { withStyles } from '@material-ui/core/styles';
 import CalendarModal from '../../Modal/calendar.modal'
 
 //Style
-import { Paper, Typography, Card, Button, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import { MenuItem, InputLabel, Select, FormControl, Divider, } from '@material-ui/core';
-import keycode from 'keycode';
-import Modal from '@material-ui/core/Modal';
 
 const mapStateToProps = state => ({
     user: state.user,

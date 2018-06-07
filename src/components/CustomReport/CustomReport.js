@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import keycode from 'keycode';
-import Modal from '@material-ui/core/Modal';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
+import { Paper, Card } from '@material-ui/core';
 
 import AdminNav from '../Nav/AdminNav/AdminNav';
 import CustomAge from './CustomReportComponents/AgeCustomReport';
@@ -33,14 +29,11 @@ import ZipCodeCustom from './CustomReportComponents/ZipCustom';
 import LocationCustom from './CustomReportComponents/LocationCustomReport';
 import DateCustom from './CustomReportComponents/DateCustom';
 
-
-import renderSuggestion from './StandardFunctionsForChips/renderSuggestion';
 import CalendarModal from '../Modal/calendar.modal'
 import { teal, grey } from '@material-ui/core/colors';
 
 
 import '../../styles/main.css'
-import { ListItem } from 'material-ui';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -62,27 +55,27 @@ const style = {
         
     }
 }
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    menu: {
-        width: 200,
-    },
-    formControl: {
-        margin: theme.spacing.unit,
-        minWidth: 120,
-    },
-    group: {
-        margin: `${theme.spacing.unit}px 0`,
-    },
-});
+// const styles = theme => ({
+//     container: {
+//         display: 'flex',
+//         flexWrap: 'wrap',
+//     },
+//     textField: {
+//         marginLeft: theme.spacing.unit,
+//         marginRight: theme.spacing.unit,
+//         width: 200,
+//     },
+//     menu: {
+//         width: 200,
+//     },
+//     formControl: {
+//         margin: theme.spacing.unit,
+//         minWidth: 120,
+//     },
+//     group: {
+//         margin: `${theme.spacing.unit}px 0`,
+//     },
+// });
 
 
 
@@ -242,7 +235,7 @@ class customReportSelectionPage extends Component {
                     //, marginRight: "500px"
                   }>
                   <DateCustom querySelector = {this.state.querySelector} handleChangeForQuerySelector={this.handleChangeForQuerySelector} startDate={this.state.startDate} endDate={this.state.endDate} submitCustomReport={this.submitCustomReport} handleChangeForEndDate={this.handleChangeForEndDate} handleChangeForStartDate={this.handleChangeForStartDate} />
-                  <Card style={{ margin: "10px", padding: "20px" }}>
+                  <Card style={{ margin: "10px", padding: "20px", paddingBottom: '600px' }}>
                     <CustomAge handleChangeForComponent={this.handleChangeForComponent("AgeCustomSelection")} handleDelete={this.handleDelete("AgeCustomSelection")} selectedItem={this.state.AgeCustomSelection} inputValue={this.state.inputValue} />
                     <CustomContactType handleChangeForComponent={this.handleChangeForComponent("CustomContactTypeSelection")} handleDelete={this.handleDelete("CustomContactTypeSelection")} selectedItem={this.state.CustomContactTypeSelection} inputValue={this.state.inputValue} />
                     <CustomDisability handleChangeForComponent={this.handleChangeForComponent("CustomDisabilitySelection")} handleDelete={this.handleDelete("CustomDisabilitySelection")} selectedItem={this.state.CustomDisabilitySelection} inputValue={this.state.inputValue} />
@@ -267,7 +260,7 @@ class customReportSelectionPage extends Component {
                     <UnmetNeedsCustom handleChangeForComponent={this.handleChangeForComponent("UnmetNeedsCustomSelection")} handleDelete={this.handleDelete("UnmetNeedsCustomSelection")} selectedItem={this.state.UnmetNeedsCustomSelection} inputValue={this.state.inputValue} />
                     <TypesOfVictimizationCustom handleChangeForComponent={this.handleChangeForComponent("TypesOfVictimizationCustomSelection")} handleDelete={this.handleDelete("TypesOfVictimizationCustomSelection")} selectedItem={this.state.TypesOfVictimizationCustomSelection} inputValue={this.state.inputValue} />
                     <ZipCodeCustom handleChangeForComponent={this.handleChangeForComponent("ZipCodeCustomSelection")} handleDelete={this.handleDelete("ZipCodeCustomSelection")} selectedItem={this.state.ZipCodeCustomSelection} inputValue={this.props.inputValue} />
-                  </Card>
+                    </Card>
                 </div>
 
               </Paper>

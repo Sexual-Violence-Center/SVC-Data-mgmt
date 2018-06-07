@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Radio } from '@material-ui/core';
 
 class PriorToOctContact extends Component {
-    constructor() {
-        super();
-    }
 
     handleRadio = (event) => {
         this.props.handleChangeFor(event);

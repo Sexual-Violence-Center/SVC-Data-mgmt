@@ -14,10 +14,10 @@ class CrisisCounseling extends Component {
 
     static getDerivedStateFromProps(props, state){
 
-        if(props.crisis_counseling_individual != undefined){
+        if(props.crisis_counseling_individual !== undefined){
             state= {...state, checked1: props.crisis_counseling_individual};
         }
-        if(props.crisis_counseling_group != undefined){
+        if(props.crisis_counseling_group !== undefined){
             state = {...state, checked2: props.crisis_counseling_group}
         } 
         return state;

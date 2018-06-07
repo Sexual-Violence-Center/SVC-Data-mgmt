@@ -10,11 +10,10 @@ import Referrals from '../FormComponents/Referrals/Referrals';
 import Demographics from '../FormComponents/Demographics/Demographics';
 import UserNav from '../Nav/UserNav/UserNav';
 import AdminNav from '../Nav/AdminNav/AdminNav';
-import FormButton from '../FormComponents/FormButton/FormButton';
 
 import SubmitDialog from '../FormComponents/SubmitDialog/SubmitDialog';
 
-import { Paper, Typography, Card, Grid, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import { Paper, Typography, Card, Grid } from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,

@@ -12,9 +12,6 @@ const styles = theme => ({
 });
 
 class ContactDate extends Component {
-    constructor() {
-        super();
-    }
 
 
     handleChange = (event) => {

@@ -4,7 +4,7 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AdminNav from '../Nav/AdminNav/AdminNav';
 
 //Style
-import { Paper, Typography, Card, Button, Grid, TextField } from '@material-ui/core';
+import { Paper, Typography, Card, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { teal, grey } from '@material-ui/core/colors';
@@ -13,7 +13,7 @@ import { teal, grey } from '@material-ui/core/colors';
 //ReportComponents
 import FederalDate from '../ReportComponents/Date/FederalDate';
 import FederalTotalVictims from '../ReportComponents/Total/FederalTotalVictims';
-import NewVictims from '../ReportComponents/New/NewVictimsFederal';
+// import NewVictims from '../ReportComponents/New/NewVictimsFederal';
 import FederalEthnicity from '../ReportComponents/Ethnicity/FederalEthnicity';
 import FederalGender from '../ReportComponents/Gender/FederalGender';
 import FederalAgeRange from '../ReportComponents/Age/FederalAgeRange';

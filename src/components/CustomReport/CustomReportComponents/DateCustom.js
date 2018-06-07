@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-import AdminNav from '../../Nav/AdminNav/AdminNav';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 //Style
-import { Paper, Typography, Card, Button, TextField } from '@material-ui/core';
-import { MenuItem, InputLabel, Select, FormControl, Divider, Radio} from '@material-ui/core';
+import { Typography, Card, Button, TextField } from '@material-ui/core';
+import { Radio} from '@material-ui/core';
 import { teal, grey } from '@material-ui/core/colors';
 
 const mapStateToProps = state => ({
@@ -45,18 +44,14 @@ const style = {
 }
 
 class DateCustom extends Component{ 
-    constructor(){
-        super();
-    }
-
-    
+ 
     componentDidMount () {
         this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
         console.log(this.props.state.getCountyReducer)
     }
 
     render () {
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return <div>
             <Card style={{ margin: "10px" }}>
               <Typography variant="display1" style={style.title}>

@@ -49,7 +49,6 @@ class SpecialClassificationCustom extends React.Component {
   };
 
   handleKeyDown = event => {
-    const { inputValue, selectedItem } = this.state;
     if (this.props.selectedItem.length && !this.props.inputValue.length && keycode(event) === 'backspace') {
       this.setState({
         selectedItem: this.props.selectedItem.slice(0, this.props.selectedItem.length - 1),

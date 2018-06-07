@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Radio } from '@material-ui/core';
 
 class PriorContact extends Component {
-    constructor() {
-        super();
-
-    }
 
 
     handleRadio = (event) => {
