@@ -104,7 +104,7 @@ class ServiceLocation extends Component {
                         <Divider />
                         <MenuItem style={{ width: '100%' }} value="Shakopee Correctional Facility">Shakopee Correctional Facility</MenuItem>
                         <Divider />
-                        <MenuItem style={{ width: '100%' }} value="St. Francis Hospital">St. Francis Hospital</MenuItem>
+                        <MenuItem style={{ width: '100%' }} value="St. Francis Medical Center">St. Francis Medical Center</MenuItem>
                         <Divider />
                         <MenuItem style={{ width: '100%' }} value="Other">Other</MenuItem>
                     </Select>
