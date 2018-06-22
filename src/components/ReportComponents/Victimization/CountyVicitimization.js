@@ -107,7 +107,7 @@ class CountyVictimization extends Component{
                     <TableCell>{this.props.state.getCountyReducer.violence_elder}</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell>Human TableRowafficking: Sex</TableCell>
+                    <TableCell>Human Trafficking: Sex</TableCell>
                     <TableCell>{this.props.state.getCountyReducer.violence_exploitation_TableRowafficking}</TableCell>
                 </TableRow>
                 <TableRow>
