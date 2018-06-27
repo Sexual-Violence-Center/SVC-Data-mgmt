@@ -17,7 +17,7 @@ class Zipcode extends Component {
     constructor() {
         super();
         this.state = {
-            starTableCellate: '',
+            startDate: '',
             endDate: '',
             county: '',
             service_location: ''
