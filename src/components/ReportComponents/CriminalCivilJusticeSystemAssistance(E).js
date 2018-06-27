@@ -61,7 +61,7 @@ class CriminalCivilJusticeSystemAssistance extends Component {
                     <TableBody>
                     <TableRow>
                         <TableCell>(E4) Civil Legal Assistance in Obtaining Protection or Restraining Order</TableCell>
-                        <TableCell>{this.props.state.getFederalReducer.ofp_hro}</TableCell>
+                        <TableCell>{this.props.state.getFederalReducer.legal_oft_hro}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>(E6) Other Emergency-Justice Related Assistance</TableCell>
