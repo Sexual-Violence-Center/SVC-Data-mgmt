@@ -32,7 +32,7 @@ CREATE TABLE victim (
 	legal_law_enforcement_interview BOOLEAN,
 	legal_prosecution_related BOOLEAN,
 	legal_court_advocacy BOOLEAN,
-	legal_ofp_hro BOOLEAN,  
+	legal_oft_hro BOOLEAN,  
 	legal_immigration BOOLEAN,
 	legal_intervention BOOLEAN,
 	
