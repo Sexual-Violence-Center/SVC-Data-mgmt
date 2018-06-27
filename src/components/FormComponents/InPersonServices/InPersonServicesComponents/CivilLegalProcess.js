@@ -14,8 +14,8 @@ class CivilLegalProcess extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.legal_ofp_hro !== undefined) {
-      state = { ...state, checked1: props.legal_ofp_hro };
+    if (props.legal_oft_hro !== undefined) {
+      state = { ...state, checked1: props.legal_oft_hro };
     }
     if (props.legal_immigration !== undefined) {
       state = { ...state, checked2: props.legal_immigration };
@@ -43,8 +43,8 @@ class CivilLegalProcess extends Component {
         <br />
         <Checkbox
           checked={this.state.checked1}
-          onChange={this.handleChecked("legal_ofp_hro")}
-          name="legal_ofp_hro"
+          onChange={this.handleChecked("legal_oft_hro")}
+          name="legal_oft_hro"
           value={`${!this.state.checked1}`}
         />
         <label>Assistance Obtaining OFP or HRO</label>

@@ -10,7 +10,6 @@ function* getPerson(action) {
         const {startDate, endDate} = action.payload;
         yield console.log('get victim data on pageload', action.payload);
         const personDataResponse = yield call(axios.get, `/api/fed-report/?startDate=${startDate}&endDate=${endDate}`);
-        console.log('getPerson', getPerson)
        yield put ({
            type: 'SET_PERSON_DATA',
            payload: personDataResponse.data[0]

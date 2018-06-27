@@ -57,8 +57,8 @@ class Zipcode extends Component{
                 <Table className="countyTable">
                 <TableHead>
                     <TableRow>
-                        <TableHead>Zip Code</TableHead>
-                        <TableHead>Total</TableHead>
+                        <TableCell>Zip Code</TableCell>
+                        <TableCell>Total</TableCell>
                     </TableRow>
                     </TableHead>
                     <TableBody>
