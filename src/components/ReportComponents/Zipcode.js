@@ -58,7 +58,6 @@ class Zipcode extends Component {
                     <TableHead>
                         <TableRow>
                             <TableCell>Zip Code</TableCell>
-                            
                             <TableCell>Total</TableCell>
                         </TableRow>
                     </TableHead>
