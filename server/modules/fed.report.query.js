@@ -117,66 +117,55 @@ const fedQueryText = `SELECT
         "transportation_medical_accompaniment_medical" = TRUE OR 
         "transportation_medical_accompaniment_dental" =TRUE) AND 
         "contact_date" BETWEEN $1 AND $2) as "transportation",
-    (select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "crisis_intervention";`;
-//     (select COUNT(*) FROM "victim" WHERE "contact_type" = 'phone' AND 
-//         "contact_date" BETWEEN $1 AND $2) as "hotline_intervention",
-//     (select COUNT(*) FROM "victim" WHERE "crisis_counseling_individual" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "crisis_counseling_individual",
-//     (select COUNT(*) FROM "victim" WHERE "crisis_counseling_group" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "crisis_counseling_group",
-//     (select COUNT(*) FROM "victim" WHERE "emergency_financial" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "emergency_financial",
-//     (select COUNT(*) FROM "victim" WHERE "legal_oft_hro" = 'TRUE' AND 
-//         "contact_date" BETWEEN $1 AND $2) as "ofp_hro",
-//     (select COUNT(*) FROM "victim" WHERE "other_emergency_justice" = 'TRUE' AND 
-//         "contact_date" BETWEEN $1 AND $2) as "other_emergency_justice",
-//     (select COUNT(*) FROM "victim" WHERE "legal_immigration" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "legal_immigration", 
-//     (select COUNT(*) FROM "victim" WHERE "legal_prosecution_related" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "legal_prosecution_related",
-//     (select COUNT(*) FROM "victim" WHERE "legal_law_enforcement_interview" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "legal_law_enforcement_interview",
-//     (select COUNT(*) FROM "victim" WHERE "legal_court_advocacy" = TRUE AND 
-//         "contact_date" BETWEEN $1 AND $2) as "legal_court_advocacy", 
-//     (SELECT  COUNT(*) as "total_A_information_referral" FROM "victim" WHERE 
-//     ("legal_court_advocacy" = TRUE  OR  
-//         "information_criminal_justice" = TRUE OR 
-//         "legal_law_enforcement_interview" = TRUE OR 
-//         "legal_prosecution_related" = TRUE OR   
-//         "referral_agency" IS NOT NULL OR 
-//         "referral_other" IS NOT NULL)
-//     AND "contact_date" BETWEEN $1 AND $2),            
-//     (SELECT  COUNT(*) as "total_B_personal_advocacy_accompaniment" FROM "victim" WHERE 
-//     (("medical_accompaniment_medical" = TRUE OR 
-//         "medical_accompaniment_dental" = TRUE) OR   
-//         "medical_exam_support" = TRUE OR 
-//         "legal_law_enforcement_interview" = TRUE OR 
-//         "legal_immigration" = TRUE OR 
-//         "legal_intervention" = TRUE OR 
-//         ("transportation_medical_exam_support" = TRUE OR 
-//             "transportation_medical_accompaniment_medical" = TRUE OR
-//             "transportation_medical_accompaniment_dental" =TRUE))
-//     AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-//         ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
-//     AND "contact_date" BETWEEN $1 AND $2), 
-//     (SELECT  COUNT(*) as "total_C_Emotional_support_safety_service" FROM "victim" WHERE 
-//     ("contact_type" = 'phone' OR
-//         "contact_type" = 'in-person' OR
-//         "crisis_counseling_individual" = TRUE OR
-//         "crisis_counseling_group" = TRUE OR 
-//         "emergency_financial" = TRUE)
-//     AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-//         ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
-//     AND "contact_date" BETWEEN $1 AND $2), 
-//     (SELECT  COUNT(*) as "total_E_criminal_civil_justice_system" FROM "victim" WHERE 
-//     ("legal_oft_hro" = 'TRUE' OR
-//         "other_emergency_justice" = 'TRUE' OR
-//         "legal_immigration" = TRUE OR
-//         "legal_prosecution_related" = TRUE OR   
-//         "legal_law_enforcement_interview" = TRUE OR
-//         "legal_court_advocacy" = TRUE)
-//     AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
-//         ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
-//     AND "contact_date" BETWEEN $1 AND $2);`;
+    (select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "crisis_intervention",
+    (select COUNT(*) FROM "victim" WHERE "contact_type" = 'phone' AND 
+        "contact_date" BETWEEN $1 AND $2) as "hotline_intervention",
+    (select COUNT(*) FROM "victim" WHERE "crisis_counseling_individual" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "crisis_counseling_individual",
+    (select COUNT(*) FROM "victim" WHERE "crisis_counseling_group" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "crisis_counseling_group",
+    (select COUNT(*) FROM "victim" WHERE "emergency_financial" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "emergency_financial",
+    (select COUNT(*) FROM "victim" WHERE "legal_oft_hro" = 'TRUE' AND 
+        "contact_date" BETWEEN $1 AND $2) as "oft_hro",
+    (select COUNT(*) FROM "victim" WHERE "other_emergency_justice" = 'TRUE' AND 
+        "contact_date" BETWEEN $1 AND $2) as "other_emergency_justice",
+    (select COUNT(*) FROM "victim" WHERE "legal_immigration" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "legal_immigration",
+    (select COUNT(*) FROM "victim" WHERE "legal_prosecution_related" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "legal_prosecution_related",
+    (select COUNT(*) FROM "victim" WHERE "legal_law_enforcement_interview" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "legal_law_enforcement_interview",
+    (select COUNT(*) FROM "victim" WHERE "legal_court_advocacy" = TRUE AND 
+        "contact_date" BETWEEN $1 AND $2) as "legal_court_advocacy",
+    (SELECT  COUNT(*) as "total_A_information_referral" FROM "victim" WHERE ("legal_court_advocacy" = TRUE OR "information_criminal_justice" = TRUE OR "legal_law_enforcement_interview" = TRUE OR 
+        "legal_prosecution_related" = TRUE OR 
+        "referral_agency" IS NOT NULL OR 
+        "referral_other" IS NOT NULL) 
+        AND "contact_date" BETWEEN $1 AND $2),
+    (SELECT  COUNT(*) as "total_B_personal_advocacy_accompaniment" FROM "victim" WHERE 
+    (("medical_accompaniment_medical" = TRUE OR 
+        "medical_accompaniment_dental" = TRUE) OR 
+        "medical_exam_support" = TRUE OR 
+        "legal_law_enforcement_interview" = TRUE OR 
+        "legal_immigration" = TRUE OR 
+        "legal_intervention" = TRUE OR 
+        ("transportation_medical_exam_support" = TRUE OR 
+            "transportation_medical_accompaniment_medical" = TRUE OR 
+            "transportation_medical_accompaniment_dental" =TRUE)) 
+        AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) 
+        AND "contact_date" BETWEEN $1 AND $2),
+    (SELECT COUNT(*) as "total_C_Emotional_support_safety_service" FROM "victim" WHERE 
+        ("contact_type" = 'phone' OR "contact_type" = 'in-person' OR "crisis_counseling_individual" = TRUE OR "crisis_counseling_group" = TRUE OR "emergency_financial" = TRUE ) 
+        AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE )) 
+        AND "contact_date" BETWEEN $1 AND $2),
+    (SELECT COUNT(*) as "total_E_criminal_civil_justice_system" FROM "victim" WHERE ("legal_oft_hro" = TRUE OR 
+        "other_emergency_justice" = TRUE OR 
+        "legal_immigration" = TRUE OR 
+        "legal_prosecution_related" = TRUE OR 
+        "legal_law_enforcement_interview" = TRUE OR 
+        "legal_court_advocacy" = TRUE) AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" is NULL OR 
+        ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2);`;
 
 module.exports = fedQueryText;
