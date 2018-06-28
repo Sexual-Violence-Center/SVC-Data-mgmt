@@ -127,7 +127,7 @@ const fedQueryText = `SELECT
     (select COUNT(*) FROM "victim" WHERE "emergency_financial" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "emergency_financial",
     (select COUNT(*) FROM "victim" WHERE "legal_oft_hro" = 'TRUE' AND 
-        "contact_date" BETWEEN $1 AND $2) as "oft_hro",
+        "contact_date" BETWEEN $1 AND $2) as "legal_oft_hro",
     (select COUNT(*) FROM "victim" WHERE "other_emergency_justice" = 'TRUE' AND 
         "contact_date" BETWEEN $1 AND $2) as "other_emergency_justice",
     (select COUNT(*) FROM "victim" WHERE "legal_immigration" = TRUE AND 
