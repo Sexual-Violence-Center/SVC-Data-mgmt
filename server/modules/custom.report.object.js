@@ -53,7 +53,7 @@ let customReportObject = {
     crisis_counseling_group: ` "crisis_counseling_group" = TRUE  `,
 
 //IN-PERSON LEGAL ADVOCACY: CIVIL
-    oft_hro: ` "legal_oft_hro" = 'TRUE'  `,
+    legal_oft_hro: ` "legal_oft_hro" = 'TRUE'  `,
     legal_immigration: ` "legal_immigration" = TRUE `,
     legal_intervention: ` "legal_intervention" = TRUE   `,
 
