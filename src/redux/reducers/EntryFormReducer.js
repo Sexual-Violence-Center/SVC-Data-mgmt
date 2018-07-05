@@ -1,9 +1,13 @@
-const intialState = {
-  victim_prior_contact: "",
-  victim_contact_prior_oct: "",
-};
+// const intialState = {
+// //   victim_prior_contact: "",
+// //   victim_contact_prior_oct: "",
+// };
 
-const EntryFormReducer = (state = intialState, action) => {
+const intialState = ""
+
+
+
+const EntryFormReducer = (state = "", action) => {
     switch(action.type){
         case 'ENTRY_FORM_DATA':
             return {...state, ...action.payload};
