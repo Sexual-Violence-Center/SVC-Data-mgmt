@@ -70,6 +70,7 @@ class ContactInfo extends Component {
   }
 
   static getDerivedStateFromProps = (props, state) => {
+    console.log('props in in person ', props);
     //if on update the form sets state to the update form reducer
     //changes any null values to undefined
     if (props.dispatchTo === "UPDATE_THE_FORM") {
@@ -83,6 +84,7 @@ class ContactInfo extends Component {
       return updateFormReducer;
     } //If nothing in entryform reducer resets state
     else if (!props.state.EntryFormReducer) {
+      console.log('returning inital state in in person contact form, ')
       return initialState;
     } else {
       return state;
