@@ -5,6 +5,10 @@ import Gender from './SurveyComponents/Gender';
 import Transgender from './SurveyComponents/Transgender';
 import Orientation from './SurveyComponents/Orientation';
 import Pronouns from './SurveyComponents/Pronouns';
+import { Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
+
 
 const mapStateToProps = state => ({
     state
@@ -17,6 +21,14 @@ const initialState = {
       victim_gender_pronouns: "",
       victim_sexual_orientation: ""
     };
+  
+const styles = theme => ({
+  importantText: {
+    color: "#a9a9a9",
+    marginLeft: "20px"
+  }
+});
+
 class Survey extends Component {
   constructor() {
     super();
@@ -60,17 +72,20 @@ class Survey extends Component {
   };
 
   render() {
-    return (
-      <div>
+    const { classes } = this.props;
+
+    return <div>
         <h2>Demographics Survey</h2>
-        <VictimAge handleChangeFor={this.handleChangeFor} victim_age={this.state.victim_age}/>
-        <Gender handleChangeFor={this.handleChangeFor} victim_gender={this.state.victim_gender}/>
-        <Transgender handleChangeFor={this.handleChangeFor} victim_transgender={this.state.victim_transgender}/>
-        <Orientation handleChangeFor={this.handleChangeFor} victim_sexual_orientation = {this.state.victim_sexual_orientation}/>
-        <Pronouns handleChangeFor={this.handleChangeFor} victim_gender_pronouns={this.state.victim_gender_pronouns}/>
-      </div>
-    );
+        <VictimAge handleChangeFor={this.handleChangeFor} victim_age={this.state.victim_age} />
+        <Typography variant="body2" className={classes.importantText}>
+          * Leave Blank if Unknown
+        </Typography>
+        <Gender handleChangeFor={this.handleChangeFor} victim_gender={this.state.victim_gender} />
+        <Transgender handleChangeFor={this.handleChangeFor} victim_transgender={this.state.victim_transgender} />
+        <Orientation handleChangeFor={this.handleChangeFor} victim_sexual_orientation={this.state.victim_sexual_orientation} />
+        <Pronouns handleChangeFor={this.handleChangeFor} victim_gender_pronouns={this.state.victim_gender_pronouns} />
+      </div>;
   }
 }
-
-export default connect(mapStateToProps)(Survey);
+// export default connect(mapStateToProps)(withStyles(styles)(TelephoneContactInfo));
+export default connect(mapStateToProps)(withStyles(styles)(Survey));
