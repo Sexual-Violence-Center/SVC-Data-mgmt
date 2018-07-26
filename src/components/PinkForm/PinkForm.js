@@ -56,7 +56,7 @@ class PinkForm extends Component {
     const { EntryFormReducer } = this.props.state;
     if (
       EntryFormReducer.victim_prior_contact === false ||
-      EntryFormReducer.victim_contact_prior_oct === false
+      EntryFormReducer.victim_contact_prior_oct === true
     ) {
       return <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Demographics dispatchTo={"ENTRY_FORM_DATA"} />

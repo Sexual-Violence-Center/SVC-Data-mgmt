@@ -1,7 +1,4 @@
-const intialState = {
-  victim_prior_contact: "",
-  victim_contact_prior_oct: "",
-};
+const intialState = "";
 
 const EntryFormReducer = (state = intialState, action) => {
     switch(action.type){

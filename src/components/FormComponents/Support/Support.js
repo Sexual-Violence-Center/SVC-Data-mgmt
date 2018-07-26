@@ -97,7 +97,7 @@ class Support extends Component {
                 No
               </MenuItem>
               <Divider />
-              <MenuItem style={{ width: "100%" }} value="unknown">
+              <MenuItem style={{ width: "100%" }} value="null">
                 Unknown/Hung Up
               </MenuItem>
             </Select>
