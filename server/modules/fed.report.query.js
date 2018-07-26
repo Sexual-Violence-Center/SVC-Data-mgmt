@@ -108,7 +108,8 @@ AND "contact_date" BETWEEN $1 AND $2) as "violence_unknown",
 (select COUNT(*) FROM "victim" WHERE "disability_deaf" = TRUE 
 AND "contact_date" BETWEEN $1 AND $2) as "disability_deaf", 
 (select COUNT(*) FROM "victim" WHERE "homeless" = TRUE AND "contact_date" BETWEEN $1 AND $2) as "homeless", 
-(select COUNT(*) FROM "victim" WHERE ("victim_immigrant" IS NOT NULL AND "victim_immigrant" != 'No' AND "victim_immigrant" != 'Unknown') 
+(select COUNT(*) FROM "victim" WHERE ("victim_immigrant" IS NOT NULL AND "victim_immigrant" != 'No' AND "victim_immigrant" != 'no' AND 
+"victim_immigrant" != 'Unknown' AND "victim_immigrant" != 'unknown/pass') 
 AND "contact_date" BETWEEN $1 AND $2) as "victim_immigrant", 
 (select COUNT(*) FROM "victim" WHERE ("victim_transgender" = 'TRUE' OR "victim_sexual_orientation" = 'Gay' 
 OR "victim_sexual_orientation" = 'Lesbian') AND "contact_date" BETWEEN $1 AND $2) as "lgbtq", 
