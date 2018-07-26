@@ -7,7 +7,7 @@ Sections are separated in accordance with the headers on the federal report.
 */
 
 const fedQueryText = `SELECT 
-    (select count(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_victims", 
+    (select count(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_victims", 
     (select count(*) FROM "victim" WHERE ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = 
     TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2) as "new_victim",
     (select COUNT(*) FROM "victim" WHERE ("victim_zipcode" IS NULL AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL 
