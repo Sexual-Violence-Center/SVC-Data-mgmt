@@ -1,8 +1,13 @@
 {
   "main.css": "static/css/main.37ea730b.css",
   "main.css.map": "static/css/main.37ea730b.css.map",
+<<<<<<< HEAD
   "main.js": "static/js/main.510e0dd5.js",
   "main.js.map": "static/js/main.510e0dd5.js.map",
+=======
+  "main.js": "static/js/main.f6134635.js",
+  "main.js.map": "static/js/main.f6134635.js.map",
+>>>>>>> 81555c95fc9bb062a8a9aa8c7783fe78beadb0b2
   "static/media/roboto-latin-100.woff": "static/media/roboto-latin-100.e9dbbe8a.woff",
   "static/media/roboto-latin-100.woff2": "static/media/roboto-latin-100.987b8457.woff2",
   "static/media/roboto-latin-100italic.woff": "static/media/roboto-latin-100italic.d704bb3d.woff",
