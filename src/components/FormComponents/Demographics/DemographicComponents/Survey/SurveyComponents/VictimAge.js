@@ -25,7 +25,7 @@ class VictimAge extends Component {
                     name="victim_age"
                     label="Age"
                     className={classes.textField}
-                    type="text"
+                    type="number"
                     margin="normal"
                     value={this.props.victim_age}
                     onChange={this.handleChange}
