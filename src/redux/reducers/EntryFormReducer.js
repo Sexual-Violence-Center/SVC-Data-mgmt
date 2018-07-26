@@ -1,6 +1,7 @@
 const intialState = "";
 
-const EntryFormReducer = (state = intialState, action) => {
+
+const EntryFormReducer = (state = "", action) => {
     switch(action.type){
         case 'ENTRY_FORM_DATA':
             return {...state, ...action.payload};
