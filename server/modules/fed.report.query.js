@@ -7,13 +7,13 @@ Sections are separated in accordance with the headers on the federal report.
 */
 
 const fedQueryText = `SELECT 
-    (select count(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_victims", 
-    (select count(*) FROM "victim" WHERE ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2) as "new_victim",
-    (select COUNT(*) FROM "victim" WHERE ("victim_zipcode" IS NULL AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2)) as "anon_victim",  
+    (select COUNT(*) FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_victims",
+    (select COUNT(*) FROM "victim" WHERE ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2) as "new_victim",
+    (select COUNT(*) FROM "victim" WHERE ("victim_zipcode" IS NULL AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2)) as "anon_victim",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Asian' 
         AND "contact_date" BETWEEN $1 AND $2) as "victim_ethnicity_asian",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Native American' 
-        AND "contact_date" BETWEEN $1 AND $2) as "Native_American", 
+        AND "contact_date" BETWEEN $1 AND $2) as "Native_American",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Chican@/Latin@' 
         AND "contact_date" BETWEEN $1 AND $2) as "hispanicOrLatino",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'African American/Black' 
@@ -26,7 +26,7 @@ const fedQueryText = `SELECT
         AND "contact_date" BETWEEN $1 AND $2) as "Other",
     (select COUNT(*) FROM "victim" WHERE "victim_ethnicity" = 'Multi-racial' 
         AND "contact_date" BETWEEN $1 AND $2) as "multiple_races",
-    (select COUNT(*) FROM "victim" WHERE ("victim_ethnicity" = 'unknown' OR "victim_ethnicity" IS NULL) AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE))
+    (select COUNT(*) FROM "victim" WHERE ("victim_ethnicity" = 'unknown' OR "victim_ethnicity" IS NULL) AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) 
         AND "contact_date" BETWEEN $1 AND $2) as "not_reported",
     (select COUNT("victim_ethnicity") FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_ethnicity", 
     (select COUNT(*) FROM "victim" WHERE "victim_gender" = 'Male' AND "contact_date" BETWEEN $1 AND $2) as "victim_gender_male",
@@ -138,12 +138,12 @@ const fedQueryText = `SELECT
         "contact_date" BETWEEN $1 AND $2) as "legal_law_enforcement_interview",
     (select COUNT(*) FROM "victim" WHERE "legal_court_advocacy" = TRUE AND 
         "contact_date" BETWEEN $1 AND $2) as "legal_court_advocacy",
-    (SELECT  COUNT(*) as "total_A_information_referral" FROM "victim" WHERE ("legal_court_advocacy" = TRUE OR "information_criminal_justice" = TRUE OR "legal_law_enforcement_interview" = TRUE OR 
+    (SELECT COUNT(*) as "total_A_information_referral" FROM "victim" WHERE ("legal_court_advocacy" = TRUE OR "information_criminal_justice" = TRUE OR "legal_law_enforcement_interview" = TRUE OR 
         "legal_prosecution_related" = TRUE OR 
         "referral_agency" IS NOT NULL OR 
         "referral_other" IS NOT NULL) 
         AND "contact_date" BETWEEN $1 AND $2),
-    (SELECT  COUNT(*) as "total_B_personal_advocacy_accompaniment" FROM "victim" WHERE 
+    (SELECT COUNT(*) as "total_B_personal_advocacy_accompaniment" FROM "victim" WHERE 
     (("medical_accompaniment_medical" = TRUE OR 
         "medical_accompaniment_dental" = TRUE) OR 
         "medical_exam_support" = TRUE OR 
