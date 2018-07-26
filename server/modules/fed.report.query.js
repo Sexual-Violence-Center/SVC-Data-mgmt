@@ -31,18 +31,20 @@ AND "contact_date" BETWEEN $1 AND $2) as "multiple_races",
 FALSE OR "victim_prior_contact" IS NULL OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) 
 AND "contact_date" BETWEEN $1 AND $2) as "not_reported", 
 (select COUNT("victim_ethnicity") FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_ethnicity", 
-(select COUNT(*) FROM "victim" WHERE "victim_gender" = 'Male' AND "contact_date" BETWEEN $1 AND $2) as 
+(select COUNT(*) FROM "victim" WHERE ("victim_gender" = 'Male') AND "contact_date" BETWEEN $1 AND $2) as 
 "victim_gender_male", 
-(select count(*) FROM "victim" WHERE "victim_gender" = 'Female' AND "contact_date" BETWEEN $1 AND $2) as 
+(select count(*) FROM "victim" WHERE ("victim_gender" = 'Female') AND "contact_date" BETWEEN $1 AND $2) as 
 "victim_gender_female", 
-(select count(*) FROM "victim" WHERE "victim_gender" = 'Non-binary' AND "contact_date" BETWEEN $1 AND $2) as 
-"victim_gender_non_binary", 
-(select count(*) FROM "victim" WHERE "victim_gender" = 'other' AND "contact_date" BETWEEN $1 AND $2) as 
+(select count(*) FROM "victim" WHERE ("victim_gender" = 'Non-binary' OR "victim_gender" = 'Non-Binary') AND ("contact_date" BETWEEN
+$1 AND $2)) as "victim_gender_non_binary", 
+(select count(*) FROM "victim" WHERE ("victim_gender" = 'other' OR "victim_gender" = 'Other') AND "contact_date" BETWEEN $1 AND 
+$2) as 
 "victim_gender_other", 
-(select count(*) FROM "victim" WHERE "victim_gender" IS NULL AND ("victim_prior_contact" = FALSE OR "victim_prior_contact" IS NULL OR 
-("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2) as 
+(select count(*) FROM "victim" WHERE ("victim_gender" IS NULL OR "victim_gender" = 'Not Reported') AND ("victim_prior_contact" = FALSE OR 
+"victim_prior_contact" IS NULL 
+OR ("victim_prior_contact" = TRUE AND "victim_contact_prior_oct" = TRUE)) AND "contact_date" BETWEEN $1 AND $2) as 
 "victim_gender_unknown", 
-(select COUNT("victim_gender") FROM "victim" WHERE "contact_date" BETWEEN $1 AND $2) as "total_gender_count", 
+(select COUNT("victim_gender") FROM "victim" WHERE ("contact_date" BETWEEN $1 AND $2)) as "total_gender_count", 
 (select count(*) FROM "victim" WHERE "victim_age" BETWEEN 0 AND 12 AND "contact_date" BETWEEN $1 AND $2) as 
 "victim_age_zero_to_twelve", 
 (select count(*) FROM "victim" WHERE "victim_age" BETWEEN 13 AND 17 AND "contact_date" BETWEEN $1 AND $2) as 
