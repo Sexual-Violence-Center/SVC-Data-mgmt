@@ -37,7 +37,7 @@ class PinkForm extends Component {
   constructor() {
     super();
     this.state = {
-      contact_type: "telephone"
+      contact_type: "phone"
     };
   }
   handleSubmit = () => {
@@ -45,6 +45,8 @@ class PinkForm extends Component {
     this.props.dispatch({
       type: "ADD_NEW_VICTIM",
       payload: { ...this.state, ...this.props.state.EntryFormReducer }
+    }, ()=>{
+      console.log('submit', this.props.dispatch.payload);
     });
   };
 

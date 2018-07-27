@@ -11,6 +11,7 @@ function* postNewVictim(action) {
                 payload[key] = null;
             }
         })
+        yield console.log('posting new form', action.payload);
         let createNewVictim = yield call(axios.post, '/api/victim', payload);
         yield put({
             type: 'DISPLAY_VICTIM_ID_NUMBER',

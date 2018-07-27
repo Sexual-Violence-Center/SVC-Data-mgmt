@@ -8,6 +8,11 @@ const style = {
     }
 }
 
+// this button component is used by the SubmitDialog Component as a Submit Button for the YellowForm and PinkForm
+// components to submit a new form into the database.
+
+// It's also used by the UpdateForm component as a Save Button to save any changes that have been made to a form in the database
+// via a PUT request.
 class FormButton extends Component {
     render() {
         return (
