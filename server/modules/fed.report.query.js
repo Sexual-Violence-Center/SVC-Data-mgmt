@@ -113,8 +113,14 @@ AND "contact_date" BETWEEN $1 AND $2) as "disability_deaf",
 (select COUNT(*) FROM "victim" WHERE ("victim_immigrant" IS NOT NULL AND "victim_immigrant" != 'No' AND "victim_immigrant" != 'no' AND 
 "victim_immigrant" != 'Unknown' AND "victim_immigrant" != 'unknown/pass') 
 AND "contact_date" BETWEEN $1 AND $2) as "victim_immigrant", 
-(select COUNT(*) FROM "victim" WHERE ("victim_transgender" = 'TRUE' OR "victim_sexual_orientation" = 'Gay' 
-OR "victim_sexual_orientation" = 'Lesbian') AND "contact_date" BETWEEN $1 AND $2) as "lgbtq", 
+(select COUNT(*) FROM "victim" WHERE (("victim_transgender" = 'true' OR "victim_transgender" = 'yes') 
+OR ("victim_sexual_orientation" = 'Gay' 
+OR "victim_sexual_orientation" = 'Lesbian' 
+OR "victim_sexual_orientation" = 'bi' 
+OR "victim_sexual_orientation" = 'Bi' 
+OR "victim_sexual_orientation" = 'Bi-sexual' 
+OR "victim_sexual_orientation" = 'bi-sexual'
+OR "victim_sexual_orientation" = 'queer')) AND "contact_date" BETWEEN $1 AND $2) as "lgbtq", 
 (select COUNT(*) FROM "victim" WHERE "veteran" = TRUE AND "contact_date" BETWEEN $1 AND $2) as "veteran",
 (select COUNT(*) FROM "victim" WHERE ("disability_physical" = TRUE OR "disability_mental" = TRUE OR "disability_developmental" = TRUE OR 
 "disability_other" = TRUE) AND "contact_date" BETWEEN $1 AND $2) as "victims_with_disabilities", 
