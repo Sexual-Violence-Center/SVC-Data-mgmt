@@ -12,6 +12,10 @@ const mapStateToProps = state => ({
   state
 });
 
+// this component is shared between YellowForm and PinkForm and is used to submit a form entry and give back a confirmation
+// number which is the ID of the new entry in the database.
+// The handleSubmit function, when clicked, triggers the actual handleSubmit function of whichever parent Form component is currently 
+// being worked on, be it the YellowForm or PinkForm.
 class SubmitDialog extends React.Component {
   state = {
     open: false,
@@ -20,10 +24,7 @@ class SubmitDialog extends React.Component {
   handleSubmit = () => {
     console.log(this.props.state.EntryFormReducer);
     this.handleClickOpen
-    this.props.dispatch({
-      type: "ADD_NEW_VICTIM",
-      payload: { ...this.props.state.EntryFormReducer }
-    });
+    this.props.handleSubmit();
     this.setState({ open: true });
   }
 
